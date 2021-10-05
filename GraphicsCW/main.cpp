@@ -25,11 +25,11 @@ int main(void)
 {
     // Initialization
     //--------------------------------------------------------------------------------------
-    const int screenWidth = 800;
-    const int screenHeight = 450;
-
+    const int screenWidth = 1920;
+    const int screenHeight = 1080;
+    Texture2D background = LoadTexture("resources\TableTwo.png");
     InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
-
+    
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
 
@@ -40,21 +40,19 @@ int main(void)
         //----------------------------------------------------------------------------------
         // TODO: Update your variables here
         //----------------------------------------------------------------------------------
-
-        // Draw
+        // Draw C:\Users\Madta\source\repos\GraphicsCW\raylib\examples\textures\resources
         //----------------------------------------------------------------------------------
         BeginDrawing();
-
+       
+        DrawTexture(background, 0, 0, RAYWHITE);
         ClearBackground(RAYWHITE);
-
-        DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
-
         EndDrawing();
         //----------------------------------------------------------------------------------
     }
 
     // De-Initialization
     //--------------------------------------------------------------------------------------
+    UnloadTexture(background);
     CloseWindow();        // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
 
