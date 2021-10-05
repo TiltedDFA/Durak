@@ -20,6 +20,7 @@
 ********************************************************************************************/
 
 #include "raylib.h"
+#include "Display.hpp"
 #include <iostream>
 
 int main(void)
@@ -30,7 +31,7 @@ int main(void)
     const int screenHeight = 1080;   
     InitWindow(screenWidth, screenHeight, "Durak");
     Image _Table = LoadImage("TableTwo.png");
-    Image _CardBacking = LoadImage("255CardBacking.png");
+    Image _CardBacking = LoadImage("170CardBacking.png");
     Texture2D  Table = LoadTextureFromImage(_Table);
     Texture2D CardBacking = LoadTextureFromImage(_CardBacking);
     UnloadImage(_CardBacking);
@@ -50,7 +51,8 @@ int main(void)
         BeginDrawing();
         ClearBackground(RAYWHITE);
         DrawTexture(Table, 0, 0, WHITE);
-        DrawTexture(CardBacking, 505, 760, WHITE);
+        DisplayBackOfCards(600, 75, 6, CardBacking);
+        DisplayBackOfCards(600, 840, 6, CardBacking);
         EndDrawing();
         //----------------------------------------------------------------------------------
     }
