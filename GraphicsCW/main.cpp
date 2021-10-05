@@ -29,9 +29,12 @@ int main(void)
     const int screenWidth = 1920;
     const int screenHeight = 1080;   
     InitWindow(screenWidth, screenHeight, "Durak");
-    Image image = LoadImage("TableTwo.png");
-    Texture2D  background = LoadTextureFromImage(image);
-    UnloadImage(image);    
+    Image _Table = LoadImage("TableTwo.png");
+    Image _CardBacking = LoadImage("255CardBacking.png");
+    Texture2D  Table = LoadTextureFromImage(_Table);
+    Texture2D CardBacking = LoadTextureFromImage(_CardBacking);
+    UnloadImage(_CardBacking);
+    UnloadImage(_Table);    
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
 
@@ -46,14 +49,16 @@ int main(void)
         //----------------------------------------------------------------------------------
         BeginDrawing();
         ClearBackground(RAYWHITE);
-        DrawTexture(background, 0, 0, WHITE);
+        DrawTexture(Table, 0, 0, WHITE);
+        DrawTexture(CardBacking, 500, 500, WHITE);
         EndDrawing();
         //----------------------------------------------------------------------------------
     }
 
     // De-Initialization
     //--------------------------------------------------------------------------------------
-    UnloadTexture(background);
+    UnloadTexture(Table);
+    UnloadTexture(CardBacking);
     CloseWindow();        // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
     system("pause>0");
