@@ -20,16 +20,18 @@
 ********************************************************************************************/
 
 #include "raylib.h"
+#include <iostream>
 
 int main(void)
 {
     // Initialization
     //--------------------------------------------------------------------------------------
     const int screenWidth = 1920;
-    const int screenHeight = 1080;
-    Texture2D background = LoadTexture("resources\TableTwo.png");
-    InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
-    
+    const int screenHeight = 1080;   
+    InitWindow(screenWidth, screenHeight, "Durak");
+    Image image = LoadImage("TableTwo.png");
+    Texture2D  background = LoadTextureFromImage(image);
+    UnloadImage(image);    
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
 
@@ -43,9 +45,8 @@ int main(void)
         // Draw C:\Users\Madta\source\repos\GraphicsCW\raylib\examples\textures\resources
         //----------------------------------------------------------------------------------
         BeginDrawing();
-       
-        DrawTexture(background, 0, 0, RAYWHITE);
         ClearBackground(RAYWHITE);
+        DrawTexture(background, 0, 0, WHITE);
         EndDrawing();
         //----------------------------------------------------------------------------------
     }
@@ -55,6 +56,6 @@ int main(void)
     UnloadTexture(background);
     CloseWindow();        // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
-
+    system("pause>0");
     return 0;
 }
