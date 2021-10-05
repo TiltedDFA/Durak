@@ -50,7 +50,7 @@ int main(void)
         BeginDrawing();
         ClearBackground(RAYWHITE);
         DrawTexture(Table, 0, 0, WHITE);
-        DrawTexture(CardBacking, 500, 500, WHITE);
+        DrawTexture(CardBacking, 505, 760, WHITE);
         EndDrawing();
         //----------------------------------------------------------------------------------
     }
