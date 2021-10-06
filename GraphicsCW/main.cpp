@@ -36,18 +36,11 @@ int main(void)
     Texture2D CardBacking = LoadTextureFromImage(_CardBacking);
     UnloadImage(_CardBacking);
     UnloadImage(_Table);    
-    SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
+    SetTargetFPS(60);               
     //--------------------------------------------------------------------------------------
-
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
-        // Update
-        //----------------------------------------------------------------------------------
-        // TODO: Update your variables here
-        //----------------------------------------------------------------------------------
-        // Draw C:\Users\Madta\source\repos\GraphicsCW\raylib\examples\textures\resources
-        //----------------------------------------------------------------------------------
         BeginDrawing();
         ClearBackground(RAYWHITE);
         DrawTexture(Table, 0, 0, WHITE);
