@@ -12,9 +12,15 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\repos\CW_Source\StructWorks\Cards.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Display.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\repos\CW_Source\StructWorks\Card.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
