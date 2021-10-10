@@ -12,7 +12,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\source\repos\CW_Source\StructWorks\Cards.cpp">
+    <ClCompile Include="..\..\..\source\repos\CW_Source\StructWorks\Classes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -20,7 +20,7 @@
     <ClInclude Include="Display.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\source\repos\CW_Source\StructWorks\Card.hpp">
+    <ClInclude Include="..\..\..\source\repos\CW_Source\StructWorks\Classes.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

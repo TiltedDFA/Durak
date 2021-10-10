@@ -22,6 +22,7 @@
 #include "raylib.h"
 #include "Display.hpp"
 #include <iostream>
+#include "Classes.hpp"
 
 int main(void)
 {
@@ -36,7 +37,8 @@ int main(void)
     Texture2D CardBacking = LoadTextureFromImage(_CardBacking);
     UnloadImage(_CardBacking);
     UnloadImage(_Table);    
-    SetTargetFPS(60);               
+    SetTargetFPS(60); 
+    Deck deck;
     //--------------------------------------------------------------------------------------
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -46,10 +48,11 @@ int main(void)
         DrawTexture(Table, 0, 0, WHITE);
         DisplayBackOfCards(600, 75, 6, CardBacking);
         DisplayBackOfCards(600, 840, 6, CardBacking);
+        DrawText(TextFormat("Master suit is: %d", ((int)deck.getMasterSuit())), 200, 120, 20, WHITE);
         EndDrawing();
         //----------------------------------------------------------------------------------
     }
-
+    
     // De-Initialization
     //--------------------------------------------------------------------------------------
     UnloadTexture(Table);
