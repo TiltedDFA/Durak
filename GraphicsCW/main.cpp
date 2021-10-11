@@ -22,7 +22,7 @@
 #include "raylib.h"
 #include "Display.hpp"
 #include <iostream>
-#include "Classes.hpp"
+#include "Class.hpp"
 
 int main(void)
 {
