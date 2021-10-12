@@ -5,7 +5,7 @@
 
 int main(void)
 {
-	// Initialization
+	// Variables
 	//--------------------------------------------------------------------------------------
 	const int screenWidth = 1920;
 	const int screenHeight = 1080;
@@ -18,7 +18,13 @@ int main(void)
 	bool prePlayScreen = false; // To select the settings before a match begins
 	Deck deck;
 
+
+	//Collision Rectangles
+	//---------------------------------------------------------------------------------------
 	Rectangle btnCheckColl = { 772, 509, 287, 105 };
+
+	//Texture Initilization 
+	//---------------------------------------------------------------------------------------
 	Texture2D TitleScreen = LoadTexture("TitleScreen.png");
 	Texture2D  _Table = LoadTexture("TableTwo.png");
 	Texture2D CardBacking = LoadTexture("170CardBacking.png");
@@ -28,7 +34,8 @@ int main(void)
 
 	while (!WindowShouldClose())    // Detect window close button or ESC key
 	{	
-		MousePointing = GetMousePosition();
+		MousePointing = GetMousePosition(); //Gets Mouse Pos. and saves it as a 2D co-ordinate
+
 		if (prePlayScreen) // Not true?
 		{
 			//DisplayBackOfCards(600, 75, 6, CardBacking);
