@@ -36,17 +36,19 @@ int main(void)
 		}
 		else
 		{
-			if (CheckCollisionPointRec(MousePointing, btnCheckColl))
-			{
-				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
-				{
-					DisplayBackOfCards(600, 75, 6, CardBacking);
-				}
-			}
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(TitleScreen, 0, 0, WHITE);
 			EndDrawing();
+			if (CheckCollisionPointRec(MousePointing, btnCheckColl))
+			{
+				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+				{
+					BeginDrawing();
+					DisplayBackOfCards(600, 75, 6, CardBacking);
+					EndDrawing();
+				}
+			}			
 		}		
 		//----------------------------------------------------------------------------------
 	}
