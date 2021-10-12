@@ -2,15 +2,6 @@
 #ifndef DISPLAY_HPP
 #define DISPLAY_HPP
 #include "raylib.h"
-
-void LoadNeededFiles()
-{
-	Texture2D TitleScreen = LoadTexture("TitleScreen.png");
-	Texture2D  .Table = LoadTexture("TableTwo.png");
-	Texture2D CardBacking = LoadTexture("170CardBacking.png");
-	SetTargetFPS(60);
-}
-
 void DisplayMenu() 
 {
 

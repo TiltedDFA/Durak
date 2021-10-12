@@ -1,24 +1,3 @@
-/*******************************************************************************************
-*
-*   raylib [core] example - Basic window
-*
-*   Welcome to raylib!
-*
-*   To test examples, just press F6 and execute raylib_compile_execute script
-*   Note that compiled executable is placed in the same folder as .c file
-*
-*   You can find all basic examples on C:\raylib\raylib\examples folder or
-*   raylib official webpage: www.raylib.com
-*
-*   Enjoy using raylib. :)
-*
-*   This example has been created using raylib 1.0 (www.raylib.com)
-*   raylib is licensed under an unmodified zlib/libpng license (View raylib.h for details)
-*
-*   Copyright (c) 2013-2016 Ramon Santamaria (@raysan5)
-*
-********************************************************************************************/
-
 #include "raylib.h"
 #include "Display.hpp"
 #include <iostream>
@@ -26,33 +5,56 @@
 
 int main(void)
 {
-
 	// Initialization
 	//--------------------------------------------------------------------------------------
 	const int screenWidth = 1920;
 	const int screenHeight = 1080;
+	Vector2 MousePointing = { 0.0f, 0.0f };
+
 	InitWindow(screenWidth, screenHeight, "Durak");
-	LoadNeededFiles();
+	SetTargetFPS(60);
+
+	bool _TScreen = true;
 	Deck deck;
+
+	Rectangle btnCheckColl = { 772, 509, 287, 105 };
+	Texture2D TitleScreen = LoadTexture("TitleScreen.png");
+	Texture2D  _Table = LoadTexture("TableTwo.png");
+	Texture2D CardBacking = LoadTexture("170CardBacking.png");
+	
 	//--------------------------------------------------------------------------------------
-	// Main game loop
+	// Main game loop	
+
 	while (!WindowShouldClose())    // Detect window close button or ESC key
-	{
-		//Doesn't work lol fix it (Issue is likely the LoadNeedeFiles())
-		BeginDrawing();
-		ClearBackground(RAYWHITE);
-		DrawTexture(TitleScreen, 0, 0, WHITE);
-		//DisplayBackOfCards(600, 75, 6, CardBacking);
-		//DisplayBackOfCards(600, 840, 6, CardBacking);
-		//DrawText(TextFormat("Master suit is: %d", ((int)deck.getMasterSuit())), 200, 120, 20, WHITE);
-		EndDrawing();
+	{	
+		MousePointing = GetMousePosition();
+		if (!_TScreen) // Not true?
+		{
+			//DisplayBackOfCards(600, 75, 6, CardBacking);
+			//DisplayBackOfCards(600, 840, 6, CardBacking);
+			//DrawText(TextFormat("Master suit is: %d", ((int)deck.getMasterSuit())), 200, 120, 20, WHITE);
+		}
+		else
+		{
+			if (CheckCollisionPointRec(MousePointing, btnCheckColl))
+			{
+				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+				{
+					DisplayBackOfCards(600, 75, 6, CardBacking);
+				}
+			}
+			BeginDrawing();
+			ClearBackground(RAYWHITE);
+			DrawTexture(TitleScreen, 0, 0, WHITE);
+			EndDrawing();
+		}		
 		//----------------------------------------------------------------------------------
 	}
-
 	// De-Initialization
 	//--------------------------------------------------------------------------------------
-	UnloadTexture(.Table);
 	UnloadTexture(CardBacking);
+	UnloadTexture(TitleScreen);
+	UnloadTexture(_Table);
 	CloseWindow();        // Close window and OpenGL context
 	//--------------------------------------------------------------------------------------
 	system("pause>0");
