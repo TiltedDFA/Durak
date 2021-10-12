@@ -14,7 +14,8 @@ int main(void)
 	InitWindow(screenWidth, screenHeight, "Durak");
 	SetTargetFPS(60);
 
-	bool _TScreen = true;
+	bool _TScreen = true; 
+	bool prePlayScreen = false; // To select the settings before a match begins
 	Deck deck;
 
 	Rectangle btnCheckColl = { 772, 509, 287, 105 };
@@ -28,13 +29,17 @@ int main(void)
 	while (!WindowShouldClose())    // Detect window close button or ESC key
 	{	
 		MousePointing = GetMousePosition();
-		if (!_TScreen) // Not true?
+		if (prePlayScreen) // Not true?
 		{
 			//DisplayBackOfCards(600, 75, 6, CardBacking);
 			//DisplayBackOfCards(600, 840, 6, CardBacking);
 			//DrawText(TextFormat("Master suit is: %d", ((int)deck.getMasterSuit())), 200, 120, 20, WHITE);
+			BeginDrawing();
+			ClearBackground(RAYWHITE);
+			DrawTexture(_Table, 0, 0, WHITE);
+			EndDrawing();
 		}
-		else
+		else if (_TScreen)
 		{
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
@@ -44,9 +49,9 @@ int main(void)
 			{
 				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 				{
-					BeginDrawing();
-					DisplayBackOfCards(600, 75, 6, CardBacking);
-					EndDrawing();
+					// Do something with the button to make it nice
+					prePlayScreen = true;
+					_TScreen = false;
 				}
 			}			
 		}		
