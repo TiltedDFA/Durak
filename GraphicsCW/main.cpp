@@ -18,7 +18,7 @@ int main(void)
 	bool prePlayScreen = false; // To select the settings before a match begins
 	Deck deck;
 
-	//TODO:: code something that will get get a deck to display cards on the play screen 
+	//TODO code something that will get get a deck to display cards on the play screen 
 	//Collision Rectangle
 	//---------------------------------------------------------------------------------------
 	Rectangle btnCheckColl = { 772, 509, 287, 105 };
@@ -31,6 +31,8 @@ int main(void)
 	
 	//--------------------------------------------------------------------------------------
 	// Main game loop	
+
+	//Code something that constructs cards based of the Card class
 
 	while (!WindowShouldClose())    // Detect window close button or ESC key
 	{	
@@ -46,7 +48,7 @@ int main(void)
 			DrawTexture(_Table, 0, 0, WHITE);
 			DisplayBackOfCards(600, 75, 6, CardBacking);
 			DisplayBackOfCards(600, 840, 6, CardBacking);
-			DrawCircleV(GetMousePosition(), 10, DARKBLUE);
+			DrawCircleV(GetMousePosition(), 10, WHITE);
 			EndDrawing();
 		}
 		else if (_TScreen)
@@ -54,7 +56,7 @@ int main(void)
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(TitleScreen, 0, 0, WHITE);
-			DrawCircleV(GetMousePosition(), 10, DARKBLUE);			
+			DrawCircleV(GetMousePosition(), 10, WHITE);			
 			EndDrawing();
 			if (CheckCollisionPointRec(MousePointing, btnCheckColl))
 			{
@@ -64,7 +66,7 @@ int main(void)
 					prePlayScreen = true;
 					_TScreen = false;
 				}
-			}			
+			}
 		}		
 		//----------------------------------------------------------------------------------
 	}
