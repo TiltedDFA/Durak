@@ -8,18 +8,18 @@ int main(void)
 	// Variables
 	//--------------------------------------------------------------------------------------
 	const int screenWidth = 1920;
-	const int screenHeight = 1080;
+	const int screenHeight = 1050; // have to do this to fix the mouse ghosting issue
 	Vector2 MousePointing = { 0.0f, 0.0f };
 
 	InitWindow(screenWidth, screenHeight, "Durak");
-	SetTargetFPS(60);
+	SetTargetFPS(240); // This is to test how to increase the responsiveness
 
 	bool _TScreen = true; 
 	bool prePlayScreen = false; // To select the settings before a match begins
 	Deck deck;
 
-
-	//Collision Rectangles
+	//TODO:: code something that will get get a deck to display cards on the play screen 
+	//Collision Rectangle
 	//---------------------------------------------------------------------------------------
 	Rectangle btnCheckColl = { 772, 509, 287, 105 };
 
@@ -44,6 +44,9 @@ int main(void)
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(_Table, 0, 0, WHITE);
+			DisplayBackOfCards(600, 75, 6, CardBacking);
+			DisplayBackOfCards(600, 840, 6, CardBacking);
+			DrawCircleV(GetMousePosition(), 10, DARKBLUE);
 			EndDrawing();
 		}
 		else if (_TScreen)
@@ -51,6 +54,7 @@ int main(void)
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(TitleScreen, 0, 0, WHITE);
+			DrawCircleV(GetMousePosition(), 10, DARKBLUE);			
 			EndDrawing();
 			if (CheckCollisionPointRec(MousePointing, btnCheckColl))
 			{
