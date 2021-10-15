@@ -3,7 +3,6 @@
 #define CLASS_HPP
 #include <iostream>
 #include <vector>
-
 enum class cardSuit
 {
 	SPADES = 1,
