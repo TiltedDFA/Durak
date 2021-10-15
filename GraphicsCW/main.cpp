@@ -12,23 +12,19 @@ int main(void)
 	Vector2 MousePointing = { 0.0f, 0.0f };
 
 	InitWindow(screenWidth, screenHeight, "Durak");
-	SetTargetFPS(240); // This is to test how to increase the responsiveness
-
+	SetTargetFPS(120); // This is to test how to increase the responsiveness
 	bool _TScreen = true; 
 	bool prePlayScreen = false; // To select the settings before a match begins
 	Deck deck;
-
 	//TODO code something that will get get a deck to display cards on the play screen 
 	//Collision Rectangle
 	//---------------------------------------------------------------------------------------
 	Rectangle btnCheckColl = { 772, 509, 287, 105 };
-
 	//Texture Initilization 
 	//---------------------------------------------------------------------------------------
 	Texture2D TitleScreen = LoadTexture("TitleScreen.png");
 	Texture2D  _Table = LoadTexture("TableTwo.png");
-	Texture2D CardBacking = LoadTexture("170CardBacking.png");
-	
+	Texture2D CardBacking = LoadTexture("170CardBacking.png");	
 	//--------------------------------------------------------------------------------------
 	// Main game loop	
 
@@ -37,7 +33,6 @@ int main(void)
 	while (!WindowShouldClose())    // Detect window close button or ESC key
 	{	
 		MousePointing = GetMousePosition(); //Gets Mouse Pos. and saves it as a 2D co-ordinate
-
 		if (prePlayScreen) // Not true?
 		{
 			//DisplayBackOfCards(600, 75, 6, CardBacking);
@@ -75,7 +70,7 @@ int main(void)
 	UnloadTexture(CardBacking);
 	UnloadTexture(TitleScreen);
 	UnloadTexture(_Table);
-	CloseWindow();        // Close window and OpenGL context
+	CloseWindow();// Close window and OpenGL context
 	//--------------------------------------------------------------------------------------
 	system("pause>0");
 	return 0;

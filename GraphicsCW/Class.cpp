@@ -1,13 +1,11 @@
 #include "Class.hpp"
 #include <array>
-
+#include <random>
 Card::Card(){Suit=cardSuit::CLUBS;Value=cardValue::TWO;}
 Card::~Card(){}
 Deck::Deck(){srand((unsigned)time(NULL));masterSuit=(cardSuit)((rand()%4)+1);}
 Player::Player(){}
 Player::~Player(){}
-Players::Players(){}
-Players::~Players(){}
 Table::Table(){}
 Table::~Table(){}
 void Deck::addToDeck(Card card){_Deck.push_back(card);}
@@ -19,8 +17,8 @@ std::string Player::getPlayerName(){return PlayerName;}
 void Player::setPlayerName(std::string input){PlayerName = input;}
 Deck::~Deck()
 {
-	std::array<std::string, 4> suit = { "Spades", "Hearts", "Diamonds", "Clubs" };
-	std::array<std::string, 14> value = { "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace" };
+	std::array<std::string,4>suit={"Spades","Hearts","Diamonds","Clubs"};
+	std::array<std::string,14>value={"Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King","Ace"};
 	Card C;
 	for (int i = 0; i < 14; i++)
 	{
@@ -33,5 +31,6 @@ Deck::~Deck()
 			_Deck.push_back(C);
 		}
 	}
+	masterSuit = (cardSuit)(rand() % 5 + 1);
 }
 //worksassasas
