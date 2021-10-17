@@ -11,6 +11,7 @@ enum class cardSuit
 	DIAMONDS,
 	CLUBS,
 };
+//-------------------------------------------------------------------------------------------------------------
 enum class cardValue
 {
 	TWO = 2,
@@ -27,6 +28,7 @@ enum class cardValue
 	KING,
 	ACE,
 };
+//-------------------------------------------------------------------------------------------------------------
 class Card
 {
 public:
@@ -36,6 +38,7 @@ public:
 	cardValue Value{};
 	std::string Name{};
 };
+//-------------------------------------------------------------------------------------------------------------
 class Deck
 {
 private:
@@ -47,9 +50,11 @@ public:
 
 	void addToDeck(Card card);
 	Card getCardFromDeck(int cardIndex);
+	void printDeck();
 
 	cardSuit getMasterSuit();
 };
+//-------------------------------------------------------------------------------------------------------------
 class Player
 {
 private:
@@ -64,13 +69,7 @@ public:
 	std::string getPlayerName();
 	void setPlayerName(std::string input);
 };
-class Players
-{
-public:
-	Players();
-	~Players();
-	std::vector<Player>_Players;
-};
+//-------------------------------------------------------------------------------------------------------------
 class Table
 {
 private:
