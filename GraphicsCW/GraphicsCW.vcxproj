@@ -172,7 +172,6 @@
   <ItemGroup>
     <ClCompile Include="Class.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Playing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\build\raylib.vcxproj">
@@ -182,6 +181,7 @@
   <ItemGroup>
     <ClInclude Include="Class.hpp" />
     <ClInclude Include="Display.hpp" />
+    <ClInclude Include="Play.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

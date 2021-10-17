@@ -3,7 +3,6 @@
 #define CLASS_HPP
 #include <iostream>
 #include <vector>
-
 enum class cardSuit
 {
 	SPADES = 1,
@@ -69,7 +68,13 @@ public:
 	std::string getPlayerName();
 	void setPlayerName(std::string input);
 };
-//-------------------------------------------------------------------------------------------------------------
+class Players
+{
+public:
+	Players();
+	~Players();
+	std::vector<Player>_Players;
+};
 class Table
 {
 private:
@@ -78,7 +83,4 @@ public:
 	Table();
 	~Table();
 };
-
-
-
 #endif // !CLASS_HPP
