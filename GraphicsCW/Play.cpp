@@ -1,8 +1,12 @@
 #include "Play.hpp"
-Player PlayerOne, PlayerTwo;
-template<int playerOne, int playerTwo>
-void switchPlayers(int& a, int& b)
-{
 
+inline bool beatsTheCard(cardSuit masterSuit, Card CardOne, Card CardTwo)
+{
+	if (CardOne.Suit == CardTwo.Suit || CardOne.Suit == masterSuit)
+	{
+		if (CardOne.Suit == masterSuit && CardTwo.Suit != masterSuit)
+			return true;
+		return (CardOne.Value > CardTwo.Value);
+	}
+	return false;
 }
-// look into custom namespaces 

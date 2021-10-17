@@ -6,17 +6,22 @@ Card::~Card() {}
 Deck::Deck() { srand((unsigned)time(NULL));	masterSuit = (cardSuit)((rand() % 4) + 1); }
 Player::Player() {}
 Player::~Player() {}
-Players::Players() {}
-Players::~Players() {}
 Table::Table() {}
 Table::~Table() {}
 void Deck::addToDeck(Card card)
 {
-	_Deck.push_back(card);
+	_Deck.emplace_back(card);
 }
 Card Deck::getCardFromDeck(int cardIndex)
 {
 	return _Deck[cardIndex];
+}
+void Deck::printDeck()
+{
+	for (auto i : _Deck)
+	{
+		std::cout << i.Name << std::endl;
+	}
 }
 cardSuit Deck::getMasterSuit()
 {
@@ -43,15 +48,15 @@ Deck::~Deck()
 	std::array<std::string, 4> suit = { "Spades", "Hearts", "Diamonds", "Clubs" };
 	std::array<std::string, 14> value = { "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace" };
 	Card C;
-	for (int i = 0; i < 14; i++)
+	for (int i = 0; i < value.size(); i++)
 	{
-		for (int j = 0; j < 4; j++)
+		for (int j = 0; j < suit.size(); j++)
 		{
 			
 			C.Value = (cardValue)(i + 1);
 			C.Suit = (cardSuit)(j + 1);
-			C.Name = value.at(j) + " of " + suit.at(i);
-			_Deck.push_back(C);
+			C.Name = value.at(i) + " of " + suit.at(j);
+			_Deck.emplace_back(C);
 		}
 	}
 }

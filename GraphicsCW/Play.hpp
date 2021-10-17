@@ -3,7 +3,7 @@
 #define PLAY_HPP
 #include "Class.hpp"
 
-
+inline bool beatsTheCard(cardSuit masterSuit, Card CardOne, Card CardTwo);
 
 
 
