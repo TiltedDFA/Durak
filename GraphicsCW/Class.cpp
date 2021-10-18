@@ -1,9 +1,11 @@
 #include "Class.hpp"
 #include <array>
+#include <algorithm>
+#include <random>
 
 Card::Card() { Suit = cardSuit::CLUBS; Value = cardValue::TWO; }
 Card::~Card() {}
-Deck::Deck() { srand((unsigned)time(NULL));	masterSuit = (cardSuit)((rand() % 4) + 1); }
+Deck::~Deck() {}
 Player::Player() {}
 Player::~Player() {}
 Table::Table() {}
@@ -12,13 +14,15 @@ void Deck::addToDeck(Card card)
 {
 	_Deck.emplace_back(card);
 }
-Card Deck::getCardFromDeck(int cardIndex)
+Card Deck::dealCard()
 {
-	return _Deck[cardIndex];
+	auto holder = _Deck[0];
+	_Deck.erase(_Deck.begin());
+	return holder;
 }
 void Deck::printDeck()
 {
-	for (auto i : _Deck)
+	for (const auto i : _Deck)
 	{
 		std::cout << i.Name << std::endl;
 	}
@@ -43,7 +47,11 @@ void Player::setPlayerName(std::string input)
 {
 	PlayerName = input;
 }
-Deck::~Deck()
+void Player::addToPlayerHand(Card card)
+{
+	PlayerHand.emplace_back(card);
+}
+Deck::Deck()
 {
 	std::array<std::string, 4> suit = { "Spades", "Hearts", "Diamonds", "Clubs" };
 	std::array<std::string, 14> value = { "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace" };
@@ -59,5 +67,9 @@ Deck::~Deck()
 			_Deck.emplace_back(C);
 		}
 	}
+	masterSuit = (cardSuit)(rand() % 5 + 1);
+ 	auto rng = std::default_random_engine{};
+	std::shuffle(_Deck.begin(), _Deck.begin(), rng);
+
 }
 //worksassasas

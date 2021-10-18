@@ -48,10 +48,10 @@ public:
 	~Deck();
 
 	void addToDeck(Card card);
-	Card getCardFromDeck(int cardIndex);
+	Card dealCard();
 	void printDeck();
 
-	cardSuit getMasterSuit();
+	static cardSuit getMasterSuit();
 };
 //-------------------------------------------------------------------------------------------------------------
 class Player
@@ -64,6 +64,7 @@ public:
 	~Player();
 	Card getPlayerHand(int index);
 	void setPlayerHand(int index, Card input);
+	void addToPlayerHand(Card card);
 
 	std::string getPlayerName();
 	void setPlayerName(std::string input);

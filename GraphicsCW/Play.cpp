@@ -1,12 +1,20 @@
 #include "Play.hpp"
 
-inline bool beatsTheCard(cardSuit masterSuit, Card CardOne, Card CardTwo)
+inline bool beatsTheCard(Card CardOne, Card CardTwo)
 {
-	if (CardOne.Suit == CardTwo.Suit || CardOne.Suit == masterSuit)
+	auto ms = Deck::getMasterSuit();
+	if (CardOne.Suit == CardTwo.Suit || CardOne.Suit == ms)
 	{
-		if (CardOne.Suit == masterSuit && CardTwo.Suit != masterSuit)
+		if (CardOne.Suit == ms && CardTwo.Suit != ms)
 			return true;
 		return (CardOne.Value > CardTwo.Value);
 	}
 	return false;
 }
+
+inline void switchPlayers(int& playerOne, int& playerTwo)
+{
+	playerOne = (playerOne + 1) % 2;
+	playerTwo = (playerTwo+ 1) % 2;
+}
+
