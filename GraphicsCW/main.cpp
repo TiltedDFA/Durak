@@ -3,7 +3,7 @@
 #include <iostream>
 #include "Class.hpp"
 
-int main(void)
+int main()
 {
 	// Variables
 	//--------------------------------------------------------------------------------------
@@ -13,25 +13,25 @@ int main(void)
 
 	InitWindow(screenWidth, screenHeight, "Durak");
 	SetTargetFPS(120); // This is to test how to increase the responsiveness
-	bool _TScreen = true; 
+	bool _TScreen = true;
 	bool prePlayScreen = false; // To select the settings before a match begins
 	Deck deck;
-	//TODO code something that will get get a deck to display cards on the play screen 
+	//TODO code something that will get get a deck to display cards on the play screen
 	//Collision Rectangle
 	//---------------------------------------------------------------------------------------
 	Rectangle btnCheckColl = { 772, 509, 287, 105 };
-	//Texture Initilization 
+	//Texture Initilization
 	//---------------------------------------------------------------------------------------
 	Texture2D TitleScreen = LoadTexture("TitleScreen.png");
 	Texture2D  _Table = LoadTexture("TableTwo.png");
-	Texture2D CardBacking = LoadTexture("170CardBacking.png");	
+	Texture2D CardBacking = LoadTexture("170CardBacking.png");
 	//--------------------------------------------------------------------------------------
-	// Main game loop	
+	// Main game loop
 
 	//Code something that constructs cards based of the Card class
 
 	while (!WindowShouldClose())    // Detect window close button or ESC key
-	{	
+	{
 		MousePointing = GetMousePosition(); //Gets Mouse Pos. and saves it as a 2D co-ordinate
 		if (prePlayScreen) // Not true?
 		{
@@ -51,7 +51,7 @@ int main(void)
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(TitleScreen, 0, 0, WHITE);
-			DrawCircleV(GetMousePosition(), 10, WHITE);			
+			DrawCircleV(GetMousePosition(), 10, WHITE);
 			EndDrawing();
 			if (CheckCollisionPointRec(MousePointing, btnCheckColl))
 			{
@@ -62,7 +62,7 @@ int main(void)
 					_TScreen = false;
 				}
 			}
-		}		
+		}
 		//----------------------------------------------------------------------------------
 	}
 	// De-Initialization

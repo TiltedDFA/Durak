@@ -1,8 +1,10 @@
 #pragma once
 #ifndef CLASS_HPP
 #define CLASS_HPP
+
 #include <iostream>
 #include <vector>
+
 enum class cardSuit
 {
 	SPADES = 1,
@@ -69,12 +71,19 @@ public:
 	std::string getPlayerName();
 	void setPlayerName(std::string input);
 };
-
+//-------------------------------------------------------------------------------------------------------------
 class Table
 {
 private:
-	std::vector<Card>cardsOnTable;
+	std::vector<std::array<Card, 2>>cardsOnTable;
+	short int movesThisTurnAtk = 0;
 public:
+	void addCardToTableAtk(Card card);
+	static void clearTable();
+
+	void setMovesMadeThisRound(int played);
+	int getMovesMadeThisRound();
+	static void resetMovesMade();
 	Table();
 	~Table();
 };

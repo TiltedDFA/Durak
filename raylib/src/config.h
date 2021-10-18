@@ -65,9 +65,9 @@
 // core: Configuration values
 //------------------------------------------------------------------------------------
 #if defined(__linux__)
-    #define MAX_FILEPATH_LENGTH     4096        // Maximum length for filepaths (Linux PATH_MAX default value)
+#define MAX_FILEPATH_LENGTH     4096        // Maximum length for filepaths (Linux PATH_MAX default value)
 #else
-    #define MAX_FILEPATH_LENGTH      512        // Maximum length supported for filepaths
+#define MAX_FILEPATH_LENGTH      512        // Maximum length supported for filepaths
 #endif
 
 #define MAX_GAMEPADS                   4        // Max number of gamepads supported
@@ -79,7 +79,6 @@
 #define STORAGE_DATA_FILE  "storage.data"       // Automatic storage filename
 
 #define MAX_DECOMPRESSION_SIZE        64        // Max size allocated for decompression in MB
-
 
 //------------------------------------------------------------------------------------
 // Module: rlgl - Configuration values
@@ -118,14 +117,12 @@
 #define RL_DEFAULT_SHADER_SAMPLER2D_NAME_TEXTURE1  "texture1"          // texture1 (texture slot active 1)
 #define RL_DEFAULT_SHADER_SAMPLER2D_NAME_TEXTURE2  "texture2"          // texture2 (texture slot active 2)
 
-
 //------------------------------------------------------------------------------------
 // Module: shapes - Configuration Flags
 //------------------------------------------------------------------------------------
 // Use QUADS instead of TRIANGLES for drawing when possible
 // Some lines-based shapes could still use lines
 #define SUPPORT_QUADS_DRAW_MODE     1
-
 
 //------------------------------------------------------------------------------------
 // Module: textures - Configuration Flags
@@ -152,7 +149,6 @@
 // If not defined, still some functions are supported: ImageFormat(), ImageCrop(), ImageToPOT()
 #define SUPPORT_IMAGE_MANIPULATION  1
 
-
 //------------------------------------------------------------------------------------
 // Module: text - Configuration Flags
 //------------------------------------------------------------------------------------
@@ -170,9 +166,8 @@
 // text: Configuration values
 //------------------------------------------------------------------------------------
 #define MAX_TEXT_BUFFER_LENGTH      1024        // Size of internal static buffers used on some functions:
-                                                // TextFormat(), TextSubtext(), TextToUpper(), TextToLower(), TextToPascal(), TextSplit()
+												// TextFormat(), TextSubtext(), TextToUpper(), TextToLower(), TextToPascal(), TextSplit()
 #define MAX_TEXTSPLIT_COUNT          128        // Maximum number of substrings to split: TextSplit()
-
 
 //------------------------------------------------------------------------------------
 // Module: models - Configuration Flags
