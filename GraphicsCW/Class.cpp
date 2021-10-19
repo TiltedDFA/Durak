@@ -102,7 +102,7 @@ void Table::addCardToTableAtk(Card card)
 }
 void Table::clearTable()
 {
-	//cardsOnTable.clear();
+	cardsOnTable.clear();
 }
 void Table::setMovesMadeThisRound(int played)
 {
@@ -114,7 +114,7 @@ int Table::getMovesMadeThisRound()
 }
 void Table::resetMovesMade()
 {
-	//Table::movesThisTurnAtk = 0;
+	movesThisTurnAtk = 0;
 }
 //-------------------------------------------------------------------------------------------------------------
 

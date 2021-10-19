@@ -79,11 +79,11 @@ private:
 	short int movesThisTurnAtk = 0;
 public:
 	void addCardToTableAtk(Card card);
-	static void clearTable();
+	void clearTable();
 
 	void setMovesMadeThisRound(int played);
 	int getMovesMadeThisRound();
-	static void resetMovesMade();
+	void resetMovesMade();
 	Table();
 	~Table();
 };

@@ -1,8 +1,8 @@
 #include "Play.hpp"
 
-inline bool beatsTheCard(Card CardOne, Card CardTwo)
+inline bool beatsTheCard(Deck deck, Card CardOne, Card CardTwo)
 {
-	auto ms = Deck::getMasterSuit();
+	auto ms = deck.getMasterSuit();
 	if (CardOne.Suit == CardTwo.Suit || CardOne.Suit == ms)
 	{
 		if (CardOne.Suit == ms && CardTwo.Suit != ms)
