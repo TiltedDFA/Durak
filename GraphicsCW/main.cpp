@@ -42,8 +42,8 @@ int main()
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(_Table, 0, 0, WHITE);
-			DisplayBackOfCards(600, 75, 6, CardBacking);
-			DisplayBackOfCards(600, 840, 6, blankCard);
+			c0::DisplayBackOfCards(600, 75, 6, CardBacking);
+			c0::DisplayBackOfCards(600, 840, 6, blankCard);
 			DrawCircleV(GetMousePosition(), 10, WHITE);
 			EndDrawing();
 			//Look into making ur own textures from the blank pixel && from the text to be atop of it

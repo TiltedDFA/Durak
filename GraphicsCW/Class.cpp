@@ -4,10 +4,8 @@
 #include <random>
 //-------------------------------------------------------------------------------------------------------------
 
-Card::Card() { Suit = cardSuit::CLUBS; Value = cardValue::TWO; }
-
-Card::~Card() {}
-
+Card::Card(){ Suit = cardSuit::CLUBS; Value = cardValue::TWO; }
+Card::~Card(){}
 //-------------------------------------------------------------------------------------------------------------
 Deck::Deck()
 {
@@ -38,7 +36,7 @@ void Deck::addToDeck(Card card)
 	_Deck.emplace_back(card);
 }
 Card Deck::dealCard()
-{
+{	
 	auto holder = _Deck[0];
 	_Deck.erase(_Deck.begin());
 	return holder;
@@ -79,7 +77,16 @@ void Player::addToPlayerHand(Card card)
 {
 	PlayerHand.emplace_back(card);
 }
-
+void Player::addNeededCardsToPlayerHand(Deck deck)
+{
+	if (PlayerHand.size() < 6)
+	{
+		for (std::size_t i; i < PlayerHand.size(); ++i)
+		{
+			PlayerHand.emplace_back(deck.dealCard());
+		}
+	}
+}
 //-------------------------------------------------------------------------------------------------------------
 
 Table::Table() {}
@@ -100,6 +107,10 @@ void Table::addCardToTableAtk(Card card)
 		break;
 	}
 }
+void Table::addCardToTableDef(Card card, int cardPile)
+{
+	cardsOnTable[cardPile][1] = card;
+}
 void Table::clearTable()
 {
 	cardsOnTable.clear();
@@ -115,6 +126,10 @@ int Table::getMovesMadeThisRound()
 void Table::resetMovesMade()
 {
 	movesThisTurnAtk = 0;
+}
+void Table::displayCardsOnTable()
+{
+	
 }
 //-------------------------------------------------------------------------------------------------------------
 

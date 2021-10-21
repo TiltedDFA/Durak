@@ -66,7 +66,8 @@ public:
 	~Player();
 	Card getPlayerHand(int index);
 	void setPlayerHand(int index, Card input);
-	void addToPlayerHand(Card card);
+	void addNeededCardsToPlayerHand(Deck deck);
+    void addToPlayerHand(Card card);
 
 	std::string getPlayerName();
 	void setPlayerName(std::string input);
@@ -79,6 +80,8 @@ private:
 	short int movesThisTurnAtk = 0;
 public:
 	void addCardToTableAtk(Card card);
+	void addCardToTableDef(Card card, int cardPile);
+	void displayCardsOnTable();
 	void clearTable();
 
 	void setMovesMadeThisRound(int played);
