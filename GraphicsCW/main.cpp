@@ -9,18 +9,18 @@ int main()
 	//--------------------------------------------------------------------------------------
 	const int screenWidth = 1920;
 	const int screenHeight = 1050; // have to do this to fix the mouse ghosting issue
-	Vector2 MousePointing = { 0.0f, 0.0f };
-
 	InitWindow(screenWidth, screenHeight, "Durak");
-	SetTargetFPS(120); // This is to test how to increase the responsiveness
+	SetTargetFPS(120);
+	//---------------------------------------------------------------------------------------
+	Vector2 MousePointing = { 0.0f, 0.0f };
 	bool _TScreen = true;
-	bool prePlayScreen = false; // To select the settings before a match begins
+	bool prePlayScreen = false;
+	bool clickedOnCard = false;
+	int amtOfCardsOnScreen = 0;
 	Deck deck;
-	//TODO code something that will get get a deck to display cards on the play screen
-	//Collision Rectangle
 	//---------------------------------------------------------------------------------------
 	Rectangle btnCheckColl = { 772, 509, 287, 105 };
-	//Texture Initilization
+	
 	//---------------------------------------------------------------------------------------
 	Texture2D blankCard = LoadTexture("170pixelBlank.png");
 	Texture2D TitleScreen = LoadTexture("TitleScreen.png");
@@ -31,23 +31,19 @@ int main()
 
 	//Code something that constructs cards based of the Card class
 
-	while (!WindowShouldClose())    // Detect window close button or ESC key
+	while (!WindowShouldClose())
 	{
-		MousePointing = GetMousePosition(); //Gets Mouse Pos. and saves it as a 2D co-ordinate
-		if (prePlayScreen) // Not true?
-		{
-			//DisplayBackOfCards(600, 75, 6, CardBacking);
-			//DisplayBackOfCards(600, 840, 6, CardBacking);
-			//DrawText(TextFormat("Master suit is: %d", ((int)deck.getMasterSuit())), 200, 120, 20, WHITE);
+		MousePointing = GetMousePosition();
+
+		if (prePlayScreen)
+		{			
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(_Table, 0, 0, WHITE);
-			c0::DisplayBackOfCards(600, 75, 6, CardBacking);
-			c0::DisplayBackOfCards(600, 840, 6, blankCard);
+			c0::DisplayBackOfCards(600, 75, 6, CardBacking, amtOfCardsOnScreen);
+			c0::DisplayBackOfCards(600, 840, 6, blankCard, amtOfCardsOnScreen);
 			DrawCircleV(GetMousePosition(), 10, WHITE);
-			EndDrawing();
-			//Look into making ur own textures from the blank pixel && from the text to be atop of it
-			// side note, x.pos of text will be blankCard.x/2,  same for Y. 
+			EndDrawing();			
 		}
 		else if (_TScreen)
 		{

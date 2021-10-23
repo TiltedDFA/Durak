@@ -8,19 +8,21 @@ void DisplayMenu()
 }
 namespace c0
 {
-	void DisplayBackOfCards(int X_Pos, int Y_Pos, int CardsToDisplay, Texture2D& Card) // (Xpos, Ypos, AmountOfCards, Cardtext)
+	void DisplayBackOfCards(int X_Pos, int Y_Pos, int CardsToDisplay, Texture2D& Card, int& cardsOnScreen) // (Xpos, Ypos, AmountOfCards, Cardtext)
 	{
 		for (int i = 0; i < CardsToDisplay; ++i, X_Pos += 125)
 		{
 			DrawTexture(Card, X_Pos, Y_Pos, WHITE);
+			++cardsOnScreen;
 		}
 	}
-	void DisplayWordInMiddleOfTexture(int X_Pos, int Y_Pos, Texture2D& texture, std::string message)
+	std::vector<Rectangle> makeRectOfCards(int cardsOnScreen)
 	{
-		const char msg[50] = message...;
-		DrawTexture(texture, X_Pos, Y_Pos, WHITE);
-		DrawText(message, )
-			//time to raylib 
+		std::vector<Rectangle>rectanglesOfCards;
+		for (int i = 0; i < cardsOnScreen; ++i)
+		{
+
+		}
 	}
 }
 
