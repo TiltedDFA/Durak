@@ -13,7 +13,7 @@ int main()
 	InitWindow(screenWidth, screenHeight, "Durak");
 	SetTargetFPS(120);
 	//---------------------------------------------------------------------------------------
-	Vector2 MousePointing = { 0.0f, 0.0f };
+	Vector2 mP = { 0.0f, 0.0f };
 	bool _TScreen = true;
 	bool prePlayScreen = false;
 	bool clickedOnCard = false;
@@ -34,16 +34,30 @@ int main()
 	c0::setPosCard(cPos);
 	while (!WindowShouldClose())
 	{
-		MousePointing = GetMousePosition();
+		mP = GetMousePosition();
 
 		if (prePlayScreen)
 		{			
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(_Table, 0, 0, WHITE);
-			c0::DisplayBackOfCards(cPos, 6, CardBacking, amtOfCardsOnScreen);
-			c0::DisplayBackOfCards(cPos, 6, blankCard, amtOfCardsOnScreen);
+			c0::DisplayBackOfCards(cPos, CardBacking, amtOfCardsOnScreen);			
 			DrawCircleV(GetMousePosition(), 10, WHITE);
+			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+			{
+				for (int i = 0; i < cPos.size(); ++i)
+				{
+					Rectangle card = { cPos[i].x, cPos[i].y, 120, 170 };
+					if (CheckCollisionPointRec(mP, card))
+					{
+						if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+						{
+							c0::mCard(cPos, mP, i);
+							//cPos[i] = GetMousePosition() + (cPos[i] - GetMousePosition());
+						}
+				    }
+				}
+			}
 			EndDrawing();			
 		}
 		else if (_TScreen)
@@ -53,7 +67,7 @@ int main()
 			DrawTexture(TitleScreen, 0, 0, WHITE);
 			DrawCircleV(GetMousePosition(), 10, WHITE);
 			EndDrawing();
-			if (CheckCollisionPointRec(MousePointing, btnCheckColl))
+			if (CheckCollisionPointRec(mP, btnCheckColl))
 			{
 				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 				{					

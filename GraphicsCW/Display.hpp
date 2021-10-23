@@ -9,7 +9,7 @@ void DisplayMenu()
 }
 namespace c0
 {
-	void DisplayBackOfCards(std::vector<Vector2> cPos, int CardsToDisplay, Texture2D& Card, int& cardsOnScreen) // (Xpos, Ypos, AmountOfCards, Cardtext)
+	void DisplayBackOfCards(std::vector<Vector2> cPos, Texture2D& Card, int& cardsOnScreen) // (Xpos, Ypos, AmountOfCards, Cardtext)
 	{
 		for (int i = 0; i < cPos.size(); ++i)
 		{
@@ -17,14 +17,11 @@ namespace c0
 			++cardsOnScreen;
 		}
 	}
-	std::vector<Rectangle> makeRectOfCards(int cardsOnScreen)
+	void mCard(std::vector<Vector2>& cPos, Vector2 mP, int i)
 	{
-		std::vector<Rectangle>rectanglesOfCards;
-		for (int i = 0; i < cardsOnScreen; ++i)
-		{
-			
-		}
-		return rectanglesOfCards;
+		Vector2 oSet = { (mP.x - cPos[i].x),(mP.y - cPos[i].y) };
+		cPos[i].x = (mP.x + oSet.x);
+		cPos[i].y = (mP.y + oSet.y);
 	}
 	std::vector<Vector2> setPosCard(std::vector<Vector2>&cPos)
 	{
