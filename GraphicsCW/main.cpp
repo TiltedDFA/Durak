@@ -2,6 +2,7 @@
 #include "Display.hpp"
 #include <iostream>
 #include "Class.hpp"
+#include <vector>
 
 int main()
 {
@@ -18,9 +19,9 @@ int main()
 	bool clickedOnCard = false;
 	int amtOfCardsOnScreen = 0;
 	Deck deck;
+	std::vector<Vector2>cPos;
 	//---------------------------------------------------------------------------------------
-	Rectangle btnCheckColl = { 772, 509, 287, 105 };
-	
+	Rectangle btnCheckColl = { 772, 509, 287, 105 };	
 	//---------------------------------------------------------------------------------------
 	Texture2D blankCard = LoadTexture("170pixelBlank.png");
 	Texture2D TitleScreen = LoadTexture("TitleScreen.png");
@@ -29,8 +30,8 @@ int main()
 	//--------------------------------------------------------------------------------------
 	// Main game loop
 
-	//Code something that constructs cards based of the Card class
-
+	
+	c0::setPosCard(cPos);
 	while (!WindowShouldClose())
 	{
 		MousePointing = GetMousePosition();
@@ -40,8 +41,8 @@ int main()
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(_Table, 0, 0, WHITE);
-			c0::DisplayBackOfCards(600, 75, 6, CardBacking, amtOfCardsOnScreen);
-			c0::DisplayBackOfCards(600, 840, 6, blankCard, amtOfCardsOnScreen);
+			c0::DisplayBackOfCards(cPos, 6, CardBacking, amtOfCardsOnScreen);
+			c0::DisplayBackOfCards(cPos, 6, blankCard, amtOfCardsOnScreen);
 			DrawCircleV(GetMousePosition(), 10, WHITE);
 			EndDrawing();			
 		}
@@ -55,8 +56,7 @@ int main()
 			if (CheckCollisionPointRec(MousePointing, btnCheckColl))
 			{
 				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
-				{
-					// Do something with the button to make it nice
+				{					
 					prePlayScreen = true;
 					_TScreen = false;
 				}
