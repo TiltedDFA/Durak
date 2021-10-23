@@ -20,8 +20,8 @@ namespace c0
 	void mCard(std::vector<Vector2>& cPos, Vector2 mP, int i)
 	{
 		Vector2 oSet = { (mP.x - cPos[i].x),(mP.y - cPos[i].y) };
-		cPos[i].x = (mP.x + oSet.x);
-		cPos[i].y = (mP.y + oSet.y);
+		cPos[i].x = (mP.x - oSet.x);
+		cPos[i].y = (mP.y - oSet.y);
 	}
 	std::vector<Vector2> setPosCard(std::vector<Vector2>&cPos)
 	{

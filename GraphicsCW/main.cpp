@@ -23,6 +23,8 @@ int main()
 	//---------------------------------------------------------------------------------------
 	Rectangle btnCheckColl = { 772, 509, 287, 105 };	
 	//---------------------------------------------------------------------------------------
+	Image appIcon = LoadImage("appIcon.png");
+	SetWindowIcon(appIcon);
 	Texture2D blankCard = LoadTexture("170pixelBlank.png");
 	Texture2D TitleScreen = LoadTexture("TitleScreen.png");
 	Texture2D  _Table = LoadTexture("TableTwo.png");
@@ -43,6 +45,7 @@ int main()
 			DrawTexture(_Table, 0, 0, WHITE);
 			c0::DisplayBackOfCards(cPos, CardBacking, amtOfCardsOnScreen);			
 			DrawCircleV(GetMousePosition(), 10, WHITE);
+			EndDrawing();
 			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 			{
 				for (int i = 0; i < cPos.size(); ++i)
@@ -52,13 +55,17 @@ int main()
 					{
 						if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 						{
-							c0::mCard(cPos, mP, i);
+							for (int j = 10; --j; )
+							{
+								mP = GetMousePosition();
+								c0::mCard(cPos, mP, i);
+							}
 							//cPos[i] = GetMousePosition() + (cPos[i] - GetMousePosition());
 						}
 				    }
 				}
 			}
-			EndDrawing();			
+					
 		}
 		else if (_TScreen)
 		{
