@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include <vector>
+#include <array>
+#include "raylib.h"
 
 enum class cardSuit
 {
@@ -35,6 +37,11 @@ class Card
 public:
 	Card();
 	~Card();
+
+	float xPos{};
+	float yPos{};
+	bool faceUp = false;
+
 	cardSuit Suit{};
 	cardValue Value{};
 	std::string Name{};
@@ -53,6 +60,9 @@ public:
 	Card dealCard();
 	void printDeck();
 
+	Card lookAtTopCard();
+	Card removeTopCard();
+
 	static cardSuit getMasterSuit();
 };
 //-------------------------------------------------------------------------------------------------------------
@@ -67,7 +77,7 @@ public:
 	Card getPlayerHand(int index);
 	void setPlayerHand(int index, Card input);
 	void addNeededCardsToPlayerHand(Deck deck);
-    void addToPlayerHand(Card card);
+	void addToPlayerHand(Card card);
 
 	std::string getPlayerName();
 	void setPlayerName(std::string input);
@@ -83,6 +93,11 @@ public:
 	void addCardToTableDef(Card card, int cardPile);
 	void displayCardsOnTable();
 	void clearTable();
+
+	Card getCardFromTableDef(int index);
+	Card getCardFromTableAtk(int index);
+	void setCardPosAtk(int index, Vector2 pos);
+	void setCardPosDef(int index, Vector2 pos);
 
 	void setMovesMadeThisRound(int played);
 	int getMovesMadeThisRound();

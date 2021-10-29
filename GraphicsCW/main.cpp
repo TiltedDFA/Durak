@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include "raymath.h"
 #include "Display.hpp"
 #include <iostream>
 #include "Class.hpp"
@@ -14,12 +15,13 @@ int main()
 	SetTargetFPS(120);
 	//---------------------------------------------------------------------------------------
 	Vector2 mP = { 0.0f, 0.0f };
+	Vector2 dMP = { 0.0f, 0.0f };
 	bool _TScreen = true;
 	bool prePlayScreen = false;
 	bool clickedOnCard = false;
 	int amtOfCardsOnScreen = 0;
 	Deck deck;
-	std::vector<Vector2>cPos;
+	Table table;
 	//---------------------------------------------------------------------------------------
 	Rectangle btnCheckColl = { 772, 509, 287, 105 };	
 	//---------------------------------------------------------------------------------------
@@ -33,36 +35,47 @@ int main()
 	// Main game loop
 
 	//Code something that moves the cards when the mouse moves them. The co-ordinates of the cards will be the mouse co-ordinates + the offset of where the mouse clicks the card
-	c0::setPosCard(cPos);
+	c0::setPosCard(table, deck);
 	while (!WindowShouldClose())
 	{
 		mP = GetMousePosition();
-
+		
 		if (prePlayScreen)
 		{			
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(_Table, 0, 0, WHITE);
-			c0::DisplayBackOfCards(cPos, CardBacking, amtOfCardsOnScreen);			
+			c0::DisplayBackOfCards(table, CardBacking, amtOfCardsOnScreen);			
 			DrawCircleV(GetMousePosition(), 10, WHITE);
 			EndDrawing();
 			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 			{
-				for (int i = 0; i < cPos.size(); ++i)
+				for (int i = 0; i < 12; ++i)
 				{
-					Rectangle card = { cPos[i].x, cPos[i].y, 120, 170 };
+					
+					Rectangle card;
+					Card _card;
+					if (i < 5) {
+						card = { table.getCardFromTableAtk(i).xPos, table.getCardFromTableAtk(i).yPos, 120, 170 };
+						_card = table.getCardFromTableAtk(i);
+					}
+					else
+					{
+						card = { table.getCardFromTableDef(i).xPos, table.getCardFromTableDef(i).yPos, 120, 170 };
+						_card = table.getCardFromTableDef(i);
+					}
 					if (CheckCollisionPointRec(mP, card))
 					{
-						if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
-						{
-							for (int j = 10; --j; )
-							{
-								mP = GetMousePosition();
-								c0::mCard(cPos, mP, i);
-							}
+						//if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+						//{
+							dMP = GetMouseDelta();
+							//Vector2Add(cPos[i],  GetMouseDelta());
+							c0::mCard(_card, dMP);
+							
 							//cPos[i] = GetMousePosition() + (cPos[i] - GetMousePosition());
-						}
+						//}
 				    }
+					
 				}
 			}
 					

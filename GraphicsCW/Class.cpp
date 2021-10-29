@@ -4,18 +4,21 @@
 #include <random>
 //-------------------------------------------------------------------------------------------------------------
 
-Card::Card(){ Suit = cardSuit::CLUBS; Value = cardValue::TWO; }
+Card::Card() { Suit = cardSuit::CLUBS; Value = cardValue::TWO; xPos = 0; yPos = 0; }
 Card::~Card(){}
+
 //-------------------------------------------------------------------------------------------------------------
+Deck::~Deck() {}
 Deck::Deck()
 {
 	std::array<std::string, 4> suit = { "Spades", "Hearts", "Diamonds", "Clubs" };
-	std::array<std::string, 14> value = { "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace" };
+	std::array<std::string, 13> value = { "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace" };
 	Card C;
 
-	for (int i = 0; i < value.size(); i++)
+	for (int i = 0; i < value.size(); ++i)
+
 	{
-		for (int j = 0; j < suit.size(); j++)
+		for (int j = 0; j < suit.size(); ++j)
 		{
 			C.Value = (cardValue)(i + 1);
 			C.Suit = (cardSuit)(j + 1);
@@ -30,7 +33,6 @@ Deck::Deck()
 
 	std::shuffle(_Deck.begin(), _Deck.begin(), rng);
 }
-Deck::~Deck() {}
 void Deck::addToDeck(Card card)
 {
 	_Deck.emplace_back(card);
@@ -43,14 +45,27 @@ Card Deck::dealCard()
 }
 void Deck::printDeck()
 {
-	for (const auto i : _Deck)
-	{
+	for (auto const  i : _Deck)
+	{		
 		std::cout << i.Name << std::endl;
 	}
 }
 cardSuit Deck::getMasterSuit()
 {
 	return masterSuit;
+}
+Card Deck::lookAtTopCard()
+{
+	Card topCard;
+	if (!_Deck.empty())
+		topCard = _Deck[(_Deck.size() - 1)];
+	return topCard;
+}
+Card Deck::removeTopCard()
+{
+	Card topCard = _Deck[(_Deck.size() - 1)];
+	_Deck.erase(_Deck.begin() + (_Deck.size() - 1));
+	return topCard;
 }
 //-------------------------------------------------------------------------------------------------------------
 
@@ -81,7 +96,7 @@ void Player::addNeededCardsToPlayerHand(Deck deck)
 {
 	if (PlayerHand.size() < 6)
 	{
-		for (std::size_t i; i < PlayerHand.size(); ++i)
+		for (std::size_t i{}; i < PlayerHand.size(); ++i)
 		{
 			PlayerHand.emplace_back(deck.dealCard());
 		}
@@ -96,16 +111,16 @@ Table::~Table() {}
 void Table::addCardToTableAtk(Card card)
 {
 	std::array<Card, 2> tempArry;
-	switch (movesThisTurnAtk)
-	{
-	case 0 - 5:
+	//switch (movesThisTurnAtk)
+	//{
+	//case 0 - 5:
 		tempArry[0] = card;
 		cardsOnTable.push_back(tempArry);
-		++movesThisTurnAtk;
-		break;
-	default:
-		break;
-	}
+//		++movesThisTurnAtk;
+	//	break;
+//	default:
+//		break;
+//	}
 }
 void Table::addCardToTableDef(Card card, int cardPile)
 {
@@ -130,6 +145,24 @@ void Table::resetMovesMade()
 void Table::displayCardsOnTable()
 {
 	
+}
+Card Table::getCardFromTableDef(int index)
+{
+	return cardsOnTable[1][index];
+}
+Card Table::getCardFromTableAtk(int index)
+{
+	return cardsOnTable[0][index];
+}
+void Table::setCardPosAtk(int index, Vector2 pos)
+{
+	cardsOnTable[0][index].xPos = pos.x;
+	cardsOnTable[0][index].yPos = pos.y;
+}
+void Table::setCardPosDef(int index, Vector2 pos)
+{
+	cardsOnTable[1][index].xPos = pos.x;
+	cardsOnTable[1][index].yPos = pos.y;
 }
 //-------------------------------------------------------------------------------------------------------------
 
