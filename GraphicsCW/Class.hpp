@@ -3,8 +3,8 @@
 #define CLASS_HPP
 
 #include <iostream>
-#include <vector>
 #include <array>
+#include <vector>
 #include "raylib.h"
 
 enum class cardSuit
@@ -86,10 +86,10 @@ public:
 class Table
 {
 private:
-	std::vector<std::array<Card, 2>>cardsOnTable;
+	std::array<std::array<Card, 2>, 6>cardsOnTable;
 	short int movesThisTurnAtk = 0;
 public:
-	void addCardToTableAtk(Card card);
+	void addCardToTableAtk(Card card, int pNum);
 	void addCardToTableDef(Card card, int cardPile);
 	void displayCardsOnTable();
 	void clearTable();

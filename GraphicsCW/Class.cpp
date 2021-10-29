@@ -108,19 +108,9 @@ Table::Table() {}
 Table::~Table() {}
 // for the cards on table embedded arrays, it would seem cardsOnTable.$command() accesses the vector while cardsOnTable[index].$command() accesses the array
 // This is to say that it accesses it in a array.$command type of way. It doesn't actually access the data held within the array
-void Table::addCardToTableAtk(Card card)
+void Table::addCardToTableAtk(Card card, int pNum)
 {
-	std::array<Card, 2> tempArry;
-	//switch (movesThisTurnAtk)
-	//{
-	//case 0 - 5:
-		tempArry[0] = card;
-		cardsOnTable.push_back(tempArry);
-//		++movesThisTurnAtk;
-	//	break;
-//	default:
-//		break;
-//	}
+	cardsOnTable[pNum][0] = card;
 }
 void Table::addCardToTableDef(Card card, int cardPile)
 {
@@ -128,7 +118,12 @@ void Table::addCardToTableDef(Card card, int cardPile)
 }
 void Table::clearTable()
 {
-	cardsOnTable.clear();
+	Card card;
+	for (int i = 0;i < 6 ;++i)
+	{
+		for (int j = 0; j < 2; ++j)
+			cardsOnTable[i][j] = card;
+	}
 }
 void Table::setMovesMadeThisRound(int played)
 {

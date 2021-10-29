@@ -52,7 +52,7 @@ namespace c0
 		for (int i = 0; i < 6; ++i)
 		{
 			Card temp = deck.removeTopCard(); 
-			table.addCardToTableAtk(temp);
+			table.addCardToTableAtk(temp, i);
 			table.setCardPosAtk(i,{(x+125*i),y});
 		}
 		y = 840;
