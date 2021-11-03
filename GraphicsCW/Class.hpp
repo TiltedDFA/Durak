@@ -41,6 +41,7 @@ public:
 	float xPos{};
 	float yPos{};
 	bool faceUp = false;
+	bool held = false;
 
 	cardSuit Suit{};
 	cardValue Value{};

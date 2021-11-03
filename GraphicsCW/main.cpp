@@ -52,7 +52,7 @@ int main()
 			{
 				for (int i = 0; i < 12; ++i)
 				{
-					
+					bool hC = false;
 					Rectangle card;
 					Card _card;					
 					if (i <= 5) 
@@ -65,28 +65,36 @@ int main()
 						card = { table.getCardFromTableDef((i-6)).xPos, table.getCardFromTableDef((i-6)).yPos, 120, 170 };
 						_card = table.getCardFromTableDef((i-6));						
 					}
-					if (CheckCollisionPointRec(mP, card))
+					if (hC)
 					{
-						if (i <= 5)
-						{
-							Vector2 currentPos = table.getCardPosAtk(i);
-							table.setCardPosAtk(i,Vector2Add(currentPos, GetMouseDelta()));
-						}
-						else
-						{
-							Vector2 currentPos = table.getCardPosDef((i-6));
-							table.setCardPosDef((i-6), Vector2Add(currentPos, GetMouseDelta()));
-						}
 						
-						//if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
-						//{
-							//dMP = GetMouseDelta();
-							//Vector2Add(cPos[i],  GetMouseDelta());
-							//c0::mCard(_card, dMP);
-							
-							//cPos[i] = GetMousePosition() + (cPos[i] - GetMousePosition());
-						//}
-				    }
+					}
+					else if (!hC)
+					{
+						hC = true;
+						if (CheckCollisionPointRec(mP, card))
+						{							
+							if (i <= 5)
+							{
+								Vector2 currentPos = table.getCardPosAtk(i);
+								table.setCardPosAtk(i, Vector2Add(currentPos, GetMouseDelta()));
+							}
+							else
+							{
+								Vector2 currentPos = table.getCardPosDef((i - 6));
+								table.setCardPosDef((i - 6), Vector2Add(currentPos, GetMouseDelta()));
+							}
+
+							//if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+							//{
+								//dMP = GetMouseDelta();
+								//Vector2Add(cPos[i],  GetMouseDelta());
+								//c0::mCard(_card, dMP);
+
+								//cPos[i] = GetMousePosition() + (cPos[i] - GetMousePosition());
+							//}
+						}
+					}
 					
 				}
 			}
