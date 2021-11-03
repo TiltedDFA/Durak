@@ -143,21 +143,21 @@ void Table::displayCardsOnTable()
 }
 Card Table::getCardFromTableDef(int index)
 {
-	return cardsOnTable[1][index];
+	return cardsOnTable[index][1];
 }
 Card Table::getCardFromTableAtk(int index)
 {
-	return cardsOnTable[0][index];
+	return cardsOnTable[index][0];
 }
 void Table::setCardPosAtk(int index, Vector2 pos)
 {
-	cardsOnTable[0][index].xPos = pos.x;
-	cardsOnTable[0][index].yPos = pos.y;
+	cardsOnTable[index][0].xPos = pos.x;
+	cardsOnTable[index][0].yPos = pos.y;
 }
 void Table::setCardPosDef(int index, Vector2 pos)
 {
-	cardsOnTable[1][index].xPos = pos.x;
-	cardsOnTable[1][index].yPos = pos.y;
+	cardsOnTable[index][1].xPos = pos.x;
+	cardsOnTable[index][1].yPos = pos.y;
 }
 //-------------------------------------------------------------------------------------------------------------
 

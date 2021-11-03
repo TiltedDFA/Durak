@@ -17,13 +17,13 @@ namespace c0
 		{
 			Card card = table.getCardFromTableAtk(i);
 			DrawTexture(_Card, card.xPos, card.yPos, WHITE);
-			++cardsOnScreen;
+			//++cardsOnScreen;
 		}
 		for (int i = 0; i < 6; ++i)
 		{
 			Card card = table.getCardFromTableDef(i);
 			DrawTexture(_Card, card.xPos, card.yPos, WHITE);
-			++cardsOnScreen;
+			//++cardsOnScreen;
 		}
 	}
 	void mCard(Card& card, Vector2 mP)
@@ -36,6 +36,7 @@ namespace c0
 		//Vector2Add(card.Pos, mP);
 		float xOSet = mP.x - card.xPos;
 		float yOSet = mP.y - card.yPos;
+
 		float d = std::sqrt(xOSet * xOSet + yOSet * yOSet);
 		if (d > 1)
 		{
@@ -53,7 +54,8 @@ namespace c0
 		{
 			Card temp = deck.removeTopCard(); 
 			table.addCardToTableAtk(temp, i);
-			table.setCardPosAtk(i,{(x+125*i),y});
+			Vector2 pos = { (x + 125 * i),y };
+			table.setCardPosAtk(i,pos);
 		}
 		y = 840;
 		for (int i = 0; i < 6; ++i)

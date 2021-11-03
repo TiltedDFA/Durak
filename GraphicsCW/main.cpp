@@ -45,7 +45,7 @@ int main()
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(_Table, 0, 0, WHITE);
-			c0::DisplayBackOfCards(table, CardBacking, amtOfCardsOnScreen);			
+			c0::DisplayBackOfCards(table, CardBacking, amtOfCardsOnScreen);		
 			DrawCircleV(GetMousePosition(), 10, WHITE);
 			EndDrawing();
 			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
@@ -60,9 +60,9 @@ int main()
 						_card = table.getCardFromTableAtk(i);
 					}
 					else
-					{
-						card = { table.getCardFromTableDef(i).xPos, table.getCardFromTableDef(i).yPos, 120, 170 };
-						_card = table.getCardFromTableDef(i);
+					{ //THE ERROR LIES BELOW THIS LINE 
+						card = { table.getCardFromTableDef((i-5)).xPos, table.getCardFromTableDef((i-5)).yPos, 120, 170 };
+						_card = table.getCardFromTableDef((i-5));
 					}
 					if (CheckCollisionPointRec(mP, card))
 					{
