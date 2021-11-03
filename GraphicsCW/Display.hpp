@@ -51,16 +51,13 @@ namespace c0
 		float x = 600;
 		float y = 75;
 		for (int i = 0; i < 6; ++i)
-		{
-			Card temp = deck.removeTopCard(); 
-			table.addCardToTableAtk(temp, i);
-			Vector2 pos = { (x + 125 * i),y };
-			table.setCardPosAtk(i,pos);
+		{			
+			table.addCardToTableAtk(deck.removeTopCard(), i);			
+			table.setCardPosAtk(i, { (x + 125 * i),y });
 		}
 		y = 840;
 		for (int i = 0; i < 6; ++i)
-		{
-			
+		{			
 			table.addCardToTableDef(deck.removeTopCard(), i);
 			table.setCardPosDef((i),{(x+125*i),y});
 		}

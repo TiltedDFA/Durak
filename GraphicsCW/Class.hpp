@@ -98,6 +98,8 @@ public:
 	Card getCardFromTableAtk(int index);
 	void setCardPosAtk(int index, Vector2 pos);
 	void setCardPosDef(int index, Vector2 pos);
+	Vector2 getCardPosAtk(int index);
+	Vector2 getCardPosDef(int index);
 
 	void setMovesMadeThisRound(int played);
 	int getMovesMadeThisRound();

@@ -159,6 +159,14 @@ void Table::setCardPosDef(int index, Vector2 pos)
 	cardsOnTable[index][1].xPos = pos.x;
 	cardsOnTable[index][1].yPos = pos.y;
 }
+Vector2 Table::getCardPosAtk(int index)
+{
+	return {cardsOnTable[index][0].xPos, cardsOnTable[index][0].yPos};
+}
+Vector2 Table::getCardPosDef(int index)
+{
+	return { cardsOnTable[index][1].xPos, cardsOnTable[index][1].yPos};
+}
 //-------------------------------------------------------------------------------------------------------------
 
 //worksassasas
