@@ -11,21 +11,7 @@ void DisplayMenu()
 }
 namespace c0
 {
-	void DisplayBackOfCards(Table table, Texture2D& _Card, int& cardsOnScreen) // (Xpos, Ypos, AmountOfCards, Cardtext)
-	{
-		for (int i = 0; i < 6; ++i)
-		{
-			Card card = table.getCardFromTableAtk(i);
-			DrawTexture(_Card, card.xPos, card.yPos, WHITE);
-			//++cardsOnScreen;
-		}
-		for (int i = 0; i < 6; ++i)
-		{
-			Card card = table.getCardFromTableDef(i);
-			DrawTexture(_Card, card.xPos, card.yPos, WHITE);
-			//++cardsOnScreen;
-		}
-	}
+	
 	void mCard(Card& card, Vector2 mP)
 	{
 		/*
@@ -72,6 +58,26 @@ namespace c0
 		return cPos;
 		*/
 	}
+	
 }
-
+namespace c1
+{
+	void card(Table table, Texture2D& _Card, int& cardsOnScreen) // (Xpos, Ypos, AmountOfCards, Cardtext)
+	{
+		for (int i = 0; i < 6; ++i)
+		{
+			Card card = table.getCardFromTableAtk(i);
+			DrawTexture(_Card, (int)card.xPos, (int)card.yPos, WHITE);
+			//*char val = &(char)(int)card.Value;
+			//DrawText(val.c_str(), card.xPos);
+			//++cardsOnScreen;
+		}
+		for (int i = 0; i < 6; ++i)
+		{
+			Card card = table.getCardFromTableDef(i);
+			DrawTexture(_Card, (int)card.xPos, (int)card.yPos, WHITE);
+			//++cardsOnScreen;
+		}
+	}
+}
 #endif // !DISPLAY_HPP

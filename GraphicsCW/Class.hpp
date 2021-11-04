@@ -110,4 +110,5 @@ public:
 	Table();
 	~Table();
 };
+
 #endif // !CLASS_HPP

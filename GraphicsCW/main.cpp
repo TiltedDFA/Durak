@@ -29,7 +29,7 @@ int main()
 	SetWindowIcon(appIcon);
 	Texture2D blankCard = LoadTexture("170pixelBlank.png");
 	Texture2D TitleScreen = LoadTexture("TitleScreen.png");
-	Texture2D  _Table = LoadTexture("TableTwo.png");
+	Texture2D  _Table = LoadTexture("TableCardHole.png");
 	Texture2D CardBacking = LoadTexture("170CardBacking.png");
 	//--------------------------------------------------------------------------------------
 	// Main game loop
@@ -39,20 +39,21 @@ int main()
 	while (!WindowShouldClose())
 	{
 		mP = GetMousePosition();
-		
+		bool hC = false;
 		if (prePlayScreen)
 		{			
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(_Table, 0, 0, WHITE);
-			c0::DisplayBackOfCards(table, CardBacking, amtOfCardsOnScreen);		
+			c1::card(table, CardBacking, amtOfCardsOnScreen);		
 			DrawCircleV(GetMousePosition(), 10, WHITE);
 			EndDrawing();
 			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 			{
+				
 				for (int i = 0; i < 12; ++i)
 				{
-					bool hC = false;
+					
 					Rectangle card;
 					Card _card;					
 					if (i <= 5) 
@@ -71,9 +72,10 @@ int main()
 					}
 					else if (!hC)
 					{
-						hC = true;
+						
 						if (CheckCollisionPointRec(mP, card))
-						{							
+						{		
+							hC = true;
 							if (i <= 5)
 							{
 								Vector2 currentPos = table.getCardPosAtk(i);
@@ -97,6 +99,10 @@ int main()
 					}
 					
 				}
+			}
+			else if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
+			{
+				hC = false;
 			}
 					
 		}
