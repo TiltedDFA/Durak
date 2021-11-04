@@ -80,7 +80,7 @@ int main()
 							{
 							  table.flipCardAtk(i,((_card.faceUp) ? false : true)); // this function inverse whether they're face up or down
 							}
-							else if (i = > 6)
+							else if (i >= 6)
 							{
 								table.flipCardDef((i-6), ((_card.faceUp) ? false : true));
 							}
