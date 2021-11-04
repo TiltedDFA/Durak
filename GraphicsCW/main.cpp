@@ -29,7 +29,7 @@ int main()
 	SetWindowIcon(appIcon);
 	Texture2D blankCard = LoadTexture("170pixelBlank.png");
 	Texture2D TitleScreen = LoadTexture("TitleScreen.png");
-	Texture2D  _Table = LoadTexture("TableTwo.png");
+	Texture2D  _Table = LoadTexture("TableCardHole.png");
 	Texture2D CardBacking = LoadTexture("170CardBacking.png");
 	//--------------------------------------------------------------------------------------
 	// Main game loop
