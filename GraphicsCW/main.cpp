@@ -73,7 +73,7 @@ int main()
 					}
 					else if (!hC)
 					{
-						if (CheckCollisionPointRec(mP, card) && IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
+						if (CheckCollisionPointRec(mP, card) && IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
 						{
 							hC = true;
 							if(i <= 5)
