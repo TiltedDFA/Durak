@@ -2,6 +2,13 @@
 #include <array>
 #include <algorithm>
 #include <random>
+
+void swap(Card* var1, Card* var2)
+{
+	Card temp = *var1;
+	*var1 = *var2;
+	*var2 = temp;
+}
 //-------------------------------------------------------------------------------------------------------------
 
 Card::Card() { Suit = cardSuit::CLUBS; Value = cardValue::TWO; xPos = 0; yPos = 0; }
@@ -96,9 +103,32 @@ void Player::addNeededCardsToPlayerHand(Deck deck)
 {
 	if (PlayerHand.size() < 6)
 	{
-		for (std::size_t i{}; i < PlayerHand.size(); ++i)
+		int amtOfCNeeded = (6 - PlayerHand.size());
+		for (int i = 0; i < amtOfCNeeded; ++i)
 		{
 			PlayerHand.emplace_back(deck.dealCard());
+		}
+	}
+}
+void Player::eraseIndexHand(int index)
+{
+	PlayerHand.erase(PlayerHand.begin() + index);
+}
+/*
+
+*/
+
+void Player::sortHand()
+{	
+	int i, j;
+	for (i = 0; i < PlayerHand.size() - 1; i++)
+	{
+		for (j = 0; j < PlayerHand.size() - i - 1; j++)
+		{
+			if ((int)PlayerHand[j].Suit > (int)PlayerHand[j + 1].Suit)
+			{
+				swap(&PlayerHand[j], &PlayerHand[j + 1]);
+			}
 		}
 	}
 }

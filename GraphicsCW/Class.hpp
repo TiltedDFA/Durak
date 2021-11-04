@@ -79,6 +79,8 @@ public:
 	void setPlayerHand(int index, Card input);
 	void addNeededCardsToPlayerHand(Deck deck);
 	void addToPlayerHand(Card card);
+	void eraseIndexHand(int index);
+	void sortHand();
 
 	std::string getPlayerName();
 	void setPlayerName(std::string input);
