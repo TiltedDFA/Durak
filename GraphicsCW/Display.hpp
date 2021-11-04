@@ -9,7 +9,7 @@
 void DisplayMenu()
 {
 }
-namespace c0
+namespace c0 // c0 namespace function set up or do something update something
 {
 	
 	void mCard(Card& card, Vector2 mP)
@@ -60,14 +60,21 @@ namespace c0
 	}
 	
 }
-namespace c1
+namespace c1 //C1 namespace functions draw
 {
-	void card(Table table, Texture2D& _Card, int& cardsOnScreen) // (Xpos, Ypos, AmountOfCards, Cardtext)
+	void card(Table table, Texture2D& cBack, Texture2D& cBlank, int& cardsOnScreen) // (Xpos, Ypos, AmountOfCards, Cardtext)
 	{
 		for (int i = 0; i < 6; ++i)
 		{
 			Card card = table.getCardFromTableAtk(i);
-			DrawTexture(_Card, (int)card.xPos, (int)card.yPos, WHITE);
+			if (card.faceUp)
+			{
+				DrawTexture(cBlank, (int)card.xPos, (int)card.yPos, WHITE);
+			}
+			else if (!card.faceUp)
+			{
+				DrawTexture(cBack, (int)card.xPos, (int)card.yPos, WHITE);
+			}
 			//*char val = &(char)(int)card.Value;
 			//DrawText(val.c_str(), card.xPos);
 			//++cardsOnScreen;
@@ -75,7 +82,7 @@ namespace c1
 		for (int i = 0; i < 6; ++i)
 		{
 			Card card = table.getCardFromTableDef(i);
-			DrawTexture(_Card, (int)card.xPos, (int)card.yPos, WHITE);
+			DrawTexture(cBack, (int)card.xPos, (int)card.yPos, WHITE);
 			//++cardsOnScreen;
 		}
 	}

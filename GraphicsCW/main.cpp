@@ -45,10 +45,10 @@ int main()
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(_Table, 0, 0, WHITE);
-			c1::card(table, CardBacking, amtOfCardsOnScreen);		
+			c1::card(table, CardBacking, blankCard, amtOfCardsOnScreen);		
 			DrawCircleV(GetMousePosition(), 10, WHITE);
 			EndDrawing();
-			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
 			{
 				
 				for (int i = 0; i < 12; ++i)
@@ -65,6 +65,10 @@ int main()
 					{ 
 						card = { table.getCardFromTableDef((i-6)).xPos, table.getCardFromTableDef((i-6)).yPos, 120, 170 };
 						_card = table.getCardFromTableDef((i-6));						
+					}
+					if (CheckCollisionPointRec(mP, card))
+					{
+						_card.faceUp = (_card.faceUp) ? false : true; // this function inverse whether they're face up or down
 					}
 					if (hC)
 					{
