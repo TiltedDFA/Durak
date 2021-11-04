@@ -103,8 +103,8 @@ void Player::addNeededCardsToPlayerHand(Deck deck)
 {
 	if (PlayerHand.size() < 6)
 	{
-		int amtOfCNeeded = (6 - PlayerHand.size());
-		for (int i = 0; i < amtOfCNeeded; ++i)
+		std::size_t amtOfCNeeded = (6 - PlayerHand.size());
+		for (std::size_t i = 0; i < amtOfCNeeded; ++i)
 		{
 			PlayerHand.emplace_back(deck.dealCard());
 		}
@@ -121,13 +121,13 @@ void Player::eraseIndexHand(int index)
 void Player::sortHand()
 {	
 	int i, j;
-	for (i = 0; i < PlayerHand.size() - 1; i++)
+	for (i = 0; i < PlayerHand.size() - 1; ++i)
 	{
-		for (j = 0; j < PlayerHand.size() - i - 1; j++)
+		for (j = 0; j < PlayerHand.size() - i - 1; ++j)
 		{
-			if ((int)PlayerHand[j].Suit > (int)PlayerHand[j + 1].Suit)
+			if ((int)PlayerHand[j].Suit > (int)PlayerHand[(j + 1)].Suit)
 			{
-				swap(&PlayerHand[j], &PlayerHand[j + 1]);
+				swap(&PlayerHand[j], &PlayerHand[(j + 1)]);
 			}
 		}
 	}
