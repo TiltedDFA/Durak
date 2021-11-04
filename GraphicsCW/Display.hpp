@@ -36,7 +36,7 @@ namespace c1 //C1 namespace functions draw
 		for (int i = 0; i < 6; ++i)
 		{
 			Card card = table.getCardFromTableAtk(i);
-			if (card.faceUp)
+			if (card.faceUp) // this is not being hit 
 			{
 				DrawTexture(cBlank, (int)card.xPos, (int)card.yPos, WHITE);
 			}

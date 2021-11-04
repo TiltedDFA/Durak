@@ -76,6 +76,14 @@ int main()
 						if (CheckCollisionPointRec(mP, card) && IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
 						{
 							hC = true;
+							if(i <= 5)
+							{
+							  table.flipCardAtk(i,((_card.faceUp) ? false : true)); // this function inverse whether they're face up or down
+							}
+							else if (i = > 6)
+							{
+								table.flipCardDef((i-6), ((_card.faceUp) ? false : true));
+							}
 							_card.faceUp = (_card.faceUp) ? false : true; // this function inverse whether they're face up or down
 						}
 						if (CheckCollisionPointRec(mP, card) && IsMouseButtonDown(MOUSE_BUTTON_LEFT))

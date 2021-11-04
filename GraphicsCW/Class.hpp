@@ -103,6 +103,8 @@ public:
 	void setCardPosDef(int index, Vector2 pos);
 	Vector2 getCardPosAtk(int index);
 	Vector2 getCardPosDef(int index);
+	void flipCardAtk(int index, bool bol);
+	void flipCardDef(int index, bool bol);
 
 	void setMovesMadeThisRound(int played);
 	int getMovesMadeThisRound();

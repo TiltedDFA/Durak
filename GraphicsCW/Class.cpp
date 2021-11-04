@@ -197,6 +197,14 @@ Vector2 Table::getCardPosDef(int index)
 {
 	return { cardsOnTable[index][1].xPos, cardsOnTable[index][1].yPos};
 }
+void Table::flipCardAtk(int index, bool bol) 
+{
+	cardsOnTable[index][0].faceUp = bol;
+}
+void Table::flipCardDef(int index, bool bol)
+{
+	cardsOnTable[index][1].faceUp = bol;
+}
 //-------------------------------------------------------------------------------------------------------------
 
 //worksassasas
