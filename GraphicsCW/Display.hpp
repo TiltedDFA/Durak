@@ -88,15 +88,32 @@ namespace c2
 		}
 		return false;
 	}
+	Vector2 BoxColFinder(Card card)
+	{
+		std::array<Vector2, 6>pos = { (457.0f,543.0f), (457.0f, 688.0f), (457.0f,840.0f), (457.0f,990.0f), (457.0f,1143.0f), (457.0f,1300.0f) };
+		Rectangle rCard = { card.xPos, card.yPos, 120, 170 };
+
+		for (int i = 0; i < 6; ++i)	
+		{
+			Rectangle box = { pos[i].x, pos[i].y, 120, 170 };
+			if (CheckCollisionRecs(rCard, box))
+			{
+				return pos[i];
+			}
+		}
+		return { 0,0 };
+	}
 	void addCardToPlay(std::vector<Card*>&cardPointers, Card cardToAdd)
 	{
 		cardPointers.push_back(&cardToAdd);
 	}
-	void removeCardFromPlay(std::vector<Card*>& cardPointers, Card cardToAdd)
+	void removeCardFromPlay(std::vector<Card*>& cardPointers, Card* cardToAdd)
 	{
-		Card* searcher = &cardToAdd;
-		auto result = std::find(cardPointers.begin(), cardPointers.end(), cardToAdd);
-		cardPointers.erase(result);
+		auto result = std::find(cardPointers.begin(), cardPointers.end(), cardToAdd); // If element matches the search, returns an iterator to the element. If no elements match then it returns an iterator to last iteam of the list
+		if (result != cardPointers.end())
+		{
+			cardPointers.erase(result);
+		}		
 	}
 }
 #endif // !DISPLAY_HPP

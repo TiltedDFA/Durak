@@ -89,26 +89,39 @@ int main()
 						}
 						if (CheckCollisionPointRec(mP, card) && IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 						{		
+							_card.held = true;
 							hC = true;
 							if (i <= 5)
 							{
+								table.flipHoldStateAtk(i, true);
 								Vector2 currentPos = table.getCardPosAtk(i);
 								table.setCardPosAtk(i, Vector2Add(currentPos, GetMouseDelta()));
 							}
 							else
 							{
+								table.flipHoldStateDef((i-6), true);
 								Vector2 currentPos = table.getCardPosDef((i - 6));
 								table.setCardPosDef((i - 6), Vector2Add(currentPos, GetMouseDelta()));
 							}
-
-							//if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
-							//{
-								//dMP = GetMouseDelta();
-								//Vector2Add(cPos[i],  GetMouseDelta());
-								//c0::mCard(_card, dMP);
-
-								//cPos[i] = GetMousePosition() + (cPos[i] - GetMousePosition());
-							//}
+						} else
+						{
+							if (i < 5)
+							{
+								table.flipHoldStateAtk(i, false);
+							}
+							else
+							{
+								table.flipHoldStateDef((i - 6), false);
+							}
+						}
+						if (!_card.held)
+						{
+							if (c2::placeHBC(30, _card))
+							{
+								 Vector2 boxPos = c2::BoxColFinder(_card);
+								 _card.xPos = boxPos.x;
+								 _card.yPos = boxPos.y;
+							}
 						}
 					}
 					

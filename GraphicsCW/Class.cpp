@@ -205,6 +205,14 @@ void Table::flipCardDef(int index, bool bol)
 {
 	cardsOnTable[index][1].faceUp = bol;
 }
+void Table::flipHoldStateAtk(int index, bool bol)
+{
+	cardsOnTable[index][0].held = bol;
+}
+void Table::flipHoldStateDef(int index, bool bol)
+{
+	cardsOnTable[index][1].held = bol;
+}
 //-------------------------------------------------------------------------------------------------------------
 
 //worksassasas

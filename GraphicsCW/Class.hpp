@@ -105,6 +105,9 @@ public:
 	Vector2 getCardPosDef(int index);
 	void flipCardAtk(int index, bool bol);
 	void flipCardDef(int index, bool bol);
+	void flipHoldStateAtk(int index, bool bol);
+	void flipHoldStateDef(int index, bool bol);
+
 
 	void setMovesMadeThisRound(int played);
 	int getMovesMadeThisRound();
