@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <cmath>
+#include <algorithm>
 void DisplayMenu()
 {
 }
@@ -67,7 +68,7 @@ namespace c2
 {
 	bool placeHBC(int percentCertanty, Card card)
 	{
-		std::array<Vector2, 6>pos = { (457,543), (457, 688), (457,840), (457,990), (457,1143), (457,1300)};
+		std::array<Vector2, 6>pos = { (457.0f,543.0f), (457.0f, 688.0f), (457.0f,840.0f), (457.0f,990.0f), (457.0f,1143.0f), (457.0f,1300.0f)};
 		Rectangle rCard = {card.xPos, card.yPos, 120, 170};
 		for (int i = 0; i < 6; ++i)
 		{
@@ -79,13 +80,23 @@ namespace c2
 				auto oSetArea = xOSet * yOSet;
 				auto area = rCard.width * rCard.height;
 				auto percentOverlap = ((oSetArea / area) * 100);
-				if (percentOverlap > percentCertanty)
+				if ((int)percentOverlap > percentCertanty)
 				{
 					return true;
 				}
 			}
 		}
 		return false;
+	}
+	void addCardToPlay(std::vector<Card*>&cardPointers, Card cardToAdd)
+	{
+		cardPointers.push_back(&cardToAdd);
+	}
+	void removeCardFromPlay(std::vector<Card*>& cardPointers, Card cardToAdd)
+	{
+		Card* searcher = &cardToAdd;
+		auto result = std::find(cardPointers.begin(), cardPointers.end(), cardToAdd);
+		cardPointers.erase(result);
 	}
 }
 #endif // !DISPLAY_HPP

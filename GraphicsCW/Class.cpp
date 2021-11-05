@@ -125,9 +125,9 @@ void Player::sortHand()
 	{
 		for (j = 0; j < PlayerHand.size() - i - 1; ++j)
 		{
-			if ((int)PlayerHand[j].Suit > (int)PlayerHand[(j + 1)].Suit)
+			if ((int)PlayerHand[j].Suit > (int)PlayerHand[((int)j + 1)].Suit)
 			{
-				swap(&PlayerHand[j], &PlayerHand[(j + 1)]);
+				swap(&PlayerHand[j], &PlayerHand[((int)j + 1)]);
 			}
 		}
 	}
