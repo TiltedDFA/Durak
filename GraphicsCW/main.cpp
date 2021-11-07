@@ -24,7 +24,7 @@ int main()
 	Table table;
 	std::vector<Card*>cardsVisible;
 	//---------------------------------------------------------------------------------------
-	Rectangle btnCheckColl = { 772, 509, 287, 105 };	
+	Rectangle btnCheckColl = { 772, 509, 287, 105 };
 	//---------------------------------------------------------------------------------------
 	Image appIcon = LoadImage("appIcon.png");
 	SetWindowIcon(appIcon);
@@ -42,54 +42,55 @@ int main()
 		mP = GetMousePosition();
 		bool hC = false;
 		if (prePlayScreen)
-		{			
+		{
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(_Table, 0, 0, WHITE);
-			c1::cTable(table, CardBacking, blankCard, amtOfCardsOnScreen);		
+			c1::cTable(table, CardBacking, blankCard, amtOfCardsOnScreen);
 			DrawCircleV(GetMousePosition(), 10, WHITE);
+			//c1::rectangles();
 			EndDrawing();
+			
 			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
 			{
-				
+
 				for (int i = 0; i < 12; ++i)
 				{
-					
+
 					Rectangle card;
-					Card _card;					
-					if (i <= 5) 
+					Card _card;
+					if (i <= 5)
 					{
 						card = { table.getCardFromTableAtk(i).xPos, table.getCardFromTableAtk(i).yPos, 120, 170 };
-						_card = table.getCardFromTableAtk(i);						
+						_card = table.getCardFromTableAtk(i);
 					}
 					else
-					{ 
-						card = { table.getCardFromTableDef((i-6)).xPos, table.getCardFromTableDef((i-6)).yPos, 120, 170 };
-						_card = table.getCardFromTableDef((i-6));						
+					{
+						card = { table.getCardFromTableDef((i - 6)).xPos, table.getCardFromTableDef((i - 6)).yPos, 120, 170 };
+						_card = table.getCardFromTableDef((i - 6));
 					}
-					
+
 					if (hC)
 					{
-						
+
 					}
 					else if (!hC)
 					{
 						if (CheckCollisionPointRec(mP, card) && IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
 						{
 							hC = true;
-							if(i <= 5)
+							if (i <= 5)
 							{
-							  table.flipCardAtk(i,((_card.faceUp) ? false : true)); // this function inverse whether they're face up or down
+								table.flipCardAtk(i, ((_card.faceUp) ? false : true)); // this function inverse whether they're face up or down
 							}
 							else if (i >= 6)
 							{
-								table.flipCardDef((i-6), ((_card.faceUp) ? false : true));
+								table.flipCardDef((i - 6), ((_card.faceUp) ? false : true));
 							}
 							_card.faceUp = (_card.faceUp) ? false : true; // this function inverse whether they're face up or down
 						}
 						if (CheckCollisionPointRec(mP, card) && IsMouseButtonDown(MOUSE_BUTTON_LEFT))
-						{		
-							_card.held = true;
+						{
 							hC = true;
 							if (i <= 5)
 							{
@@ -97,41 +98,51 @@ int main()
 								Vector2 currentPos = table.getCardPosAtk(i);
 								table.setCardPosAtk(i, Vector2Add(currentPos, GetMouseDelta()));
 							}
-							else
+							else if (i >= 6)
 							{
-								table.flipHoldStateDef((i-6), true);
+								table.flipHoldStateDef((i - 6), true);
 								Vector2 currentPos = table.getCardPosDef((i - 6));
 								table.setCardPosDef((i - 6), Vector2Add(currentPos, GetMouseDelta()));
 							}
-						} else
+
+						}
+						else
 						{
-							if (i < 5)
+							if (i <= 5)
 							{
 								table.flipHoldStateAtk(i, false);
 							}
-							else
+							else if (i >= 6)
 							{
+								
 								table.flipHoldStateDef((i - 6), false);
+								
 							}
-						}
-						if (!_card.held)
-						{
-							if (c2::placeHBC(30, _card))
+							if (!_card.held)
 							{
-								 Vector2 boxPos = c2::BoxColFinder(_card);
-								 _card.xPos = boxPos.x;
-								 _card.yPos = boxPos.y;
+								if (c2::placeHBC(30, _card))
+								{
+									Vector2 boxPos = c2::BoxColFinder(_card);
+									if (i <= 5)
+									{
+										table.setCardPosAtk(i, boxPos);
+									}
+									else if (i >= 6)
+									{
+										table.setCardPosDef((i - 6), boxPos);
+									}
+								}
 							}
 						}
+
 					}
-					
 				}
+				if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
+				{
+					hC = false;
+				}
+
 			}
-			else if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
-			{
-				hC = false;
-			}
-					
 		}
 		else if (_TScreen)
 		{
@@ -143,21 +154,23 @@ int main()
 			if (CheckCollisionPointRec(mP, btnCheckColl))
 			{
 				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
-				{					
+				{
 					prePlayScreen = true;
 					_TScreen = false;
 				}
 			}
 		}
-		//----------------------------------------------------------------------------------
+			//----------------------------------------------------------------------------------
+		
 	}
-	// De-Initialization
-	//--------------------------------------------------------------------------------------
-	UnloadTexture(CardBacking);
-	UnloadTexture(TitleScreen);
-	UnloadTexture(_Table);
-	CloseWindow();// Close window and OpenGL context
-	//--------------------------------------------------------------------------------------
-	system("pause>0");
-	return 0;
+		// De-Initialization
+		//--------------------------------------------------------------------------------------
+		UnloadTexture(CardBacking);
+		UnloadTexture(TitleScreen);
+		UnloadTexture(_Table);
+		CloseWindow();// Close window and OpenGL context
+		//--------------------------------------------------------------------------------------
+		system("pause>0");
+		return 0;
+	
 }

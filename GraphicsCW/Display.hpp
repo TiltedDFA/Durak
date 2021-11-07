@@ -63,34 +63,61 @@ namespace c1 //C1 namespace functions draw
 			//++cardsOnScreen;
 		}
 	}
+	void rectangles()
+	{
+		std::array<Vector2, 6>pos;
+		pos[0] = { 543.0, 457.0 };
+		pos[1] = { 688.0, 457.0 };
+		pos[2] = { 840.0, 457.0 };
+		pos[3] = { 990.0, 457.0 };
+		pos[4] = { 1143.0,457.0 };
+		pos[5] = { 1300.0,457.0 };
+		for (int i = 0; i < pos.size(); ++i)
+		{
+			DrawRectangle(pos[i].x, pos[i].y, 120, 170, WHITE);
+			//DrawRectangle(457.0, 543.0, 120, 170, WHITE);
+		}
+	}
 }
 namespace c2
 {
 	bool placeHBC(int percentCertanty, Card card)
 	{
-		std::array<Vector2, 6>pos = { (457.0f,543.0f), (457.0f, 688.0f), (457.0f,840.0f), (457.0f,990.0f), (457.0f,1143.0f), (457.0f,1300.0f)};
+		std::array<Vector2, 6>pos;
+		pos[0] = { 543.0, 457.0 };
+		pos[1] = { 688.0, 457.0 };
+		pos[2] = { 840.0, 457.0 };
+		pos[3] = { 990.0, 457.0 };
+		pos[4] = { 1143.0,457.0 };
+		pos[5] = { 1300.0,457.0 };
 		Rectangle rCard = {card.xPos, card.yPos, 120, 170};
 		for (int i = 0; i < 6; ++i)
 		{
 			Rectangle placeHB = { pos[i].x, pos[i].y, 120, 170 };			
 			if (CheckCollisionRecs(rCard, placeHB))
 			{
-				auto xOSet = rCard.width -  sqrt((card.xPos - placeHB.x) * (card.xPos - placeHB.x));
-				auto yOSet = rCard.height - sqrt((card.yPos - placeHB.y) * (card.yPos - placeHB.y));
-				auto oSetArea = xOSet * yOSet;
-				auto area = rCard.width * rCard.height;
-				auto percentOverlap = ((oSetArea / area) * 100);
-				if ((int)percentOverlap > percentCertanty)
-				{
+				//auto xOSet = placeHB.width -  sqrt(((card.xPos - placeHB.x) * (card.xPos - placeHB.x)));
+				//auto yOSet = placeHB.height - sqrt(((card.yPos - placeHB.y) * (card.yPos - placeHB.y)));
+				//auto oSetArea = xOSet * yOSet;
+				//auto area = placeHB.width * placeHB.height;
+				//auto percentOverlap = ((oSetArea / area) * 100);
+				//if ((int)percentOverlap > percentCertanty)
+				//{
 					return true;
-				}
+				//}
 			}
 		}
 		return false;
 	}
 	Vector2 BoxColFinder(Card card)
 	{
-		std::array<Vector2, 6>pos = { (457.0f,543.0f), (457.0f, 688.0f), (457.0f,840.0f), (457.0f,990.0f), (457.0f,1143.0f), (457.0f,1300.0f) };
+		std::array<Vector2, 6>pos;
+		pos[0] = { 543.0, 457.0 };
+		pos[1] = { 688.0, 457.0 };
+		pos[2] = { 840.0, 457.0 };
+		pos[3] = { 990.0, 457.0 };
+		pos[4] = { 1143.0,457.0 };
+		pos[5] = { 1300.0,457.0 };
 		Rectangle rCard = { card.xPos, card.yPos, 120, 170 };
 
 		for (int i = 0; i < 6; ++i)	
