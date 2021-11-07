@@ -59,6 +59,7 @@ int main()
 
 					Rectangle card;
 					Card _card;
+					Card* temp = &_card;
 					if (i <= 5)
 					{
 						card = { table.getCardFromTableAtk(i).xPos, table.getCardFromTableAtk(i).yPos, 120, 170 };
@@ -77,7 +78,7 @@ int main()
 					else if (!hC)
 					{
 						if (CheckCollisionPointRec(mP, card) && IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
-						{
+						{			
 							hC = true;
 							if (i <= 5)
 							{
@@ -90,7 +91,7 @@ int main()
 							_card.faceUp = (_card.faceUp) ? false : true; // this function inverse whether they're face up or down
 						}
 						if (CheckCollisionPointRec(mP, card) && IsMouseButtonDown(MOUSE_BUTTON_LEFT))
-						{
+						{				
 							hC = true;
 							if (i <= 5)
 							{
@@ -106,7 +107,7 @@ int main()
 							}
 
 						}
-						else
+						if (!CheckCollisionPointRec(mP, card))
 						{
 							if (i <= 5)
 							{
@@ -115,26 +116,24 @@ int main()
 							else if (i >= 6)
 							{
 								
-								table.flipHoldStateDef((i - 6), false);
-								
-							}
-							if (!_card.held)
+								table.flipHoldStateDef((i - 6), false);								
+							}							
+						}
+						if (!_card.held)
+						{
+							if (c2::placeHBC(50, _card))
 							{
-								if (c2::placeHBC(30, _card))
+								Vector2 boxPos = c2::BoxColFinder(_card);
+								if (i <= 5)
 								{
-									Vector2 boxPos = c2::BoxColFinder(_card);
-									if (i <= 5)
-									{
-										table.setCardPosAtk(i, boxPos);
-									}
-									else if (i >= 6)
-									{
-										table.setCardPosDef((i - 6), boxPos);
-									}
+									table.setCardPosAtk(i, boxPos);
+								}
+								else if (i >= 6)
+								{
+									table.setCardPosDef((i - 6), boxPos);
 								}
 							}
 						}
-
 					}
 				}
 				if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))

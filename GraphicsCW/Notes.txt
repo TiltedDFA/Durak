@@ -1,0 +1,37 @@
+07/11/2021 9:40
+{
+The card to drop down box now works, although it doesn't use the overlap function checker, it currently just checks if the card is touching the hit box. 
+TO DO:
+-Fix the hit box percentage checker function
+-Make the defending cards placeable atop of the attacking cards on table with a suitable offset such that the card below is visible
+-Make the card pointer vector work so that multiple cards from any source can be  placed on the table as currently, the only cards being displayed are the table cards
+-Change program to work around the card pointing vector (not looking forward to this)
+-Make a deck appear
+-Only display cards in the players hands initally
+-Make the cards
+-Make the 'beaten' pile
+-Make rounds
+-Make game logic
+-Make win conditions
+-Design the opening screen
+-Make an AI for the opponent of the player
+}
+07/11/2021 16:85
+{
+Fixed the box percentage checking function. The annoying thing that still hasn't been solved is the updating system. Will need to also rewrite a lot of code to impliment the 
+pointers card system
+Updated TO DO list : 
+-Change the update system
+-Make the defending cards placeable atop of the attacking cards on table with a suitable offset such that the card below is visible
+-Make the card pointer vector work so that multiple cards from any source can be  placed on the table as currently, the only cards being displayed are the table cards
+-Change program to work around the card pointing vector (not looking forward to this)
+-Make a deck appear
+-Only display cards in the players hands initally
+-Make the cards
+-Make the 'beaten' pile
+-Make rounds
+-Make game logic
+-Make win conditions
+-Design the opening screen
+-Make an AI for the opponent of the player
+}

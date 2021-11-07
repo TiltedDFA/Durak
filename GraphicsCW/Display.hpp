@@ -96,15 +96,15 @@ namespace c2
 			Rectangle placeHB = { pos[i].x, pos[i].y, 120, 170 };			
 			if (CheckCollisionRecs(rCard, placeHB))
 			{
-				//auto xOSet = placeHB.width -  sqrt(((card.xPos - placeHB.x) * (card.xPos - placeHB.x)));
-				//auto yOSet = placeHB.height - sqrt(((card.yPos - placeHB.y) * (card.yPos - placeHB.y)));
-				//auto oSetArea = xOSet * yOSet;
-				//auto area = placeHB.width * placeHB.height;
-				//auto percentOverlap = ((oSetArea / area) * 100);
-				//if ((int)percentOverlap > percentCertanty)
-				//{
+				auto xOSet = placeHB.width -  sqrt(((card.xPos - placeHB.x) * (card.xPos - placeHB.x)));
+				auto yOSet = placeHB.height - sqrt(((card.yPos - placeHB.y) * (card.yPos - placeHB.y)));
+				auto oSetArea = xOSet * yOSet;
+				auto area = placeHB.width * placeHB.height;
+				auto percentOverlap = ((oSetArea / area) * 100);
+				if ((int)percentOverlap > percentCertanty)
+				{
 					return true;
-				//}
+				}
 			}
 		}
 		return false;
@@ -130,6 +130,7 @@ namespace c2
 		}
 		return { 0,0 };
 	}
+	/*
 	void addCardToPlay(std::vector<Card*>&cardPointers, Card cardToAdd)
 	{
 		cardPointers.push_back(&cardToAdd);
@@ -142,5 +143,6 @@ namespace c2
 			cardPointers.erase(result);
 		}		
 	}
+	*/
 }
 #endif // !DISPLAY_HPP
