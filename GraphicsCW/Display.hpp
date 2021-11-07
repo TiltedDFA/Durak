@@ -10,26 +10,6 @@
 void DisplayMenu()
 {
 }
-namespace c0 // c0 namespace function set up or do something update something
-{	
-	void setPosCard(Table& table, Deck deck /*std::vector<Vector2>& cPos*/)
-	{ 
-		float x = 600;
-		float y = 75;
-		for (int i = 0; i < 6; ++i)
-		{			
-			table.addCardToTableAtk(deck.removeTopCard(), i);			
-			table.setCardPosAtk(i, { (x + 125 * i),y });
-		}
-		y = 840;
-		for (int i = 0; i < 6; ++i)
-		{			
-			table.addCardToTableDef(deck.removeTopCard(), i);
-			table.setCardPosDef((i),{(x+125*i),y});
-		}
-	}
-	
-}
 namespace c1 //C1 namespace functions draw
 {
 	void cTable(Table table, Texture2D& cBack, Texture2D& cBlank, int& cardsOnScreen) // (Xpos, Ypos, AmountOfCards, Cardtext)
@@ -129,11 +109,11 @@ namespace c2
 			}
 		}
 		return { 0,0 };
-	}
-	/*
-	void addCardToPlay(std::vector<Card*>&cardPointers, Card cardToAdd)
+	}	
+	
+	void addCardToPlay(std::vector<Card*>& cardPointers, Card* ptrToCard)
 	{
-		cardPointers.push_back(&cardToAdd);
+		cardPointers.push_back(ptrToCard);
 	}
 	void removeCardFromPlay(std::vector<Card*>& cardPointers, Card* cardToAdd)
 	{
@@ -143,6 +123,32 @@ namespace c2
 			cardPointers.erase(result);
 		}		
 	}
-	*/
+	
+}
+namespace c3 // c3 namespace function set up or do something update something
+{
+	void setPosCard(std::vector<Card*>& cardPointers, Table& table, Deck& deck /*std::vector<Vector2>& cPos*/)
+	{
+		float x = 600;
+		float y = 75;
+		for (int i = 0; i < 6; ++i)
+		{
+			Card card = deck.removeTopCard();			
+			table.addCardToTableAtk(card, i);
+			table.setCardPosAtk(i, { (x + 125 * i),y });
+			Card* cPtr = table.getPtrCardAtk(i);
+			c2::addCardToPlay(cardPointers, cPtr);
+		}
+		y = 840;
+		for (int i = 0; i < 6; ++i)
+		{
+			Card card = deck.removeTopCard();			
+			table.addCardToTableDef(card, i);
+			table.setCardPosDef((i), { (x + 125 * i),y });
+			Card* cPtr = table.getPtrCardAtk(i);
+			c2::addCardToPlay(cardPointers, cPtr);
+		}
+	}
+
 }
 #endif // !DISPLAY_HPP

@@ -107,7 +107,8 @@ public:
 	void flipCardDef(int index, bool bol);
 	void flipHoldStateAtk(int index, bool bol);
 	void flipHoldStateDef(int index, bool bol);
-
+	Card* getPtrCardAtk(int index);
+	Card* getPtrCardDef(int index);
 
 	void setMovesMadeThisRound(int played);
 	int getMovesMadeThisRound();

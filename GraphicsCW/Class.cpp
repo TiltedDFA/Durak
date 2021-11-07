@@ -213,6 +213,17 @@ void Table::flipHoldStateDef(int index, bool bol)
 {
 	cardsOnTable[index][1].held = bol;
 }
+Card* Table::getPtrCardAtk(int index)
+{
+	Card* cPtr = &cardsOnTable[index][0];
+	return cPtr;
+}
+Card* Table::getPtrCardDef(int index)
+{
+	Card* cPtr = &cardsOnTable[index][1];
+	return cPtr;
+}
+
 //-------------------------------------------------------------------------------------------------------------
 
 //worksassasas

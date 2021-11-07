@@ -1,0 +1,58 @@
+07/11/2021 9:40
+{
+The card to drop down box now works, although it doesn't use the overlap function checker, it currently just checks if the card is touching the hit box. 
+TO DO:
+-Fix the hit box percentage checker function
+-Make the defending cards placeable atop of the attacking cards on table with a suitable offset such that the card below is visible
+-Make the card pointer vector work so that multiple cards from any source can be  placed on the table as currently, the only cards being displayed are the table cards
+-Change program to work around the card pointing vector (not looking forward to this)
+-Make a deck appear
+-Only display cards in the players hands initally
+-Make the cards
+-Make the 'beaten' pile
+-Make rounds
+-Make game logic
+-Make win conditions
+-Design the opening screen
+-Make an AI for the opponent of the player
+}
+07/11/2021 16:85
+{
+Fixed the box percentage checking function. The annoying thing that still hasn't been solved is the updating system. Will need to also rewrite a lot of code to impliment the 
+pointers card system
+Updated TO DO list : 
+-Change the update system
+-Make the defending cards placeable atop of the attacking cards on table with a suitable offset such that the card below is visible
+-Make the card pointer vector work so that multiple cards from any source can be  placed on the table as currently, the only cards being displayed are the table cards
+-Change program to work around the card pointing vector (not looking forward to this)
+-Make a deck appear
+-Only display cards in the players hands initally
+-Make the cards
+-Make the 'beaten' pile
+-Make rounds
+-Make game logic
+-Make win conditions
+-Design the opening screen
+-Make an AI for the opponent of the player
+}
+
+07/11/2021 20:00
+{
+Realised that I don't need to actually use pointers for the cards in play vector, It will be a normal card array. It will copy a card into the vector and do the calculations based on that.
+// Update, realised that wouldn't work as updating the information for the cards in the cards in play array wouldn't actually update the cards.
+Contemplating the system. As I would need a system to transfer the cards from hand to table to other piles seemlessly, there's no easy way of doing that. Also need to make a deck appear. Will 
+likely have the cards automatically added to the player's hand after the start of a turn. Questions such as how to graphically move the cards from deck to hand and how to display the hand with less
+cards pops to mind. Need to learn more about pointers to make the pointer system work or will need to think of another way to do this.
+
+As for how to do the card placement offset, could do a turn based system where the attacking cards will spawn at a certain place while the deffending cards will spawn with an offset.
+From this have thought to potentially display cards based on where they're stored. E.g. if a card is in player hand then it's spawn will be controlled by a player hand function. 
+as for the table, the card will spawn based on the index of the table so to integrate the display system with the system that controlls how the table will be played.
+
+>>20:52
+Have been told after asking in a C++ discord server that my pointer thing should work so will give it a try.
+}
+
+07/11/2021 21:57
+{
+I think the card pointer system is now working for the table cards, Now I need to make it work with the cards in hand, top card of deck and need to integrate it into the displaying system
+}
