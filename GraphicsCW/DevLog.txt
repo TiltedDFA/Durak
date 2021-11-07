@@ -55,4 +55,5 @@ Have been told after asking in a C++ discord server that my pointer thing should
 07/11/2021 21:57
 {
 I think the card pointer system is now working for the table cards, Now I need to make it work with the cards in hand, top card of deck and need to integrate it into the displaying system
+side note: Don't forget to test the specific card deletion function for the ptr vector
 }
