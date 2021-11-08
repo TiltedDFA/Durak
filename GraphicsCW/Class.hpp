@@ -71,17 +71,19 @@ class Player
 {
 private:
 	std::string PlayerName;
-	std::vector<Card> PlayerHand;
+	std::array<Card, 20> PlayerHand;
 public:
 	Player();
 	~Player();
-	Card getPlayerHand(int index);
-	void setPlayerHand(int index, Card input);
-	void addNeededCardsToPlayerHand(Deck deck);
-	void addToPlayerHand(Card card);
-	void eraseIndexHand(int index);
-	void sortHand();
+	Card getCardFromPH(int index);
 
+	void addNeededCardsToPlayerHand(Deck deck);
+	void addToPlayerHand(int index, Card card);
+	void clearIndexHand(int index);	
+	void setCardPos(Vector2 pos, int index);
+	Card* getCardPtr(int index);
+
+	void sortHand();
 	std::string getPlayerName();
 	void setPlayerName(std::string input);
 };
@@ -96,20 +98,10 @@ public:
 	void addCardToTableDef(Card card, int cardPile);
 	void displayCardsOnTable();
 	void clearTable();
-
 	Card getCardFromTableDef(int index);
-	Card getCardFromTableAtk(int index);
-	void setCardPosAtk(int index, Vector2 pos);
-	void setCardPosDef(int index, Vector2 pos);
-	Vector2 getCardPosAtk(int index);
-	Vector2 getCardPosDef(int index);
-	void flipCardAtk(int index, bool bol);
-	void flipCardDef(int index, bool bol);
-	void flipHoldStateAtk(int index, bool bol);
-	void flipHoldStateDef(int index, bool bol);
+	Card getCardFromTableAtk(int index);	
 	Card* getPtrCardAtk(int index);
 	Card* getPtrCardDef(int index);
-
 	void setMovesMadeThisRound(int played);
 	int getMovesMadeThisRound();
 	void resetMovesMade();

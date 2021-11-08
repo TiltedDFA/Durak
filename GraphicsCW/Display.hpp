@@ -12,35 +12,18 @@ void DisplayMenu()
 }
 namespace c1 //C1 namespace functions draw
 {
-	void cTable(Table table, Texture2D& cBack, Texture2D& cBlank, int& cardsOnScreen) // (Xpos, Ypos, AmountOfCards, Cardtext)
+	void cTable(std::vector<Card*>cardsVisible, Texture2D& cBack, Texture2D& cBlank, int& cardsOnScreen) // (Xpos, Ypos, AmountOfCards, Cardtext)
 	{
-		for (int i = 0; i < 6; ++i)
+		for (auto i = 0; i < cardsVisible.size(); ++i)
 		{
-			Card card = table.getCardFromTableAtk(i);
-			if (card.faceUp) // this is not being hit 
+			if (cardsVisible[i]->faceUp)
 			{
-				DrawTexture(cBlank, (int)card.xPos, (int)card.yPos, WHITE);
+				DrawTexture(cBlank, cardsVisible[i]->xPos, cardsVisible[i]->yPos, WHITE);
 			}
-			else if (!card.faceUp)
+			else if (!cardsVisible[i]->faceUp)
 			{
-				DrawTexture(cBack, (int)card.xPos, (int)card.yPos, WHITE);
+				DrawTexture(cBack, cardsVisible[i]->xPos, cardsVisible[i]->yPos, WHITE);
 			}
-			//*char val = &(char)(int)card.Value;
-			//DrawText(val.c_str(), card.xPos);
-			//++cardsOnScreen;
-		}
-		for (int i = 0; i < 6; ++i)
-		{
-			Card card = table.getCardFromTableDef(i);
-			if (card.faceUp)
-			{
-				DrawTexture(cBlank, (int)card.xPos, (int)card.yPos, WHITE);
-			}
-			else if (!card.faceUp)
-			{
-				DrawTexture(cBack, (int)card.xPos, (int)card.yPos, WHITE);
-			}
-			//++cardsOnScreen;
 		}
 	}
 	void rectangles()
@@ -54,7 +37,7 @@ namespace c1 //C1 namespace functions draw
 		pos[5] = { 1300.0,457.0 };
 		for (int i = 0; i < pos.size(); ++i)
 		{
-			DrawRectangle(pos[i].x, pos[i].y, 120, 170, WHITE);
+			DrawRectangle((int)pos[i].x, (int)pos[i].y, 120, 170, WHITE);
 			//DrawRectangle(457.0, 543.0, 120, 170, WHITE);
 		}
 	}
@@ -111,7 +94,7 @@ namespace c2
 		return { 0,0 };
 	}	
 	
-	void addCardToPlay(std::vector<Card*>& cardPointers, Card* ptrToCard)
+	void addCardToPlay(std::vector<Card*> &cardPointers, Card* ptrToCard)
 	{
 		cardPointers.push_back(ptrToCard);
 	}
@@ -127,26 +110,29 @@ namespace c2
 }
 namespace c3 // c3 namespace function set up or do something update something
 {
-	void setPosCard(std::vector<Card*>& cardPointers, Table& table, Deck& deck /*std::vector<Vector2>& cPos*/)
+	void setPosCard(std::vector<Card*> &cardsVisible, std::array<Player, 2>&player, Deck& deck /*std::vector<Vector2>& cPos*/)
 	{
 		float x = 600;
 		float y = 75;
 		for (int i = 0; i < 6; ++i)
 		{
-			Card card = deck.removeTopCard();			
-			table.addCardToTableAtk(card, i);
-			table.setCardPosAtk(i, { (x + 125 * i),y });
-			Card* cPtr = table.getPtrCardAtk(i);
-			c2::addCardToPlay(cardPointers, cPtr);
+			Card card = deck.removeTopCard();
+			player[0].addToPlayerHand(i, card);
+			//table.setCardPosAtk(i, { (x + 125 * i),y });
+			player[0].setCardPos({ (x + 125 * i),y }, i);
+			Card* cPtr = player[0].getCardPtr(i);
+			cardsVisible.push_back(cPtr);
 		}
 		y = 840;
+
 		for (int i = 0; i < 6; ++i)
 		{
 			Card card = deck.removeTopCard();			
-			table.addCardToTableDef(card, i);
-			table.setCardPosDef((i), { (x + 125 * i),y });
-			Card* cPtr = table.getPtrCardAtk(i);
-			c2::addCardToPlay(cardPointers, cPtr);
+			player[1].addToPlayerHand(i, card);
+			//table.setCardPosDef((i), { (x + 125 * i),y });
+			player[1].setCardPos({ (x + 125 * i),y }, i);
+			Card* cPtr = player[1].getCardPtr(i);
+			cardsVisible.push_back(cPtr);
 		}
 	}
 

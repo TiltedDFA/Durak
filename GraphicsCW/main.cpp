@@ -22,6 +22,7 @@ int main()
 	int amtOfCardsOnScreen = 0;
 	Deck deck;
 	Table table;
+	std::array<Player, 2>players;
 	std::vector<Card*>cardsVisible;
 	//---------------------------------------------------------------------------------------
 	Rectangle btnCheckColl = { 772, 509, 287, 105 };
@@ -36,7 +37,7 @@ int main()
 	// Main game loop
 
 	//Code something that moves the cards when the mouse moves them. The co-ordinates of the cards will be the mouse co-ordinates + the offset of where the mouse clicks the card
-	c3::setPosCard(cardsVisible, table, deck);
+	c3::setPosCard(cardsVisible, players, deck);
 	while (!WindowShouldClose())
 	{
 		mP = GetMousePosition();
@@ -46,7 +47,7 @@ int main()
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(_Table, 0, 0, WHITE);
-			c1::cTable(table, CardBacking, blankCard, amtOfCardsOnScreen);
+			c1::cTable(cardsVisible, CardBacking, blankCard, amtOfCardsOnScreen);
 			DrawCircleV(GetMousePosition(), 10, WHITE);
 			//c1::rectangles();
 			EndDrawing();
@@ -54,23 +55,13 @@ int main()
 			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
 			{
 
-				for (int i = 0; i < 12; ++i)
+				for (int i = 0; i < cardsVisible.size(); ++i)
 				{
 
 					Rectangle card;
-					Card _card;
-					Card* temp = &_card;
-					if (i <= 5)
-					{
-						card = { table.getCardFromTableAtk(i).xPos, table.getCardFromTableAtk(i).yPos, 120, 170 };
-						_card = table.getCardFromTableAtk(i);
-					}
-					else
-					{
-						card = { table.getCardFromTableDef((i - 6)).xPos, table.getCardFromTableDef((i - 6)).yPos, 120, 170 };
-						_card = table.getCardFromTableDef((i - 6));
-					}
-
+					Card _card;					
+					_card = *cardsVisible[i];
+					card = { cardsVisible[i]->xPos, cardsVisible[i]->yPos, 120, 170 };
 					if (hC)
 					{
 
@@ -80,58 +71,28 @@ int main()
 						if (CheckCollisionPointRec(mP, card) && IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
 						{			
 							hC = true;
-							if (i <= 5)
-							{
-								table.flipCardAtk(i, ((_card.faceUp) ? false : true)); // this function inverse whether they're face up or down
-							}
-							else if (i >= 6)
-							{
-								table.flipCardDef((i - 6), ((_card.faceUp) ? false : true));
-							}
-							_card.faceUp = (_card.faceUp) ? false : true; // this function inverse whether they're face up or down
+							cardsVisible[i]->faceUp = !cardsVisible[i]->faceUp; // this function changes the state of the card in the cardsVisible pointer vector
 						}
 						if (CheckCollisionPointRec(mP, card) && IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 						{				
-							hC = true;
-							if (i <= 5)
-							{
-								table.flipHoldStateAtk(i, true);
-								Vector2 currentPos = table.getCardPosAtk(i);
-								table.setCardPosAtk(i, Vector2Add(currentPos, GetMouseDelta()));
-							}
-							else if (i >= 6)
-							{
-								table.flipHoldStateDef((i - 6), true);
-								Vector2 currentPos = table.getCardPosDef((i - 6));
-								table.setCardPosDef((i - 6), Vector2Add(currentPos, GetMouseDelta()));
-							}
-
+							hC = true;							
+							cardsVisible[i]->held = true;
+							Vector2 currentPos = { cardsVisible[i]->xPos, cardsVisible[i]->yPos };
+							Vector2 mD = GetMouseDelta();
+							cardsVisible[i]->xPos = (cardsVisible[i]->xPos + mD.x);
+							cardsVisible[i]->yPos = (cardsVisible[i]->yPos + mD.y);
 						}
 						if (!CheckCollisionPointRec(mP, card))
-						{
-							if (i <= 5)
-							{
-								table.flipHoldStateAtk(i, false);
-							}
-							else if (i >= 6)
-							{
-								
-								table.flipHoldStateDef((i - 6), false);								
-							}							
+						{								
+							cardsVisible[i]->held = false;
 						}
 						if (!_card.held)
 						{
 							if (c2::placeHBC(50, _card))
 							{
 								Vector2 boxPos = c2::BoxColFinder(_card);
-								if (i <= 5)
-								{
-									table.setCardPosAtk(i, boxPos);
-								}
-								else if (i >= 6)
-								{
-									table.setCardPosDef((i - 6), boxPos);
-								}
+								cardsVisible[i]->xPos = boxPos.x;
+								cardsVisible[i]->yPos = boxPos.y;				
 							}
 						}
 					}

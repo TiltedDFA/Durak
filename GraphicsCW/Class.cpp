@@ -79,13 +79,9 @@ Card Deck::removeTopCard()
 Player::Player() {}
 Player::~Player() {}
 
-Card Player::getPlayerHand(int index)
+Card Player::getCardFromPH(int index)
 {
 	return PlayerHand[index];
-}
-void Player::setPlayerHand(int index, Card input)
-{
-	PlayerHand[index] = input;
 }
 std::string Player::getPlayerName()
 {
@@ -95,29 +91,39 @@ void Player::setPlayerName(std::string input)
 {
 	PlayerName = input;
 }
-void Player::addToPlayerHand(Card card)
+void Player::addToPlayerHand(int index, Card card)
 {
-	PlayerHand.emplace_back(card);
+	PlayerHand[index] = card;
 }
 void Player::addNeededCardsToPlayerHand(Deck deck)
 {
-	if (PlayerHand.size() < 6)
+	if (PlayerHand.size() != 6)
 	{
-		std::size_t amtOfCNeeded = (6 - PlayerHand.size());
-		for (std::size_t i = 0; i < amtOfCNeeded; ++i)
+		for (auto i = PlayerHand.size(); i < 6; ++i)
 		{
-			PlayerHand.emplace_back(deck.dealCard());
+			std::size_t amtOfCNeeded = (6 - PlayerHand.size());
+			for (std::size_t i = 0; i < amtOfCNeeded; ++i)
+			{
+				PlayerHand[i] = deck.removeTopCard();
+			}
 		}
 	}
 }
-void Player::eraseIndexHand(int index)
+void Player::clearIndexHand(int index)
 {
-	PlayerHand.erase(PlayerHand.begin() + index);
+	Card card;
+	PlayerHand[index] = card;
 }
-/*
-
-*/
-
+void Player::setCardPos(Vector2 pos, int index)
+{
+	PlayerHand[index].xPos = pos.x;
+	PlayerHand[index].yPos = pos.y;
+}
+Card* Player::getCardPtr(int index)
+{
+	Card* ptr = &PlayerHand[index];
+	return ptr;
+}
 void Player::sortHand()
 {	
 	int i, j;
@@ -125,9 +131,9 @@ void Player::sortHand()
 	{
 		for (j = 0; j < PlayerHand.size() - i - 1; ++j)
 		{
-			if ((int)PlayerHand[j].Suit > (int)PlayerHand[((int)j + 1)].Suit)
+			if ((int)PlayerHand[j].Suit > (int)PlayerHand[(j + 1)].Suit)
 			{
-				swap(&PlayerHand[j], &PlayerHand[((int)j + 1)]);
+				swap(&PlayerHand[j], &PlayerHand[(j + 1)]);
 			}
 		}
 	}
@@ -178,40 +184,6 @@ Card Table::getCardFromTableDef(int index)
 Card Table::getCardFromTableAtk(int index)
 {
 	return cardsOnTable[index][0];
-}
-void Table::setCardPosAtk(int index, Vector2 pos)
-{
-	cardsOnTable[index][0].xPos = pos.x;
-	cardsOnTable[index][0].yPos = pos.y;
-}
-void Table::setCardPosDef(int index, Vector2 pos)
-{
-	cardsOnTable[index][1].xPos = pos.x;
-	cardsOnTable[index][1].yPos = pos.y;
-}
-Vector2 Table::getCardPosAtk(int index)
-{
-	return {cardsOnTable[index][0].xPos, cardsOnTable[index][0].yPos};
-}
-Vector2 Table::getCardPosDef(int index)
-{
-	return { cardsOnTable[index][1].xPos, cardsOnTable[index][1].yPos};
-}
-void Table::flipCardAtk(int index, bool bol) 
-{
-	cardsOnTable[index][0].faceUp = bol;
-}
-void Table::flipCardDef(int index, bool bol)
-{
-	cardsOnTable[index][1].faceUp = bol;
-}
-void Table::flipHoldStateAtk(int index, bool bol)
-{
-	cardsOnTable[index][0].held = bol;
-}
-void Table::flipHoldStateDef(int index, bool bol)
-{
-	cardsOnTable[index][1].held = bol;
 }
 Card* Table::getPtrCardAtk(int index)
 {

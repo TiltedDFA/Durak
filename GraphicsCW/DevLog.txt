@@ -16,6 +16,7 @@ TO DO:
 -Design the opening screen
 -Make an AI for the opponent of the player
 }
+
 07/11/2021 16:85
 {
 Fixed the box percentage checking function. The annoying thing that still hasn't been solved is the updating system. Will need to also rewrite a lot of code to impliment the 
@@ -56,4 +57,20 @@ Have been told after asking in a C++ discord server that my pointer thing should
 {
 I think the card pointer system is now working for the table cards, Now I need to make it work with the cards in hand, top card of deck and need to integrate it into the displaying system
 side note: Don't forget to test the specific card deletion function for the ptr vector
+}
+
+08/11/2021 17:15
+{
+Just tested the card pointer removing system and it seems to work as intended just remember to *get the pointer from the class the card is in*
+Will now work to integrate the new card pointing system to the display systems. Preparing for a long night of debugging.
+->17:37 
+BY SOME MIRICLE MY NEW POINTER SYSTEM WORKS FIRST TRY WITHOUT ANY ISSUES, I AM SO HAPPY!!
+will now work on changing the fact that currently the cards are being displayed from the table and will work on them being displayed from player hand
+->20:35 
+have run into a lot of issue when switching out the player hand for the table. Seems there's some deconstruction issues
+->20:50 
+Have been recommended to switch to smart pointers in order to allocate to the heap, so will research and try to adapt to that.
+->21:26
+After realising that if i were to use smart pointers, I'd need to practically rewrite my program I decided to instead change what is causing the cards to deconstruct, which is the Player Hand vector. It is now an array of size 20 since
+it'd be had for someone to realistically have more cards in their hand at once, might make it 30 to be certain that no one could possible have more cards in hand.
 }
