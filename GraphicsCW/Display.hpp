@@ -18,11 +18,11 @@ namespace c1 //C1 namespace functions draw
 		{
 			if (cardsVisible[i]->faceUp)
 			{
-				DrawTexture(cBlank, cardsVisible[i]->xPos, cardsVisible[i]->yPos, WHITE);
+				DrawTexture(cBlank, (int)cardsVisible[i]->xPos, (int)cardsVisible[i]->yPos, WHITE);
 			}
 			else if (!cardsVisible[i]->faceUp)
 			{
-				DrawTexture(cBack, cardsVisible[i]->xPos, cardsVisible[i]->yPos, WHITE);
+				DrawTexture(cBack, (int)cardsVisible[i]->xPos, (int)cardsVisible[i]->yPos, WHITE);
 			}
 		}
 	}

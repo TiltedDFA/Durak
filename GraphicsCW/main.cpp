@@ -52,21 +52,16 @@ int main()
 			//c1::rectangles();
 			EndDrawing();
 			
-			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
-			{
+			//if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
+			//{
 
 				for (int i = 0; i < cardsVisible.size(); ++i)
 				{
 
 					Rectangle card;
-					Card _card;					
-					_card = *cardsVisible[i];
 					card = { cardsVisible[i]->xPos, cardsVisible[i]->yPos, 120, 170 };
-					if (hC)
-					{
-
-					}
-					else if (!hC)
+					
+					if (!hC)
 					{
 						if (CheckCollisionPointRec(mP, card) && IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
 						{			
@@ -86,14 +81,15 @@ int main()
 						{								
 							cardsVisible[i]->held = false;
 						}
-						if (!_card.held)
+						
+					}
+					if (!cardsVisible[i]->held)
+					{
+						if (c2::placeHBC(50, *cardsVisible[i]))
 						{
-							if (c2::placeHBC(50, _card))
-							{
-								Vector2 boxPos = c2::BoxColFinder(_card);
-								cardsVisible[i]->xPos = boxPos.x;
-								cardsVisible[i]->yPos = boxPos.y;				
-							}
+							Vector2 boxPos = c2::BoxColFinder(*cardsVisible[i]);
+							cardsVisible[i]->xPos = boxPos.x;
+							cardsVisible[i]->yPos = boxPos.y;
 						}
 					}
 				}
@@ -102,7 +98,7 @@ int main()
 					hC = false;
 				}
 
-			}
+			//}
 		}
 		else if (_TScreen)
 		{

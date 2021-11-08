@@ -73,4 +73,9 @@ Have been recommended to switch to smart pointers in order to allocate to the he
 ->21:26
 After realising that if i were to use smart pointers, I'd need to practically rewrite my program I decided to instead change what is causing the cards to deconstruct, which is the Player Hand vector. It is now an array of size 20 since
 it'd be had for someone to realistically have more cards in their hand at once, might make it 30 to be certain that no one could possible have more cards in hand.
+Next focus should be working on the updating loop to make the placement of cards and checking of hitboxing seemless so will need to rework the one cards at a time design
+->21:32 
+the update system was an easy fix, commented out the condition of running the checks based on mouse buttons. SHOULDN'T affect anything thought it was commented out instead of deleted for the time being to ensure there's no issues cause 
+by it
+-> Add something that indicated a proper fix
 }
