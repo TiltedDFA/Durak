@@ -79,3 +79,12 @@ the update system was an easy fix, commented out the condition of running the ch
 by it
 -> Add something that indicated a proper fix
 }
+
+09/11/2021
+{
+-> 15:25 
+Have worked on the table design to accomdate for the deck and for the 'beeta' pile in photoshop, Will work today on coding that into it once i've finished designing it. 
+While on the bus, will add reversed card to deck function.
+->15:30 
+While writing a few functions for the deck, I have realised that displaying the deck will have to be another system from current displaying system due to the fac of how i need to display cards.
+}

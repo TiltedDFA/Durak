@@ -52,6 +52,7 @@ class Deck
 {
 private:
 	std::vector<Card> _Deck;
+	Card visibleCard;
 	inline static cardSuit masterSuit;
 public:
 	Deck();
@@ -60,6 +61,9 @@ public:
 	void addToDeck(Card card);
 	Card dealCard();
 	void printDeck();
+
+	void setVCard(Card card);
+	Card getVCard();
 
 	Card lookAtTopCard();
 	Card removeTopCard();

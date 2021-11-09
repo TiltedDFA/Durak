@@ -61,6 +61,15 @@ cardSuit Deck::getMasterSuit()
 {
 	return masterSuit;
 }
+
+void Deck::setVCard(Card card)
+{
+	visibleCard = card;
+}
+Card Deck::getVCard()
+{
+	return visibleCard;
+}
 Card Deck::lookAtTopCard()
 {
 	Card topCard;
@@ -172,10 +181,6 @@ int Table::getMovesMadeThisRound()
 void Table::resetMovesMade()
 {
 	movesThisTurnAtk = 0;
-}
-void Table::displayCardsOnTable()
-{
-	
 }
 Card Table::getCardFromTableDef(int index)
 {
