@@ -83,6 +83,24 @@ Card Deck::removeTopCard()
 	_Deck.erase(_Deck.begin() + (_Deck.size() - 1));
 	return topCard;
 }
+void Deck::displayDeck(Texture2D flippedCard, Texture2D backOfCard)
+{
+	//display the flipped card first 
+	// void DrawTextureEx(Texture2D texture, Vector2 position, float rotation, float scale, Color tint);
+	// {206, 503} is the co ords for the top right of the place to draw the flippedCard
+	//153, 470 is the co ords for the deck pos
+	Vector2 flippedCardPos = { 376, 503 };
+	/*
+	Card topDeckCard = _Deck[(_Deck.size() - 1)];
+	Card secondFromTopCard = _Deck[(_Deck.size() - 2)];
+	*/
+	//Rotating a card seems to also rotate the point from which it's drawn 
+	DrawTextureEx(flippedCard, flippedCardPos, 90, 1, WHITE);
+	DrawTexture(backOfCard, 153, 470, WHITE);
+	DrawTexture(backOfCard, 153, 470, WHITE);
+	
+
+}
 //-------------------------------------------------------------------------------------------------------------
 
 Player::Player() {}

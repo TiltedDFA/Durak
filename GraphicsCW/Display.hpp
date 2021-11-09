@@ -117,6 +117,7 @@ namespace c3 // c3 namespace function set up or do something update something
 		for (int i = 0; i < 6; ++i)
 		{
 			Card card = deck.removeTopCard();
+			card.canBeTouched = false;
 			player[0].addToPlayerHand(i, card);
 			//table.setCardPosAtk(i, { (x + 125 * i),y });
 			player[0].setCardPos({ (x + 125 * i),y }, i);

@@ -87,4 +87,10 @@ Have worked on the table design to accomdate for the deck and for the 'beeta' pi
 While on the bus, will add reversed card to deck function.
 ->15:30 
 While writing a few functions for the deck, I have realised that displaying the deck will have to be another system from current displaying system due to the fac of how i need to display cards.
+->20:30
+Have recentlt implimented a 'canBeTouched' system for the cards so the player cannot interact with cards in the other player's hand nor can they interact with cards in the beaten pile
+Will need to work on the graphics to add buttons that end turn among other stuff and will also need too add graphics to where the players cards are that differenciate them from the table.
+->20:58 
+Have made a basic table display system work. It will need to have the deck pile resized in the image and for the deck to represent cards
+End for today
 }

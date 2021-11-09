@@ -32,6 +32,7 @@ int main()
 	Texture2D blankCard = LoadTexture("170pixelBlank.png");
 	Texture2D TitleScreen = LoadTexture("TitleScreen.png");
 	Texture2D  _Table = LoadTexture("TableCardHole.png");
+	Texture2D progTable = LoadTexture("TableCardInProg.png");
 	Texture2D CardBacking = LoadTexture("170CardBacking.png");
 	//--------------------------------------------------------------------------------------
 	// Main game loop
@@ -44,9 +45,10 @@ int main()
 		bool hC = false;
 		if (prePlayScreen)
 		{
-			BeginDrawing();
+			BeginDrawing();			
 			ClearBackground(RAYWHITE);
-			DrawTexture(_Table, 0, 0, WHITE);
+			DrawTexture(progTable, 0, 0, WHITE);
+			deck.displayDeck(blankCard, CardBacking);
 			c1::cTable(cardsVisible, CardBacking, blankCard, amtOfCardsOnScreen);
 			DrawCircleV(GetMousePosition(), 10, WHITE);
 			//c1::rectangles();
@@ -60,36 +62,39 @@ int main()
 
 					Rectangle card;
 					card = { cardsVisible[i]->xPos, cardsVisible[i]->yPos, 120, 170 };
-					
-					if (!hC)
+					if (cardsVisible[i]->canBeTouched)
 					{
-						if (CheckCollisionPointRec(mP, card) && IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
-						{			
-							hC = true;
-							cardsVisible[i]->faceUp = !cardsVisible[i]->faceUp; // this function changes the state of the card in the cardsVisible pointer vector
-						}
-						if (CheckCollisionPointRec(mP, card) && IsMouseButtonDown(MOUSE_BUTTON_LEFT))
-						{				
-							hC = true;							
-							cardsVisible[i]->held = true;
-							Vector2 currentPos = { cardsVisible[i]->xPos, cardsVisible[i]->yPos };
-							Vector2 mD = GetMouseDelta();
-							cardsVisible[i]->xPos = (cardsVisible[i]->xPos + mD.x);
-							cardsVisible[i]->yPos = (cardsVisible[i]->yPos + mD.y);
-						}
-						if (!CheckCollisionPointRec(mP, card))
-						{								
-							cardsVisible[i]->held = false;
-						}
-						
-					}
-					if (!cardsVisible[i]->held)
-					{
-						if (c2::placeHBC(50, *cardsVisible[i]))
+						if (!hC)
 						{
-							Vector2 boxPos = c2::BoxColFinder(*cardsVisible[i]);
-							cardsVisible[i]->xPos = boxPos.x;
-							cardsVisible[i]->yPos = boxPos.y;
+
+							if (CheckCollisionPointRec(mP, card) && IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
+							{
+								hC = true;
+								cardsVisible[i]->faceUp = !cardsVisible[i]->faceUp; // this function changes the state of the card in the cardsVisible pointer vector
+							}
+							if (CheckCollisionPointRec(mP, card) && IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+							{
+								hC = true;
+								cardsVisible[i]->held = true;
+								Vector2 currentPos = { cardsVisible[i]->xPos, cardsVisible[i]->yPos };
+								Vector2 mD = GetMouseDelta();
+								cardsVisible[i]->xPos = (cardsVisible[i]->xPos + mD.x);
+								cardsVisible[i]->yPos = (cardsVisible[i]->yPos + mD.y);
+							}
+							if (!CheckCollisionPointRec(mP, card))
+							{
+								cardsVisible[i]->held = false;
+							}
+
+						}
+						if (!cardsVisible[i]->held)
+						{
+							if (c2::placeHBC(50, *cardsVisible[i]))
+							{
+								Vector2 boxPos = c2::BoxColFinder(*cardsVisible[i]);
+								cardsVisible[i]->xPos = boxPos.x;
+								cardsVisible[i]->yPos = boxPos.y;
+							}
 						}
 					}
 				}

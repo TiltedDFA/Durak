@@ -42,6 +42,7 @@ public:
 	float yPos{};
 	bool faceUp = false;
 	bool held = false;
+	bool canBeTouched = true;
 
 	cardSuit Suit{};
 	cardValue Value{};
@@ -61,6 +62,8 @@ public:
 	void addToDeck(Card card);
 	Card dealCard();
 	void printDeck();
+
+	void displayDeck(Texture2D flippedCard, Texture2D backOfCard);
 
 	void setVCard(Card card);
 	Card getVCard();
