@@ -47,13 +47,14 @@ public:
 	cardSuit Suit{};
 	cardValue Value{};
 	std::string Name{};
+	std::string suitToString(cardSuit);
 };
 //-------------------------------------------------------------------------------------------------------------
 class Deck
 {
 private:
 	std::vector<Card> _Deck;
-	Card visibleCard;
+	inline static Card visibleCard;
 	inline static cardSuit masterSuit;
 public:
 	Deck();

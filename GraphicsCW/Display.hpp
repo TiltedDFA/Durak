@@ -42,7 +42,7 @@ namespace c1 //C1 namespace functions draw
 		}
 	}
 }
-namespace c2
+namespace c2 // C2 functions preform check or do something
 {
 	bool placeHBC(int percentCertanty, Card card)
 	{
@@ -93,7 +93,6 @@ namespace c2
 		}
 		return { 0,0 };
 	}	
-	
 	void addCardToPlay(std::vector<Card*> &cardPointers, Card* ptrToCard)
 	{
 		cardPointers.push_back(ptrToCard);
@@ -106,7 +105,7 @@ namespace c2
 			cardPointers.erase(result);
 		}		
 	}
-	
+	//Write a button function here
 }
 namespace c3 // c3 namespace function set up or do something update something
 {
@@ -135,6 +134,7 @@ namespace c3 // c3 namespace function set up or do something update something
 			Card* cPtr = player[1].getCardPtr(i);
 			cardsVisible.push_back(cPtr);
 		}
+		deck.setVCard(deck.removeTopCard());
 	}
 
 }

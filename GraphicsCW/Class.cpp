@@ -2,6 +2,7 @@
 #include <array>
 #include <algorithm>
 #include <random>
+#include <string>
 
 void swap(Card* var1, Card* var2)
 {
@@ -13,9 +14,27 @@ void swap(Card* var1, Card* var2)
 
 Card::Card() { Suit = cardSuit::CLUBS; Value = cardValue::TWO; xPos = 0; yPos = 0; }
 Card::~Card(){}
+std::string Card::suitToString(cardSuit suit)
+{
+	switch (suit)
+	{
+	case cardSuit::SPADES:
+		return "Spades";		
+	case cardSuit::HEARTS:
+		return "Hearts";		
+	case cardSuit::DIAMONDS:
+		return "Diamonds";
+	case cardSuit::CLUBS:
+		return "Clubs";
+	default:
+		break;
+	}
+	return "Error";
+}
 
 //-------------------------------------------------------------------------------------------------------------
 Deck::~Deck() {}
+
 Deck::Deck()
 {
 	std::array<std::string, 4> suit = { "Spades", "Hearts", "Diamonds", "Clubs" };
@@ -34,11 +53,11 @@ Deck::Deck()
 		}
 	}
 
-	masterSuit = (cardSuit)(rand() % 5 + 1);
-
-	auto rng = std::default_random_engine{};
-
-	std::shuffle(_Deck.begin(), _Deck.begin(), rng);
+	masterSuit = (cardSuit)(rand() % 5 + 1);	
+	
+	auto rd = std::random_device{};
+	auto rng = std::default_random_engine{ rd() };
+	std::shuffle(std::begin(_Deck), std::end(_Deck), rng);
 }
 void Deck::addToDeck(Card card)
 {
@@ -90,17 +109,21 @@ void Deck::displayDeck(Texture2D flippedCard, Texture2D backOfCard)
 	// {206, 503} is the co ords for the top right of the place to draw the flippedCard
 	//153, 470 is the co ords for the deck pos
 	Vector2 flippedCardPos = { 376, 503 };
+	Card card;
 	/*
 	Card topDeckCard = _Deck[(_Deck.size() - 1)];
 	Card secondFromTopCard = _Deck[(_Deck.size() - 2)];
 	*/
 	//Rotating a card seems to also rotate the point from which it's drawn 
+	std::string cValStr = std::to_string((int)visibleCard.Value);
+	std::string cSuitStr = card.suitToString(visibleCard.Suit);
 	DrawTextureEx(flippedCard, flippedCardPos, 90, 1, WHITE);
+	DrawText(cValStr.c_str(), ((int)flippedCardPos.x - 110), (int)flippedCardPos.y, 40, BLACK);
+	DrawText(cSuitStr.c_str(), ((int)flippedCardPos.x - 110), ((int)flippedCardPos.y+ 30), 40, BLACK);
 	DrawTexture(backOfCard, 153, 470, WHITE);
 	DrawTexture(backOfCard, 153, 470, WHITE);
-	
-
 }
+//878 983
 //-------------------------------------------------------------------------------------------------------------
 
 Player::Player() {}
@@ -218,6 +241,7 @@ Card* Table::getPtrCardDef(int index)
 	Card* cPtr = &cardsOnTable[index][1];
 	return cPtr;
 }
+
 
 //-------------------------------------------------------------------------------------------------------------
 
