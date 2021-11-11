@@ -102,12 +102,38 @@ Card Deck::removeTopCard()
 	_Deck.erase(_Deck.begin() + (_Deck.size() - 1));
 	return topCard;
 }
+void Deck::setUpTwoDeckCards()
+{
+	if (nextTwoDeckCards[0].xPos != 153)
+	{
+		nextTwoDeckCards[0] = removeTopCard();
+		nextTwoDeckCards[0].xPos = deckPos.x;
+		nextTwoDeckCards[0].yPos = deckPos.y;
+	}
+	if (nextTwoDeckCards[1].xPos != 153)
+	{
+		nextTwoDeckCards[1] = removeTopCard();
+		nextTwoDeckCards[1].xPos = deckPos.x;
+		nextTwoDeckCards[1].yPos = deckPos.y;
+	}
+}
+Card Deck::getCardFromTwoCards(int index)
+{
+	return nextTwoDeckCards[index];
+}
+Card Deck::removeCardFromTwoCards(int index)
+{	
+	Card reset;
+	Card temp = nextTwoDeckCards[index];
+	nextTwoDeckCards[index] = reset;
+	return temp;
+}
 void Deck::displayDeck(Texture2D flippedCard, Texture2D backOfCard)
 {
 	//display the flipped card first 
 	// void DrawTextureEx(Texture2D texture, Vector2 position, float rotation, float scale, Color tint);
 	// {206, 503} is the co ords for the top right of the place to draw the flippedCard
-	//153, 470 is the co ords for the deck pos
+	// is the co ords for the deck pos
 	Vector2 flippedCardPos = { 376, 503 };
 	Card card;
 	/*

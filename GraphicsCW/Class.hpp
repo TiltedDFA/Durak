@@ -53,7 +53,9 @@ public:
 class Deck
 {
 private:
+	Vector2 deckPos = { 153, 470 };
 	std::vector<Card> _Deck;
+	std::array<Card, 2>nextTwoDeckCards;
 	inline static Card visibleCard;
 	inline static cardSuit masterSuit;
 public:
@@ -63,6 +65,10 @@ public:
 	void addToDeck(Card card);
 	Card dealCard();
 	void printDeck();
+
+	void setUpTwoDeckCards();
+	Card getCardFromTwoCards(int index);
+	Card removeCardFromTwoCards(int index);
 
 	void displayDeck(Texture2D flippedCard, Texture2D backOfCard);
 
