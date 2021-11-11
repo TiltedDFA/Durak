@@ -1,5 +1,5 @@
 #include "GameLogic.hpp"
-
+#include "Display.hpp"
 int main()
 {
 	// Variables
@@ -57,7 +57,7 @@ int main()
 				{
 
 					Rectangle card;
-					card = { cardsVisible[i]->xPos, cardsVisible[i]->yPos, 120, 170 };
+					card = { cardsVisible[i]->Pos.x, cardsVisible[i]->Pos.y, 120, 170 };
 					if (cardsVisible[i]->canBeTouched)
 					{
 						if (!hC)
@@ -72,10 +72,10 @@ int main()
 							{
 								hC = true;
 								cardsVisible[i]->held = true;
-								Vector2 currentPos = { cardsVisible[i]->xPos, cardsVisible[i]->yPos };
+								Vector2 currentPos = { cardsVisible[i]->Pos.x, cardsVisible[i]->Pos.y };
 								Vector2 mD = GetMouseDelta();
-								cardsVisible[i]->xPos = (cardsVisible[i]->xPos + mD.x);
-								cardsVisible[i]->yPos = (cardsVisible[i]->yPos + mD.y);
+								cardsVisible[i]->Pos.x = (cardsVisible[i]->Pos.x + mD.x);
+								cardsVisible[i]->Pos.y = (cardsVisible[i]->Pos.y + mD.y);
 							}
 							if (!CheckCollisionPointRec(mP, card))
 							{
@@ -88,9 +88,10 @@ int main()
 							if (c2::placeHBC(50, *cardsVisible[i]))
 							{
 								Vector2 boxPos = c2::BoxColFinder(*cardsVisible[i]);
-								cardsVisible[i]->xPos = boxPos.x;
-								cardsVisible[i]->yPos = boxPos.y;
+								cardsVisible[i]->Pos.x = boxPos.x;
+								cardsVisible[i]->Pos.y = boxPos.y;
 							}
+							if ()
 						}
 					}
 				}

@@ -107,4 +107,9 @@ Fixed some issues surrounding the deck displaying system and also added a card p
 Game management system ideas : The main loop will control the things that interact with the game functions which will be written in a different file.
 There will need to be a file or a seperate thing that will take the user inputs and convert them into something the program will process. This will be
 a priority for another time. Currently will focus on a rounds system.
+->17:43
+Working on the weird redefineing error.
+HIT BOX CHECKER FOR THE CPHB
+->19:38
+
 }

@@ -42,8 +42,7 @@ public:
 	Card();
 	~Card();
 
-	float xPos{};
-	float yPos{};
+	Vector2 Pos;
 	bool faceUp = false;
 	bool held = false;
 	bool canBeTouched = true;
@@ -89,7 +88,7 @@ class Player
 private:
 	std::string PlayerName;
 	std::array<Card, 20> PlayerHand;
-	bool isPlayerTurn = false;
+	bool isPlayerTurnAtk = false;
 public:
 	Player();
 	~Player();
@@ -138,5 +137,21 @@ public:
 
 	void addToPile(Card card);
 };
+class GameChecking
+{
+public:
+	GameChecking();
+	~GameChecking();
 
+private:
+
+};
+
+GameChecking::GameChecking()
+{
+}
+
+GameChecking::~GameChecking()
+{
+}
 #endif // !CLASS_HPP

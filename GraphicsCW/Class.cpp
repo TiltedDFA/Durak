@@ -8,7 +8,7 @@ void swap(Card* var1, Card* var2)
 }
 //-------------------------------------------------------------------------------------------------------------
 
-Card::Card() { Suit = cardSuit::CLUBS; Value = cardValue::TWO; xPos = 0; yPos = 0; }
+Card::Card() { Suit = cardSuit::CLUBS; Value = cardValue::TWO; Pos = { 0, 0 }; }
 Card::~Card(){}
 std::string Card::suitToString(cardSuit suit)
 {
@@ -61,7 +61,7 @@ void Deck::addToDeck(Card card)
 }
 Card Deck::dealCard()
 {	
-	auto holder = _Deck[0];
+	auto holder = _Deck[0];	
 	_Deck.erase(_Deck.begin());
 	return holder;
 }
@@ -93,19 +93,19 @@ Card Deck::removeTopCard()
 }
 void Deck::setUpTwoDeckCards()
 {
-	if (nextTwoDeckCards[0].xPos != 153)
+	if (nextTwoDeckCards[0].Pos.x != 153)
 	{
 		nextTwoDeckCards[0] = removeTopCard();
 		nextTwoDeckCards[0].canBeTouched = false;
-		nextTwoDeckCards[0].xPos = deckPos.x;
-		nextTwoDeckCards[0].yPos = deckPos.y;
+		nextTwoDeckCards[0].Pos.x = deckPos.x;
+		nextTwoDeckCards[0].Pos.y = deckPos.y;
 	}
-	if (nextTwoDeckCards[1].xPos != 153)
+	if (nextTwoDeckCards[1].Pos.x != 153)
 	{
 		nextTwoDeckCards[1] = removeTopCard();
 		nextTwoDeckCards[1].canBeTouched = false;
-		nextTwoDeckCards[1].xPos = deckPos.x;
-		nextTwoDeckCards[1].yPos = deckPos.y;
+		nextTwoDeckCards[1].Pos.x = deckPos.x;
+		nextTwoDeckCards[1].Pos.y = deckPos.y;
 	}
 }
 Card Deck::getCardFromTwoCards(int index)
@@ -137,8 +137,8 @@ void Deck::displayDeck(Texture2D flippedCard, Texture2D backOfCard)
 	DrawTextureEx(flippedCard, flippedCardPos, 90, 1, WHITE);
 	DrawText(cValStr.c_str(), ((int)flippedCardPos.x - 110), (int)flippedCardPos.y, 40, BLACK);
 	DrawText(cSuitStr.c_str(), ((int)flippedCardPos.x - 110), ((int)flippedCardPos.y+ 30), 40, BLACK);
-	DrawTexture(backOfCard, (int)nextTwoDeckCards[0].xPos, (int)nextTwoDeckCards[0].yPos, WHITE);
-	DrawTexture(backOfCard, (int)nextTwoDeckCards[1].xPos, (int)nextTwoDeckCards[1].yPos, WHITE);
+	DrawTexture(backOfCard, (int)nextTwoDeckCards[0].Pos.x, (int)nextTwoDeckCards[0].Pos.y, WHITE);
+	DrawTexture(backOfCard, (int)nextTwoDeckCards[1].Pos.x, (int)nextTwoDeckCards[1].Pos.y, WHITE);
 }
 //878 983
 //-------------------------------------------------------------------------------------------------------------
@@ -183,16 +183,22 @@ void Player::clearIndexHand(int index)
 }
 void Player::setCardPos(Vector2 pos, int index)
 {
-	PlayerHand[index].xPos = pos.x;
-	PlayerHand[index].yPos = pos.y;
+	PlayerHand[index].Pos.x = pos.x;
+	PlayerHand[index].Pos.y = pos.y;
 }
 Card* Player::getCardPtr(int index)
 {
 	Card* ptr = &PlayerHand[index];
 	return ptr;
 }
-bool getPTurn();
-void setPTurn(bool bol);
+bool Player::getPTurn()
+{
+	return isPlayerTurnAtk;
+}
+void Player::setPTurn(bool bol)
+{
+	isPlayerTurnAtk = bol;
+}
 void Player::sortHand()
 {	
 	int i, j;

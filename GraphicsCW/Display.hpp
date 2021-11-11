@@ -11,11 +11,11 @@ namespace c1 //C1 namespace functions draw
 		{
 			if (cardsVisible[i]->faceUp)
 			{
-				DrawTexture(cBlank, (int)cardsVisible[i]->xPos, (int)cardsVisible[i]->yPos, WHITE);
+				DrawTexture(cBlank, (int)cardsVisible[i]->Pos.x, (int)cardsVisible[i]->Pos.y, WHITE);
 			}
 			else if (!cardsVisible[i]->faceUp)
 			{
-				DrawTexture(cBack, (int)cardsVisible[i]->xPos, (int)cardsVisible[i]->yPos, WHITE);
+				DrawTexture(cBack, (int)cardsVisible[i]->Pos.x, (int)cardsVisible[i]->Pos.y, WHITE);
 			}
 		}
 	}
@@ -46,14 +46,14 @@ namespace c2 // C2 functions preform check or do something
 		pos[3] = { 990.0, 457.0 };
 		pos[4] = { 1143.0,457.0 };
 		pos[5] = { 1300.0,457.0 };
-		Rectangle rCard = {card.xPos, card.yPos, 120, 170};
+		Rectangle rCard = {card.Pos.x, card.Pos.y, 120, 170};
 		for (int i = 0; i < 6; ++i)
 		{
 			Rectangle placeHB = { pos[i].x, pos[i].y, 120, 170 };			
 			if (CheckCollisionRecs(rCard, placeHB))
 			{
-				auto xOSet = placeHB.width -  sqrt(((card.xPos - placeHB.x) * (card.xPos - placeHB.x)));
-				auto yOSet = placeHB.height - sqrt(((card.yPos - placeHB.y) * (card.yPos - placeHB.y)));
+				auto xOSet = placeHB.width -  sqrt(((card.Pos.x - placeHB.x) * (card.Pos.x - placeHB.x)));
+				auto yOSet = placeHB.height - sqrt(((card.Pos.y - placeHB.y) * (card.Pos.y - placeHB.y)));
 				auto oSetArea = xOSet * yOSet;
 				auto area = placeHB.width * placeHB.height;
 				auto percentOverlap = ((oSetArea / area) * 100);
@@ -74,7 +74,7 @@ namespace c2 // C2 functions preform check or do something
 		pos[3] = { 990.0, 457.0 };
 		pos[4] = { 1143.0,457.0 };
 		pos[5] = { 1300.0,457.0 };
-		Rectangle rCard = { card.xPos, card.yPos, 120, 170 };
+		Rectangle rCard = { card.Pos.x, card.Pos.y, 120, 170 };
 
 		for (int i = 0; i < 6; ++i)	
 		{
@@ -129,6 +129,5 @@ namespace c3 // c3 namespace function set up or do something update something
 		}
 		deck.setVCard(deck.removeTopCard());
 	}
-
 }
 #endif // !DISPLAY_HPP
