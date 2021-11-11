@@ -1,9 +1,4 @@
-#include "raylib.h"
-#include "raymath.h"
-#include "Display.hpp"
-#include <iostream>
-#include "Class.hpp"
-#include <vector>
+#include "GameLogic.hpp"
 
 int main()
 {

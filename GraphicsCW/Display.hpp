@@ -1,15 +1,8 @@
 #pragma once
 #ifndef DISPLAY_HPP
 #define DISPLAY_HPP
-#include "raylib.h"
 #include "Class.hpp"
-#include <string>
-#include <vector>
-#include <cmath>
-#include <algorithm>
-void DisplayMenu()
-{
-}
+
 namespace c1 //C1 namespace functions draw
 {
 	void cTable(std::vector<Card*>cardsVisible, Texture2D& cBack, Texture2D& cBlank, int& cardsOnScreen) // (Xpos, Ypos, AmountOfCards, Cardtext)

@@ -1,11 +1,15 @@
 #pragma once
 #ifndef CLASS_HPP
 #define CLASS_HPP
-
-#include <iostream>
+#include <algorithm>
 #include <array>
+#include <cmath>
+#include <iostream>
+#include <random>
+#include <string>
 #include <vector>
 #include "raylib.h"
+#include "raymath.h"
 
 enum class cardSuit
 {

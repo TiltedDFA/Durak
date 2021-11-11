@@ -1,8 +1,4 @@
 #include "Class.hpp"
-#include <array>
-#include <algorithm>
-#include <random>
-#include <string>
 
 void swap(Card* var1, Card* var2)
 {
