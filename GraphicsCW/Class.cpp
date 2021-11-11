@@ -69,13 +69,6 @@ Card Deck::dealCard()
 	_Deck.erase(_Deck.begin());
 	return holder;
 }
-void Deck::printDeck()
-{
-	for (auto const  i : _Deck)
-	{		
-		std::cout << i.Name << std::endl;
-	}
-}
 cardSuit Deck::getMasterSuit()
 {
 	return masterSuit;
@@ -107,12 +100,14 @@ void Deck::setUpTwoDeckCards()
 	if (nextTwoDeckCards[0].xPos != 153)
 	{
 		nextTwoDeckCards[0] = removeTopCard();
+		nextTwoDeckCards[0].canBeTouched = false;
 		nextTwoDeckCards[0].xPos = deckPos.x;
 		nextTwoDeckCards[0].yPos = deckPos.y;
 	}
 	if (nextTwoDeckCards[1].xPos != 153)
 	{
 		nextTwoDeckCards[1] = removeTopCard();
+		nextTwoDeckCards[1].canBeTouched = false;
 		nextTwoDeckCards[1].xPos = deckPos.x;
 		nextTwoDeckCards[1].yPos = deckPos.y;
 	}
@@ -146,8 +141,8 @@ void Deck::displayDeck(Texture2D flippedCard, Texture2D backOfCard)
 	DrawTextureEx(flippedCard, flippedCardPos, 90, 1, WHITE);
 	DrawText(cValStr.c_str(), ((int)flippedCardPos.x - 110), (int)flippedCardPos.y, 40, BLACK);
 	DrawText(cSuitStr.c_str(), ((int)flippedCardPos.x - 110), ((int)flippedCardPos.y+ 30), 40, BLACK);
-	DrawTexture(backOfCard, 153, 470, WHITE);
-	DrawTexture(backOfCard, 153, 470, WHITE);
+	DrawTexture(backOfCard, (int)nextTwoDeckCards[0].xPos, (int)nextTwoDeckCards[0].yPos, WHITE);
+	DrawTexture(backOfCard, (int)nextTwoDeckCards[1].xPos, (int)nextTwoDeckCards[1].yPos, WHITE);
 }
 //878 983
 //-------------------------------------------------------------------------------------------------------------
@@ -200,6 +195,8 @@ Card* Player::getCardPtr(int index)
 	Card* ptr = &PlayerHand[index];
 	return ptr;
 }
+bool getPTurn();
+void setPTurn(bool bol);
 void Player::sortHand()
 {	
 	int i, j;
@@ -267,8 +264,13 @@ Card* Table::getPtrCardDef(int index)
 	Card* cPtr = &cardsOnTable[index][1];
 	return cPtr;
 }
-
-
 //-------------------------------------------------------------------------------------------------------------
+DiscardedCards::DiscardedCards() {};
+DiscardedCards::~DiscardedCards() {};
 
+void DiscardedCards::addToPile(Card card)
+{
+	dCards.emplace_back(card);
+}
+//-------------------------------------------------------------------------------------------------------------
 //worksassasas

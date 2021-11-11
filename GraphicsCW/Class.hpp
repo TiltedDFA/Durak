@@ -63,8 +63,7 @@ public:
 	~Deck();
 
 	void addToDeck(Card card);
-	Card dealCard();
-	void printDeck();
+	Card dealCard();	
 
 	void setUpTwoDeckCards();
 	Card getCardFromTwoCards(int index);
@@ -86,11 +85,14 @@ class Player
 private:
 	std::string PlayerName;
 	std::array<Card, 20> PlayerHand;
+	bool isPlayerTurn = false;
 public:
 	Player();
 	~Player();
 	Card getCardFromPH(int index);
 
+	bool getPTurn();
+	void setPTurn(bool bol);
 	void addNeededCardsToPlayerHand(Deck deck);
 	void addToPlayerHand(int index, Card card);
 	void clearIndexHand(int index);	
@@ -121,6 +123,16 @@ public:
 	void resetMovesMade();
 	Table();
 	~Table();
+};
+class DiscardedCards
+{
+private:
+	std::vector<Card>dCards;
+public:
+	DiscardedCards();
+	~DiscardedCards();
+
+	void addToPile(Card card);
 };
 
 #endif // !CLASS_HPP

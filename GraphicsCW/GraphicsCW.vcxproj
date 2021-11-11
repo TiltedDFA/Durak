@@ -171,6 +171,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Class.cpp" />
+    <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Play.cpp" />
   </ItemGroup>
@@ -182,6 +183,7 @@
   <ItemGroup>
     <ClInclude Include="Class.hpp" />
     <ClInclude Include="Display.hpp" />
+    <ClInclude Include="GameLogic.hpp" />
     <ClInclude Include="Play.hpp" />
   </ItemGroup>
   <ItemGroup>
