@@ -104,6 +104,7 @@ Working on a making the deck display system work from the actual cards.
 ->14:36
 Fixed some issues surrounding the deck displaying system and also added a card pile for the discarded cards. I will now work on game calculations and functionalily aswell as rounds.
 
+
 Game management system ideas : The main loop will control the things that interact with the game functions which will be written in a different file.
 There will need to be a file or a seperate thing that will take the user inputs and convert them into something the program will process. This will be
 a priority for another time. Currently will focus on a rounds system.
@@ -112,4 +113,13 @@ Working on the weird redefineing error.
 HIT BOX CHECKER FOR THE CPHB
 ->19:38
 
+}
+12/11/2021
+{
+->22:36
+wrote quite a lot of code so far, though it's mainly been just extra functions that the MainGame will use
+I've found a way around the 
+LOOK INTO THIS std::vector<std::pair<std::vector<card> *, int>>
+
+ok decided to rewrite the entire program based around card pointers
 }

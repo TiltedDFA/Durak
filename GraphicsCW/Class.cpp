@@ -43,7 +43,7 @@ Deck::Deck()
 		}
 	}
 
-	masterSuit = (cardSuit)(rand() % 5 + 1);	
+	masterSuit = (cardSuit)(rand() % 4 + 1);	
 	
 	auto rd = std::random_device{};
 	auto rng = std::default_random_engine{ rd() };
@@ -154,7 +154,7 @@ void Player::setPlayerName(std::string input)
 }
 void Player::addToPlayerHand(int index, Card card)
 {
-	PlayerHand[index] = card;
+	PlayerHand.push_back(card);
 }
 void Player::addNeededCardsToPlayerHand(Deck deck)
 {
@@ -165,33 +165,31 @@ void Player::addNeededCardsToPlayerHand(Deck deck)
 			std::size_t amtOfCNeeded = (6 - PlayerHand.size());
 			for (std::size_t i = 0; i < amtOfCNeeded; ++i)
 			{
-				PlayerHand[i] = deck.removeTopCard();
+				PlayerHand.push_back(deck.removeTopCard());
 			}
 		}
 	}
 }
-void Player::clearIndexHand(int index)
-{
-	Card card;
-	PlayerHand[index] = card;
+void Player::clearHandCard(Card card)
+{	
+	auto index = 0;
+	for (int i = 0; i < PlayerHand.size(); ++i)
+	{
+		if (PlayerHand[i].Value == card.Value && PlayerHand[i].Suit == card.Suit)
+		{
+			index = i;
+		}
+	}
+	PlayerHand.erase((PlayerHand.begin() + index));
 }
 void Player::setCardPos(Vector2 pos, int index)
 {
-	PlayerHand[index].Pos.x = pos.x;
-	PlayerHand[index].Pos.y = pos.y;
+	PlayerHand[index].Pos = pos;	
 }
 Card* Player::getCardPtr(int index)
 {
 	Card* ptr = &PlayerHand[index];
 	return ptr;
-}
-bool Player::getPTurn()
-{
-	return isPlayerTurnAtk;
-}
-void Player::setPTurn(bool bol)
-{
-	isPlayerTurnAtk = bol;
 }
 void Player::sortHand()
 {	
@@ -206,6 +204,10 @@ void Player::sortHand()
 			}
 		}
 	}
+}
+std::size_t Player::getHandSize()
+{
+	return PlayerHand.size();
 }
 //-------------------------------------------------------------------------------------------------------------
 
@@ -293,6 +295,14 @@ void MainGame::incramentRound()
 void MainGame::setRound(const int num)
 {
 	_round = num;
+}
+void MainGame::switchAtkPlr()
+{
+	plrAtk = (plrAtk + 1) % 2;
+}
+void MainGame::setPlrAtk(int player)
+{
+	plrAtk = player;
 }
 //-------------------------------------------------------------------------------------------------------------
 //worksassasas

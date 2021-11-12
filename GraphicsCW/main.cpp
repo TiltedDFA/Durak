@@ -17,6 +17,7 @@ int main()
 	int amtOfCardsOnScreen = 0;
 	Deck deck;
 	Table table;
+	MainGame mainGame;
 	std::array<Player, 2>players;
 	std::vector<Card*>cardsVisible;
 	//---------------------------------------------------------------------------------------
@@ -35,6 +36,7 @@ int main()
 	//Code something that moves the cards when the mouse moves them. The co-ordinates of the cards will be the mouse co-ordinates + the offset of where the mouse clicks the card
 	c3::setPosCard(cardsVisible, players, deck);
 	deck.setUpTwoDeckCards();
+	//mainGame.setPlrAtk(c2::findStartingPlayer(players, deck)); This is facing a vector out of error error
 	while (!WindowShouldClose())
 	{
 		mP = GetMousePosition();
@@ -55,7 +57,7 @@ int main()
 					{
 						Rectangle card;
 						card = { cardsVisible[i]->Pos.x, cardsVisible[i]->Pos.y, 120, 170 };
-						auto C = *cardsVisible[i];
+						Card _card = *cardsVisible.at(i);
 						if (!hC)
 						{
 							if (CheckCollisionPointRec(mP, card) && IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
@@ -76,9 +78,10 @@ int main()
 								cardsVisible[i]->held = false;
 							}
 						}
-						if (!C.held)
+						if (!_card.held)
 						{
-							int overlap = c2::placeHBC(50, *cardsVisible[i]);
+							
+							int overlap = c2::placeHBC(50, _card);
 							if (overlap >= 50)
 							{
 								if (overlap == 100)
@@ -86,7 +89,7 @@ int main()
 									//This works as intended
 									//Use to shift from hand to tables assuming that the conditions are met
 								}
-								Vector2 boxPos = c2::BoxColFinder(*cardsVisible[i]);
+								Vector2 boxPos = c2::BoxColFinder((*cardsVisible[i]));
 								cardsVisible[i]->Pos = boxPos;								
 							}							
 						}

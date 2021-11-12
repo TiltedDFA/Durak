@@ -108,6 +108,27 @@ namespace c2 // C2 functions preform check or do something
 	{
 		cardPointers.push_back(ptrToCard);
 	}
+	int findStartingPlayer(std::array<Player, 2>players, Deck deck)
+	{
+		cardValue lowestVal[2] = { cardValue::ACE, cardValue::ACE };
+		auto mS = deck.getMasterSuit();
+		for (int i = 0; i < 2; ++i)
+		{
+			auto hSize = players[i].getHandSize();
+			for (int j = 0; j < hSize; ++i)
+			{
+				if (players[i].getCardFromPH(j).Suit == mS && players[i].getCardFromPH(j).Value < lowestVal[i])
+				{
+					lowestVal[i] = players[i].getCardFromPH(j).Value;
+				}
+			}
+		}
+		if (lowestVal[0] > lowestVal[1])
+		{
+			return 1;
+		}
+		else { return 0; }
+	}
 	void removeCardFromPlay(std::vector<Card*>& cardPointers, Card* cardToAdd)
 	{
 		auto result = std::find(cardPointers.begin(), cardPointers.end(), cardToAdd); // If element matches the search, returns an iterator to the element. If no elements match then it returns an iterator to last iteam of the list
@@ -130,9 +151,7 @@ namespace c3 // c3 namespace function set up or do something update something
 			card.canBeTouched = false;
 			player[0].addToPlayerHand(i, card);
 			//table.setCardPosAtk(i, { (x + 125 * i),y });
-			player[0].setCardPos({ (x + 125 * i),y }, i);
-			Card* cPtr = player[0].getCardPtr(i);
-			cardsVisible.push_back(cPtr);
+			player[0].setCardPos({ (x + 125 * i),y }, i);			
 		}
 		y = 840;
 
@@ -141,9 +160,15 @@ namespace c3 // c3 namespace function set up or do something update something
 			Card card = deck.removeTopCard();			
 			player[1].addToPlayerHand(i, card);
 			//table.setCardPosDef((i), { (x + 125 * i),y });
-			player[1].setCardPos({ (x + 125 * i),y }, i);
-			Card* cPtr = player[1].getCardPtr(i);
-			cardsVisible.push_back(cPtr);
+			player[1].setCardPos({ (x + 125 * i),y }, i);			
+		}
+		for (int i = 0; i < 2; ++i)
+		{
+			for (int j = 0; j < player[i].getHandSize(); ++j)
+			{
+				Card* cPtr = player[i].getCardPtr(j);
+				cardsVisible.push_back(cPtr);
+			}
 		}
 		deck.setVCard(deck.removeTopCard());
 	}

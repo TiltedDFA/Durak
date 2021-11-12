@@ -90,20 +90,19 @@ class Player
 {
 private:
 	std::string PlayerName;
-	std::array<Card, 20> PlayerHand;
-	bool isPlayerTurnAtk = false;
+	std::vector<Card> PlayerHand;	
 public:
 	Player();
 	~Player();
 	Card getCardFromPH(int index);
 
-	bool getPTurn();
-	void setPTurn(bool bol);
+	
 	void addNeededCardsToPlayerHand(Deck deck);
 	void addToPlayerHand(int index, Card card);
-	void clearIndexHand(int index);	
+	void clearHandCard(Card card);
 	void setCardPos(Vector2 pos, int index);
 	Card* getCardPtr(int index);
+	std::size_t getHandSize();
 
 	void sortHand();
 	std::string getPlayerName();
@@ -145,11 +144,14 @@ public:
 class MainGame
 {
 private:
+	unsigned int plrAtk = 0;
 	unsigned int _round = 0;
 public:
 	int getRound();
+	void switchAtkPlr();
 	void incramentRound();
 	void setRound(const int num);
+	void setPlrAtk(int player);
 	MainGame();
 	~MainGame();
 };
