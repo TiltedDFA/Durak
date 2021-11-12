@@ -80,25 +80,13 @@ namespace c2 // C2 functions preform check or do something
 	bool cardBeatsCard(Card cardOne, Card cardTwo, Deck deck)
 	{
 		cardSuit mS = deck.getMasterSuit();
-		if (cardOne.Suit == mS && cardTwo.Suit != mS)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-		if (cardOne.Suit == cardTwo.Suit && cardOne.Value > cardTwo.Value)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		if (cardOne.Suit == mS && cardTwo.Suit != mS) {return true;}
+		else{return false;}
+		if (cardOne.Suit == cardTwo.Suit && cardOne.Value > cardTwo.Value) {return true;}
+		else{return false;}
 		return false;
 	}
-	Vector2 BoxColFinder(Card card)
+	Vector2 BoxColFinder(const Card card)
 	{
 		std::array<Vector2, 6>pos;
 		pos[0] = { 543.0, 457.0 };
@@ -112,10 +100,7 @@ namespace c2 // C2 functions preform check or do something
 		for (int i = 0; i < 6; ++i)	
 		{
 			Rectangle box = { pos[i].x, pos[i].y, 120, 170 };
-			if (CheckCollisionRecs(rCard, box))
-			{
-				return pos[i];
-			}
+			if (CheckCollisionRecs(rCard, box))	{return pos[i];}
 		}
 		return { 0,0 };
 	}	

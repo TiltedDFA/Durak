@@ -145,8 +145,11 @@ public:
 class MainGame
 {
 private:
+	unsigned int _round = 0;
 public:
-	
+	int getRound();
+	void incramentRound();
+	void setRound(const int num);
 	MainGame();
 	~MainGame();
 };

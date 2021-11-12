@@ -13,6 +13,7 @@ int main()
 	bool _TScreen = true;
 	bool prePlayScreen = false;
 	bool clickedOnCard = false;
+	bool hC = false;
 	int amtOfCardsOnScreen = 0;
 	Deck deck;
 	Table table;
@@ -37,7 +38,7 @@ int main()
 	while (!WindowShouldClose())
 	{
 		mP = GetMousePosition();
-		bool hC = false;
+		hC = false;
 		if (prePlayScreen)
 		{
 			BeginDrawing();			

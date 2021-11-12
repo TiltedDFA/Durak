@@ -33,7 +33,6 @@ Deck::Deck()
 	Card C;
 
 	for (int i = 0; i < value.size(); ++i)
-
 	{
 		for (int j = 0; j < suit.size(); ++j)
 		{
@@ -282,5 +281,18 @@ void DiscardedCards::addToPile(Card card)
 //-------------------------------------------------------------------------------------------------------------
 MainGame::MainGame() {}
 MainGame::~MainGame() {}
+
+int MainGame::getRound()
+{
+	return _round;
+}
+void MainGame::incramentRound()
+{
+	++_round;
+}
+void MainGame::setRound(const int num)
+{
+	_round = num;
+}
 //-------------------------------------------------------------------------------------------------------------
 //worksassasas
