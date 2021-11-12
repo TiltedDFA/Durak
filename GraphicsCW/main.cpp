@@ -47,21 +47,16 @@ int main()
 			c1::cTable(cardsVisible, CardBacking, blankCard, amtOfCardsOnScreen);
 			DrawCircleV(GetMousePosition(), 10, WHITE);
 			//c1::rectangles();
-			EndDrawing();
-			
-			//if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
-			//{
-
+			EndDrawing();	
 				for (int i = 0; i < cardsVisible.size(); ++i)
-				{
-
-					Rectangle card;
-					card = { cardsVisible[i]->Pos.x, cardsVisible[i]->Pos.y, 120, 170 };
+				{					
 					if (cardsVisible[i]->canBeTouched)
 					{
+						Rectangle card;
+						card = { cardsVisible[i]->Pos.x, cardsVisible[i]->Pos.y, 120, 170 };
+						auto C = *cardsVisible[i];
 						if (!hC)
 						{
-
 							if (CheckCollisionPointRec(mP, card) && IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
 							{
 								hC = true;
@@ -70,19 +65,17 @@ int main()
 							if (CheckCollisionPointRec(mP, card) && IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 							{
 								hC = true;
-								cardsVisible[i]->held = true;
-								Vector2 currentPos = { cardsVisible[i]->Pos.x, cardsVisible[i]->Pos.y };
+								cardsVisible[i]->held = true;								
 								Vector2 mD = GetMouseDelta();
 								cardsVisible[i]->Pos.x = (cardsVisible[i]->Pos.x + mD.x);
 								cardsVisible[i]->Pos.y = (cardsVisible[i]->Pos.y + mD.y);
 							}
-							if (!CheckCollisionPointRec(mP, card))
+							if (!CheckCollisionPointRec(mP, card) && !IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 							{
 								cardsVisible[i]->held = false;
 							}
-
 						}
-						if (!cardsVisible[i]->held)
+						if (!C.held)
 						{
 							int overlap = c2::placeHBC(50, *cardsVisible[i]);
 							if (overlap >= 50)
@@ -93,20 +86,13 @@ int main()
 									//Use to shift from hand to tables assuming that the conditions are met
 								}
 								Vector2 boxPos = c2::BoxColFinder(*cardsVisible[i]);
-								cardsVisible[i]->Pos.x = boxPos.x;
-								cardsVisible[i]->Pos.y = boxPos.y;
-							}
-							
-							//if ()
+								cardsVisible[i]->Pos = boxPos;								
+							}							
 						}
 					}
 				}
 				if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
-				{
 					hC = false;
-				}
-
-			//}
 		}
 		else if (_TScreen)
 		{

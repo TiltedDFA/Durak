@@ -1,11 +1,6 @@
 #include "Class.hpp"
 
-void swap(Card* var1, Card* var2)
-{
-	Card temp = *var1;
-	*var1 = *var2;
-	*var2 = temp;
-}
+
 //-------------------------------------------------------------------------------------------------------------
 
 Card::Card() { Suit = cardSuit::CLUBS; Value = cardValue::TWO; Pos = { 0, 0 }; }
@@ -55,7 +50,7 @@ Deck::Deck()
 	auto rng = std::default_random_engine{ rd() };
 	std::shuffle(std::begin(_Deck), std::end(_Deck), rng);
 }
-void Deck::addToDeck(Card card)
+void Deck::addToDeck(const Card card)
 {
 	_Deck.emplace_back(card);
 }
@@ -70,7 +65,7 @@ cardSuit Deck::getMasterSuit()
 	return masterSuit;
 }
 
-void Deck::setVCard(Card card)
+void Deck::setVCard(const Card card)
 {
 	visibleCard = card;
 }
@@ -108,18 +103,18 @@ void Deck::setUpTwoDeckCards()
 		nextTwoDeckCards[1].Pos.y = deckPos.y;
 	}
 }
-Card Deck::getCardFromTwoCards(int index)
+Card Deck::getCardFromTwoCards(const int index)
 {
 	return nextTwoDeckCards[index];
 }
-Card Deck::removeCardFromTwoCards(int index)
+Card Deck::removeCardFromTwoCards(const int index)
 {	
 	Card reset;
 	Card temp = nextTwoDeckCards[index];
 	nextTwoDeckCards[index] = reset;
 	return temp;
 }
-void Deck::displayDeck(Texture2D flippedCard, Texture2D backOfCard)
+void Deck::displayDeck(const Texture2D flippedCard, const Texture2D backOfCard)
 {
 	//display the flipped card first 
 	// void DrawTextureEx(Texture2D texture, Vector2 position, float rotation, float scale, Color tint);
@@ -208,7 +203,7 @@ void Player::sortHand()
 		{
 			if ((int)PlayerHand[j].Suit > (int)PlayerHand[(j + 1)].Suit)
 			{
-				swap(&PlayerHand[j], &PlayerHand[(j + 1)]);
+				std::swap(PlayerHand[j], PlayerHand[(j + 1)]);
 			}
 		}
 	}

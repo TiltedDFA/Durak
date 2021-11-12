@@ -8,6 +8,7 @@
 #include <random>
 #include <string>
 #include <vector>
+#include <utility>
 #include "raylib.h"
 #include "raymath.h"
 
@@ -66,16 +67,17 @@ public:
 	Deck();
 	~Deck();
 
-	void addToDeck(Card card);
+	void addToDeck(const Card card);
+
 	Card dealCard();	
 
 	void setUpTwoDeckCards();
-	Card getCardFromTwoCards(int index);
-	Card removeCardFromTwoCards(int index);
+	Card getCardFromTwoCards(const int index);
+	Card removeCardFromTwoCards(const int index);
 
-	void displayDeck(Texture2D flippedCard, Texture2D backOfCard);
+	void displayDeck(const Texture2D flippedCard, const Texture2D backOfCard);
 
-	void setVCard(Card card);
+	void setVCard(const Card card);
 	Card getVCard();
 
 	Card lookAtTopCard();
