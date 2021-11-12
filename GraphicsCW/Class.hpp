@@ -47,9 +47,10 @@ public:
 	bool held = false;
 	bool canBeTouched = true;
 
+
 	cardSuit Suit{};
 	cardValue Value{};
-	std::string Name{};
+	std::string Name = "";
 	std::string suitToString(cardSuit);
 };
 //-------------------------------------------------------------------------------------------------------------
@@ -127,6 +128,7 @@ public:
 	Table();
 	~Table();
 };
+//-------------------------------------------------------------------------------------------------------------
 class DiscardedCards
 {
 private:
@@ -137,21 +139,14 @@ public:
 
 	void addToPile(Card card);
 };
-class GameChecking
+//-------------------------------------------------------------------------------------------------------------
+class MainGame
 {
-public:
-	GameChecking();
-	~GameChecking();
-
 private:
-
+public:
+	
+	MainGame();
+	~MainGame();
 };
-
-GameChecking::GameChecking()
-{
-}
-
-GameChecking::~GameChecking()
-{
-}
+//-------------------------------------------------------------------------------------------------------------
 #endif // !CLASS_HPP

@@ -1,4 +1,3 @@
-#include "GameLogic.hpp"
 #include "Display.hpp"
 int main()
 {
@@ -85,13 +84,20 @@ int main()
 						}
 						if (!cardsVisible[i]->held)
 						{
-							if (c2::placeHBC(50, *cardsVisible[i]))
+							int overlap = c2::placeHBC(50, *cardsVisible[i]);
+							if (overlap >= 50)
 							{
+								if (overlap == 100)
+								{
+									//This works as intended
+									//Use to shift from hand to tables assuming that the conditions are met
+								}
 								Vector2 boxPos = c2::BoxColFinder(*cardsVisible[i]);
 								cardsVisible[i]->Pos.x = boxPos.x;
 								cardsVisible[i]->Pos.y = boxPos.y;
 							}
-							if ()
+							
+							//if ()
 						}
 					}
 				}

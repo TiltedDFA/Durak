@@ -215,7 +215,17 @@ void Player::sortHand()
 }
 //-------------------------------------------------------------------------------------------------------------
 
-Table::Table() {}
+Table::Table() 
+{
+	Card card;
+	for (int i = 0; i < 6; ++i)
+	{
+		for (int j = 0; j < 2; ++j)
+		{
+			cardsOnTable[i][j] = card; // This is meant to slap in the default card into all the table slots so that we can preform logic on it as the name of the card will be "" (we treat this as a null value)
+		}
+	}
+}
 Table::~Table() {}
 // for the cards on table embedded arrays, it would seem cardsOnTable.$command() accesses the vector while cardsOnTable[index].$command() accesses the array
 // This is to say that it accesses it in a array.$command type of way. It doesn't actually access the data held within the array
@@ -274,5 +284,8 @@ void DiscardedCards::addToPile(Card card)
 {
 	dCards.emplace_back(card);
 }
+//-------------------------------------------------------------------------------------------------------------
+MainGame::MainGame() {}
+MainGame::~MainGame() {}
 //-------------------------------------------------------------------------------------------------------------
 //worksassasas

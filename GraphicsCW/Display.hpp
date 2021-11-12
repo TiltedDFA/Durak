@@ -37,7 +37,7 @@ namespace c1 //C1 namespace functions draw
 }
 namespace c2 // C2 functions preform check or do something
 {
-	bool placeHBC(int percentCertanty, Card card)
+	int placeHBC(int percentCertanty, Card card)
 	{
 		std::array<Vector2, 6>pos;
 		pos[0] = { 543.0, 457.0 };
@@ -59,9 +59,42 @@ namespace c2 // C2 functions preform check or do something
 				auto percentOverlap = ((oSetArea / area) * 100);
 				if ((int)percentOverlap > percentCertanty)
 				{
-					return true;
+					return (int)percentOverlap;
 				}
 			}
+		}
+		return 0;
+	}
+	bool canCardBePlayed(std::array<std::array<Card, 2>, 6>cardsOnTable, Card card) // This function checks if an attacking card can be played based on the cards in the table.
+	{
+		if (cardsOnTable[0][0].Name == "" && cardsOnTable[1][0].Name == "" && cardsOnTable[2][0].Name == "" && cardsOnTable[3][0].Name == "" && cardsOnTable[4][0].Name == "" && cardsOnTable[5][0].Name == "")
+		{
+			return true;
+		}
+		if (cardsOnTable[0][0].Value == card.Value || cardsOnTable[1][0].Value == card.Value || cardsOnTable[2][0].Value == card.Value || cardsOnTable[3][0].Value == card.Value || cardsOnTable[4][0].Value == card.Value || cardsOnTable[5][0].Value == card.Value)
+		{
+			return true;
+		}
+		return false;
+	}
+	bool cardBeatsCard(Card cardOne, Card cardTwo, Deck deck)
+	{
+		cardSuit mS = deck.getMasterSuit();
+		if (cardOne.Suit == mS && cardTwo.Suit != mS)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		if (cardOne.Suit == cardTwo.Suit && cardOne.Value > cardTwo.Value)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 		return false;
 	}
