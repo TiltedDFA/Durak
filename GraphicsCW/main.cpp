@@ -35,6 +35,7 @@ int main()
 
 	//Code something that moves the cards when the mouse moves them. The co-ordinates of the cards will be the mouse co-ordinates + the offset of where the mouse clicks the card
 	c0::setUpPlayerHandPos(cardsVisible, deck, players);
+	c0::setTopCards(deck);
 	//deck.setUpTwoDeckCards();
 	//mainGame.setPlrAtk(c2::findStartingPlayer(players, deck)); This is facing a vector out of error error
 	while (!WindowShouldClose())
@@ -43,11 +44,15 @@ int main()
 		hC = false;
 		if (prePlayScreen)
 		{
+			int round = mainGame.getRound();
+
 			BeginDrawing();			
 			ClearBackground(RAYWHITE);
 			DrawTexture(progTable, 0, 0, WHITE);
 			//deck.displayDeck(blankCard, CardBacking);
 			c2::cTable(cardsVisible, CardBacking, blankCard, amtOfCardsOnScreen);
+			deck.displayVisisbleCard(blankCard);
+			c2::displayDeckExtraCards(deck, CardBacking, blankCard);
 			DrawCircleV(GetMousePosition(), 10, WHITE);
 			//c1::rectangles();
 			EndDrawing();	

@@ -44,6 +44,7 @@ Deck::Deck()
 	auto rng = std::default_random_engine{ rd() };
 	std::shuffle(std::begin(deck), std::end(deck), rng);
 }
+
 Deck::~Deck()
 {
 }
@@ -65,15 +66,26 @@ void Deck::setVisibleCard(std::shared_ptr<Card> card)
 {
 	visibleCard = card;
 }
+void Deck::displayVisisbleCard(Texture2D& visiCardTexture)
+{	
+	DrawTextureEx(visiCardTexture, visibleCard->cardPosition, 90.0, 1.0, WHITE);	
+}
 std::shared_ptr<Card> Deck::getVisibleCard()
 {
 	return visibleCard;
+}
+std::pair<std::shared_ptr<Card>, std::shared_ptr<Card>> Deck::getTopOfDeck()
+{
+	return topOfDeck;
+}
+void Deck::setTopOfDeck(std::pair<std::shared_ptr<Card>, std::shared_ptr<Card>> pair)
+{
+	topOfDeck = pair;
 }
 //-------------------------------------------------------------------------------------------------------------
 Player::Player()
 {
 }
-
 Player::~Player()
 {
 }
@@ -96,6 +108,7 @@ void Player::addNeededCardToPlayerHand(Deck& deck)
 		playerHand.push_back(deck.dealCard());
 	}	
 }
+
 //-------------------------------------------------------------------------------------------------------------
 Table::Table()
 {

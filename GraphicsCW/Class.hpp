@@ -13,7 +13,7 @@
 #include "raylib.h"
 #include "raymath.h"
 
-enum class cardSuit
+enum class cardSuit //This sets up the card's suits
 {
 	SPADES = 1,
 	HEARTS,
@@ -21,7 +21,7 @@ enum class cardSuit
 	CLUBS,
 };
 //-------------------------------------------------------------------------------------------------------------
-enum class cardValue
+enum class cardValue // This sets up the card's values
 {
 	TWO = 2,
 	THREE,
@@ -38,7 +38,7 @@ enum class cardValue
 	ACE,
 };
 //-------------------------------------------------------------------------------------------------------------
-class Card
+class Card // This is the card class, The majourity of the game is based around it
 {
 public:
 	Card();
@@ -52,15 +52,16 @@ public:
 	cardSuit Suit{};
 	cardValue Value{};
 	std::string Name = "";
-	std::string suitToString(cardSuit);
+	std::string suitToString(cardSuit); // A fucntion that converts the enumarated values to a string(Which can be used to display)
 };
 //-------------------------------------------------------------------------------------------------------------
 class Deck
 {
 private:
-	std::vector<std::shared_ptr<Card>> deck;
-	std::shared_ptr<Card> visibleCard;
-	cardSuit masterSuit = cardSuit::CLUBS;
+	std::vector<std::shared_ptr<Card>> deck;// The deck which is based on an std::shared_ptr system. The shared_ptrs are a type of smart pointers which delete the contents from the heap automatically
+	std::shared_ptr<Card> visibleCard;// This is what stores the card that will be visible from the start of the game.
+	std::pair<std::shared_ptr<Card>, std::shared_ptr<Card>>topOfDeck;
+	cardSuit masterSuit = cardSuit::CLUBS;// This value detirmins how the game will be played and adds a lot of power to cards of the same suit. The value for this is derived from the visible card.
 public:
 	Deck();
 	~Deck();
@@ -68,7 +69,10 @@ public:
 	cardSuit getMasterSuit();
 	void setMasterSuit(cardSuit suit);
 	void setVisibleCard(std::shared_ptr<Card> card);
+	void displayVisisbleCard(Texture2D& visiCardTexture);
 	std::shared_ptr<Card> getVisibleCard();
+	std::pair<std::shared_ptr<Card>, std::shared_ptr<Card>> getTopOfDeck();
+	void setTopOfDeck(std::pair<std::shared_ptr<Card>, std::shared_ptr<Card>> pair);
 };
 //-------------------------------------------------------------------------------------------------------------
 class Player

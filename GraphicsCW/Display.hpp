@@ -5,6 +5,16 @@
 
 namespace c0 // c0 will be the setting up / maintaing function
 {
+	void setTopCards(Deck& deck)
+	{
+		//376, 503
+		std::pair<std::shared_ptr<Card>, std::shared_ptr<Card>> cPair;
+		cPair.first = deck.dealCard();
+		cPair.second = deck.dealCard();
+		cPair.first->cardPosition = { 153, 470 };
+		cPair.second->cardPosition = { 153, 470 };
+		deck.setTopOfDeck(cPair);
+	}
 	void addCardsToVisibleVec(std::vector<std::shared_ptr<Card>>&cardsVisible, std::shared_ptr<Card> card)
 	{
 		cardsVisible.push_back(card);
@@ -36,6 +46,7 @@ namespace c0 // c0 will be the setting up / maintaing function
 			cardsVisible.push_back(card);
 		}
 		std::shared_ptr<Card> card = deck.dealCard();
+		card->cardPosition = { 376, 503 };
 		deck.setVisibleCard(card);
 		deck.setMasterSuit(card->Suit);
 	}
@@ -63,7 +74,7 @@ namespace c1 // This namespace does something e.g. finding the starting player
 		}
 		else { return 0; }
 	}
-	bool placeHBC(int percentCertanty, std::shared_ptr<Card> card)
+	int  placeHBC(int percentCertanty, std::shared_ptr<Card> card)
 	{
 		std::array<Vector2, 6>pos;
 		pos[0] = { 543.0, 457.0 };
@@ -83,17 +94,17 @@ namespace c1 // This namespace does something e.g. finding the starting player
 				auto oSetArea = xOSet * yOSet;
 				auto area = placeHB.width * placeHB.height;
 				auto percentOverlap = ((oSetArea / area) * 100);
-				if ((int)percentOverlap > percentCertanty)
+				if (static_cast<int>(percentOverlap > percentCertanty))
 				{
-					true;
+					return static_cast<int>(percentOverlap);
 				}
 			}
 		}
-		return false;
+		return 0;
 	}
 	bool canCardBePlayed(std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable, std::shared_ptr<Card> card) // This function checks if an attacking card can be played based on the cards in the table.
 	{
-		if (cardsOnTable[0][0]->Name == "" && cardsOnTable[1][0]->Name == "" && cardsOnTable[2][0]->Name == "" && cardsOnTable[3][0]->Name == "" && cardsOnTable[4][0]->Name == "" && cardsOnTable[5][0]->Name == "")
+		if (cardsOnTable[0][0] == nullptr && cardsOnTable[1][0] == nullptr && cardsOnTable[2][0] == nullptr && cardsOnTable[3][0] == nullptr && cardsOnTable[4][0] == nullptr && cardsOnTable[5][0] == nullptr)
 		{
 			return true;
 		}
@@ -131,7 +142,7 @@ namespace c1 // This namespace does something e.g. finding the starting player
 		return { 0,0 };
 	}
 }
-namespace c2
+namespace c2 // This namespace is used to display 
 {
 	void cTable(std::vector<std::shared_ptr<Card>>cardsVisible, Texture2D& cBack, Texture2D& cBlank, int& cardsOnScreen) // (Xpos, Ypos, AmountOfCards, Cardtext)
 	{
@@ -139,13 +150,25 @@ namespace c2
 		{
 			if (cardsVisible[i]->cardIsFaceUp)
 			{
-				DrawTexture(cBlank, (int)cardsVisible[i]->cardPosition.x, (int)cardsVisible[i]->cardPosition.y, WHITE);
+				DrawTexture(cBlank, static_cast<int>(cardsVisible[i]->cardPosition.x), static_cast<int>(cardsVisible[i]->cardPosition.y), WHITE);
 			}
 			else if (!cardsVisible[i]->cardIsFaceUp)
 			{
-				DrawTexture(cBack, (int)cardsVisible[i]->cardPosition.x, (int)cardsVisible[i]->cardPosition.y, WHITE);
+				DrawTexture(cBack, static_cast<int>(cardsVisible[i]->cardPosition.x), static_cast<int>(cardsVisible[i]->cardPosition.y), WHITE);
 			}
 		}
 	}
+	void displayDeckExtraCards(Deck& deck, Texture2D& backOfCard, Texture2D& frontOfCard)
+	{
+		auto vCard = deck.getVisibleCard();
+		auto topCards = deck.getTopOfDeck();
+		//Still need to display visible card
+		DrawTexture(backOfCard, static_cast<int>(topCards.first->cardPosition.x), static_cast<int>(topCards.first->cardPosition.y), WHITE);
+		DrawTexture(backOfCard, static_cast<int>(topCards.second->cardPosition.x), static_cast<int>(topCards.second->cardPosition.y), WHITE);
+	}
+}
+namespace c3 // This will be used to preform game functions
+{
+
 }
 #endif // !DISPLAY_HPP
