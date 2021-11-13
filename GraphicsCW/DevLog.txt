@@ -123,3 +123,10 @@ LOOK INTO THIS std::vector<std::pair<std::vector<card> *, int>>
 
 ok decided to rewrite the entire program based around card pointers
 }
+13/11/2021
+{
+->10:24
+Rewrite time.
+->11:59 
+Completely restarting
+}

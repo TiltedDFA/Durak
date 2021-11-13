@@ -19,7 +19,7 @@ int main()
 	Table table;
 	MainGame mainGame;
 	std::array<Player, 2>players;
-	std::vector<Card*>cardsVisible;
+	std::vector<std::shared_ptr<Card>>cardsVisible;
 	//---------------------------------------------------------------------------------------
 	Rectangle btnCheckColl = { 772, 509, 287, 105 };
 	//---------------------------------------------------------------------------------------
@@ -34,8 +34,8 @@ int main()
 	// Main game loop
 
 	//Code something that moves the cards when the mouse moves them. The co-ordinates of the cards will be the mouse co-ordinates + the offset of where the mouse clicks the card
-	c3::setPosCard(cardsVisible, players, deck);
-	deck.setUpTwoDeckCards();
+	c0::setUpPlayerHandPos(cardsVisible, deck, players);
+	//deck.setUpTwoDeckCards();
 	//mainGame.setPlrAtk(c2::findStartingPlayer(players, deck)); This is facing a vector out of error error
 	while (!WindowShouldClose())
 	{
@@ -46,8 +46,8 @@ int main()
 			BeginDrawing();			
 			ClearBackground(RAYWHITE);
 			DrawTexture(progTable, 0, 0, WHITE);
-			deck.displayDeck(blankCard, CardBacking);
-			c1::cTable(cardsVisible, CardBacking, blankCard, amtOfCardsOnScreen);
+			//deck.displayDeck(blankCard, CardBacking);
+			c2::cTable(cardsVisible, CardBacking, blankCard, amtOfCardsOnScreen);
 			DrawCircleV(GetMousePosition(), 10, WHITE);
 			//c1::rectangles();
 			EndDrawing();	
@@ -56,32 +56,31 @@ int main()
 					if (cardsVisible[i]->canBeTouched)
 					{
 						Rectangle card;
-						card = { cardsVisible[i]->Pos.x, cardsVisible[i]->Pos.y, 120, 170 };
-						Card _card = *cardsVisible.at(i);
+						card = { cardsVisible[i]->cardPosition.x, cardsVisible[i]->cardPosition.y, 120, 170 };						
 						if (!hC)
 						{
 							if (CheckCollisionPointRec(mP, card) && IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
 							{
 								hC = true;
-								cardsVisible[i]->faceUp = !cardsVisible[i]->faceUp; // this function changes the state of the card in the cardsVisible pointer vector
+								cardsVisible[i]->cardIsFaceUp = !cardsVisible[i]->cardIsFaceUp; // this function changes the state of the card in the cardsVisible pointer vector
 							}
 							if (CheckCollisionPointRec(mP, card) && IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 							{
 								hC = true;
-								cardsVisible[i]->held = true;								
+								cardsVisible[i]->cardIsHeld= true;
 								Vector2 mD = GetMouseDelta();
-								cardsVisible[i]->Pos.x = (cardsVisible[i]->Pos.x + mD.x);
-								cardsVisible[i]->Pos.y = (cardsVisible[i]->Pos.y + mD.y);
+								cardsVisible[i]->cardPosition.x = (cardsVisible[i]->cardPosition.x + mD.x);
+								cardsVisible[i]->cardPosition.y = (cardsVisible[i]->cardPosition.y + mD.y);
 							}
 							if (!CheckCollisionPointRec(mP, card) && !IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 							{
-								cardsVisible[i]->held = false;
+								cardsVisible[i]->cardIsHeld = false;
 							}
 						}
-						if (!_card.held)
+						if (!cardsVisible[i]->cardIsHeld)
 						{
 							
-							int overlap = c2::placeHBC(50, _card);
+							int overlap = c1::placeHBC(50, cardsVisible[i]);
 							if (overlap >= 50)
 							{
 								if (overlap == 100)
@@ -89,8 +88,8 @@ int main()
 									//This works as intended
 									//Use to shift from hand to tables assuming that the conditions are met
 								}
-								Vector2 boxPos = c2::BoxColFinder((*cardsVisible[i]));
-								cardsVisible[i]->Pos = boxPos;								
+								Vector2 boxPos = c1::BoxColFinder(cardsVisible[i]);
+								cardsVisible[i]->cardPosition = boxPos;								
 							}							
 						}
 					}

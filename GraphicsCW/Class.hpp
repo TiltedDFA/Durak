@@ -5,6 +5,7 @@
 #include <array>
 #include <cmath>
 #include <iostream>
+#include <memory>
 #include <random>
 #include <string>
 #include <vector>
@@ -41,13 +42,12 @@ class Card
 {
 public:
 	Card();
-	~Card();
+	~Card();	
 
-	Vector2 Pos;
-	bool faceUp = false;
-	bool held = false;
+	Vector2 cardPosition = {0,0};
+	bool cardIsFaceUp = true;
+	bool cardIsHeld = false;
 	bool canBeTouched = true;
-
 
 	cardSuit Suit{};
 	cardValue Value{};
@@ -58,87 +58,55 @@ public:
 class Deck
 {
 private:
-	Vector2 deckPos = { 153, 470 };
-	std::vector<Card> _Deck;
-	std::array<Card, 2>nextTwoDeckCards;
-	inline static Card visibleCard;
-	inline static cardSuit masterSuit;
+	std::vector<std::shared_ptr<Card>> deck;
+	std::shared_ptr<Card> visibleCard;
+	cardSuit masterSuit = cardSuit::CLUBS;
 public:
 	Deck();
 	~Deck();
-
-	void addToDeck(const Card card);
-
-	Card dealCard();	
-
-	void setUpTwoDeckCards();
-	Card getCardFromTwoCards(const int index);
-	Card removeCardFromTwoCards(const int index);
-
-	void displayDeck(const Texture2D flippedCard, const Texture2D backOfCard);
-
-	void setVCard(const Card card);
-	Card getVCard();
-
-	Card lookAtTopCard();
-	Card removeTopCard();
-
-	static cardSuit getMasterSuit();
+	std::shared_ptr<Card> dealCard();
+	cardSuit getMasterSuit();
+	void setMasterSuit(cardSuit suit);
+	void setVisibleCard(std::shared_ptr<Card> card);
+	std::shared_ptr<Card> getVisibleCard();
 };
 //-------------------------------------------------------------------------------------------------------------
 class Player
 {
 private:
-	std::string PlayerName;
-	std::vector<Card> PlayerHand;	
+	std::vector<std::shared_ptr<Card>>playerHand;
+	bool plyrAtk = false;
 public:
 	Player();
 	~Player();
-	Card getCardFromPH(int index);
-
-	
-	void addNeededCardsToPlayerHand(Deck deck);
-	void addToPlayerHand(int index, Card card);
-	void clearHandCard(Card card);
-	void setCardPos(Vector2 pos, int index);
-	Card* getCardPtr(int index);
-	std::size_t getHandSize();
-
-	void sortHand();
-	std::string getPlayerName();
-	void setPlayerName(std::string input);
+	void addToPlayerHand(std::shared_ptr<Card> cardToAdd);
+	std::shared_ptr<Card> getPlayerHandIndex(const int index);
+	std::size_t getPlayerHandSize();
+	void addNeededCardToPlayerHand(Deck& deck);	
 };
 //-------------------------------------------------------------------------------------------------------------
 class Table
 {
 private:
-	std::array<std::array<Card, 2>, 6>cardsOnTable;
-	short int movesThisTurnAtk = 0;
+	std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable;
 public:
-	void addCardToTableAtk(Card card, int pNum);
-	void addCardToTableDef(Card card, int cardPile);
-	void displayCardsOnTable();
-	void clearTable();
-	Card getCardFromTableDef(int index);
-	Card getCardFromTableAtk(int index);	
-	Card* getPtrCardAtk(int index);
-	Card* getPtrCardDef(int index);
-	void setMovesMadeThisRound(int played);
-	int getMovesMadeThisRound();
-	void resetMovesMade();
 	Table();
 	~Table();
+	void addCardToTableAtk(std::shared_ptr<Card> card, const int pNum);
+	void addCardToTableDef(std::shared_ptr<Card> card, const int pNum);
+	std::shared_ptr<Card> getCardFromTableAtk(const int index);
+	std::shared_ptr<Card> getCardFromTableDef(const int index);	
 };
 //-------------------------------------------------------------------------------------------------------------
 class DiscardedCards
 {
 private:
-	std::vector<Card>dCards;
+	std::vector<std::shared_ptr<Card>>dCards;
 public:
 	DiscardedCards();
 	~DiscardedCards();
 
-	void addToPile(Card card);
+	void addToPile(std::shared_ptr<Card> card);
 };
 //-------------------------------------------------------------------------------------------------------------
 class MainGame
@@ -156,4 +124,5 @@ public:
 	~MainGame();
 };
 //-------------------------------------------------------------------------------------------------------------
+
 #endif // !CLASS_HPP
