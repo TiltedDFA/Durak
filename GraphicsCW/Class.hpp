@@ -87,6 +87,9 @@ public:
 	std::shared_ptr<Card> getPlayerHandIndex(const int index);
 	std::size_t getPlayerHandSize();
 	void addNeededCardToPlayerHand(Deck& deck);	
+	bool isPlyrAtk();
+	void setPlyrAtk(bool bol);
+	std::vector<std::shared_ptr<Card>> getEntireHand();
 };
 //-------------------------------------------------------------------------------------------------------------
 class Table
@@ -100,6 +103,7 @@ public:
 	void addCardToTableDef(std::shared_ptr<Card> card, const int pNum);
 	std::shared_ptr<Card> getCardFromTableAtk(const int index);
 	std::shared_ptr<Card> getCardFromTableDef(const int index);	
+	std::array<std::array<std::shared_ptr<Card>, 2>, 6> getEntireTable();
 };
 //-------------------------------------------------------------------------------------------------------------
 class DiscardedCards

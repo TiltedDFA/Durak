@@ -36,6 +36,7 @@ int main()
 	//Code something that moves the cards when the mouse moves them. The co-ordinates of the cards will be the mouse co-ordinates + the offset of where the mouse clicks the card
 	c0::setUpPlayerHandPos(cardsVisible, deck, players);
 	c0::setTopCards(deck);
+	if (c1::findStartingPlayer(players, deck) == 0){players[0].setPlyrAtk(true);}else{players[1].setPlyrAtk(true);}
 	//deck.setUpTwoDeckCards();
 	//mainGame.setPlrAtk(c2::findStartingPlayer(players, deck)); This is facing a vector out of error error
 	while (!WindowShouldClose())
@@ -88,13 +89,24 @@ int main()
 							int overlap = c1::placeHBC(50, cardsVisible[i]);
 							if (overlap >= 50)
 							{
+								auto box = c1::BoxColFinder(cardsVisible[i]);
 								if (overlap == 100)
 								{
+									if (c1::canCardBePlayed(table, cardsVisible[i]))//players[0])
+									{
+										c1::moveCardFromPlayerHandToTable(players[0], table, cardsVisible[i], box.second);
+									}
+									else
+									{
+										cardsVisible[i]->cardPosition = { 0,0 };
+									}
 									//This works as intended
 									//Use to shift from hand to tables assuming that the conditions are met
+									//Time to code this.
+									// Push to table if the conditons are met. Treat the player as players[0]
 								}
-								Vector2 boxPos = c1::BoxColFinder(cardsVisible[i]);
-								cardsVisible[i]->cardPosition = boxPos;								
+								
+								cardsVisible[i]->cardPosition = box.first;								
 							}							
 						}
 					}

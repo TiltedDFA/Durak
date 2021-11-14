@@ -129,4 +129,6 @@ ok decided to rewrite the entire program based around card pointers
 Rewrite time.
 ->11:59 
 Completely restarting
+->late
+the card being passed to the addfromhandto table function isn't in the player hand (though it should be)
 }

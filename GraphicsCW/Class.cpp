@@ -108,7 +108,18 @@ void Player::addNeededCardToPlayerHand(Deck& deck)
 		playerHand.push_back(deck.dealCard());
 	}	
 }
-
+bool Player::isPlyrAtk()
+{
+	return plyrAtk;
+}
+void Player::setPlyrAtk(bool bol)
+{
+	plyrAtk = bol;
+}
+std::vector<std::shared_ptr<Card>> Player::getEntireHand()
+{
+	return playerHand;
+}
 //-------------------------------------------------------------------------------------------------------------
 Table::Table()
 {
@@ -132,6 +143,10 @@ std::shared_ptr<Card> Table::getCardFromTableAtk(const int index)
 std::shared_ptr<Card> Table::getCardFromTableDef(const int index)
 {
 	return cardsOnTable[index][1];
+}
+std::array<std::array<std::shared_ptr<Card>, 2>, 6> Table::getEntireTable()
+{
+	return cardsOnTable;
 }
 //-------------------------------------------------------------------------------------------------------------
 DiscardedCards::DiscardedCards() {};

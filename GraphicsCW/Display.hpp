@@ -60,7 +60,7 @@ namespace c1 // This namespace does something e.g. finding the starting player
 		for (int i = 0; i < 2; ++i)
 		{
 			auto hSize = players[i].getPlayerHandSize();
-			for (int j = 0; j < hSize; ++i)
+			for (int j = 0; j < hSize; ++j)
 			{
 				if (players[i].getPlayerHandIndex(j)->Suit == mS && players[i].getPlayerHandIndex(j)->Value < lowestVal[i])
 				{
@@ -102,8 +102,9 @@ namespace c1 // This namespace does something e.g. finding the starting player
 		}
 		return 0;
 	}
-	bool canCardBePlayed(std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable, std::shared_ptr<Card> card) // This function checks if an attacking card can be played based on the cards in the table.
+	bool canCardBePlayed(Table table, std::shared_ptr<Card> card) // This function checks if an attacking card can be played based on the cards in the table.
 	{
+		std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();
 		if (cardsOnTable[0][0] == nullptr && cardsOnTable[1][0] == nullptr && cardsOnTable[2][0] == nullptr && cardsOnTable[3][0] == nullptr && cardsOnTable[4][0] == nullptr && cardsOnTable[5][0] == nullptr)
 		{
 			return true;
@@ -123,7 +124,7 @@ namespace c1 // This namespace does something e.g. finding the starting player
 		else { return false; }
 		return false;
 	}
-	Vector2 BoxColFinder(const std::shared_ptr<Card> card)
+	std::pair<Vector2, int> BoxColFinder(const std::shared_ptr<Card> card)
 	{
 		std::array<Vector2, 6>pos;
 		pos[0] = { 543.0, 457.0 };
@@ -137,9 +138,19 @@ namespace c1 // This namespace does something e.g. finding the starting player
 		for (int i = 0; i < 6; ++i)
 		{
 			Rectangle box = { pos[i].x, pos[i].y, 120, 170 };
-			if (CheckCollisionRecs(rCard, box)) { return pos[i]; }
+			if (CheckCollisionRecs(rCard, box)) { return { pos[i], i }; }
 		}
-		return { 0,0 };
+		return { { 0,0 }, 7};
+	}
+	void moveCardFromPlayerHandToTable(Player& player, Table& table, std::shared_ptr<Card> card, const int cardPile)
+	{
+		std::vector<std::shared_ptr<Card>> playerHand = player.getEntireHand();
+		auto posInHand = std::find(playerHand.begin(), playerHand.end(), card);
+		if (posInHand != playerHand.end())
+		{
+			if (player.isPlyrAtk()) { table.addCardToTableAtk(std::move(*posInHand), cardPile); }
+			else { table.addCardToTableDef(std::move(*posInHand), cardPile); }
+		}	
 	}
 }
 namespace c2 // This namespace is used to display 
