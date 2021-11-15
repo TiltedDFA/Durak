@@ -1,18 +1,17 @@
 #include "Class.hpp"
 
-
 //-------------------------------------------------------------------------------------------------------------
 
-Card::Card() { Suit = cardSuit::CLUBS; Value = cardValue::TWO;}
-Card::~Card(){}
+Card::Card() { Suit = cardSuit::CLUBS; Value = cardValue::TWO; }
+Card::~Card() {}
 std::string Card::suitToString(cardSuit suit)
 {
 	switch (suit)
 	{
 	case cardSuit::SPADES:
-		return "Spades";		
+		return "Spades";
 	case cardSuit::HEARTS:
-		return "Hearts";		
+		return "Hearts";
 	case cardSuit::DIAMONDS:
 		return "Diamonds";
 	case cardSuit::CLUBS:
@@ -27,7 +26,6 @@ Deck::Deck()
 {
 	std::array<std::string, 4> suit = { "Spades", "Hearts", "Diamonds", "Clubs" };
 	std::array<std::string, 13> value = { "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace" };
-	
 
 	for (int i = 0; i < value.size(); ++i)
 	{
@@ -67,8 +65,8 @@ void Deck::setVisibleCard(std::shared_ptr<Card> card)
 	visibleCard = card;
 }
 void Deck::displayVisisbleCard(Texture2D& visiCardTexture)
-{	
-	DrawTextureEx(visiCardTexture, visibleCard->cardPosition, 90.0, 1.0, WHITE);	
+{
+	DrawTextureEx(visiCardTexture, visibleCard->cardPosition, 90.0, 1.0, WHITE);
 }
 std::shared_ptr<Card> Deck::getVisibleCard()
 {
@@ -102,11 +100,11 @@ std::size_t Player::getPlayerHandSize()
 	return playerHand.size();
 }
 void Player::addNeededCardToPlayerHand(Deck& deck)
-{		
+{
 	while (playerHand.size() < 6)
 	{
 		playerHand.push_back(deck.dealCard());
-	}	
+	}
 }
 bool Player::isPlyrAtk()
 {
@@ -119,6 +117,10 @@ void Player::setPlyrAtk(bool bol)
 std::vector<std::shared_ptr<Card>> Player::getEntireHand()
 {
 	return playerHand;
+}
+void Player::setEntireHand(std::vector<std::shared_ptr<Card>> hand)
+{
+	playerHand = hand;
 }
 //-------------------------------------------------------------------------------------------------------------
 Table::Table()

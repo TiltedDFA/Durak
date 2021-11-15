@@ -15,7 +15,7 @@ namespace c0 // c0 will be the setting up / maintaing function
 		cPair.second->cardPosition = { 153, 470 };
 		deck.setTopOfDeck(cPair);
 	}
-	void addCardsToVisibleVec(std::vector<std::shared_ptr<Card>>&cardsVisible, std::shared_ptr<Card> card)
+	void addCardsToVisibleVec(std::vector<std::shared_ptr<Card>>& cardsVisible, std::shared_ptr<Card> card)
 	{
 		cardsVisible.push_back(card);
 	}
@@ -40,7 +40,7 @@ namespace c0 // c0 will be the setting up / maintaing function
 		y = 840;
 		for (int i = 0; i < 6; ++i)
 		{
-			std::shared_ptr<Card> card = deck.dealCard();		
+			std::shared_ptr<Card> card = deck.dealCard();
 			card->cardPosition = { (x + 125 * i),y };
 			players[1].addToPlayerHand(card);
 			cardsVisible.push_back(card);
@@ -102,7 +102,7 @@ namespace c1 // This namespace does something e.g. finding the starting player
 		}
 		return 0;
 	}
-	bool canCardBePlayed(Table table, std::shared_ptr<Card> card) // This function checks if an attacking card can be played based on the cards in the table.
+	bool canCardBePlayed(Table& table, std::shared_ptr<Card> card) // This function checks if an attacking card can be played based on the cards in the table.
 	{
 		std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();
 		if (cardsOnTable[0][0] == nullptr && cardsOnTable[1][0] == nullptr && cardsOnTable[2][0] == nullptr && cardsOnTable[3][0] == nullptr && cardsOnTable[4][0] == nullptr && cardsOnTable[5][0] == nullptr)
@@ -140,7 +140,7 @@ namespace c1 // This namespace does something e.g. finding the starting player
 			Rectangle box = { pos[i].x, pos[i].y, 120, 170 };
 			if (CheckCollisionRecs(rCard, box)) { return { pos[i], i }; }
 		}
-		return { { 0,0 }, 7};
+		return { { 0,0 }, 7 };
 	}
 	void moveCardFromPlayerHandToTable(Player& player, Table& table, std::shared_ptr<Card> card, const int cardPile)
 	{
@@ -150,10 +150,11 @@ namespace c1 // This namespace does something e.g. finding the starting player
 		{
 			if (player.isPlyrAtk()) { table.addCardToTableAtk(std::move(*posInHand), cardPile); }
 			else { table.addCardToTableDef(std::move(*posInHand), cardPile); }
-		}	
+			player.setEntireHand(playerHand);
+		}
 	}
 }
-namespace c2 // This namespace is used to display 
+namespace c2 // This namespace is used to display
 {
 	void cTable(std::vector<std::shared_ptr<Card>>cardsVisible, Texture2D& cBack, Texture2D& cBlank, int& cardsOnScreen) // (Xpos, Ypos, AmountOfCards, Cardtext)
 	{
@@ -180,6 +181,5 @@ namespace c2 // This namespace is used to display
 }
 namespace c3 // This will be used to preform game functions
 {
-
 }
 #endif // !DISPLAY_HPP

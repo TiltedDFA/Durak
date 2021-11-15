@@ -42,9 +42,9 @@ class Card // This is the card class, The majourity of the game is based around 
 {
 public:
 	Card();
-	~Card();	
+	~Card();
 
-	Vector2 cardPosition = {0,0};
+	Vector2 cardPosition = { 0,0 };
 	bool cardIsFaceUp = true;
 	bool cardIsHeld = false;
 	bool canBeTouched = true;
@@ -86,10 +86,11 @@ public:
 	void addToPlayerHand(std::shared_ptr<Card> cardToAdd);
 	std::shared_ptr<Card> getPlayerHandIndex(const int index);
 	std::size_t getPlayerHandSize();
-	void addNeededCardToPlayerHand(Deck& deck);	
+	void addNeededCardToPlayerHand(Deck& deck);
 	bool isPlyrAtk();
 	void setPlyrAtk(bool bol);
 	std::vector<std::shared_ptr<Card>> getEntireHand();
+	void setEntireHand(std::vector<std::shared_ptr<Card>> hand);
 };
 //-------------------------------------------------------------------------------------------------------------
 class Table
@@ -102,7 +103,7 @@ public:
 	void addCardToTableAtk(std::shared_ptr<Card> card, const int pNum);
 	void addCardToTableDef(std::shared_ptr<Card> card, const int pNum);
 	std::shared_ptr<Card> getCardFromTableAtk(const int index);
-	std::shared_ptr<Card> getCardFromTableDef(const int index);	
+	std::shared_ptr<Card> getCardFromTableDef(const int index);
 	std::array<std::array<std::shared_ptr<Card>, 2>, 6> getEntireTable();
 };
 //-------------------------------------------------------------------------------------------------------------
