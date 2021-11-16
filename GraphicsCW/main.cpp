@@ -62,8 +62,8 @@ int main()
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(progTable, 0, 0, WHITE);
-			c2::displayPassButtons(PassButtonLow, PassButtonMid, PassButtonHigh, fxButton);
-			c2::displayEndButtons(EndButtonLow, EndButtonMid, EndButtonHigh, fxButton);
+			c2::displayPassButtons(PassButtonLow, PassButtonMid, PassButtonHigh, fxButton, cardsPlayedThisPass);
+			c2::displayEndButtons(EndButtonLow, EndButtonMid, EndButtonHigh, fxButton, cardsPlayedThisPass);
 			//deck.displayDeck(blankCard, CardBacking);
 			c2::cTable(cardsVisible, CardBacking, blankCard);
 			deck.displayVisisbleCard(blankCard);
@@ -109,7 +109,7 @@ int main()
 								if (c1::canCardBePlayed(table, cardsVisible[i]))//players[0])
 								{
 									cardsVisible[i]->canBeTouched = false;
-									c1::moveCardFromPlayerHandToTable(players[1], table, cardsVisible[i], box.second);
+									c1::moveCardFromPlayerHandToTable(players[1], table, cardsVisible[i], box.second, cardsPlayedThisPass);
 								}
 								else if (!c1::canCardBePlayed(table, cardsVisible[i]))
 								{

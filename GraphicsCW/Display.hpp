@@ -161,14 +161,14 @@ namespace c1 // This namespace does something e.g. finding the starting player
 		}
 		return { { 0,0 }, 7 };
 	}
-	void moveCardFromPlayerHandToTable(Player& player, Table& table, std::shared_ptr<Card> card, const int cardPile)
+	void moveCardFromPlayerHandToTable(Player& player, Table& table, std::shared_ptr<Card> card, const int cardPile, int& cardsPlayed)
 	{
 		std::vector<std::shared_ptr<Card>> playerHand = player.getEntireHand();
 		auto posInHand = std::find(playerHand.begin(), playerHand.end(), card);
 		if (posInHand != playerHand.end())
 		{
-			if (player.isPlyrAtk()) { table.addCardToTableAtk(std::move(*posInHand), cardPile); playerHand.erase(posInHand);}
-			else { table.addCardToTableDef(std::move(*posInHand), cardPile); playerHand.erase(posInHand); }
+			if (player.isPlyrAtk()) { table.addCardToTableAtk(std::move(*posInHand), cardPile); playerHand.erase(posInHand); ++cardsPlayed; }
+			else { table.addCardToTableDef(std::move(*posInHand), cardPile); playerHand.erase(posInHand); ++cardsPlayed;}
 			player.setEntireHand(playerHand);
 		}
 	}
@@ -199,50 +199,63 @@ namespace c2 // This namespace is used to display
 		DrawTexture(backOfCard, static_cast<int>(topCards.first->cardPosition.x), static_cast<int>(topCards.first->cardPosition.y), WHITE);
 		DrawTexture(backOfCard, static_cast<int>(topCards.second->cardPosition.x), static_cast<int>(topCards.second->cardPosition.y), WHITE);
 	}
-	void displayPassButtons(Texture2D& passLow, Texture2D& passMid, Texture2D& passHigh, Sound& fxButton)
+	void displayPassButtons(Texture2D& passLow, Texture2D& passMid, Texture2D& passHigh, Sound& fxButton, int cardsPlayedThisRound)
 	{
 		// 1520, 936
 		//CheckCollisionPointRec
-		Vector2 mP = GetMousePosition();
-		Rectangle buttonHitBox = { 1520.0f, 936.0f, 150, 75 };
-		if (CheckCollisionPointRec(mP, buttonHitBox))
-		{
-			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
-			{
-				DrawTexture(passMid, 1520.0f, 936.0f, WHITE);
-			}
-			else
-			{
-				DrawTexture(passHigh, 1520.0f, 936.0f, WHITE);
-			}
-			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); }
-		}
-		else
+		if (!(cardsPlayedThisRound > 0))
 		{
 			DrawTexture(passLow, 1520.0f, 936.0f, WHITE);
 		}
-	}
-	void displayEndButtons(Texture2D& endLow, Texture2D& endMid, Texture2D& endHigh, Sound& fxButton)
-	{
-		// 1733, 936
-		//CheckCollisionPointRec
-		Vector2 mP = GetMousePosition();
-		Rectangle buttonHitBox = { 1733.0f, 936.0f, 150, 75 };
-		if (CheckCollisionPointRec(mP, buttonHitBox))
+		else
 		{
-			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+			Vector2 mP = GetMousePosition();
+			Rectangle buttonHitBox = { 1520.0f, 936.0f, 150, 75 };
+			if (CheckCollisionPointRec(mP, buttonHitBox))
 			{
-				DrawTexture(endMid, 1733.0f, 936.0f, WHITE);
+				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+				{
+					DrawTexture(passMid, 1520.0f, 936.0f, WHITE);
+				}
+				else
+				{
+					DrawTexture(passHigh, 1520.0f, 936.0f, WHITE);
+				}
+				if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); }
 			}
 			else
 			{
-				DrawTexture(endHigh, 1733.0f, 936.0f, WHITE);
+				DrawTexture(passLow, 1520.0f, 936.0f, WHITE);
 			}
-			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); }
+		}
+	}
+	void displayEndButtons(Texture2D& endLow, Texture2D& endMid, Texture2D& endHigh, Sound& fxButton, int cardsPlayedThisRound)
+	{
+		// 1733, 936		
+		if (!(cardsPlayedThisRound > 0))
+		{
+			DrawTexture(endLow, 1733.0f, 936.0f, WHITE);
 		}
 		else
 		{
-			DrawTexture(endLow, 1733.0f, 936.0f, WHITE);
+			Vector2 mP = GetMousePosition();
+			Rectangle buttonHitBox = { 1733.0f, 936.0f, 150, 75 };
+			if (CheckCollisionPointRec(mP, buttonHitBox))
+			{
+				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+				{
+					DrawTexture(endMid, 1733.0f, 936.0f, WHITE);
+				}
+				else
+				{
+					DrawTexture(endHigh, 1733.0f, 936.0f, WHITE);
+				}
+				if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); }
+			}
+			else
+			{
+				DrawTexture(endLow, 1733.0f, 936.0f, WHITE);
+			}
 		}
 	}
 		
