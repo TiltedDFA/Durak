@@ -94,6 +94,7 @@ int main()
 							{
 								if (c1::canCardBePlayed(table, cardsVisible[i]))//players[0])
 								{
+									cardsVisible[i]->canBeTouched = false;
 									c1::moveCardFromPlayerHandToTable(players[1], table, cardsVisible[i], box.second);
 								}
 								else

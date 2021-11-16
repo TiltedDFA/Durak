@@ -109,11 +109,12 @@ namespace c1 // This namespace does something e.g. finding the starting player
 		{
 			return true;
 		}
-		if (cardsOnTable[0][0]->Value == card->Value || cardsOnTable[1][0]->Value == card->Value || cardsOnTable[2][0]->Value == card->Value || cardsOnTable[3][0]->Value == card->Value || cardsOnTable[4][0]->Value == card->Value || cardsOnTable[5][0]->Value == card->Value)
+	/*	if (cardsOnTable[0][0]->Value == card->Value || cardsOnTable[1][0]->Value == card->Value || cardsOnTable[2][0]->Value == card->Value || cardsOnTable[3][0]->Value == card->Value || cardsOnTable[4][0]->Value == card->Value || cardsOnTable[5][0]->Value == card->Value)
 		{
 			return true;
 		}
-		return false;
+    */	
+	return false;
 	}
 	bool cardBeatsCard(const std::shared_ptr<Card> cardOne, const std::shared_ptr<Card> cardTwo, Deck deck)
 	{

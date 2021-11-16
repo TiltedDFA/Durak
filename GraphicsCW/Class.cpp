@@ -32,9 +32,9 @@ Deck::Deck()
 		for (int j = 0; j < suit.size(); ++j)
 		{
 			std::shared_ptr<Card> C = std::make_shared<Card>();
-			C->Value = static_cast<cardValue>(i + 1);
-			C->Suit = static_cast<cardSuit>(j + 1);
-			C->Name = value.at(i) + " of " + suit.at(j);
+			C->Value = static_cast<cardValue>(i + 1); //This is to make up for the array indexing 
+			C->Suit = static_cast<cardSuit>(j + 1); // As is this 
+			C->Name = value[i] + " of " + suit[j];
 			deck.emplace_back(C);
 		}
 	}
