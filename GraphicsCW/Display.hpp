@@ -175,7 +175,7 @@ namespace c1 // This namespace does something e.g. finding the starting player
 }
 namespace c2 // This namespace is used to display
 {
-	void cTable(std::vector<std::shared_ptr<Card>>cardsVisible, Texture2D& cBack, Texture2D& cBlank, int& cardsOnScreen) // (Xpos, Ypos, AmountOfCards, Cardtext)
+	void cTable(std::vector<std::shared_ptr<Card>>cardsVisible, Texture2D& cBack, Texture2D& cBlank) // (Xpos, Ypos, AmountOfCards, Cardtext)
 	{
 		for (auto i = 0; i < cardsVisible.size(); ++i)
 		{
@@ -220,6 +220,29 @@ namespace c2 // This namespace is used to display
 		else
 		{
 			DrawTexture(passLow, 1520.0f, 936.0f, WHITE);
+		}
+	}
+	void displayEndButtons(Texture2D& endLow, Texture2D& endMid, Texture2D& endHigh, Sound& fxButton)
+	{
+		// 1733, 936
+		//CheckCollisionPointRec
+		Vector2 mP = GetMousePosition();
+		Rectangle buttonHitBox = { 1733.0f, 936.0f, 150, 75 };
+		if (CheckCollisionPointRec(mP, buttonHitBox))
+		{
+			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+			{
+				DrawTexture(endMid, 1733.0f, 936.0f, WHITE);
+			}
+			else
+			{
+				DrawTexture(endHigh, 1733.0f, 936.0f, WHITE);
+			}
+			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); }
+		}
+		else
+		{
+			DrawTexture(endLow, 1733.0f, 936.0f, WHITE);
 		}
 	}
 		

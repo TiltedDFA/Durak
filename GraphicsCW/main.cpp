@@ -15,7 +15,7 @@ int main()
 	bool prePlayScreen = false;
 	bool clickedOnCard = false;
 	bool hC = false;
-	int amtOfCardsOnScreen = 0;
+	int cardsPlayedThisPass = 0;
 	Deck deck;
 	Table table;
 	MainGame mainGame;
@@ -32,9 +32,15 @@ int main()
 	Texture2D  _Table = LoadTexture("TableCardHole.png");
 	Texture2D progTable = LoadTexture("TableWithButton.png");
 	Texture2D CardBacking = LoadTexture("170CardBacking.png");
+
 	Texture2D PassButtonHigh = LoadTexture("PassHigh.png");
 	Texture2D PassButtonMid = LoadTexture("PassMid.png");
 	Texture2D PassButtonLow = LoadTexture("PassLow.png");
+
+	Texture2D EndButtonHigh = LoadTexture("EndHigh.png");
+	Texture2D EndButtonMid = LoadTexture("EndMid.png");
+	Texture2D EndButtonLow = LoadTexture("EndLow.png");
+
 	//--------------------------------------------------------------------------------------
 	// Main game loop
 
@@ -57,8 +63,9 @@ int main()
 			ClearBackground(RAYWHITE);
 			DrawTexture(progTable, 0, 0, WHITE);
 			c2::displayPassButtons(PassButtonLow, PassButtonMid, PassButtonHigh, fxButton);
+			c2::displayEndButtons(EndButtonLow, EndButtonMid, EndButtonHigh, fxButton);
 			//deck.displayDeck(blankCard, CardBacking);
-			c2::cTable(cardsVisible, CardBacking, blankCard, amtOfCardsOnScreen);
+			c2::cTable(cardsVisible, CardBacking, blankCard);
 			deck.displayVisisbleCard(blankCard);
 			c2::displayDeckExtraCards(deck, CardBacking, blankCard);			
 			DrawCircleV(GetMousePosition(), 10, WHITE);
