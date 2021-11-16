@@ -113,12 +113,12 @@ namespace c1 // This namespace does something e.g. finding the starting player
 		{
 			return true;
 		}
-    */   
+	*/   
 		for (auto const i : cardsOnTable)
 		{
 			for (int j = 0; j < 2; ++j)
 			{
-				if (i[j]->Value == card->Value) { return true; }
+				if(i[j] != nullptr){ if (i[j]->Value == card->Value) { return true; } }				
 			}
 		}
 	return false;
