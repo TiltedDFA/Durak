@@ -161,14 +161,14 @@ namespace c1 // This namespace does something e.g. finding the starting player
 		}
 		return { { 0,0 }, 7 };
 	}
-	void moveCardFromPlayerHandToTable(Player& player, Table& table, std::shared_ptr<Card> card, const int cardPile, int& cardsPlayed)
+	void moveCardFromPlayerHandToTable(Player& player, Table& table, std::shared_ptr<Card> card, const int cardPile)
 	{
 		std::vector<std::shared_ptr<Card>> playerHand = player.getEntireHand();
 		auto posInHand = std::find(playerHand.begin(), playerHand.end(), card);
 		if (posInHand != playerHand.end())
 		{
-			if (player.isPlyrAtk()) { table.addCardToTableAtk(std::move(*posInHand), cardPile); playerHand.erase(posInHand); ++cardsPlayed; }
-			else { table.addCardToTableDef(std::move(*posInHand), cardPile); playerHand.erase(posInHand); ++cardsPlayed;}
+			if (player.isPlyrAtk()) { table.addCardToTableAtk(std::move(*posInHand), cardPile); playerHand.erase(posInHand); }
+			else { table.addCardToTableDef(std::move(*posInHand), cardPile); playerHand.erase(posInHand);}
 			player.setEntireHand(playerHand);
 		}
 	}
@@ -258,7 +258,21 @@ namespace c2 // This namespace is used to display
 			}
 		}
 	}
-		
+	void displayPlayerState(Texture2D& atkHigh, Texture2D& atkLow, Texture2D& defHigh, Texture2D& defLow, bool atkState)
+	{
+		//Atk pos is: 1658. 42
+		//Def pos is: 1507.44
+		if (atkState)
+		{
+			DrawTexture(atkHigh, 1658, 42, WHITE);
+			DrawTexture(defLow, 1507, 44, WHITE);
+		}
+		else
+		{
+			DrawTexture(atkLow, 1658, 42, WHITE);
+			DrawTexture(defHigh, 1507, 44, WHITE);
+		}
+	}
 }
 namespace c3 // This will be used to preform game functions
 {

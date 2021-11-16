@@ -198,4 +198,20 @@ void MainGame::setPlrAtk(int player)
 {
 	plrAtk = player;
 }
+unsigned short int MainGame::getCardsPlayed()
+{
+	return cardsPlayedThisPass;
+}
+void MainGame::setCardsPlayed(unsigned short int played)
+{
+	cardsPlayedThisPass = played;
+}
+void MainGame::resetCardsPlayed()
+{
+	cardsPlayedThisPass = 0;
+}
+void MainGame::incramentCardsPlayed()
+{
+	++cardsPlayedThisPass;
+}
 //-------------------------------------------------------------------------------------------------------------

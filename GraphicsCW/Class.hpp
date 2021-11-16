@@ -124,12 +124,21 @@ class MainGame
 private:
 	unsigned int plrAtk = 0;
 	unsigned int _round = 0;
+	unsigned short int cardsPlayedThisPass = 0;
 public:
 	int getRound();
+
 	void switchAtkPlr();
 	void incramentRound();
+
 	void setRound(const int num);
 	void setPlrAtk(int player);
+
+	unsigned short int getCardsPlayed();
+	void setCardsPlayed(unsigned short int played);
+	void resetCardsPlayed();
+	void incramentCardsPlayed();
+
 	MainGame();
 	~MainGame();
 };

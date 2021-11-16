@@ -14,8 +14,7 @@ int main()
 	bool _TScreen = true;
 	bool prePlayScreen = false;
 	bool clickedOnCard = false;
-	bool hC = false;
-	int cardsPlayedThisPass = 0;
+	bool hC = false;	
 	Deck deck;
 	Table table;
 	MainGame mainGame;
@@ -41,6 +40,10 @@ int main()
 	Texture2D EndButtonMid = LoadTexture("EndMid.png");
 	Texture2D EndButtonLow = LoadTexture("EndLow.png");
 
+	Texture2D AtkHigh = LoadTexture("AtkHigh.png");
+	Texture2D AtkLow = LoadTexture("AtkLow.png");
+	Texture2D DefHigh = LoadTexture("DefHigh.png");
+	Texture2D DefLow = LoadTexture("DefLow.png");
 	//--------------------------------------------------------------------------------------
 	// Main game loop
 
@@ -49,8 +52,6 @@ int main()
 	c0::setTopCards(deck);
 	if (c1::findStartingPlayer(players, deck) == 0) { players[0].setPlyrAtk(true); }
 	else { players[1].setPlyrAtk(true); }
-	//deck.setUpTwoDeckCards();
-	//mainGame.setPlrAtk(c2::findStartingPlayer(players, deck)); This is facing a vector out of error error
 	while (!WindowShouldClose())
 	{
 		mP = GetMousePosition();
@@ -62,8 +63,9 @@ int main()
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(progTable, 0, 0, WHITE);
-			c2::displayPassButtons(PassButtonLow, PassButtonMid, PassButtonHigh, fxButton, cardsPlayedThisPass);
-			c2::displayEndButtons(EndButtonLow, EndButtonMid, EndButtonHigh, fxButton, cardsPlayedThisPass);
+			c2::displayPassButtons(PassButtonLow, PassButtonMid, PassButtonHigh, fxButton, mainGame.getCardsPlayed());
+			c2::displayEndButtons(EndButtonLow, EndButtonMid, EndButtonHigh, fxButton, mainGame.getCardsPlayed());
+			c2::displayPlayerState(AtkHigh, AtkLow, DefHigh, DefLow, players[1].isPlyrAtk());
 			//deck.displayDeck(blankCard, CardBacking);
 			c2::cTable(cardsVisible, CardBacking, blankCard);
 			deck.displayVisisbleCard(blankCard);
@@ -106,10 +108,11 @@ int main()
 							cardsVisible[i]->cardPosition = box.first;
 							if (overlap == 100)
 							{
-								if (c1::canCardBePlayed(table, cardsVisible[i]))//players[0])
+								if (c1::canCardBePlayed(table, cardsVisible[i]))//players[0]
 								{
 									cardsVisible[i]->canBeTouched = false;
-									c1::moveCardFromPlayerHandToTable(players[1], table, cardsVisible[i], box.second, cardsPlayedThisPass);
+									c1::moveCardFromPlayerHandToTable(players[1], table, cardsVisible[i], box.second);
+									mainGame.incramentCardsPlayed();
 								}
 								else if (!c1::canCardBePlayed(table, cardsVisible[i]))
 								{
