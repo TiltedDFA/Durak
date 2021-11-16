@@ -21,6 +21,22 @@ std::string Card::suitToString(cardSuit suit)
 	}
 	return "Error";
 }
+std::string Card::valueToString(cardValue value)
+{
+	switch (value)
+	{
+	case cardValue::JACK :
+		return "Jack";
+	case cardValue::QUEEN:
+		return "Queen";
+	case cardValue::KING:
+		return "King";
+	case cardValue::ACE:
+		return "Ace";
+	default:
+		break;
+	}
+}
 //-------------------------------------------------------------------------------------------------------------
 Deck::Deck()
 {
@@ -32,7 +48,7 @@ Deck::Deck()
 		for (int j = 0; j < suit.size(); ++j)
 		{
 			std::shared_ptr<Card> C = std::make_shared<Card>();
-			C->Value = static_cast<cardValue>(i + 1); //This is to make up for the array indexing 
+			C->Value = static_cast<cardValue>(i+2); //This is to make up for the array indexing 
 			C->Suit = static_cast<cardSuit>(j + 1); // As is this 
 			C->Name = value[i] + " of " + suit[j];
 			deck.emplace_back(C);

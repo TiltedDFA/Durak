@@ -90,6 +90,7 @@ int main()
 						if (overlap >= 50)
 						{
 							auto box = c1::BoxColFinder(cardsVisible[i]);
+							cardsVisible[i]->cardPosition = box.first;
 							if (overlap == 100)
 							{
 								if (c1::canCardBePlayed(table, cardsVisible[i]))//players[0])
@@ -97,17 +98,16 @@ int main()
 									cardsVisible[i]->canBeTouched = false;
 									c1::moveCardFromPlayerHandToTable(players[1], table, cardsVisible[i], box.second);
 								}
-								else
+								else if (!c1::canCardBePlayed(table, cardsVisible[i]))
 								{
-									cardsVisible[i]->cardPosition = { 0,0 };
+									Vector2 resetPos = { box.first.x , (box.first.y + 250.0f) };
+									cardsVisible[i]->cardPosition = resetPos;
 								}
 								//This works as intended
 								//Use to shift from hand to tables assuming that the conditions are met
 								//Time to code this.
-								// Push to table if the conditons are met. Treat the player as players[0]
-							}
-
-							cardsVisible[i]->cardPosition = box.first;
+								// Push to table if the conditons are met. Treat the player as players[1]
+							}							
 						}
 					}
 				}

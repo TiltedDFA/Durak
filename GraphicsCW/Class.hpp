@@ -53,6 +53,7 @@ public:
 	cardValue Value{};
 	std::string Name = "";
 	std::string suitToString(cardSuit); // A fucntion that converts the enumarated values to a string(Which can be used to display)
+	std::string valueToString(cardValue);
 };
 //-------------------------------------------------------------------------------------------------------------
 class Deck

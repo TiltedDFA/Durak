@@ -50,6 +50,13 @@ namespace c0 // c0 will be the setting up / maintaing function
 		deck.setVisibleCard(card);
 		deck.setMasterSuit(card->Suit);
 	}
+	void displayCardWithValueText(std::shared_ptr<Card> card)
+	{
+		std::string cValStr = (static_cast<int>(card->Value) > 10) ? card->valueToString(card->Value) : std::to_string(static_cast<int>(card->Value));
+		std::string cSuitStr = card->suitToString(card->Suit);
+		DrawText(cValStr.c_str(), static_cast<int>((card->cardPosition.x + 10)), static_cast<int>((card->cardPosition.y + 65)), 20, BLACK);
+		DrawText(cSuitStr.c_str(), static_cast<int>((card->cardPosition.x + 10)), static_cast<int>((card->cardPosition.y + 95)), 20, BLACK);
+	}
 }
 namespace c1 // This namespace does something e.g. finding the starting player
 {
@@ -104,11 +111,15 @@ namespace c1 // This namespace does something e.g. finding the starting player
 	}
 	bool canCardBePlayed(Table& table, std::shared_ptr<Card> card) // This function checks if an attacking card can be played based on the cards in the table.
 	{
+		if (!card->cardIsFaceUp) { return false; }
 		std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();
 		if (cardsOnTable[0][0] == nullptr && cardsOnTable[1][0] == nullptr && cardsOnTable[2][0] == nullptr && cardsOnTable[3][0] == nullptr && cardsOnTable[4][0] == nullptr && cardsOnTable[5][0] == nullptr)
 		{
-			return true;
-		}
+			if (cardsOnTable[0][1] == nullptr && cardsOnTable[1][1] == nullptr && cardsOnTable[2][1] == nullptr && cardsOnTable[3][1] == nullptr && cardsOnTable[4][1] == nullptr && cardsOnTable[5][1] == nullptr)
+			{
+				return true;
+			}
+		}		
 	/*	if (cardsOnTable[0][0]->Value == card->Value || cardsOnTable[1][0]->Value == card->Value || cardsOnTable[2][0]->Value == card->Value || cardsOnTable[3][0]->Value == card->Value || cardsOnTable[4][0]->Value == card->Value || cardsOnTable[5][0]->Value == card->Value)
 		{
 			return true;
@@ -156,8 +167,8 @@ namespace c1 // This namespace does something e.g. finding the starting player
 		auto posInHand = std::find(playerHand.begin(), playerHand.end(), card);
 		if (posInHand != playerHand.end())
 		{
-			if (player.isPlyrAtk()) { table.addCardToTableAtk(std::move(*posInHand), cardPile); }
-			else { table.addCardToTableDef(std::move(*posInHand), cardPile); }
+			if (player.isPlyrAtk()) { table.addCardToTableAtk(std::move(*posInHand), cardPile); playerHand.erase(posInHand);}
+			else { table.addCardToTableDef(std::move(*posInHand), cardPile); playerHand.erase(posInHand); }
 			player.setEntireHand(playerHand);
 		}
 	}
@@ -171,11 +182,13 @@ namespace c2 // This namespace is used to display
 			if (cardsVisible[i]->cardIsFaceUp)
 			{
 				DrawTexture(cBlank, static_cast<int>(cardsVisible[i]->cardPosition.x), static_cast<int>(cardsVisible[i]->cardPosition.y), WHITE);
+				c0::displayCardWithValueText(cardsVisible[i]);
 			}
 			else if (!cardsVisible[i]->cardIsFaceUp)
 			{
 				DrawTexture(cBack, static_cast<int>(cardsVisible[i]->cardPosition.x), static_cast<int>(cardsVisible[i]->cardPosition.y), WHITE);
 			}
+			
 		}
 	}
 	void displayDeckExtraCards(Deck& deck, Texture2D& backOfCard, Texture2D& frontOfCard)
