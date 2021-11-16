@@ -113,7 +113,14 @@ namespace c1 // This namespace does something e.g. finding the starting player
 		{
 			return true;
 		}
-    */	
+    */   
+		for (auto const i : cardsOnTable)
+		{
+			for (int j = 0; j < 2; ++j)
+			{
+				if (i[j]->Value == card->Value) { return true; }
+			}
+		}
 	return false;
 	}
 	bool cardBeatsCard(const std::shared_ptr<Card> cardOne, const std::shared_ptr<Card> cardTwo, Deck deck)
