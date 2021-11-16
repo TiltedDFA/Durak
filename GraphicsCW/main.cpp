@@ -6,6 +6,7 @@ int main()
 	const int screenWidth = 1920;
 	const int screenHeight = 1050; // have to do this to fix the mouse ghosting issue
 	InitWindow(screenWidth, screenHeight, "Durak");
+	InitAudioDevice();
 	SetTargetFPS(120);
 	//---------------------------------------------------------------------------------------
 	Vector2 mP = { 0.0f, 0.0f };
@@ -25,11 +26,15 @@ int main()
 	//---------------------------------------------------------------------------------------
 	Image appIcon = LoadImage("appIcon.png");
 	SetWindowIcon(appIcon);
+	Sound fxButton = LoadSound("buttonfx.wav");
 	Texture2D blankCard = LoadTexture("170pixelBlank.png");
 	Texture2D TitleScreen = LoadTexture("TitleScreen.png");
 	Texture2D  _Table = LoadTexture("TableCardHole.png");
-	Texture2D progTable = LoadTexture("TableCardInProg.png");
+	Texture2D progTable = LoadTexture("TableWithButton.png");
 	Texture2D CardBacking = LoadTexture("170CardBacking.png");
+	Texture2D PassButtonHigh = LoadTexture("PassHigh.png");
+	Texture2D PassButtonMid = LoadTexture("PassMid.png");
+	Texture2D PassButtonLow = LoadTexture("PassLow.png");
 	//--------------------------------------------------------------------------------------
 	// Main game loop
 
@@ -51,10 +56,11 @@ int main()
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(progTable, 0, 0, WHITE);
+			c2::displayPassButtons(PassButtonLow, PassButtonMid, PassButtonHigh, fxButton);
 			//deck.displayDeck(blankCard, CardBacking);
 			c2::cTable(cardsVisible, CardBacking, blankCard, amtOfCardsOnScreen);
 			deck.displayVisisbleCard(blankCard);
-			c2::displayDeckExtraCards(deck, CardBacking, blankCard);
+			c2::displayDeckExtraCards(deck, CardBacking, blankCard);			
 			DrawCircleV(GetMousePosition(), 10, WHITE);
 			//c1::rectangles();
 			EndDrawing();

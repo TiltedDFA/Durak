@@ -199,6 +199,30 @@ namespace c2 // This namespace is used to display
 		DrawTexture(backOfCard, static_cast<int>(topCards.first->cardPosition.x), static_cast<int>(topCards.first->cardPosition.y), WHITE);
 		DrawTexture(backOfCard, static_cast<int>(topCards.second->cardPosition.x), static_cast<int>(topCards.second->cardPosition.y), WHITE);
 	}
+	void displayPassButtons(Texture2D& passLow, Texture2D& passMid, Texture2D& passHigh, Sound& fxButton)
+	{
+		// 1520, 936
+		//CheckCollisionPointRec
+		Vector2 mP = GetMousePosition();
+		Rectangle buttonHitBox = { 1520.0f, 936.0f, 150, 75 };
+		if (CheckCollisionPointRec(mP, buttonHitBox))
+		{
+			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+			{
+				DrawTexture(passMid, 1520.0f, 936.0f, WHITE);
+			}
+			else
+			{
+				DrawTexture(passHigh, 1520.0f, 936.0f, WHITE);
+			}
+			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); }
+		}
+		else
+		{
+			DrawTexture(passLow, 1520.0f, 936.0f, WHITE);
+		}
+	}
+		
 }
 namespace c3 // This will be used to preform game functions
 {
