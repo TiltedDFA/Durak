@@ -132,3 +132,11 @@ Completely restarting
 ->late
 the card being passed to the addfromhandto table function isn't in the player hand (though it should be)
 }
+16/11/2021 
+{
+->23:59
+I've added a lot recently. 
+Current to do list (short term) : make it so if a card is placed, another cannot be placed. 
+Make the game player state based and impliment a turn based system
+Improve defender playing card check functions
+}

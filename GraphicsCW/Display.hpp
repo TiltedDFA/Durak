@@ -31,7 +31,7 @@ namespace c0 // c0 will be the setting up / maintaing function
 		for (int i = 0; i < 6; ++i)
 		{
 			std::shared_ptr<Card> card = deck.dealCard();
-			card->canBeTouched = false;
+			//card->canBeTouched = false; Temp disabled until ai is made
 			card->cardIsFaceUp = false;
 			card->cardPosition = { (x + 125 * i),y };
 			players[0].addToPlayerHand(card);
