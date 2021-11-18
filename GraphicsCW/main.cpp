@@ -50,8 +50,8 @@ int main()
 	//Code something that moves the cards when the mouse moves them. The co-ordinates of the cards will be the mouse co-ordinates + the offset of where the mouse clicks the card
 	c0::setUpPlayerHandPos(cardsVisible, deck, players);
 	c0::setTopCards(deck);
-	if (c1::findStartingPlayer(players, deck) == 0) { players[0].setPlyrAtk(true); }
-	else { players[1].setPlyrAtk(true); }
+	if (c1::findStartingPlayer(players, deck) == 0) { players[0].setPlyrAtk(true); mainGame.setPTurn(0);}
+	else { players[1].setPlyrAtk(true); mainGame.setPTurn(1); }
 	while (!WindowShouldClose())
 	{
 		mP = GetMousePosition();
@@ -63,8 +63,8 @@ int main()
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(progTable, 0, 0, WHITE);
-			c2::displayPassButtons(PassButtonLow, PassButtonMid, PassButtonHigh, fxButton, mainGame.getCardsPlayed());
-			c2::displayEndButtons(EndButtonLow, EndButtonMid, EndButtonHigh, fxButton, mainGame.getCardsPlayed());
+			c2::displayPassButtons(mainGame, PassButtonLow, PassButtonMid, PassButtonHigh, fxButton);
+			c2::displayEndButtons(mainGame, EndButtonLow, EndButtonMid, EndButtonHigh, fxButton);
 			c2::displayPlayerState(AtkHigh, AtkLow, DefHigh, DefLow, players[1].isPlyrAtk());
 			//deck.displayDeck(blankCard, CardBacking);
 			c2::cTable(cardsVisible, CardBacking, blankCard);
@@ -106,24 +106,39 @@ int main()
 						{
 							auto box = c1::BoxColFinder(cardsVisible[i]);
 							cardsVisible[i]->cardPosition = box.first;
-							if (overlap == 100)
+							if (players[1].isPlyrAtk())// This checks if it's true
 							{
-								if (c1::canCardBePlayed(table, cardsVisible[i]))//players[0]
+								if (overlap == 100)
 								{
-									cardsVisible[i]->canBeTouched = false;
-									c1::moveCardFromPlayerHandToTable(players[1], table, cardsVisible[i], box.second);
-									mainGame.incramentCardsPlayed();
+									if (c1::canCardBePlayed(table, cardsVisible[i]))//players[0]
+									{
+										cardsVisible[i]->canBeTouched = false;
+										c1::moveCardFromPlayerHandToTable(players[1], table, cardsVisible[i], box.second);
+										mainGame.incramentCardsPlayed();
+									}
+									else if (!c1::canCardBePlayed(table, cardsVisible[i]))
+									{
+										Vector2 resetPos = { box.first.x , (box.first.y + 250.0f) };
+										cardsVisible[i]->cardPosition = resetPos;
+									}
+									//This works as intended
+									//Use to shift from hand to tables assuming that the conditions are met
+									//Time to code this.
+									// Push to table if the conditons are met. Treat the player as players[1]
 								}
-								else if (!c1::canCardBePlayed(table, cardsVisible[i]))
+							}
+							else if (!players[1].isPlyrAtk())
+							{
+								if (mainGame.getCardsPlayed() > 0 && c1::cardBeatsCard(cardsVisible[i], table.getCardFromTableAtk(box.second), deck))
+								{
+									c1::moveCardFromPlayerHandToTable(players[1], table, cardsVisible[i], box.second);
+								}
+								else
 								{
 									Vector2 resetPos = { box.first.x , (box.first.y + 250.0f) };
 									cardsVisible[i]->cardPosition = resetPos;
 								}
-								//This works as intended
-								//Use to shift from hand to tables assuming that the conditions are met
-								//Time to code this.
-								// Push to table if the conditons are met. Treat the player as players[1]
-							}							
+							}
 						}
 					}
 				}

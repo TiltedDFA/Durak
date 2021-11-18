@@ -50,13 +50,7 @@ namespace c0 // c0 will be the setting up / maintaing function
 		deck.setVisibleCard(card);
 		deck.setMasterSuit(card->Suit);
 	}
-	void displayCardWithValueText(std::shared_ptr<Card> card)
-	{
-		std::string cValStr = (static_cast<int>(card->Value) > 10) ? card->valueToString(card->Value) : std::to_string(static_cast<int>(card->Value));
-		std::string cSuitStr = card->suitToString(card->Suit);
-		DrawText(cValStr.c_str(), static_cast<int>((card->cardPosition.x + 10)), static_cast<int>((card->cardPosition.y + 65)), 20, BLACK);
-		DrawText(cSuitStr.c_str(), static_cast<int>((card->cardPosition.x + 10)), static_cast<int>((card->cardPosition.y + 95)), 20, BLACK);
-	}
+	
 }
 namespace c1 // This namespace does something e.g. finding the starting player
 {
@@ -111,8 +105,12 @@ namespace c1 // This namespace does something e.g. finding the starting player
 	}
 	bool canCardBePlayed(Table& table, std::shared_ptr<Card> card) // This function checks if an attacking card can be played based on the cards in the table.
 	{
+		
+
 		if (!card->cardIsFaceUp) { return false; }
 		std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();
+		//auto cardPosInTable = std::find(cardsOnTable.begin(), cardsOnTable.end(), card);
+		//if (cardPosInTable != cardsOnTable.end()) { return false; }
 		if (cardsOnTable[0][0] == nullptr && cardsOnTable[1][0] == nullptr && cardsOnTable[2][0] == nullptr && cardsOnTable[3][0] == nullptr && cardsOnTable[4][0] == nullptr && cardsOnTable[5][0] == nullptr)
 		{
 			if (cardsOnTable[0][1] == nullptr && cardsOnTable[1][1] == nullptr && cardsOnTable[2][1] == nullptr && cardsOnTable[3][1] == nullptr && cardsOnTable[4][1] == nullptr && cardsOnTable[5][1] == nullptr)
@@ -120,11 +118,6 @@ namespace c1 // This namespace does something e.g. finding the starting player
 				return true;
 			}
 		}		
-	/*	if (cardsOnTable[0][0]->Value == card->Value || cardsOnTable[1][0]->Value == card->Value || cardsOnTable[2][0]->Value == card->Value || cardsOnTable[3][0]->Value == card->Value || cardsOnTable[4][0]->Value == card->Value || cardsOnTable[5][0]->Value == card->Value)
-		{
-			return true;
-		}
-	*/   
 		for (auto const i : cardsOnTable)
 		{
 			for (int j = 0; j < 2; ++j)
@@ -138,9 +131,7 @@ namespace c1 // This namespace does something e.g. finding the starting player
 	{
 		cardSuit mS = deck.getMasterSuit();
 		if (cardOne->Suit == mS && cardTwo->Suit != mS) { return true; }
-		else { return false; }
-		if (cardOne->Suit == cardTwo->Suit && cardOne->Value > cardTwo->Value) { return true; }
-		else { return false; }
+		else if (cardOne->Suit == cardTwo->Suit && cardOne->Value > cardTwo->Value) { return true; }
 		return false;
 	}
 	std::pair<Vector2, int> BoxColFinder(const std::shared_ptr<Card> card)
@@ -182,7 +173,7 @@ namespace c2 // This namespace is used to display
 			if (cardsVisible[i]->cardIsFaceUp)
 			{
 				DrawTexture(cBlank, static_cast<int>(cardsVisible[i]->cardPosition.x), static_cast<int>(cardsVisible[i]->cardPosition.y), WHITE);
-				c0::displayCardWithValueText(cardsVisible[i]);
+				cardsVisible[i]->displayCardWithValueText(cardsVisible[i]);
 			}
 			else if (!cardsVisible[i]->cardIsFaceUp)
 			{
@@ -199,62 +190,64 @@ namespace c2 // This namespace is used to display
 		DrawTexture(backOfCard, static_cast<int>(topCards.first->cardPosition.x), static_cast<int>(topCards.first->cardPosition.y), WHITE);
 		DrawTexture(backOfCard, static_cast<int>(topCards.second->cardPosition.x), static_cast<int>(topCards.second->cardPosition.y), WHITE);
 	}
-	void displayPassButtons(Texture2D& passLow, Texture2D& passMid, Texture2D& passHigh, Sound& fxButton, int cardsPlayedThisRound)
+	void displayPassButtons(MainGame& mg, Texture2D& passLow, Texture2D& passMid, Texture2D& passHigh, Sound& fxButton)
 	{
 		// 1520, 936
 		//CheckCollisionPointRec
+		int cardsPlayedThisRound = mg.getCardsPlayed();
 		if (!(cardsPlayedThisRound > 0))
 		{
-			DrawTexture(passLow, 1520.0f, 936.0f, WHITE);
+			DrawTexture(passLow, 1520, 936, WHITE); 
 		}
 		else
 		{
 			Vector2 mP = GetMousePosition();
-			Rectangle buttonHitBox = { 1520.0f, 936.0f, 150, 75 };
+			Rectangle buttonHitBox = { 1520, 936, 150, 75 };
 			if (CheckCollisionPointRec(mP, buttonHitBox))
 			{
 				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 				{
-					DrawTexture(passMid, 1520.0f, 936.0f, WHITE);
+					DrawTexture(passMid, 1520, 936, WHITE);
 				}
 				else
 				{
-					DrawTexture(passHigh, 1520.0f, 936.0f, WHITE);
+					DrawTexture(passHigh, 1520, 936, WHITE);
 				}
-				if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); }
+				if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); mg.switchPTurn(); }
 			}
 			else
 			{
-				DrawTexture(passLow, 1520.0f, 936.0f, WHITE);
+				DrawTexture(passLow, 1520, 936, WHITE);
 			}
 		}
 	}
-	void displayEndButtons(Texture2D& endLow, Texture2D& endMid, Texture2D& endHigh, Sound& fxButton, int cardsPlayedThisRound)
+	void displayEndButtons(MainGame& mg, Texture2D& endLow, Texture2D& endMid, Texture2D& endHigh, Sound& fxButton)
 	{
-		// 1733, 936		
+		// 1733, 936
+		int cardsPlayedThisRound = mg.getCardsPlayed();
 		if (!(cardsPlayedThisRound > 0))
 		{
-			DrawTexture(endLow, 1733.0f, 936.0f, WHITE);
+			DrawTexture(endLow, 1733, 936, WHITE);
 		}
 		else
 		{
 			Vector2 mP = GetMousePosition();
-			Rectangle buttonHitBox = { 1733.0f, 936.0f, 150, 75 };
+			Rectangle buttonHitBox = { 1733, 936, 150, 75 };
 			if (CheckCollisionPointRec(mP, buttonHitBox))
 			{
 				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 				{
-					DrawTexture(endMid, 1733.0f, 936.0f, WHITE);
+					DrawTexture(endMid, 1733, 936, WHITE);
 				}
 				else
 				{
-					DrawTexture(endHigh, 1733.0f, 936.0f, WHITE);
+					DrawTexture(endHigh, 1733, 936, WHITE);
 				}
 				if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); }
 			}
 			else
 			{
-				DrawTexture(endLow, 1733.0f, 936.0f, WHITE);
+				DrawTexture(endLow, 1733, 936, WHITE);
 			}
 		}
 	}

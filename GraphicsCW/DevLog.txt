@@ -140,3 +140,7 @@ Current to do list (short term) : make it so if a card is placed, another cannot
 Make the game player state based and impliment a turn based system
 Improve defender playing card check functions
 }
+18/11/2021
+{
+currently, the oposing player cannot play cards. Fix.
+}

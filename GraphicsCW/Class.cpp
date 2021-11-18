@@ -25,7 +25,7 @@ std::string Card::valueToString(cardValue value)
 {
 	switch (value)
 	{
-	case cardValue::JACK :
+	case cardValue::JACK:
 		return "Jack";
 	case cardValue::QUEEN:
 		return "Queen";
@@ -36,6 +36,15 @@ std::string Card::valueToString(cardValue value)
 	default:
 		break;
 	}
+	return "Error";
+}
+void Card::displayCardWithValueText(std::shared_ptr<Card> card)
+{
+	std::string cValStr = (static_cast<int>(card->Value) > 10) ? card->valueToString(card->Value) : std::to_string(static_cast<int>(card->Value));
+	std::string cSuitStr = card->suitToString(card->Suit);
+	DrawText(cValStr.c_str(), static_cast<int>((card->cardPosition.x + 10)), static_cast<int>((card->cardPosition.y + 65)), 20, BLACK);
+	DrawText(cSuitStr.c_str(), static_cast<int>((card->cardPosition.x + 10)), static_cast<int>((card->cardPosition.y + 95)), 20, BLACK);
+
 }
 //-------------------------------------------------------------------------------------------------------------
 Deck::Deck()
@@ -83,6 +92,11 @@ void Deck::setVisibleCard(std::shared_ptr<Card> card)
 void Deck::displayVisisbleCard(Texture2D& visiCardTexture)
 {
 	DrawTextureEx(visiCardTexture, visibleCard->cardPosition, 90.0, 1.0, WHITE);
+	std::shared_ptr<Card> card = visibleCard;
+	std::string cValStr = (static_cast<int>(card->Value) > 10) ? card->valueToString(card->Value) : std::to_string(static_cast<int>(card->Value));
+	std::string cSuitStr = card->suitToString(card->Suit);
+	DrawText(cValStr.c_str(), static_cast<int>((card->cardPosition.x - 105)), static_cast<int>((card->cardPosition.y + 20)), 30, BLACK);
+	DrawText(cSuitStr.c_str(), static_cast<int>((card->cardPosition.x - 105)), static_cast<int>((card->cardPosition.y + 65)), 25, BLACK);	
 }
 std::shared_ptr<Card> Deck::getVisibleCard()
 {
@@ -142,7 +156,6 @@ void Player::setEntireHand(std::vector<std::shared_ptr<Card>> hand)
 Table::Table()
 {
 }
-
 Table::~Table()
 {
 }
@@ -190,13 +203,13 @@ void MainGame::setRound(const int num)
 {
 	_round = num;
 }
-void MainGame::switchAtkPlr()
+void MainGame::switchPTurn()
 {
-	plrAtk = (plrAtk + 1) % 2;
+	pTurn = (pTurn + 1) % 2;
 }
-void MainGame::setPlrAtk(int player)
+void MainGame::setPTurn(int player)
 {
-	plrAtk = player;
+	pTurn = player;
 }
 unsigned short int MainGame::getCardsPlayed()
 {
