@@ -107,6 +107,7 @@ public:
 	std::shared_ptr<Card> getCardFromTableAtk(const int index);
 	std::shared_ptr<Card> getCardFromTableDef(const int index);
 	std::array<std::array<std::shared_ptr<Card>, 2>, 6> getEntireTable();
+	void setEntireTable(std::array<std::array<std::shared_ptr<Card>, 2>, 6> table);
 };
 //-------------------------------------------------------------------------------------------------------------
 class DiscardedCards
@@ -135,8 +136,9 @@ public:
 
 	void setPTurn(const int player);
 	void switchPTurn();
+	const unsigned int getPTurn();
 
-	unsigned short int getCardsPlayed();
+	const unsigned short int getCardsPlayed();
 	void setCardsPlayed(const unsigned short int played);
 	void resetCardsPlayed();
 	void incramentCardsPlayed();

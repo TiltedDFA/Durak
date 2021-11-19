@@ -17,6 +17,7 @@ int main()
 	bool hC = false;	
 	Deck deck;
 	Table table;
+	DiscardedCards bPile;
 	MainGame mainGame;
 	std::array<Player, 2>players;
 	std::vector<std::shared_ptr<Card>>cardsVisible;
@@ -106,14 +107,14 @@ int main()
 						{
 							auto box = c1::BoxColFinder(cardsVisible[i]);
 							cardsVisible[i]->cardPosition = box.first;
-							if (players[1].isPlyrAtk())// This checks if it's true
+							if (players[mainGame.getPTurn()].isPlyrAtk())// This checks if it's true
 							{
 								if (overlap == 100)
 								{
 									if (c1::canCardBePlayed(table, cardsVisible[i]))//players[0]
 									{
 										cardsVisible[i]->canBeTouched = false;
-										c1::moveCardFromPlayerHandToTable(players[1], table, cardsVisible[i], box.second);
+										c1::moveCardFromPlayerHandToTable(players[mainGame.getPTurn()], table, cardsVisible[i], box.second);
 										mainGame.incramentCardsPlayed();
 									}
 									else if (!c1::canCardBePlayed(table, cardsVisible[i]))
@@ -127,11 +128,11 @@ int main()
 									// Push to table if the conditons are met. Treat the player as players[1]
 								}
 							}
-							else if (!players[1].isPlyrAtk())
+							else if (!players[mainGame.getPTurn()].isPlyrAtk())
 							{
 								if (mainGame.getCardsPlayed() > 0 && c1::cardBeatsCard(cardsVisible[i], table.getCardFromTableAtk(box.second), deck))
 								{
-									c1::moveCardFromPlayerHandToTable(players[1], table, cardsVisible[i], box.second);
+									c1::moveCardFromPlayerHandToTable(players[mainGame.getPTurn()], table, cardsVisible[i], box.second);
 								}
 								else
 								{

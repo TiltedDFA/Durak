@@ -144,3 +144,6 @@ Improve defender playing card check functions
 {
 currently, the oposing player cannot play cards. Fix.
 }
+ADD SOME PROTECTION VS THE TABLE RETURNING NULL PTRS
+
+add a system for defence that locks defending cards in while also displaying them at an offset to where the attacking cards are stored/

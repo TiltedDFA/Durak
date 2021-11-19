@@ -179,6 +179,10 @@ std::array<std::array<std::shared_ptr<Card>, 2>, 6> Table::getEntireTable()
 {
 	return cardsOnTable;
 }
+void Table::setEntireTable(std::array<std::array<std::shared_ptr<Card>, 2>, 6> table)
+{
+	cardsOnTable = table;
+}
 //-------------------------------------------------------------------------------------------------------------
 DiscardedCards::DiscardedCards() {};
 DiscardedCards::~DiscardedCards() {};
@@ -211,7 +215,7 @@ void MainGame::setPTurn(int player)
 {
 	pTurn = player;
 }
-unsigned short int MainGame::getCardsPlayed()
+const unsigned short int MainGame::getCardsPlayed()
 {
 	return cardsPlayedThisPass;
 }
@@ -226,5 +230,9 @@ void MainGame::resetCardsPlayed()
 void MainGame::incramentCardsPlayed()
 {
 	++cardsPlayedThisPass;
+}
+const unsigned int MainGame::getPTurn()
+{
+	return pTurn;
 }
 //-------------------------------------------------------------------------------------------------------------

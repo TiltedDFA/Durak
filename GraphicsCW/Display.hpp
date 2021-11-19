@@ -129,6 +129,7 @@ namespace c1 // This namespace does something e.g. finding the starting player
 	}
 	bool cardBeatsCard(const std::shared_ptr<Card> cardOne, const std::shared_ptr<Card> cardTwo, Deck deck)
 	{
+		if (cardTwo == nullptr) { return true; }// This code assumes that the only cards that will be passed to the function will be from the table
 		cardSuit mS = deck.getMasterSuit();
 		if (cardOne->Suit == mS && cardTwo->Suit != mS) { return true; }
 		else if (cardOne->Suit == cardTwo->Suit && cardOne->Value > cardTwo->Value) { return true; }
@@ -162,6 +163,18 @@ namespace c1 // This namespace does something e.g. finding the starting player
 			else { table.addCardToTableDef(std::move(*posInHand), cardPile); playerHand.erase(posInHand);}
 			player.setEntireHand(playerHand);
 		}
+	}
+	void moveAllTableToBPile(DiscardedCards& bPile, Table& table)
+	{
+		std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();
+		for (auto& i : cardsOnTable)
+		{
+			for (int j = 0; j < 2; ++j)
+			{
+				if (i[j] != nullptr) { bPile.addToPile(std::move(i[j])); }
+			}
+		}
+		
 	}
 }
 namespace c2 // This namespace is used to display
