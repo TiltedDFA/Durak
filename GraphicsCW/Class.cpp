@@ -152,6 +152,10 @@ void Player::setEntireHand(std::vector<std::shared_ptr<Card>> hand)
 {
 	playerHand = hand;
 }
+void Player::setPlayerHandIndex(std::shared_ptr<Card> card, const int index)
+{
+	playerHand[index] = card;
+}
 //-------------------------------------------------------------------------------------------------------------
 Table::Table()
 {
@@ -231,7 +235,7 @@ void MainGame::incramentCardsPlayed()
 {
 	++cardsPlayedThisPass;
 }
-const unsigned int MainGame::getPTurn()
+const int MainGame::getPTurn()
 {
 	return pTurn;
 }

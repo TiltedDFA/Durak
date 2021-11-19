@@ -160,7 +160,9 @@ namespace c1 // This namespace does something e.g. finding the starting player
 		if (posInHand != playerHand.end())
 		{
 			if (player.isPlyrAtk()) { table.addCardToTableAtk(std::move(*posInHand), cardPile); playerHand.erase(posInHand); }
+
 			else { table.addCardToTableDef(std::move(*posInHand), cardPile); playerHand.erase(posInHand);}
+
 			player.setEntireHand(playerHand);
 		}
 	}
@@ -175,6 +177,23 @@ namespace c1 // This namespace does something e.g. finding the starting player
 			}
 		}
 		
+	}
+	void lockCardsInHand(std::array<Player, 2>players, MainGame mg)
+	{
+		auto pTurn = mg.getPTurn();
+		for (int i = 0; i < players[pTurn].getPlayerHandSize(); ++i)
+		{
+			auto card = players[pTurn].getPlayerHandIndex(i);
+			card->canBeTouched = true;
+			players[pTurn].setPlayerHandIndex(card, i);
+		}
+		auto otherPlayer = (pTurn + 1) % 2;
+		for (int i = 0; i < players[otherPlayer].getPlayerHandSize(); ++i)
+		{
+			auto card = players[otherPlayer].getPlayerHandIndex(i);
+			card->canBeTouched = false;
+			players[otherPlayer].setPlayerHandIndex(card, i);
+		}
 	}
 }
 namespace c2 // This namespace is used to display
@@ -277,6 +296,18 @@ namespace c2 // This namespace is used to display
 		{
 			DrawTexture(atkLow, 1658, 42, WHITE);
 			DrawTexture(defHigh, 1507, 44, WHITE);
+		}
+	}
+	void displayWhosTurnItIs(MainGame& mg)
+	{
+		auto turn = mg.getPTurn();
+		if (turn) // turn is either 1 or 0 which represents true or false (kinda)
+		{
+			DrawRectangle(1658, 102, 100, 20, WHITE);
+		}
+		else if (!turn)
+		{
+			DrawRectangle(1507, 102, 100, 20, WHITE);
 		}
 	}
 }

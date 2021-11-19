@@ -60,7 +60,7 @@ int main()
 		if (prePlayScreen)
 		{
 			int round = mainGame.getRound();
-
+			c1::lockCardsInHand(players, mainGame);
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(progTable, 0, 0, WHITE);
@@ -70,7 +70,8 @@ int main()
 			//deck.displayDeck(blankCard, CardBacking);
 			c2::cTable(cardsVisible, CardBacking, blankCard);
 			deck.displayVisisbleCard(blankCard);
-			c2::displayDeckExtraCards(deck, CardBacking, blankCard);			
+			c2::displayDeckExtraCards(deck, CardBacking, blankCard);
+			c2::displayWhosTurnItIs(mainGame);
 			DrawCircleV(GetMousePosition(), 10, WHITE);
 			//c1::rectangles();
 			EndDrawing();
@@ -117,7 +118,7 @@ int main()
 										c1::moveCardFromPlayerHandToTable(players[mainGame.getPTurn()], table, cardsVisible[i], box.second);
 										mainGame.incramentCardsPlayed();
 									}
-									else if (!c1::canCardBePlayed(table, cardsVisible[i]))
+									else// if (!c1::canCardBePlayed(table, cardsVisible[i]))
 									{
 										Vector2 resetPos = { box.first.x , (box.first.y + 250.0f) };
 										cardsVisible[i]->cardPosition = resetPos;
@@ -132,6 +133,7 @@ int main()
 							{
 								if (mainGame.getCardsPlayed() > 0 && c1::cardBeatsCard(cardsVisible[i], table.getCardFromTableAtk(box.second), deck))
 								{
+									cardsVisible[i]->canBeTouched = false;
 									c1::moveCardFromPlayerHandToTable(players[mainGame.getPTurn()], table, cardsVisible[i], box.second);
 								}
 								else

@@ -87,12 +87,17 @@ public:
 	~Player();
 	void addToPlayerHand(std::shared_ptr<Card> cardToAdd);
 	std::shared_ptr<Card> getPlayerHandIndex(const int index);
+
 	std::size_t getPlayerHandSize();
 	void addNeededCardToPlayerHand(Deck& deck);
+
 	bool isPlyrAtk();
 	void setPlyrAtk(bool bol);
+
 	std::vector<std::shared_ptr<Card>> getEntireHand();
 	void setEntireHand(std::vector<std::shared_ptr<Card>> hand);
+
+	void setPlayerHandIndex(std::shared_ptr<Card> card, const int index);
 };
 //-------------------------------------------------------------------------------------------------------------
 class Table
@@ -124,7 +129,7 @@ public:
 class MainGame
 {
 private:
-	unsigned int  pTurn = 0;
+	int  pTurn = 0;
 	unsigned int _round = 0;
 	unsigned short int cardsPlayedThisPass = 0;
 public:
@@ -136,7 +141,7 @@ public:
 
 	void setPTurn(const int player);
 	void switchPTurn();
-	const unsigned int getPTurn();
+	const int getPTurn();
 
 	const unsigned short int getCardsPlayed();
 	void setCardsPlayed(const unsigned short int played);
