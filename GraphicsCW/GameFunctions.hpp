@@ -48,7 +48,7 @@ namespace c2
 				return true;
 			}
 		}
-		for (auto const i : cardsOnTable)
+		for (const auto& i : cardsOnTable)
 		{
 			for (int j = 0; j < 2; ++j)
 			{
@@ -99,7 +99,7 @@ namespace c2
 	void moveAllTableToBPile(DiscardedCards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible)
 	{
 		std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();
-		for (auto& i : cardsOnTable)
+		for (const auto& i : cardsOnTable)
 		{
 			for (int j = 0; j < 2; ++j)
 			{				
@@ -125,6 +125,10 @@ namespace c2
 		}
 		if (cardsPlayed.first == cardsPlayed.second) { return true; }
 		return false;
+	}
+	void switchPlayerStates(std::array<Player, 2>& players) 
+	{
+		players[0].setPlyrAtk(!players[0].isPlyrAtk()); players[1].setPlyrAtk(!players[1].isPlyrAtk()); 
 	}
 }
 #endif // !GAMEFUNCTIONS_HPP

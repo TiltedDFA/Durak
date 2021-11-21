@@ -52,7 +52,7 @@ int main()
 	c1::setUpPlayerHandPos(cardsVisible, deck, players);
 	c1::setTopCards(deck);
 	
-	if (c1::findStartingPlayer(players, deck) == 0) { players[0].setPlyrAtk(true); mainGame.setPTurn(0);}
+	if (c1::findStartingPlayer(players, deck) == 0) { players[0].setPlyrAtk(true); mainGame.setPTurn(0); }
 	else { players[1].setPlyrAtk(true); mainGame.setPTurn(1); }
 	while (!WindowShouldClose())
 	{
@@ -65,7 +65,7 @@ int main()
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(progTable, 0, 0, WHITE);
-			c0::displayPassButtons(table, mainGame, PassButtonLow, PassButtonMid, PassButtonHigh, fxButton);
+			c0::displayPassButtons(players[1], table, mainGame, PassButtonLow, PassButtonMid, PassButtonHigh, fxButton);
 			c0::displayEndButtons(players[1], mainGame, EndButtonLow, EndButtonMid, EndButtonHigh, fxButton, bPile, table, cardsVisible);
 			c0::displayPlayerState(AtkHigh, AtkLow, DefHigh, DefLow, players[1].isPlyrAtk());
 			//deck.displayDeck(blankCard, CardBacking);
@@ -167,9 +167,21 @@ int main()
 	}
 	// De-Initialization
 	//--------------------------------------------------------------------------------------
+	UnloadTexture(blankCard);
 	UnloadTexture(CardBacking);
 	UnloadTexture(TitleScreen);
 	UnloadTexture(_Table);
+	UnloadTexture(progTable);
+	UnloadTexture(PassButtonHigh);
+	UnloadTexture(PassButtonMid);
+	UnloadTexture(PassButtonLow);
+	UnloadTexture(EndButtonHigh);
+	UnloadTexture(EndButtonMid);
+	UnloadTexture(EndButtonLow);
+	UnloadTexture(AtkHigh);
+	UnloadTexture(AtkLow);
+	UnloadTexture(DefHigh);
+	UnloadTexture(DefLow);
 	CloseWindow();// Close window and OpenGL context
 	//--------------------------------------------------------------------------------------
 	system("pause>0");

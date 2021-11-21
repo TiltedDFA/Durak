@@ -130,7 +130,7 @@ public:
 class MainGame
 {
 private:
-	int  pTurn = 0;
+	int  pTurn = 1;
 	unsigned int _round = 0;
 	unsigned short int cardsPlayedThisPass = 0;
 public:
