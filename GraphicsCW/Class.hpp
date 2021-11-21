@@ -48,13 +48,14 @@ public:
 	bool cardIsFaceUp = true;
 	bool cardIsHeld = false;
 	bool canBeTouched = true;
+	bool inDefTablePile = false;
 
 	cardSuit Suit{};
 	cardValue Value{};
 	std::string Name = "";
-	std::string suitToString(cardSuit); // A fucntion that converts the enumarated values to a string(Which can be used to display)
-	std::string valueToString(cardValue);
-	void displayCardWithValueText(std::shared_ptr<Card> card);
+	std::string suitToString(const cardSuit&); // A fucntion that converts the enumarated values to a string(Which can be used to display)
+	std::string valueToString(const cardValue&);
+	void displayCardWithValueText(const std::shared_ptr<Card>& card);
 };
 //-------------------------------------------------------------------------------------------------------------
 class Deck
@@ -123,7 +124,7 @@ public:
 	DiscardedCards();
 	~DiscardedCards();
 
-	void addToPile(std::shared_ptr<Card> card);
+	void addToPile(const std::shared_ptr<Card>& card);
 };
 //-------------------------------------------------------------------------------------------------------------
 class MainGame

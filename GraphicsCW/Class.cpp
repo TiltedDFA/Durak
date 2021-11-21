@@ -4,7 +4,7 @@
 
 Card::Card() { Suit = cardSuit::CLUBS; Value = cardValue::TWO; }
 Card::~Card() {}
-std::string Card::suitToString(cardSuit suit)
+std::string Card::suitToString(const cardSuit& suit)
 {
 	switch (suit)
 	{
@@ -21,7 +21,7 @@ std::string Card::suitToString(cardSuit suit)
 	}
 	return "Error";
 }
-std::string Card::valueToString(cardValue value)
+std::string Card::valueToString(const cardValue& value)
 {
 	switch (value)
 	{
@@ -38,7 +38,7 @@ std::string Card::valueToString(cardValue value)
 	}
 	return "Error";
 }
-void Card::displayCardWithValueText(std::shared_ptr<Card> card)
+void Card::displayCardWithValueText(const std::shared_ptr<Card>& card)
 {
 	std::string cValStr = (static_cast<int>(card->Value) > 10) ? card->valueToString(card->Value) : std::to_string(static_cast<int>(card->Value));
 	std::string cSuitStr = card->suitToString(card->Suit);
@@ -67,7 +67,6 @@ Deck::Deck()
 	auto rng = std::default_random_engine{ rd() };
 	std::shuffle(std::begin(deck), std::end(deck), rng);
 }
-
 Deck::~Deck()
 {
 }
@@ -191,7 +190,7 @@ void Table::setEntireTable(std::array<std::array<std::shared_ptr<Card>, 2>, 6> t
 DiscardedCards::DiscardedCards() {};
 DiscardedCards::~DiscardedCards() {};
 
-void DiscardedCards::addToPile(std::shared_ptr<Card> card)
+void DiscardedCards::addToPile(const std::shared_ptr<Card>& card)
 {
 	dCards.emplace_back(card);
 }

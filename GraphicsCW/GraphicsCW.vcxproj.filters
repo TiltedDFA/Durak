@@ -23,6 +23,12 @@
     <ClInclude Include="Class.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SetupFunctions.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFunctions.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="DevLog.txt">
