@@ -28,60 +28,38 @@ namespace c0 //This is used to display
 		DrawTexture(backOfCard, static_cast<int>(topCards.first->cardPosition.x), static_cast<int>(topCards.first->cardPosition.y), WHITE);
 		DrawTexture(backOfCard, static_cast<int>(topCards.second->cardPosition.x), static_cast<int>(topCards.second->cardPosition.y), WHITE);
 	}
-	void displayPassButtons(Player& you, Table& table, MainGame& mg, Texture2D& passLow, Texture2D& passMid, Texture2D& passHigh, Sound& fxButton)
+	void displayPassButtons(std::array<Player, 2>& players, Table& table, MainGame& mg, Texture2D& passLow, Texture2D& passMid, Texture2D& passHigh, Sound& fxButton)
 	{
 		// 1520, 936
 		//CheckCollisionPointRec
 		int cardsPlayedThisRound = mg.getCardsPlayed();
-		if (!(cardsPlayedThisRound > 0))
+
+		if (players[mg.getPTurn()].isPlyrAtk() && !cardsPlayedThisRound || !players[mg.getPTurn()].isPlyrAtk() && c2::canPassDef(table))
 		{
-			DrawTexture(passLow, 1520, 936, WHITE);
+			Vector2 mP = GetMousePosition();
+			Rectangle buttonHitBox = { 1520, 936, 150, 75 };
+			if (CheckCollisionPointRec(mP, buttonHitBox))
+			{
+				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+				{
+					DrawTexture(passMid, 1520, 936, WHITE);
+				}
+				else
+				{
+					DrawTexture(passHigh, 1520, 936, WHITE);
+				}
+				if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); mg.switchPTurn(); }
+			}
+			else
+			{
+				DrawTexture(passLow, 1520, 936, WHITE);
+			}
 		}
 		else
 		{
-			if (you.isPlyrAtk())
-			{
-				Vector2 mP = GetMousePosition();
-				Rectangle buttonHitBox = { 1520, 936, 150, 75 };
-				if (CheckCollisionPointRec(mP, buttonHitBox))
-				{
-					if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
-					{
-						DrawTexture(passMid, 1520, 936, WHITE);
-					}
-					else
-					{
-						DrawTexture(passHigh, 1520, 936, WHITE);
-					}
-					if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); mg.switchPTurn(); }
-				}
-				else
-				{
-					DrawTexture(passLow, 1520, 936, WHITE);
-				}
-			}
-			else if (c2::canPassDef(table) && !you.isPlyrAtk())
-			{
-				Vector2 mP = GetMousePosition();
-				Rectangle buttonHitBox = { 1520, 936, 150, 75 };
-				if (CheckCollisionPointRec(mP, buttonHitBox))
-				{
-					if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
-					{
-						DrawTexture(passMid, 1520, 936, WHITE);
-					}
-					else
-					{
-						DrawTexture(passHigh, 1520, 936, WHITE);
-					}
-					if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); mg.switchPTurn(); }
-				}
-				else
-				{
-					DrawTexture(passLow, 1520, 936, WHITE);
-				}
-			}
+			DrawTexture(passLow, 1520, 936, WHITE);
 		}
+		
 	}
 	void displayEndButtons(Player& player,MainGame& mg, Texture2D& endLow, Texture2D& endMid, Texture2D& endHigh, Sound& fxButton, DiscardedCards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible)
 	{

@@ -65,7 +65,7 @@ int main()
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(progTable, 0, 0, WHITE);
-			c0::displayPassButtons(players[1], table, mainGame, PassButtonLow, PassButtonMid, PassButtonHigh, fxButton);
+			c0::displayPassButtons(players, table, mainGame, PassButtonLow, PassButtonMid, PassButtonHigh, fxButton);
 			c0::displayEndButtons(players[1], mainGame, EndButtonLow, EndButtonMid, EndButtonHigh, fxButton, bPile, table, cardsVisible);
 			c0::displayPlayerState(AtkHigh, AtkLow, DefHigh, DefLow, players[1].isPlyrAtk());
 			//deck.displayDeck(blankCard, CardBacking);

@@ -123,7 +123,8 @@ namespace c2
 			if (i[0] != nullptr) { ++cardsPlayed.first; }
 			if (i[1] != nullptr) { ++cardsPlayed.second; }
 		}
-		if (cardsPlayed.first == cardsPlayed.second) { return true; }
+		if (!cardsPlayed.first) { return false; }
+		else if (cardsPlayed.first == cardsPlayed.second) { return true; }
 		return false;
 	}
 	void switchPlayerStates(std::array<Player, 2>& players) 
