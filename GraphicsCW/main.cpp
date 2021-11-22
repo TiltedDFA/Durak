@@ -41,6 +41,10 @@ int main()
 	Texture2D EndButtonMid = LoadTexture("EndMid.png");
 	Texture2D EndButtonLow = LoadTexture("EndLow.png");
 
+	Texture2D TakeButtonHigh = LoadTexture("TakeHigh.png");
+	Texture2D TakeButtonMid = LoadTexture("TakeMid.png");
+	Texture2D TakeButtonLow = LoadTexture("TakeLow.png");
+
 	Texture2D AtkHigh = LoadTexture("AtkHigh.png");
 	Texture2D AtkLow = LoadTexture("AtkLow.png");
 	Texture2D DefHigh = LoadTexture("DefHigh.png");
@@ -184,6 +188,9 @@ int main()
 	UnloadTexture(AtkLow);
 	UnloadTexture(DefHigh);
 	UnloadTexture(DefLow);
+	UnloadTexture(TakeButtonHigh);
+	UnloadTexture(TakeButtonMid);
+	UnloadTexture(TakeButtonLow);
 	CloseWindow();// Close window and OpenGL context
 	//--------------------------------------------------------------------------------------
 	system("pause>0");

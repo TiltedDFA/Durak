@@ -93,6 +93,22 @@ namespace c1 // Used to setup or maintain
 		auto cTwoPos = std::find(cardsVisible.begin(), cardsVisible.end(), cardTwo);
 		if (cOnePos > cTwoPos) { std::swap(cOnePos, cTwoPos); }		
 	}
+	void removeTableFromFromVisibleVec(Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible)
+	{
+		std::array<std::array<std::shared_ptr<Card>, 2>, 6> _Table = table.getEntireTable();
+		
+		for (const auto& i : _Table)
+		{
+			for (int j = 0; j < 2; ++j)
+			{
+				if (i[j] != nullptr) 
+				{
+					auto posInCardsVisible = std::find(cardsVisible.begin(), cardsVisible.end(), i[j]);
+					cardsVisible.erase(posInCardsVisible);
+				}
+			}
+		}
+	}
 }
 
 #endif // !SETUPFUNCTIONS_HPP
