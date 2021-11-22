@@ -32,9 +32,8 @@ namespace c0 //This is used to display
 	{
 		// 1520, 936
 		//CheckCollisionPointRec
-		int cardsPlayedThisRound = mg.getCardsPlayed();
-
-		if (players[mg.getPTurn()].isPlyrAtk() && !cardsPlayedThisRound || !players[mg.getPTurn()].isPlyrAtk() && c2::canPassDef(table))
+		int cardsPlayedThisRound = mg.getCardsPlayed();		
+		if (players[mg.getPTurn()].isPlyrAtk() && cardsPlayedThisRound || !players[mg.getPTurn()].isPlyrAtk() && c2::canPassDef(table))
 		{
 			Vector2 mP = GetMousePosition();
 			Rectangle buttonHitBox = { 1520, 936, 150, 75 };

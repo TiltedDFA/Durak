@@ -212,7 +212,8 @@ void MainGame::setRound(const int num)
 }
 void MainGame::switchPTurn()
 {
-	pTurn = (pTurn + 1) % 2;
+	pTurn = (pTurn + 1) % 2;	
+	cardsPlayedThisPass = 0;
 }
 void MainGame::setPTurn(int player)
 {

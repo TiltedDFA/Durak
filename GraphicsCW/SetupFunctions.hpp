@@ -87,6 +87,12 @@ namespace c1 // Used to setup or maintain
 			players[otherPlayer].setPlayerHandIndex(card, i);
 		}
 	}
+	void bringCardOneToTop(std::shared_ptr<Card> cardOne, std::shared_ptr<Card> cardTwo, std::vector<std::shared_ptr<Card>>& cardsVisible)
+	{
+		auto cOnePos = std::find(cardsVisible.begin(), cardsVisible.end(), cardOne);
+		auto cTwoPos = std::find(cardsVisible.begin(), cardsVisible.end(), cardTwo);
+		if (cOnePos > cTwoPos) { std::swap(cOnePos, cTwoPos); }		
+	}
 }
 
 #endif // !SETUPFUNCTIONS_HPP

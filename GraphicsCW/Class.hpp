@@ -133,6 +133,7 @@ private:
 	int  pTurn = 1;
 	unsigned int _round = 0;
 	unsigned short int cardsPlayedThisPass = 0;
+	bool hasAtkPlayedCard = false;
 public:
 	int getRound();
 

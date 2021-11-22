@@ -52,6 +52,7 @@ int main()
 	c1::setUpPlayerHandPos(cardsVisible, deck, players);
 	c1::setTopCards(deck);
 	
+	
 	if (c1::findStartingPlayer(players, deck) == 0) { players[0].setPlyrAtk(true); mainGame.setPTurn(0); }
 	else { players[1].setPlyrAtk(true); mainGame.setPTurn(1); }
 	while (!WindowShouldClose())
@@ -101,7 +102,7 @@ int main()
 						{
 							cardsVisible[i]->cardIsHeld = false;
 						}
-					}
+					}					
 					if (!cardsVisible[i]->cardIsHeld && !cardsVisible[i]->inDefTablePile)
 					{
 						int overlap = c2::placeHBC(50, cardsVisible[i]);
@@ -114,7 +115,7 @@ int main()
 								if (overlap == 100)
 								{
 									if (c2::canCardBePlayed(table, cardsVisible[i]))//players[0]
-									{
+									{																			
 										cardsVisible[i]->canBeTouched = false;
 										c2::moveCardFromPlayerHandToTable(players[mainGame.getPTurn()], table, cardsVisible[i], box.second);
 										mainGame.incramentCardsPlayed();
@@ -128,11 +129,12 @@ int main()
 							}
 							else if (!players[mainGame.getPTurn()].isPlyrAtk())
 							{
-								if (mainGame.getCardsPlayed() > 0 && c2::cardBeatsCard(cardsVisible[i], table.getCardFromTableAtk(box.second), deck))
-								{
+								if (c2::cardBeatsCard(cardsVisible[i], table.getCardFromTableAtk(box.second), deck))
+								{									
 									cardsVisible[i]->cardPosition = Vector2Add(cardsVisible[i]->cardPosition, { 40,40 });
 									cardsVisible[i]->canBeTouched = false;
 									c2::moveCardFromPlayerHandToTable(players[mainGame.getPTurn()], table, cardsVisible[i], box.second);
+									c1::bringCardOneToTop(cardsVisible[i], table.getCardFromTableAtk(box.second), cardsVisible);
 								}
 								else
 								{
