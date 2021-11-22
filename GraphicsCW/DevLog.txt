@@ -147,3 +147,8 @@ currently, the oposing player cannot play cards. Fix.
 ADD SOME PROTECTION VS THE TABLE RETURNING NULL PTRS
 
 add a system for defence that locks defending cards in while also displaying them at an offset to where the attacking cards are stored/
+
+
+
+
+Work on implimenting an system that auto adds all cards needed from deck to hand. Make it work based off who attacked last and 
