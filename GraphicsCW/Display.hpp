@@ -72,29 +72,27 @@ namespace c0 //This is used to display
 		}
 		else
 		{
-			//if (player.isPlyrAtk())
-			//{
-				Vector2 mP = GetMousePosition();
-				Rectangle buttonHitBox = { 1733, 936, 150, 75 };
-					if (CheckCollisionPointRec(mP, buttonHitBox))
-					{
-						if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
-						{
-							c1::removeTableFromFromVisibleVec(table, cardsVisible);
-							c2::moveAllTableToBPile(bPile, table, cardsVisible);
-							DrawTexture(endMid, 1733, 936, WHITE);
-						}
-						else
-						{
-							DrawTexture(endHigh, 1733, 936, WHITE);
-						}
-						if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); }
-					}
-					else
-					{
-						DrawTexture(endLow, 1733, 936, WHITE);
-					}
-			//}
+			Vector2 mP = GetMousePosition();
+			Rectangle buttonHitBox = { 1733, 936, 150, 75 };
+			if (CheckCollisionPointRec(mP, buttonHitBox))
+			{
+				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+				{
+					c1::removeTableFromFromVisibleVec(table, cardsVisible);
+					c2::moveAllTableToBPile(bPile, table, cardsVisible);
+					DrawTexture(endMid, 1733, 936, WHITE);
+				}
+				else
+				{
+					DrawTexture(endHigh, 1733, 936, WHITE);
+				}
+				if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); }
+			}
+			else
+			{
+				DrawTexture(endLow, 1733, 936, WHITE);
+			}
+			
 		}		
 	}
 	void displayPlayerState(Texture2D& atkHigh, Texture2D& atkLow, Texture2D& defHigh, Texture2D& defLow, bool atkState)
