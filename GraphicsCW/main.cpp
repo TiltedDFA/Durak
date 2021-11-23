@@ -1,7 +1,6 @@
 #include "Display.hpp"
 int main()
 {
-	// Variables
 	//--------------------------------------------------------------------------------------
 	const int screenWidth = 1920;
 	const int screenHeight = 1050; // have to do this to fix the mouse ghosting issue
@@ -59,6 +58,7 @@ int main()
 	
 	if (c1::findStartingPlayer(players, deck) == 0) { players[0].setPlyrAtk(true); mainGame.setPTurn(0); }
 	else { players[1].setPlyrAtk(true); mainGame.setPTurn(1); }
+	
 	while (!WindowShouldClose())
 	{
 		mP = GetMousePosition();
@@ -71,7 +71,10 @@ int main()
 			ClearBackground(RAYWHITE);
 			DrawTexture(progTable, 0, 0, WHITE);
 			c0::displayPassButtons(players, table, mainGame, PassButtonLow, PassButtonMid, PassButtonHigh, fxButton);
-			c0::displayEndButtons(players[1], mainGame, EndButtonLow, EndButtonMid, EndButtonHigh, fxButton, bPile, table, cardsVisible);
+		//	c0::displayEndButtons(players, mainGame, EndButtonLow, EndButtonMid, EndButtonHigh, fxButton, bPile, table, cardsVisible);
+		//	c0::displayTakeButtons(TakeButtonHigh, TakeButtonMid, TakeButtonLow);
+			if (players[mainGame.getPTurn()].isPlyrAtk()) { c0::displayEndButtons(players, mainGame, EndButtonLow, EndButtonMid, EndButtonHigh, fxButton, bPile, table, cardsVisible); }
+			else { c0::displayTakeButtons(TakeButtonHigh, TakeButtonMid, TakeButtonLow); }			
 			c0::displayPlayerState(AtkHigh, AtkLow, DefHigh, DefLow, players[1].isPlyrAtk());
 			//deck.displayDeck(blankCard, CardBacking);
 			c0::cTable(cardsVisible, CardBacking, blankCard);

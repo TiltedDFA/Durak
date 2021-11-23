@@ -60,40 +60,42 @@ namespace c0 //This is used to display
 		}
 		
 	}
-	void displayEndButtons(Player& player,MainGame& mg, Texture2D& endLow, Texture2D& endMid, Texture2D& endHigh, Sound& fxButton, DiscardedCards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible)
+	void displayEndButtons(std::array<Player, 2>& players,MainGame& mg, Texture2D& endLow, Texture2D& endMid, Texture2D& endHigh, Sound& fxButton, DiscardedCards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible)
 	{
 		// 1733, 936
 		int cardsPlayedThisRound = mg.getCardsPlayed();
 	
-
-		if (!(cardsPlayedThisRound > 0))// && !player.isPlyrAtk())
+		if (players[mg.getPTurn()].isPlyrAtk())
 		{
-			DrawTexture(endLow, 1733, 936, WHITE);
-		}
-		else
-		{
-			Vector2 mP = GetMousePosition();
-			Rectangle buttonHitBox = { 1733, 936, 150, 75 };
-			if (CheckCollisionPointRec(mP, buttonHitBox))
-			{
-				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
-				{
-					c1::removeTableFromFromVisibleVec(table, cardsVisible);
-					c2::moveAllTableToBPile(bPile, table, cardsVisible);
-					DrawTexture(endMid, 1733, 936, WHITE);
-				}
-				else
-				{
-					DrawTexture(endHigh, 1733, 936, WHITE);
-				}
-				if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); }
-			}
-			else
+			if (c2::canEndAtk(table))// && !player.isPlyrAtk())
 			{
 				DrawTexture(endLow, 1733, 936, WHITE);
 			}
-			
-		}		
+			else
+			{
+				Vector2 mP = GetMousePosition();
+				Rectangle buttonHitBox = { 1733, 936, 150, 75 };
+				if (CheckCollisionPointRec(mP, buttonHitBox))
+				{
+					if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+					{
+						c1::removeTableFromFromVisibleVec(table, cardsVisible);
+						c2::moveAllTableToBPile(bPile, table, cardsVisible);
+						DrawTexture(endMid, 1733, 936, WHITE);
+					}
+					else
+					{
+						DrawTexture(endHigh, 1733, 936, WHITE);
+					}
+					if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); }
+				}
+				else
+				{
+					DrawTexture(endLow, 1733, 936, WHITE);
+				}
+
+			}
+		}
 	}
 	void displayPlayerState(Texture2D& atkHigh, Texture2D& atkLow, Texture2D& defHigh, Texture2D& defLow, bool atkState)
 	{
@@ -121,6 +123,18 @@ namespace c0 //This is used to display
 		{
 			DrawRectangle(1507, 102, 100, 20, WHITE);
 		}
+	}
+	void displayTakeButtons(Texture2D& takeHigh, Texture2D& takeMid, Texture2D& takeLow)
+	{
+		Vector2 mP = GetMousePosition();
+		if (CheckCollisionPointRec(mP, btnBounds))
+		{
+			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) btnState = 2;
+			else btnState = 1;
+
+			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) btnAction = true;
+		}
+		else btnState = 0;
 	}
 }
 #endif // !DISPLAY_HPP

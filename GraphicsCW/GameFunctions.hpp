@@ -99,7 +99,7 @@ namespace c2
 	void moveAllTableToBPile(DiscardedCards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible)
 	{
 		std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();
-		for (const auto& i : cardsOnTable)
+		for (auto& i : cardsOnTable)
 		{
 			for (int j = 0; j < 2; ++j)
 			{				
@@ -130,6 +130,17 @@ namespace c2
 	void switchPlayerStates(std::array<Player, 2>& players) 
 	{
 		players[0].setPlyrAtk(!players[0].isPlyrAtk()); players[1].setPlyrAtk(!players[1].isPlyrAtk()); 
+	}
+	bool canEndAtk(Table& table)
+	{
+		std::array<std::array<std::shared_ptr<Card>, 2>, 6> cardsOnTable = table.getEntireTable();
+		int completedValues = 0;
+		for (const auto& i : cardsOnTable)
+		{
+			if (i[0] != nullptr && i[1] != nullptr) { ++completedValues; }
+		}
+		if (completedValues) { return true; }
+		return false;
 	}
 }
 #endif // !GAMEFUNCTIONS_HPP
