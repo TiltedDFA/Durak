@@ -64,6 +64,10 @@ namespace c1 // Used to setup or maintain
 				}
 			}
 		}
+		if (lowestVal[0] == cardValue::ACE && lowestVal[1] == cardValue::ACE)
+		{
+			return rand() % 2 + 1;
+		}
 		if (lowestVal[0] > lowestVal[1])
 		{
 			return 1;

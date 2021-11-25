@@ -48,6 +48,7 @@ int main()
 	Texture2D AtkLow = LoadTexture("AtkLow.png");
 	Texture2D DefHigh = LoadTexture("DefHigh.png");
 	Texture2D DefLow = LoadTexture("DefLow.png");
+	srand(time(NULL));
 	//--------------------------------------------------------------------------------------
 	// Main game loop
 

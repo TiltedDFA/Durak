@@ -66,36 +66,24 @@ namespace c0 //This is used to display
 		int cardsPlayedThisRound = mg.getCardsPlayed();
 	
 		if (players[mg.getPTurn()].isPlyrAtk())
-		{
-			if (c2::canEndAtk(table))// && !player.isPlyrAtk())
+		{		
+			Vector2 mP = GetMousePosition();
+			Rectangle buttonHitBox = { 1733, 936, 150, 75 };
+			if (CheckCollisionPointRec(mP, buttonHitBox) && c2::canEndAtk(table))
 			{
-				DrawTexture(endLow, 1733, 936, WHITE);
-			}
-			else
-			{
-				Vector2 mP = GetMousePosition();
-				Rectangle buttonHitBox = { 1733, 936, 150, 75 };
-				if (CheckCollisionPointRec(mP, buttonHitBox))
+				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 				{
-					if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
-					{
-						c1::removeTableFromFromVisibleVec(table, cardsVisible);
-						c2::moveAllTableToBPile(bPile, table, cardsVisible);
-						DrawTexture(endMid, 1733, 936, WHITE);
-					}
-					else
-					{
-						DrawTexture(endHigh, 1733, 936, WHITE);
-					}
-					if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); }
+					c1::removeTableFromFromVisibleVec(table, cardsVisible);
+					c2::moveAllTableToBPile(bPile, table, cardsVisible);
+					DrawTexture(endMid, 1733, 936, WHITE);
 				}
 				else
 				{
-					DrawTexture(endLow, 1733, 936, WHITE);
+					DrawTexture(endHigh, 1733, 936, WHITE);
 				}
-
+				if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); }
 			}
-		}
+		}		
 	}
 	void displayTakeButtons(Texture2D& takeHigh, Texture2D& takeMid, Texture2D& takeLow)
 	{
