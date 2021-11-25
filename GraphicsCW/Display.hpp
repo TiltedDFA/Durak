@@ -81,7 +81,12 @@ namespace c0 //This is used to display
 				{
 					DrawTexture(endHigh, 1733, 936, WHITE);
 				}
+				
 				if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); }
+			}
+			else
+			{
+				DrawTexture(endLow, 1733, 936, WHITE);
 			}
 		}		
 	}
@@ -136,6 +141,5 @@ namespace c0 //This is used to display
 			DrawRectangle(1507, 102, 100, 20, WHITE);
 		}
 	}
-	
 }
 #endif // !DISPLAY_HPP

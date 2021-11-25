@@ -105,14 +105,15 @@ namespace c2
 			{				
 
 				if (i[j] != nullptr)
-				{ 
-					auto posInCV = std::find(cardsVisible.begin(), cardsVisible.end(), i[j]);
-					if (posInCV != cardsVisible.end()) { cardsVisible.erase(posInCV); }
+				{
+				auto posInCV = std::find(cardsVisible.begin(), cardsVisible.end(), i[j]);
+				if (posInCV != cardsVisible.end()) { cardsVisible.erase(posInCV); }
 					bPile.addToPile(std::move(i[j]));
+					
 				}
 			}
 		}
-
+		table.setEntireTable(cardsOnTable);
 	}
 	bool canPassDef(Table& table)
 	{
