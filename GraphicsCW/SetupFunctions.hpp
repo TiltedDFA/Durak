@@ -91,7 +91,13 @@ namespace c1 // Used to setup or maintain
 	{
 		auto cOnePos = std::find(cardsVisible.begin(), cardsVisible.end(), cardOne);
 		auto cTwoPos = std::find(cardsVisible.begin(), cardsVisible.end(), cardTwo);
-		if (cOnePos < cTwoPos) { std::swap(cOnePos, cTwoPos); }		
+		if (cOnePos > cTwoPos) { std::swap(cOnePos, cTwoPos); }		
+	}
+	void sendCardToBack(std::shared_ptr<Card> card, std::vector<std::shared_ptr<Card>>& cardsVisible)
+	{
+		auto pos = std::find(cardsVisible.begin(), cardsVisible.end(), card);
+		cardsVisible.erase(pos);
+		cardsVisible.push_back(card);
 	}
 	void removeTableFromFromVisibleVec(Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible)
 	{

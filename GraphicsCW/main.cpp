@@ -125,6 +125,7 @@ int main()
 									{																			
 										cardsVisible[i]->canBeTouched = false;
 										c2::moveCardFromPlayerHandToTable(players[mainGame.getPTurn()], table, cardsVisible[i], box.second);
+										c1::sendCardToBack(cardsVisible[i], cardsVisible);
 										mainGame.incramentCardsPlayed();
 									}
 									else// if (!c1::canCardBePlayed(table, cardsVisible[i]))

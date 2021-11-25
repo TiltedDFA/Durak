@@ -97,6 +97,30 @@ namespace c0 //This is used to display
 			}
 		}
 	}
+	void displayTakeButtons(Texture2D& takeHigh, Texture2D& takeMid, Texture2D& takeLow)
+	{
+
+		Vector2 mP = GetMousePosition();
+		Rectangle buttonHitBox = { 1733, 936, 150, 75 };
+		if (CheckCollisionPointRec(mP, buttonHitBox))
+		{
+			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+			{
+				DrawTexture(takeMid, 1733, 936, WHITE);
+			}
+			else
+			{
+				DrawTexture(takeHigh, 1733, 936, WHITE);
+			}
+			
+			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {}
+		}
+		else
+		{
+			DrawTexture(takeLow, 1733, 936, WHITE);
+		}
+
+	}
 	void displayPlayerState(Texture2D& atkHigh, Texture2D& atkLow, Texture2D& defHigh, Texture2D& defLow, bool atkState)
 	{
 		//Atk pos is: 1658. 42
@@ -124,17 +148,6 @@ namespace c0 //This is used to display
 			DrawRectangle(1507, 102, 100, 20, WHITE);
 		}
 	}
-	void displayTakeButtons(Texture2D& takeHigh, Texture2D& takeMid, Texture2D& takeLow)
-	{
-		Vector2 mP = GetMousePosition();
-		if (CheckCollisionPointRec(mP, btnBounds))
-		{
-			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) btnState = 2;
-			else btnState = 1;
-
-			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) btnAction = true;
-		}
-		else btnState = 0;
-	}
+	
 }
 #endif // !DISPLAY_HPP
