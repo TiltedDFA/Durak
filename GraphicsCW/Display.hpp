@@ -60,22 +60,22 @@ namespace c0 //This is used to display
 		}
 		
 	}
-	void displayEndButtons(std::array<Player, 2>& players,MainGame& mg, Texture2D& endLow, Texture2D& endMid, Texture2D& endHigh, Sound& fxButton, DiscardedCards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible)
+	void displayEndButtons(std::array<Player, 2>& players,MainGame& mg, Texture2D& endLow, Texture2D& endMid, Texture2D& endHigh, Sound& fxButton, DiscardedCards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck)
 	{
 		// 1733, 936
-		int cardsPlayedThisRound = mg.getCardsPlayed();
+		//int cardsPlayedThisRound = mg.getCardsPlayed();
 	
-		if (players[mg.getPTurn()].isPlyrAtk())
-		{		
+		//if (players[mg.getPTurn()].isPlyrAtk())
+		//{		
 			Vector2 mP = GetMousePosition();
 			Rectangle buttonHitBox = { 1733, 936, 150, 75 };
 			if (CheckCollisionPointRec(mP, buttonHitBox) && c2::canEndAtk(table))
 			{
 				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 				{
-					//c1::removeTableFromFromVisibleVec(table, cardsVisible);
 					c2::moveAllTableToBPile(bPile, table, cardsVisible);
 					DrawTexture(endMid, 1733, 936, WHITE);
+					c1::addNeededCardsToPlayerHands(players, cardsVisible, deck);
 				}
 				else
 				{
@@ -88,17 +88,19 @@ namespace c0 //This is used to display
 			{
 				DrawTexture(endLow, 1733, 936, WHITE);
 			}
-		}		
+		//}		
 	}
-	void displayTakeButtons(Texture2D& takeHigh, Texture2D& takeMid, Texture2D& takeLow)
+	void displayTakeButtons(Deck& deck, std::vector<std::shared_ptr<Card>>& cardsVisible,std::array<Player, 2>& players, MainGame& mg, Table& table, Texture2D& takeHigh, Texture2D& takeMid, Texture2D& takeLow)
 	{
 
 		Vector2 mP = GetMousePosition();
 		Rectangle buttonHitBox = { 1733, 936, 150, 75 };
 		if (CheckCollisionPointRec(mP, buttonHitBox))
 		{
-			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT && !c2::canEndAtk(table)))
 			{
+				c2::moveAllTableToPlayerHand(players[mg.getPTurn()], table);
+				c1::addNeededCardsToPlayerHands(players, cardsVisible, deck);
 				DrawTexture(takeMid, 1733, 936, WHITE);
 			}
 			else

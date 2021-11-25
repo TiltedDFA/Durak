@@ -124,7 +124,7 @@ public:
 	DiscardedCards();
 	~DiscardedCards();
 
-	void addToPile(const std::shared_ptr<Card>& card);
+	void addToPile(std::shared_ptr<Card> card);
 };
 //-------------------------------------------------------------------------------------------------------------
 class MainGame

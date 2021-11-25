@@ -99,16 +99,16 @@ namespace c2
 	void moveAllTableToBPile(DiscardedCards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible)
 	{
 		std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();
-		for (auto& i : cardsOnTable)
+		for (int i = 0; i < 6; ++i)
 		{
 			for (int j = 0; j < 2; ++j)
 			{				
 
-				if (i[j] != nullptr)
+				if (cardsOnTable[i][j] != nullptr)
 				{
-					auto posInCV = std::find(cardsVisible.begin(), cardsVisible.end(), i[j]);
+					auto posInCV = std::find(cardsVisible.begin(), cardsVisible.end(), cardsOnTable[i][j]);
 					if (posInCV != cardsVisible.end()) { cardsVisible.erase(posInCV); }
-					bPile.addToPile(std::move(i[j]));					
+					bPile.addToPile(std::move(cardsOnTable[i][j]));
 				}
 			}
 		}
@@ -141,6 +141,23 @@ namespace c2
 		}
 		if (completedValues) { return true; }
 		return false;
+	}
+	void moveAllTableToPlayerHand(Player& player, Table& table)
+	{
+		std::array<std::array<std::shared_ptr<Card>, 2>, 6> cTable = table.getEntireTable();
+		for (int i = 0; i < 6; ++i)
+		{
+			for (int j = 0; j < 2; ++j)
+			{
+				if (cTable[i][j] != nullptr)
+				{
+					cTable[i][j]->cardPosition = { 0,0 };
+					cTable[i][j]->canBeTouched = true;
+					player.addToPlayerHand(std::move(cTable[i][j]));
+				}
+			}
+		}
+		table.setEntireTable(cTable);
 	}
 }
 #endif // !GAMEFUNCTIONS_HPP

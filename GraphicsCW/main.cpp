@@ -71,13 +71,10 @@ int main()
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(progTable, 0, 0, WHITE);
-			c0::displayPassButtons(players, table, mainGame, PassButtonLow, PassButtonMid, PassButtonHigh, fxButton);
-		//	c0::displayEndButtons(players, mainGame, EndButtonLow, EndButtonMid, EndButtonHigh, fxButton, bPile, table, cardsVisible);
-		//	c0::displayTakeButtons(TakeButtonHigh, TakeButtonMid, TakeButtonLow);
-			if (players[mainGame.getPTurn()].isPlyrAtk()) { c0::displayEndButtons(players, mainGame, EndButtonLow, EndButtonMid, EndButtonHigh, fxButton, bPile, table, cardsVisible); }
-			else { c0::displayTakeButtons(TakeButtonHigh, TakeButtonMid, TakeButtonLow); }			
+			c0::displayPassButtons(players, table, mainGame, PassButtonLow, PassButtonMid, PassButtonHigh, fxButton);	
+			if (players[mainGame.getPTurn()].isPlyrAtk()) { c0::displayEndButtons(players, mainGame, EndButtonLow, EndButtonMid, EndButtonHigh, fxButton, bPile, table, cardsVisible, deck); }
+			else { c0::displayTakeButtons(deck, cardsVisible, players, mainGame, table, TakeButtonHigh, TakeButtonMid, TakeButtonLow); }			
 			c0::displayPlayerState(AtkHigh, AtkLow, DefHigh, DefLow, players[1].isPlyrAtk());
-			//deck.displayDeck(blankCard, CardBacking);
 			c0::cTable(cardsVisible, CardBacking, blankCard);
 			deck.displayVisisbleCard(blankCard);
 			c0::displayDeckExtraCards(deck, CardBacking, blankCard);

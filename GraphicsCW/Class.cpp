@@ -190,7 +190,7 @@ void Table::setEntireTable(std::array<std::array<std::shared_ptr<Card>, 2>, 6> t
 DiscardedCards::DiscardedCards() {};
 DiscardedCards::~DiscardedCards() {};
 
-void DiscardedCards::addToPile(const std::shared_ptr<Card>& card)
+void DiscardedCards::addToPile(std::shared_ptr<Card> card)
 {
 	dCards.emplace_back(card);
 }
