@@ -73,7 +73,7 @@ namespace c0 //This is used to display
 			{
 				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 				{
-					c1::removeTableFromFromVisibleVec(table, cardsVisible);
+					//c1::removeTableFromFromVisibleVec(table, cardsVisible);
 					c2::moveAllTableToBPile(bPile, table, cardsVisible);
 					DrawTexture(endMid, 1733, 936, WHITE);
 				}
