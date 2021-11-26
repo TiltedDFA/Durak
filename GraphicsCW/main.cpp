@@ -24,6 +24,7 @@ int main()
 	Rectangle btnCheckColl = { 772, 509, 287, 105 };
 	//---------------------------------------------------------------------------------------
 	Image appIcon = LoadImage("appIcon.png");
+
 	SetWindowIcon(appIcon);
 	Sound fxButton = LoadSound("buttonfx.wav");
 	Texture2D blankCard = LoadTexture("170pixelBlank.png");
@@ -54,8 +55,7 @@ int main()
 
 	//Code something that moves the cards when the mouse moves them. The co-ordinates of the cards will be the mouse co-ordinates + the offset of where the mouse clicks the card
 	c1::setUpPlayerHandPos(cardsVisible, deck, players);
-	c1::setTopCards(deck);
-	
+	c1::setTopCards(deck);	
 	
 	if (c1::findStartingPlayer(players, deck) == 0) { players[0].setPlyrAtk(true); mainGame.setPTurn(0); }
 	else { players[1].setPlyrAtk(true); mainGame.setPTurn(1); }
@@ -80,7 +80,6 @@ int main()
 			c0::displayDeckExtraCards(deck, CardBacking, blankCard);
 			c0::displayWhosTurnItIs(mainGame);
 			DrawCircleV(GetMousePosition(), 10, WHITE);
-			//c1::rectangles();
 			EndDrawing();
 			for (int i = 0; i < cardsVisible.size(); ++i)
 			{
@@ -123,7 +122,6 @@ int main()
 									{																			
 										cardsVisible[i]->canBeTouched = false;
 										c2::moveCardFromPlayerHandToTable(players[mainGame.getPTurn()], table, cardsVisible[i], box.second);
-										c1::sendCardToBack(cardsVisible[i], cardsVisible);
 										mainGame.incramentCardsPlayed();
 									}
 									else// if (!c1::canCardBePlayed(table, cardsVisible[i]))

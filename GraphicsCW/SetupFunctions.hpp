@@ -95,7 +95,7 @@ namespace c1 // Used to setup or maintain
 	{
 		auto cOnePos = std::find(cardsVisible.begin(), cardsVisible.end(), cardOne);
 		auto cTwoPos = std::find(cardsVisible.begin(), cardsVisible.end(), cardTwo);
-		if (cOnePos > cTwoPos) { std::swap(cOnePos, cTwoPos); }		
+		if (cOnePos < cTwoPos) { std::iter_swap(cOnePos, cTwoPos); }		
 	}
 	void sendCardToBack(std::shared_ptr<Card> card, std::vector<std::shared_ptr<Card>>& cardsVisible)
 	{
@@ -133,5 +133,4 @@ namespace c1 // Used to setup or maintain
 		}
 	}
 }
-
 #endif // !SETUPFUNCTIONS_HPP

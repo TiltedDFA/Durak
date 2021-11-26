@@ -72,7 +72,7 @@ Deck::~Deck()
 }
 std::shared_ptr<Card> Deck::dealCard()
 {
-	auto holder = deck[0];
+	std::shared_ptr<Card> holder = deck[0];
 	deck.erase(deck.begin());
 	return holder;
 }
