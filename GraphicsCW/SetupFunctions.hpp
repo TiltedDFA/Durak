@@ -123,12 +123,15 @@ namespace c1 // Used to setup or maintain
 	{
 		for (int i = 0; i < 2; ++i)
 		{
-			auto currentHandSize = (players[i].getPlayerHandSize() - 1);
-			for (int j = 0; j <= currentHandSize; ++j)
+			if (players[i].getPlayerHandSize() < 6)
 			{
-				std::shared_ptr<Card>card = deck.dealCard();
-				players[i].addToPlayerHand(card);
-				cardsVisible.push_back(card);
+				int currentHandSize = players[i].getPlayerHandSize();
+				for (auto j = currentHandSize; j < 6; ++j)
+				{
+					std::shared_ptr<Card>card = deck.dealCard();
+					players[i].addToPlayerHand(card);
+					cardsVisible.push_back(card);
+				}
 			}
 		}
 	}

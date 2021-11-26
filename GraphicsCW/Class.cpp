@@ -48,18 +48,14 @@ void Card::displayCardWithValueText(const std::shared_ptr<Card>& card)
 }
 //-------------------------------------------------------------------------------------------------------------
 Deck::Deck()
-{
-	std::array<std::string, 4> suit = { "Spades", "Hearts", "Diamonds", "Clubs" };
-	std::array<std::string, 13> value = { "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace" };
-
-	for (int i = 0; i < value.size(); ++i)
+{	
+	for (int i = 0; i < 13; ++i)
 	{
-		for (int j = 0; j < suit.size(); ++j)
+		for (int j = 0; j < 4; ++j)
 		{
 			std::shared_ptr<Card> C = std::make_shared<Card>();
 			C->Value = static_cast<cardValue>(i+2); //This is to make up for the array indexing 
 			C->Suit = static_cast<cardSuit>(j + 1); // As is this 
-			C->Name = value[i] + " of " + suit[j];
 			deck.emplace_back(C);
 		}
 	}

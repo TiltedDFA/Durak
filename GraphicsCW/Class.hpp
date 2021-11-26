@@ -51,8 +51,7 @@ public:
 	bool inDefTablePile = false;
 
 	cardSuit Suit{};
-	cardValue Value{};
-	std::string Name = "";
+	cardValue Value{};	
 	std::string suitToString(const cardSuit&); // A fucntion that converts the enumarated values to a string(Which can be used to display)
 	std::string valueToString(const cardValue&);
 	void displayCardWithValueText(const std::shared_ptr<Card>& card);
@@ -123,7 +122,6 @@ private:
 public:
 	DiscardedCards();
 	~DiscardedCards();
-
 	void addToPile(std::shared_ptr<Card> card);
 };
 //-------------------------------------------------------------------------------------------------------------
