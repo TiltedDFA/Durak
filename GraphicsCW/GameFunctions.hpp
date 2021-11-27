@@ -145,16 +145,19 @@ namespace c2
 	void moveAllTableToPlayerHand(Player& player, Table& table)
 	{
 		std::array<std::array<std::shared_ptr<Card>, 2>, 6> cTable = table.getEntireTable();
+		Vector2 takenCardPos = { 0, 0 };
 		for (int i = 0; i < 6; ++i)
 		{
 			for (int j = 0; j < 2; ++j)
 			{
 				if (cTable[i][j] != nullptr)
 				{
-					cTable[i][j]->cardPosition = { 0,0 };
+					takenCardPos.x = (75 * i);
+					cTable[i][j]->cardPosition = takenCardPos;
 					cTable[i][j]->canBeTouched = true;
 					player.addToPlayerHand(std::move(cTable[i][j]));
 				}
+				takenCardPos.y = 150;
 			}
 		}
 		table.setEntireTable(cTable);

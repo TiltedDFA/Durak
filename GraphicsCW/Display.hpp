@@ -76,6 +76,7 @@ namespace c0 //This is used to display
 					c2::moveAllTableToBPile(bPile, table, cardsVisible);
 					DrawTexture(endMid, 1733, 936, WHITE);
 					c1::addNeededCardsToPlayerHands(players, cardsVisible, deck);
+					mg.switchPTurn();
 				}
 				else
 				{
@@ -92,7 +93,7 @@ namespace c0 //This is used to display
 	}
 	void displayTakeButtons(Deck& deck, std::vector<std::shared_ptr<Card>>& cardsVisible,std::array<Player, 2>& players, MainGame& mg, Table& table, Texture2D& takeHigh, Texture2D& takeMid, Texture2D& takeLow)
 	{
-
+		//Either something incorrectly writes to this or the system isn't right since 
 		Vector2 mP = GetMousePosition();
 		Rectangle buttonHitBox = { 1733, 936, 150, 75 };
 		if (CheckCollisionPointRec(mP, buttonHitBox))
