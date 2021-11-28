@@ -105,7 +105,7 @@ namespace c1 // Used to setup or maintain
 	}
 	void removeTableFromFromVisibleVec(Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible)
 	{
-		std::array<std::array<std::shared_ptr<Card>, 2>, 6> _Table = table.getEntireTable();
+		const std::array<std::array<std::shared_ptr<Card>, 2>, 6> _Table = table.getEntireTable();
 		
 		for (const auto& i : _Table)
 		{
@@ -125,7 +125,7 @@ namespace c1 // Used to setup or maintain
 		{
 			if (players[i].getPlayerHandSize() < 6)
 			{
-				int currentHandSize = players[i].getPlayerHandSize();
+				auto currentHandSize = players[i].getPlayerHandSize();
 				for (auto j = currentHandSize; j < 6; ++j)
 				{
 					std::shared_ptr<Card>card = deck.dealCard();

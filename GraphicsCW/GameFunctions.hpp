@@ -7,7 +7,7 @@ namespace c2
 {
 	int  placeHBC(int percentCertanty, std::shared_ptr<Card> card)
 	{
-		std::array<Vector2, 6>pos;
+		std::array<Vector2, 6>pos{};
 		pos[0] = { 543.0, 457.0 };
 		pos[1] = { 688.0, 457.0 };
 		pos[2] = { 840.0, 457.0 };
@@ -19,12 +19,9 @@ namespace c2
 		{
 			Rectangle placeHB = { pos[i].x, pos[i].y, 120, 170 };
 			if (CheckCollisionRecs(rCard, placeHB))
-			{
-				auto xOSet = placeHB.width - sqrt(((card->cardPosition.x - placeHB.x) * (card->cardPosition.x - placeHB.x)));
-				auto yOSet = placeHB.height - sqrt(((card->cardPosition.y - placeHB.y) * (card->cardPosition.y - placeHB.y)));
-				auto oSetArea = xOSet * yOSet;
-				auto area = placeHB.width * placeHB.height;
-				auto percentOverlap = ((oSetArea / area) * 100);
+			{				
+				auto oSetArea = (placeHB.width - sqrt(((card->cardPosition.x - placeHB.x) * (card->cardPosition.x - placeHB.x)))) * (placeHB.height - sqrt(((card->cardPosition.y - placeHB.y) * (card->cardPosition.y - placeHB.y))));
+				auto percentOverlap = ((oSetArea / (placeHB.width * placeHB.height)) * 100);
 				if (static_cast<int>(percentOverlap > percentCertanty))
 				{
 					return static_cast<int>(percentOverlap);
@@ -38,7 +35,7 @@ namespace c2
 
 
 		if (!card->cardIsFaceUp) { return false; }
-		std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();
+		const std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();
 		//auto cardPosInTable = std::find(cardsOnTable.begin(), cardsOnTable.end(), card);
 		//if (cardPosInTable != cardsOnTable.end()) { return false; }
 		if (cardsOnTable[0][0] == nullptr && cardsOnTable[1][0] == nullptr && cardsOnTable[2][0] == nullptr && cardsOnTable[3][0] == nullptr && cardsOnTable[4][0] == nullptr && cardsOnTable[5][0] == nullptr)
@@ -67,7 +64,7 @@ namespace c2
 	}
 	std::pair<Vector2, int> BoxColFinder(const std::shared_ptr<Card> card)
 	{
-		std::array<Vector2, 6>pos;
+		std::array<Vector2, 6>pos{};
 		pos[0] = { 543.0, 457.0 };
 		pos[1] = { 688.0, 457.0 };
 		pos[2] = { 840.0, 457.0 };
@@ -98,7 +95,7 @@ namespace c2
 	}
 	void moveAllTableToBPile(DiscardedCards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible)
 	{
-		std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();
+		const std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();
 		for (int i = 0; i < 6; ++i)
 		{
 			for (int j = 0; j < 2; ++j)
@@ -116,7 +113,7 @@ namespace c2
 	}
 	bool canPassDef(Table& table)
 	{
-		std::array<std::array<std::shared_ptr<Card>, 2>, 6> cardsOnTable = table.getEntireTable();
+		const std::array<std::array<std::shared_ptr<Card>, 2>, 6> cardsOnTable = table.getEntireTable();
 		std::pair<int, int> cardsPlayed;
 		for (auto& i : cardsOnTable)
 		{
@@ -133,7 +130,7 @@ namespace c2
 	}
 	bool canEndAtk(Table& table)
 	{
-		std::array<std::array<std::shared_ptr<Card>, 2>, 6> cardsOnTable = table.getEntireTable();
+		const std::array<std::array<std::shared_ptr<Card>, 2>, 6> cardsOnTable = table.getEntireTable();
 		int completedValues = 0;
 		for (const auto& i : cardsOnTable)
 		{
@@ -152,7 +149,7 @@ namespace c2
 			{
 				if (cTable[i][j] != nullptr)
 				{
-					takenCardPos.x = (75 * i);
+					takenCardPos.x = (75.0f * i);
 					cTable[i][j]->cardPosition = takenCardPos;
 					cTable[i][j]->canBeTouched = true;
 					player.addToPlayerHand(std::move(cTable[i][j]));

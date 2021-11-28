@@ -174,7 +174,7 @@ std::shared_ptr<Card> Table::getCardFromTableDef(const int index)
 {
 	return cardsOnTable[index][1];
 }
-std::array<std::array<std::shared_ptr<Card>, 2>, 6> Table::getEntireTable()
+std::array<std::array<std::shared_ptr<Card>, 2>, 6>& Table::getEntireTable()
 {
 	return cardsOnTable;
 }
