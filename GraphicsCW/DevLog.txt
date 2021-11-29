@@ -155,7 +155,9 @@ Work on implimenting an system that auto adds all cards needed from deck to hand
 29/11/2021
 {
 You need to check if deck has enough cards remaining and if not then you need to think about how it will work when the deck runs out
-Also fix the player states not switching after taking issue 
+Also fix the player states not switching after taking issue
 
+Add an auto pass for the defender once they've covered all their cards
 
+There is also a known issue with the system that distrobutes cards. Issue has occured after cards are delt a 2nd time. Player[0] seems to be the affected one as he isn't receiving any cards
 }

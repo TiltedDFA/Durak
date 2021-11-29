@@ -4,6 +4,19 @@
 #include "Class.hpp"
 namespace c1 // Used to setup or maintain
 {
+	bool playerHasWon(Deck& deck, Player player)
+	{
+		auto deckSize = deck.getDeckSize();
+		auto playerHandSize = static_cast<int>(player.getPlayerHandSize());
+		if (!deckSize && !playerHandSize)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	void setTopCards(Deck& deck)
 	{
 		//376, 503
@@ -64,7 +77,7 @@ namespace c1 // Used to setup or maintain
 				}
 			}
 		}
-		if (lowestVal[0] == cardValue::ACE && lowestVal[1] == cardValue::ACE)
+		if (lowestVal[0] == cardValue::ACE && lowestVal[1] == cardValue::ACE) // This is to randomise the starting player if neither has a master suit
 		{
 			return rand() % 2 + 1;
 		}
@@ -127,21 +140,20 @@ namespace c1 // Used to setup or maintain
 	}
 	void addNeededCardsToPlayerHands(std::array<Player, 2>&players, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck)
 	{		
-		//You need to 
 		for (int i = 0; i < 2; ++i)
 		{
-			if (players[i].getPlayerHandSize() < 6)
-			{
-				auto currentHandSize = players[i].getPlayerHandSize();
-				for (auto j = currentHandSize; j < 6; ++j)
-				{					 
+			auto cardsNeeded = (6 - players[i].getPlayerHandSize());
+			if (doesDeckHaveEnoughCardsRemaining(deck, cardsNeeded) && players[i].getPlayerHandSize() < 6)
+			{			
+				for (auto j = 0; j < cardsNeeded; ++j)
+				{
 					std::shared_ptr<Card>card = deck.dealCard();
 					card->cardPosition.y = (i) ? 850.0f : 0.0f;
-					card->cardPosition.x = (75 * (j - static_cast<float>(currentHandSize)));
+					card->cardPosition.x = (75 * j);
 					players[i].addToPlayerHand(card);
 					cardsVisible.push_back(card);
-				}
-			}
+				}				
+			}			
 		}
 	}	
 }

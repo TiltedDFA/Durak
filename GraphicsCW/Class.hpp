@@ -64,9 +64,10 @@ private:
 	std::shared_ptr<Card> visibleCard;// This is what stores the card that will be visible from the start of the game.
 	std::pair<std::shared_ptr<Card>, std::shared_ptr<Card>>topOfDeck;
 	cardSuit masterSuit = cardSuit::CLUBS;// This value detirmins how the game will be played and adds a lot of power to cards of the same suit. The value for this is derived from the visible card.
+	bool hasCardsRemaining = true;
 public:
 	Deck();
-	~Deck();
+	~Deck(); 
 	std::shared_ptr<Card> dealCard();
 	cardSuit getMasterSuit();
 	void setMasterSuit(cardSuit suit);

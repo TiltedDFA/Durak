@@ -14,6 +14,7 @@ int main()
 	bool prePlayScreen = false;
 	bool clickedOnCard = false;
 	bool hC = false;	
+	bool winScreen = false;
 	Deck deck;
 	Table table;
 	DiscardedCards bPile;
@@ -169,7 +170,11 @@ int main()
 				}
 			}
 		}
-		//----------------------------------------------------------------------------------
+		//---------------------------------------------------------------------------------
+		else if (winScreen)
+		{
+
+		}
 	}
 	// De-Initialization
 	//--------------------------------------------------------------------------------------

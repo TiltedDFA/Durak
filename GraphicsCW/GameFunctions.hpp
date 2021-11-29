@@ -92,6 +92,7 @@ namespace c2
 
 			player.setEntireHand(playerHand);
 		}
+
 	}
 	void moveAllTableToBPile(DiscardedCards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible)
 	{
