@@ -119,21 +119,30 @@ namespace c1 // Used to setup or maintain
 			}
 		}
 	}
-	void addNeededCardsToPlayerHands(std::array<Player, 2>&players, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck)
+	bool doesDeckHaveEnoughCardsRemaining(Deck& deck, const int numOfCardsNeeded)
 	{
+		int deckSize = deck.getDeckSize();
+		if ((deckSize - numOfCardsNeeded) > 0) { return true; }
+		else { return false; }
+	}
+	void addNeededCardsToPlayerHands(std::array<Player, 2>&players, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck)
+	{		
+		//You need to 
 		for (int i = 0; i < 2; ++i)
 		{
 			if (players[i].getPlayerHandSize() < 6)
 			{
 				auto currentHandSize = players[i].getPlayerHandSize();
 				for (auto j = currentHandSize; j < 6; ++j)
-				{
+				{					 
 					std::shared_ptr<Card>card = deck.dealCard();
+					card->cardPosition.y = (i) ? 850.0f : 0.0f;
+					card->cardPosition.x = (75 * (j - static_cast<float>(currentHandSize)));
 					players[i].addToPlayerHand(card);
 					cardsVisible.push_back(card);
 				}
 			}
 		}
-	}
+	}	
 }
 #endif // !SETUPFUNCTIONS_HPP

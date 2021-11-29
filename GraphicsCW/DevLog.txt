@@ -152,3 +152,10 @@ add a system for defence that locks defending cards in while also displaying the
 
 
 Work on implimenting an system that auto adds all cards needed from deck to hand. Make it work based off who attacked last and 
+29/11/2021
+{
+You need to check if deck has enough cards remaining and if not then you need to think about how it will work when the deck runs out
+Also fix the player states not switching after taking issue 
+
+
+}

@@ -75,6 +75,7 @@ public:
 	std::shared_ptr<Card> getVisibleCard();
 	std::pair<std::shared_ptr<Card>, std::shared_ptr<Card>> getTopOfDeck();
 	void setTopOfDeck(std::pair<std::shared_ptr<Card>, std::shared_ptr<Card>> pair);
+	int getDeckSize();
 };
 //-------------------------------------------------------------------------------------------------------------
 class Player
@@ -89,8 +90,6 @@ public:
 	std::shared_ptr<Card> getPlayerHandIndex(const int index);
 
 	std::size_t getPlayerHandSize();
-	void addNeededCardToPlayerHand(Deck& deck);
-
 	bool isPlyrAtk();
 	void setPlyrAtk(bool bol);
 

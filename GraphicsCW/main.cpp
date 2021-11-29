@@ -2,8 +2,8 @@
 int main()
 {
 	//--------------------------------------------------------------------------------------
-	const int screenWidth = 1920;
-	const int screenHeight = 1050; // have to do this to fix the mouse ghosting issue
+	constexpr int screenWidth =  1920;
+	constexpr int screenHeight = 1050; // have to do this to fix the mouse ghosting issue
 	InitWindow(screenWidth, screenHeight, "Durak");
 	InitAudioDevice();
 	SetTargetFPS(120);

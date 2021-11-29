@@ -2,7 +2,10 @@
 
 //-------------------------------------------------------------------------------------------------------------
 
-Card::Card() { Suit = cardSuit::CLUBS; Value = cardValue::TWO; }
+Card::Card()
+	: Suit(cardSuit::CLUBS), Value(cardValue::TWO) //This is a member initilizer list (it needs to be written in order for the vars)
+{
+}
 Card::~Card() {}
 std::string Card::suitToString(const cardSuit& suit)
 {
@@ -105,6 +108,10 @@ void Deck::setTopOfDeck(std::pair<std::shared_ptr<Card>, std::shared_ptr<Card>> 
 {
 	topOfDeck = pair;
 }
+int Deck::getDeckSize()
+{
+	return static_cast<int>(deck.size());
+}
 //-------------------------------------------------------------------------------------------------------------
 Player::Player()
 {
@@ -123,13 +130,6 @@ std::shared_ptr<Card> Player::getPlayerHandIndex(const int index)
 std::size_t Player::getPlayerHandSize()
 {
 	return playerHand.size();
-}
-void Player::addNeededCardToPlayerHand(Deck& deck)
-{
-	while (playerHand.size() < 6)
-	{
-		playerHand.push_back(deck.dealCard());
-	}
 }
 bool Player::isPlyrAtk()
 {
