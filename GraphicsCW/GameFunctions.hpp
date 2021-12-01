@@ -129,7 +129,7 @@ namespace c2
 	{
 		players[0].setPlyrAtk(!players[0].isPlyrAtk()); players[1].setPlyrAtk(!players[1].isPlyrAtk()); 
 	}
-	bool canEndAtk(Table& table)
+	bool canEndAtk(Table& table) // use this to auto pass once defender defends
 	{
 		const std::array<std::array<std::shared_ptr<Card>, 2>, 6> cardsOnTable = table.getEntireTable();
 		int completedValues = 0;
@@ -158,6 +158,10 @@ namespace c2
 			}
 		}
 		table.setEntireTable(cTable);
+	}
+	void hasDefenderCoveredAllCards(Table& table)
+	{
+
 	}
 }
 #endif // !GAMEFUNCTIONS_HPP
