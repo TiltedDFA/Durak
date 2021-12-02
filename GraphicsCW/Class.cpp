@@ -52,12 +52,12 @@ void Card::displayCardWithValueText(const std::shared_ptr<Card>& card)
 //-------------------------------------------------------------------------------------------------------------
 Deck::Deck()
 {	
-	for (int i = 0; i < 13; ++i)
+	for (int i = 0; i < 13; ++i) //13 Represents the different values
 	{
-		for (int j = 0; j < 4; ++j)
+		for (int j = 0; j < 4; ++j) // 4 is for the four suits
 		{
-			std::shared_ptr<Card> C = std::make_shared<Card>();
-			C->Value = static_cast<cardValue>(i+2); //This is to make up for the array indexing 
+			std::shared_ptr<Card> C = std::make_shared<Card>(); //This declares a card pointer and allocates it to the heap
+			C->Value = static_cast<cardValue>(i + 2); //This is to make up for the array indexing 
 			C->Suit = static_cast<cardSuit>(j + 1); // As is this 
 			deck.emplace_back(C);
 		}

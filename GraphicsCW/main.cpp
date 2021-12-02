@@ -2,19 +2,18 @@
 int main()
 {
 	//--------------------------------------------------------------------------------------
-	constexpr int screenWidth =  1920;
-	constexpr int screenHeight = 1050; // have to do this to fix the mouse ghosting issue
-	InitWindow(screenWidth, screenHeight, "Durak");
-	InitAudioDevice();
-	SetTargetFPS(120);
+	constexpr int screenWidth =  1920;// This declares screenwidth
+	constexpr int screenHeight = 1050; // This declares the screenheight
+	InitWindow(screenWidth, screenHeight, "Durak");//This initlizes the screen with the width and size 
+	InitAudioDevice();// This initilizes the audio device
+	SetTargetFPS(120);//This sets the target framerate
 	//---------------------------------------------------------------------------------------
-	Vector2 mP = { 0.0f, 0.0f };
-	Vector2 dMP = { 0.0f, 0.0f };
-	bool _TScreen = true;
-	bool prePlayScreen = false;
-	bool clickedOnCard = false;
-	bool hC = false;	
-	bool winScreen = false;
+	Vector2 mP = {0.0f,0.0f}; //This is to store the mouse position 
+	Vector2 dMP = { 0.0f, 0.0f }; //This is to store the delta of the position
+	bool _TScreen = true; // This is to help the store which screen to display
+	bool prePlayScreen = false; //This is also to help with the screen display system
+	bool hC = false; //This variable is used primarily in the system that controlls the amnt of cards you pick up 	
+	bool winScreen = false; //This is also for the system 
 	Deck deck;
 	Table table;
 	DiscardedCards bPile;
