@@ -143,7 +143,7 @@ namespace c1 // Used to setup or maintain
 		for (int i = 0; i < 2; ++i)
 		{
 			auto cardsNeeded = (6 - players[i].getPlayerHandSize());
-			if (doesDeckHaveEnoughCardsRemaining(deck, cardsNeeded) && players[i].getPlayerHandSize() < 6)
+			if (doesDeckHaveEnoughCardsRemaining(deck, cardsNeeded) && static_cast<int>(players[i].getPlayerHandSize()) < 6)
 			{			
 				for (auto j = 0; j < cardsNeeded; ++j)
 				{

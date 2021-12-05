@@ -69,16 +69,18 @@ namespace c0 //This is used to display
 		{
 			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 			{
-				c2::moveAllTableToBPile(bPile, table, cardsVisible);
+				c2::moveAllTableToBPile(bPile, table, cardsVisible); //This moves all the cards on the table to the discarded pile 
 				DrawTexture(endMid, 1733, 936, WHITE);
-				c1::addNeededCardsToPlayerHands(players, cardsVisible, deck);
-				mg.switchPTurn();
+				c1::addNeededCardsToPlayerHands(players, cardsVisible, deck);				
 			}
 			else
 			{
 				DrawTexture(endHigh, 1733, 936, WHITE);
-			}			
-			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); }
+			}
+			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
+			{ 
+				PlaySound(fxButton); 
+			}
 		}
 		else
 		{
@@ -96,7 +98,7 @@ namespace c0 //This is used to display
 			{
 				c2::moveAllTableToPlayerHand(players[mg.getPTurn()], table);
 				c1::addNeededCardsToPlayerHands(players, cardsVisible, deck);
-				DrawTexture(takeMid, 1733, 936, WHITE);
+				DrawTexture(takeMid, 1733, 936, WHITE);	
 				mg.switchPTurn();
 			}
 			else
