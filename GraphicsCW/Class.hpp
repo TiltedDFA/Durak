@@ -12,6 +12,7 @@
 #include <utility>
 #include "raylib.h"
 #include "raymath.h"
+#include <fstream>
 
 enum class cardSuit //This sets up the card's suits
 {

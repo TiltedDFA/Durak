@@ -4,6 +4,7 @@ int main()
 	//--------------------------------------------------------------------------------------
 	constexpr int screenWidth =  1920;// This declares screenwidth
 	constexpr int screenHeight = 1050; // This declares the screenheight
+	constexpr auto fileName = "hi";
 	InitWindow(screenWidth, screenHeight, "Durak");//This initlizes the screen with the width and size 
 	InitAudioDevice();// This initilizes the audio device
 	SetTargetFPS(120);//This sets the target framerate
@@ -67,6 +68,7 @@ int main()
 		hC = false;
 		if (prePlayScreen)
 		{
+			if (!c2::checkIfPlayersWon(deck, players)) { prePlayScreen = !prePlayScreen; winScreen = !winScreen; }
 			int round = mainGame.getRound();
 			c1::lockCardsInHand(players, mainGame);
 			BeginDrawing();
@@ -76,12 +78,13 @@ int main()
 			if (players[mainGame.getPTurn()].isPlyrAtk()) { c0::displayEndButtons(players, mainGame, EndButtonLow, EndButtonMid, EndButtonHigh, fxButton, bPile, table, cardsVisible, deck); }
 			else { c0::displayTakeButtons(deck, cardsVisible, players, mainGame, table, TakeButtonHigh, TakeButtonMid, TakeButtonLow); }			
 			c0::displayPlayerState(AtkHigh, AtkLow, DefHigh, DefLow, players[1].isPlyrAtk());
-			c0::cTable(cardsVisible, CardBacking, blankCard);
-			deck.displayVisisbleCard(blankCard);
-			c0::displayDeckExtraCards(deck, CardBacking, blankCard);
+			c0::cTable(cardsVisible, CardBacking, blankCard);			
+			if(deck.getDeckSize()) { deck.displayVisisbleCard(blankCard); }
+			if (deck.getDeckSize() > 1) { c0::displayDeckExtraCards(deck, CardBacking, blankCard); }
 			c0::displayWhosTurnItIs(mainGame);
 			DrawCircleV(GetMousePosition(), 10, WHITE);
 			EndDrawing();
+
 			for (int i = 0; i < cardsVisible.size(); ++i)
 			{
 				if (cardsVisible[i]->canBeTouched)

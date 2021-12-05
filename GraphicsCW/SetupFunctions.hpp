@@ -132,6 +132,13 @@ namespace c1 // Used to setup or maintain
 			}
 		}
 	}
+	void addCardsEx(Player& player, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck, const int& cardsNeeded)
+	{
+		for (int i = 0; i < cardsNeeded; ++i)
+		{
+			player.addToPlayerHand(deck.dealCard());
+		}
+	}
 	bool doesDeckHaveEnoughCardsRemaining(Deck& deck, const int numOfCardsNeeded)
 	{
 		int deckSize = deck.getDeckSize();
@@ -143,18 +150,25 @@ namespace c1 // Used to setup or maintain
 		for (int i = 0; i < 2; ++i)
 		{
 			auto cardsNeeded = (6 - players[i].getPlayerHandSize());
-			if (doesDeckHaveEnoughCardsRemaining(deck, cardsNeeded) && static_cast<int>(players[i].getPlayerHandSize()) < 6)
-			{			
-				for (auto j = 0; j < cardsNeeded; ++j)
+			if (deck.getDeckSize()) // code below will not run if deckSize == 0;
+			{
+				if (doesDeckHaveEnoughCardsRemaining(deck, cardsNeeded) && static_cast<int>(players[i].getPlayerHandSize()) < 6)
 				{
-					std::shared_ptr<Card>card = deck.dealCard();
-					card->cardPosition.y = (i) ? 850.0f : 0.0f;
-					card->cardPosition.x = (75 * j);
-					players[i].addToPlayerHand(card);
-					cardsVisible.push_back(card);
-				}				
-			}			
+					for (auto j = 0; j < cardsNeeded; ++j)
+					{
+						std::shared_ptr<Card>card = deck.dealCard();
+						card->cardPosition.y = (i) ? 850.0f : 0.0f;
+						card->cardPosition.x = static_cast<float>(120 * j);
+						players[i].addToPlayerHand(card);
+						cardsVisible.push_back(card);
+					}
+				}
+			}					
 		}
 	}	
+}
+namespace c3 // C3 will be for reading and writing to files (for settings)
+{
+
 }
 #endif // !SETUPFUNCTIONS_HPP

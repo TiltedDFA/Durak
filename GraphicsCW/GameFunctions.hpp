@@ -22,7 +22,7 @@ namespace c2
 			{				
 				auto oSetArea = (placeHB.width - sqrt(((card->cardPosition.x - placeHB.x) * (card->cardPosition.x - placeHB.x)))) * (placeHB.height - sqrt(((card->cardPosition.y - placeHB.y) * (card->cardPosition.y - placeHB.y))));
 				auto percentOverlap = ((oSetArea / (placeHB.width * placeHB.height)) * 100);
-				if (static_cast<int>(percentOverlap > percentCertanty))
+				if (static_cast<int>(percentOverlap > percentCertanty))// Converted to an int to force rounding
 				{
 					return static_cast<int>(percentOverlap);
 				}
@@ -35,9 +35,7 @@ namespace c2
 
 
 		if (!card->cardIsFaceUp) { return false; }
-		const std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();
-		//auto cardPosInTable = std::find(cardsOnTable.begin(), cardsOnTable.end(), card);
-		//if (cardPosInTable != cardsOnTable.end()) { return false; }
+		const std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();		
 		if (cardsOnTable[0][0] == nullptr && cardsOnTable[1][0] == nullptr && cardsOnTable[2][0] == nullptr && cardsOnTable[3][0] == nullptr && cardsOnTable[4][0] == nullptr && cardsOnTable[5][0] == nullptr)
 		{
 			if (cardsOnTable[0][1] == nullptr && cardsOnTable[1][1] == nullptr && cardsOnTable[2][1] == nullptr && cardsOnTable[3][1] == nullptr && cardsOnTable[4][1] == nullptr && cardsOnTable[5][1] == nullptr)
@@ -162,6 +160,17 @@ namespace c2
 	void hasDefenderCoveredAllCards(Table& table)
 	{
 
+	}
+	bool checkIfPlayersWon(Deck& deck, std::array<Player, 2>& players)
+	{
+		for (int i = 0; i < 2; ++i)
+		{
+			if (!deck.getDeckSize() && !players[i].getPlayerHandSize()) //This checks if both deckSize and HandSize == 0;
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 }
 #endif // !GAMEFUNCTIONS_HPP

@@ -161,3 +161,10 @@ Add an auto pass for the defender once they've covered all their cards
 
 There is also a known issue with the system that distrobutes cards. Issue has occured after cards are delt a 2nd time. Player[0] seems to be the affected one as he isn't receiving any cards
 }
+
+05/12/21
+{
+21:41 
+->THE MAIN GAME LOOP WORKS LOL
+will need to now work to add win states 
+}
