@@ -71,7 +71,9 @@ namespace c0 //This is used to display
 			{
 				c2::moveAllTableToBPile(bPile, table, cardsVisible); //This moves all the cards on the table to the discarded pile 
 				DrawTexture(endMid, 1733, 936, WHITE);
-				c1::addNeededCardsToPlayerHands(players, cardsVisible, deck);				
+				c1::addNeededCardsToPlayerHands(players, cardsVisible, deck);	
+				mg.switchPTurn();
+				c2::switchPlayerStates(players);
 			}
 			else
 			{

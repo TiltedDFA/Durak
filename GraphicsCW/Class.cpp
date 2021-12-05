@@ -208,7 +208,7 @@ void MainGame::setRound(const int num)
 }
 void MainGame::switchPTurn()
 {
-	pTurn = (~pTurn); // This is the bitwise not operator
+	pTurn = (pTurn) ? 0 : 1;
 	cardsPlayedThisPass = 0;
 }
 void MainGame::setPTurn(int player)

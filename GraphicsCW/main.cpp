@@ -53,6 +53,7 @@ int main()
 	//--------------------------------------------------------------------------------------
 	// Main game loop
 
+
 	//Code something that moves the cards when the mouse moves them. The co-ordinates of the cards will be the mouse co-ordinates + the offset of where the mouse clicks the card
 	c1::setUpPlayerHandPos(cardsVisible, deck, players);
 	c1::setTopCards(deck);	

@@ -96,7 +96,7 @@ namespace c2
 	}
 	void moveAllTableToBPile(DiscardedCards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible)
 	{
-		const std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();
+		std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();
 		for (int i = 0; i < 6; ++i)
 		{
 			for (int j = 0; j < 2; ++j)
