@@ -161,16 +161,16 @@ namespace c2
 	{
 
 	}
-	bool checkIfPlayersWon(Deck& deck, std::array<Player, 2>& players)
+	int checkIfPlayersWon(Deck& deck, std::array<Player, 2>& players)
 	{
 		for (int i = 0; i < 2; ++i)
 		{
-			if (!deck.getDeckSize() && !players[i].getPlayerHandSize()) //This checks if both deckSize and HandSize == 0;
+			if (deck.getDeckSize() == 0&& players[i].getPlayerHandSize() == 0) //This checks if both deckSize and HandSize == 0;
 			{
-				return true;
+				return i;
 			}
 		}
-		return false;
+		return 2;
 	}
 }
 #endif // !GAMEFUNCTIONS_HPP

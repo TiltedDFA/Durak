@@ -1,28 +1,32 @@
 #include "Display.hpp"
 int main()
 {
-	//--------------------------------------------------------------------------------------
-	constexpr int screenWidth =  1920;// This declares screenwidth
-	constexpr int screenHeight = 1050; // This declares the screenheight
-	constexpr auto fileName = "hi";
+	//--------------------------------------------------------------------------------------	
 	InitWindow(screenWidth, screenHeight, "Durak");//This initlizes the screen with the width and size 
 	InitAudioDevice();// This initilizes the audio device
-	SetTargetFPS(120);//This sets the target framerate
+	SetTargetFPS(120);//This sets the target framerate	
 	//---------------------------------------------------------------------------------------
 	Vector2 mP = {0.0f,0.0f}; //This is to store the mouse position 
 	Vector2 dMP = { 0.0f, 0.0f }; //This is to store the delta of the position
-	bool _TScreen = true; // This is to help the store which screen to display
-	bool prePlayScreen = false; //This is also to help with the screen display system
+	std::array<std::pair<bool, std::string>, 4> screens;
+	screens[0].first = true; screens[0].second = "Title Screen";
+	screens[1].first = false; screens[1].second = "Playing Screen";
+	screens[2].first = false; screens[2].second = "Win Screen";
+	screens[3].first = false; screens[3].second = "Settings Screen";
+	//bool _TScreen = true; // This is to help the store which screen to display
+	//bool prePlayScreen = false; //This is also to help with the screen display system
 	bool hC = false; //This variable is used primarily in the system that controlls the amnt of cards you pick up 	
-	bool winScreen = false; //This is also for the system 
-	Deck deck;
+	//bool winScreen = false; //This is also for the system 
+	int winner = 44;
+	Deck deck(c3::getDeckSize());
 	Table table;
 	DiscardedCards bPile;
 	MainGame mainGame;
 	std::array<Player, 2>players;
 	std::vector<std::shared_ptr<Card>>cardsVisible;
 	//---------------------------------------------------------------------------------------
-	Rectangle btnCheckColl = { 772, 509, 287, 105 };
+	Rectangle playButton = { 773, 509, 287, 105 };
+	Rectangle settingsButton = { 773, 754, 287, 105 };
 	//---------------------------------------------------------------------------------------
 	Image appIcon = LoadImage("appIcon.png");
 
@@ -66,9 +70,9 @@ int main()
 	{
 		mP = GetMousePosition();
 		hC = false;
-		if (prePlayScreen)
+		if (screens[1].first) // Main Game Screen;
 		{
-			if (!c2::checkIfPlayersWon(deck, players)) { prePlayScreen = !prePlayScreen; winScreen = !winScreen; }
+			if (c2::checkIfPlayersWon(deck, players) != 2) { winner = c2::checkIfPlayersWon(deck, players); screens[1].first = !screens[1].first; screens[2].first = !screens[2].first; }
 			int round = mainGame.getRound();
 			c1::lockCardsInHand(players, mainGame);
 			BeginDrawing();
@@ -157,27 +161,75 @@ int main()
 			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
 				hC = false;
 		}
-		else if (_TScreen)
+		else if (screens[0].first) // Title Screen
 		{
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 			DrawTexture(TitleScreen, 0, 0, WHITE);
 			DrawCircleV(GetMousePosition(), 10, WHITE);
 			EndDrawing();
-			if (CheckCollisionPointRec(mP, btnCheckColl))
+			if (CheckCollisionPointRec(mP, playButton))
 			{
 				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 				{
-					prePlayScreen = true;
-					_TScreen = false;
+					screens[1].first = true;
+					screens[0].first = false;
+				}
+			}
+			if (CheckCollisionPointRec(mP, settingsButton))
+			{
+				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+				{
+					screens[3].first = true;
+					screens[0].first = false;
 				}
 			}
 		}
 		//---------------------------------------------------------------------------------
-		else if (winScreen)
+		else if (screens[2].first)//Win screen;
 		{
-
+		std::string win;
+			switch (winner)
+			{
+			case 0:
+				win = "The Bot Wins";
+				break;
+			case 1:
+				win = "Well Done, You win!";
+				break;
+			default:
+				break;
+			}
+		
+		BeginDrawing();
+		ClearBackground(RAYWHITE);
+		DrawText(win.c_str(), (screenWidth / 2), screenHeight / 2, 50, WHITE);
+		EndDrawing();
 		}
+		//---------------------------------------------------------------------------------
+		else if (screens[3].first) // Settings Screen;
+		{
+		int deckSize = c3::getDeckSize(); // This reads the current deckSize from the file
+		Rectangle ThirtySix = { (((screenWidth / 5) * 2)-150), (screenHeight / 2), 150, 75 };
+		Rectangle FiftyTwo = { (((screenWidth / 5) * 4)), (screenHeight / 2), 150, 75 };
+		BeginDrawing();
+		ClearBackground(RAYWHITE);
+		DrawRectangle(0, 0, screenWidth, screenHeight, WHITE);
+		switch (deckSize)
+		{
+		case 36:
+			c0::displayDeckSizeButtons(ThirtySix, FiftyTwo, true);
+			break;
+		case 52:
+			c0::displayDeckSizeButtons(ThirtySix, FiftyTwo, false);
+			break;
+		default:
+			//throw "Error";
+			break;
+		}		
+		EndDrawing();
+
+		} 
 	}
 	// De-Initialization
 	//--------------------------------------------------------------------------------------

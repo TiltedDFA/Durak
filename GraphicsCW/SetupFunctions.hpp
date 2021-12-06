@@ -169,6 +169,52 @@ namespace c1 // Used to setup or maintain
 }
 namespace c3 // C3 will be for reading and writing to files (for settings)
 {
+	
+	const int getDeckSize()
+	{
+		std::ifstream save_file(fileName, std::ios::in);
+		if (!save_file)
+			return 36;
 
-}
+		std::string size;
+		std::getline(save_file, size);
+		if (size == "36")
+			return 36;
+		else if (size == "52")
+			return 52;
+		else return 0;
+		/*
+			int a;
+		std::ifstream save_file("./save.txt");
+		std::string size;
+		std::getline(save_file, size);
+		if (size == "36")
+			std::cout << 36 << std::endl;
+		else if (size == "52")
+			std::cout << 52 << std::endl;
+		else std::cout << 0 << std::endl;
+		std::cin >> a;
+		*/
+	}
+	void setDeckSize(const int deckSize)
+	{
+		std::ofstream save_file(fileName, std::ios::out); // This creates the file		
+		if (save_file)
+		{
+			switch (deckSize)
+			{
+			case 36:
+				save_file << "36";
+				break;
+			case 52:
+				save_file << "52";
+				break;
+			default:
+				save_file << "0";
+				break;
+			}
+			save_file.close();
+		}
+	}
+} 
 #endif // !SETUPFUNCTIONS_HPP

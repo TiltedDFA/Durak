@@ -13,6 +13,9 @@
 #include "raylib.h"
 #include "raymath.h"
 #include <fstream>
+constexpr auto fileName = "SAVE.txt";
+constexpr auto screenWidth = 1920;// This declares screenwidth
+constexpr auto screenHeight = 1050; // This declares the screenheight
 
 enum class cardSuit //This sets up the card's suits
 {
@@ -68,6 +71,7 @@ private:
 	bool hasCardsRemaining = true;
 public:
 	Deck();
+	Deck(const int deckSize);
 	~Deck(); 
 	std::shared_ptr<Card> dealCard();
 	cardSuit getMasterSuit();

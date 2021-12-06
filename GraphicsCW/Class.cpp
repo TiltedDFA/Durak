@@ -22,7 +22,7 @@ std::string Card::suitToString(const cardSuit& suit)
 	default:
 		break;
 	}
-	return "Error";
+	throw std::runtime_error("Unexpected Error with Suit display");
 }
 std::string Card::valueToString(const cardValue& value)
 {
@@ -39,7 +39,7 @@ std::string Card::valueToString(const cardValue& value)
 	default:
 		break;
 	}
-	return "Error";
+	throw std::runtime_error("Unexpected Error with Value display");;
 }
 void Card::displayCardWithValueText(const std::shared_ptr<Card>& card)
 {
@@ -51,8 +51,24 @@ void Card::displayCardWithValueText(const std::shared_ptr<Card>& card)
 }
 //-------------------------------------------------------------------------------------------------------------
 Deck::Deck()
-{	
-	for (int i = 0; i < 13; ++i) //13 Represents the different values
+{		
+}
+Deck::Deck(const int deckSize)
+{
+	int startValue = 0;
+	switch (deckSize)
+	{
+	case 36:
+		startValue = 4;
+		break;
+	case 52:
+		startValue = 0;
+		break;
+	default:
+		throw std::runtime_error("Unexpected Deck size value");
+		break;
+	}
+	for (int i = startValue; i < 13; ++i) //13 Represents the different values
 	{
 		for (int j = 0; j < 4; ++j) // 4 is for the four suits
 		{
