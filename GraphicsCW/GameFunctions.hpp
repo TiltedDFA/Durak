@@ -165,7 +165,7 @@ namespace c2
 	{
 		for (int i = 0; i < 2; ++i)
 		{
-			if (deck.getDeckSize() == 0&& players[i].getPlayerHandSize() == 0) //This checks if both deckSize and HandSize == 0;
+			if (deck.getDeckSize() == 0 && players[i].getPlayerHandSize() == 0) //This checks if both deckSize and HandSize == 0;
 			{
 				return i;
 			}

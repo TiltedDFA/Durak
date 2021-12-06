@@ -143,7 +143,7 @@ namespace c0 //This is used to display
 			DrawRectangle(1507, 102, 100, 20, WHITE);
 		}
 	}
-	void displayDeckSizeButtons(Rectangle& thirty, Rectangle& fifty, bool thirtySelected)
+	void displayDeckSizeButtons(Rectangle& thirty, Rectangle& fifty, const bool& thirtySelected)
 	{
 		Vector2 mP = GetMousePosition();
 		std::string threeSix = "36";
@@ -152,8 +152,8 @@ namespace c0 //This is used to display
 		{
 			DrawRectangleRec(thirty, (thirtySelected) ? ORANGE : SKYBLUE);// The thirty selected bool is used to see find what the current deckSize is
 			DrawRectangleRec(fifty, (thirtySelected) ? BLUE : RED);
-			DrawText(threeSix.c_str(), static_cast<int>(thirty.x + (thirty.width / 2)), static_cast<int>(thirty.y + (thirty.height / 2)), 30, BLACK);
-			DrawText(fiveTwo.c_str(), static_cast<int>(fifty.x + (fifty.width / 2)), static_cast<int>(fifty.y + (fifty.height / 2)), 30, BLACK);
+			DrawText(threeSix.c_str(), static_cast<int>(thirty.x + (thirty.width / 2) - 35), static_cast<int>(thirty.y + (thirty.height / 2) - 25), 60, WHITE);
+			DrawText(fiveTwo.c_str(), static_cast<int>(fifty.x + (fifty.width / 2) - 35), static_cast<int>(fifty.y + (fifty.height / 2) - 25), 60, WHITE);
 			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
 			{
 				c3::setDeckSize(36);
@@ -164,8 +164,8 @@ namespace c0 //This is used to display
 			
 			DrawRectangleRec(fifty, (thirtySelected) ? SKYBLUE : ORANGE);
 			DrawRectangleRec(thirty, (thirtySelected) ? RED : BLUE);
-			DrawText(threeSix.c_str(), static_cast<int>(thirty.x + (thirty.width / 2)), static_cast<int>(thirty.y + (thirty.height / 2)), 30, BLACK);
-			DrawText(fiveTwo.c_str(), static_cast<int>(fifty.x + (fifty.width / 2)), static_cast<int>(fifty.y + (fifty.height / 2)), 30, BLACK);
+			DrawText(threeSix.c_str(), static_cast<int>(thirty.x + (thirty.width / 2) - 35), static_cast<int>(thirty.y + (thirty.height / 2) - 25), 60, WHITE);
+			DrawText(fiveTwo.c_str(), static_cast<int>(fifty.x + (fifty.width / 2) - 35), static_cast<int>(fifty.y + (fifty.height / 2) - 25), 60, WHITE);
 			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
 			{
 				c3::setDeckSize(52);
@@ -175,8 +175,8 @@ namespace c0 //This is used to display
 		{
 			DrawRectangleRec(thirty, (thirtySelected) ? RED : BLUE);
 			DrawRectangleRec(fifty, (thirtySelected) ? BLUE : RED);
-			DrawText(threeSix.c_str(), static_cast<int>(thirty.x + (thirty.width / 2)), static_cast<int>(thirty.y + (thirty.height / 2)), 30, BLACK);
-			DrawText(fiveTwo.c_str(), static_cast<int>(fifty.x + (fifty.width / 2)), static_cast<int>(fifty.y + (fifty.height / 2)), 30, BLACK);
+			DrawText(threeSix.c_str(), static_cast<int>(thirty.x + (thirty.width / 2)-35), static_cast<int>(thirty.y + (thirty.height / 2)-25), 60, WHITE);
+			DrawText(fiveTwo.c_str(), static_cast<int>(fifty.x + (fifty.width / 2)-35), static_cast<int>(fifty.y + (fifty.height / 2)-25), 60, WHITE);
 		}
 	}
 }

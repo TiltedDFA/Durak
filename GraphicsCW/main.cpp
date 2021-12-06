@@ -33,7 +33,10 @@ int main()
 	SetWindowIcon(appIcon);
 	Sound fxButton = LoadSound("buttonfx.wav");
 	Texture2D blankCard = LoadTexture("170pixelBlank.png");
+
 	Texture2D TitleScreen = LoadTexture("TitleScreen.png");
+	Texture2D SettingScreen = LoadTexture("Settings.png");
+
 	Texture2D  _Table = LoadTexture("TableCardHole.png");
 	Texture2D progTable = LoadTexture("TableWithButton.png");
 	Texture2D CardBacking = LoadTexture("170CardBacking.png");
@@ -198,6 +201,7 @@ int main()
 				win = "Well Done, You win!";
 				break;
 			default:
+				throw std::runtime_error("Unexpected Winstate");
 				break;
 			}
 		
@@ -209,12 +213,14 @@ int main()
 		//---------------------------------------------------------------------------------
 		else if (screens[3].first) // Settings Screen;
 		{
+		Vector2 mP = GetMousePosition();
 		int deckSize = c3::getDeckSize(); // This reads the current deckSize from the file
-		Rectangle ThirtySix = { (((screenWidth / 5) * 2)-150), (screenHeight / 2), 150, 75 };
-		Rectangle FiftyTwo = { (((screenWidth / 5) * 4)), (screenHeight / 2), 150, 75 };
+		Rectangle ThirtySix = { 549, 379, 400, 86 };
+		Rectangle FiftyTwo = { 963,378, 400, 86 };
+		Rectangle ReturnButton = { 36, 948, 288,90 };
 		BeginDrawing();
 		ClearBackground(RAYWHITE);
-		DrawRectangle(0, 0, screenWidth, screenHeight, WHITE);
+		DrawTexture(SettingScreen, 0, 0, WHITE);
 		switch (deckSize)
 		{
 		case 36:
@@ -224,13 +230,18 @@ int main()
 			c0::displayDeckSizeButtons(ThirtySix, FiftyTwo, false);
 			break;
 		default:
-			//throw "Error";
+			throw std::runtime_error("Unexpected DeckSize");
 			break;
 		}		
+		if(CheckCollisionPointRec(mP, ReturnButton) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+		{
+			screens[3].first = false;
+			screens[0].first = true;
+		}
 		EndDrawing();
-
 		} 
 	}
+	// 36, 948
 	// De-Initialization
 	//--------------------------------------------------------------------------------------
 	UnloadTexture(blankCard);
@@ -238,6 +249,7 @@ int main()
 	UnloadTexture(TitleScreen);
 	UnloadTexture(_Table);
 	UnloadTexture(progTable);
+	UnloadTexture(SettingScreen);
 	UnloadTexture(PassButtonHigh);
 	UnloadTexture(PassButtonMid);
 	UnloadTexture(PassButtonLow);

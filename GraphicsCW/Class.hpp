@@ -13,9 +13,9 @@
 #include "raylib.h"
 #include "raymath.h"
 #include <fstream>
-constexpr auto fileName = "SAVE.txt";
-constexpr auto screenWidth = 1920;// This declares screenwidth
-constexpr auto screenHeight = 1050; // This declares the screenheight
+constexpr auto fileName = "SAVE.txt";// This globally declares the filename
+constexpr auto screenWidth = 1920;// This globally declares screenwidth
+constexpr auto screenHeight = 1050; // This globallydeclares the screenheight
 
 enum class cardSuit //This sets up the card's suits
 {
