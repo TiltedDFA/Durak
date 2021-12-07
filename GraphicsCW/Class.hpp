@@ -13,6 +13,9 @@
 #include "raylib.h"
 #include "raymath.h"
 #include <fstream>
+#include <iterator>
+
+
 constexpr auto fileName = "SAVE.txt";// This globally declares the filename
 constexpr auto screenWidth = 1920;// This globally declares screenwidth
 constexpr auto screenHeight = 1050; // This globallydeclares the screenheight

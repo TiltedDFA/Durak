@@ -207,4 +207,38 @@ namespace c2
 		}
 	}
 }
+namespace c4 //This will be my finite state machine AI
+{
+constexpr auto ZeroValue = 0.0f;
+constexpr auto MSValue = 0.5f;
+constexpr auto sameSuitConst = 1.0f;
+
+	const int findDefendingEval(std::shared_ptr<Card> cardOne, std::shared_ptr<Card> cardTwo, Deck& deck)
+	{
+		const cardSuit ms = deck.getMasterSuit();
+		if (cardOne->Suit != cardTwo->Suit && cardOne->Suit != ms) //Different suits and non ms 
+		{
+			return ZeroValue;
+		}
+		else if (cardOne->Suit == cardTwo->Suit && cardOne->Value < cardTwo->Value) //same suit lower value
+		{
+			return ZeroValue;
+		}
+		else if (cardOne->Suit == ms && cardTwo->Suit != ms)//Master suit vs non ms 
+		{
+			return (1 / (MSValue * static_cast<int>(cardOne->Value)));
+		}
+		else if (cardOne->Suit == cardTwo->Suit && cardOne->Value > cardTwo->Value) //Same suit higher val
+		{
+			return (1/(sameSuitConst*((static_cast<int>(cardOne->Value) - static_cast<int>(cardTwo->Value)))));
+		}
+	}
+	std::vector<std::shared_ptr<Card>>::iterator evaluatePlayerHand(Player& bot, Table& table)
+	{
+		if (bot.isPlyrAtk())
+		{
+
+		}
+	}
+}
 #endif // !GAMEFUNCTIONS_HPP

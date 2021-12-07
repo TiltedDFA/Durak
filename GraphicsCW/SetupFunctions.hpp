@@ -250,8 +250,7 @@ namespace c3 // C3 will be for reading and writing to files (for settings)
 				break;
 			}
 		}
-	}
-	
+	}	
 	const int getMusicNumber()
 	{
 		std::ifstream save_file(fileName, std::ios::in);
