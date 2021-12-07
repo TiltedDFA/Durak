@@ -1,4 +1,5 @@
 #include "Display.hpp"
+void playMusic();
 int main()
 {
 	//--------------------------------------------------------------------------------------	
@@ -18,6 +19,7 @@ int main()
 	bool hC = false; //This variable is used primarily in the system that controlls the amnt of cards you pick up 	
 	//bool winScreen = false; //This is also for the system 
 	int winner = 44;
+	int musicalNumber = c3::getMusicNumber();
 	Deck deck(c3::getDeckSize());
 	Table table;
 	DiscardedCards bPile;
@@ -57,7 +59,14 @@ int main()
 	Texture2D AtkLow = LoadTexture("AtkLow.png");
 	Texture2D DefHigh = LoadTexture("DefHigh.png");
 	Texture2D DefLow = LoadTexture("DefLow.png");
+
+	Music JazzMusic = LoadMusicStream("JazzMusic.mp3");
+	Music LoFiMusic = LoadMusicStream("LoFiMusic.mp3");
+	Music ElectroSwingMusic = LoadMusicStream("ElectroSwingMusic.mp3");
 	srand(time(NULL));
+
+	c2::playMusic(musicalNumber, JazzMusic, LoFiMusic, ElectroSwingMusic);
+
 	//--------------------------------------------------------------------------------------
 	// Main game loop
 
@@ -71,6 +80,7 @@ int main()
 	
 	while (!WindowShouldClose())
 	{
+		c2::continuePlayingMusic(musicalNumber, JazzMusic, LoFiMusic, ElectroSwingMusic);
 		mP = GetMousePosition();
 		hC = false;
 		if (screens[1].first) // Main Game Screen;
@@ -214,25 +224,33 @@ int main()
 		else if (screens[3].first) // Settings Screen;
 		{
 		Vector2 mP = GetMousePosition();
-		int deckSize = c3::getDeckSize(); // This reads the current deckSize from the file
+		const int deckSize = c3::getDeckSize(); // This reads the current deckSize from the file
+		const int musicSelection = c3::getMusicNumber();
+		//---------------------------------------------
 		Rectangle ThirtySix = { 549, 379, 400, 86 };
 		Rectangle FiftyTwo = { 963,378, 400, 86 };
 		Rectangle ReturnButton = { 36, 948, 288,90 };
+		//---------------------------------------------
+		Rectangle NoMusic = { 547, 484, 205, 86 };
+		Rectangle JMusic = { 755, 484, 205, 86};
+		Rectangle LMusic = { 961, 484, 205, 86};
+		Rectangle eSwingMusic = { 1169, 484, 205, 86};
 		BeginDrawing();
 		ClearBackground(RAYWHITE);
 		DrawTexture(SettingScreen, 0, 0, WHITE);
 		switch (deckSize)
 		{
 		case 36:
-			c0::displayDeckSizeButtons(ThirtySix, FiftyTwo, true);
+			c0::displayDeckSizeButtons(ThirtySix, FiftyTwo, true, musicalNumber);
 			break;
 		case 52:
-			c0::displayDeckSizeButtons(ThirtySix, FiftyTwo, false);
+			c0::displayDeckSizeButtons(ThirtySix, FiftyTwo, false, musicalNumber);
 			break;
 		default:
 			throw std::runtime_error("Unexpected DeckSize");
 			break;
 		}		
+		c0::displayMusicButtons(NoMusic, JMusic, LMusic, eSwingMusic, JazzMusic, LoFiMusic, ElectroSwingMusic, musicSelection, deckSize, musicalNumber);
 		if(CheckCollisionPointRec(mP, ReturnButton) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 		{
 			screens[3].first = false;
@@ -263,6 +281,8 @@ int main()
 	UnloadTexture(TakeButtonHigh);
 	UnloadTexture(TakeButtonMid);
 	UnloadTexture(TakeButtonLow);
+	UnloadSound(fxButton);
+	CloseAudioDevice();
 	CloseWindow();// Close window and OpenGL context
 	//--------------------------------------------------------------------------------------
 	system("pause>0");

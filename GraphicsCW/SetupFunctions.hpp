@@ -169,7 +169,7 @@ namespace c1 // Used to setup or maintain
 }
 namespace c3 // C3 will be for reading and writing to files (for settings)
 {
-	void setDeckSize(const int deckSize)
+	void setDeckSize(const int deckSize, const int currentMusicVal)
 	{
 		std::ofstream save_file(fileName, std::ios::out); // This creates the file		
 		if (save_file)
@@ -186,37 +186,94 @@ namespace c3 // C3 will be for reading and writing to files (for settings)
 				save_file << "0";
 				break;
 			}
+			switch (currentMusicVal)
+			{
+			case 1:
+				save_file << "\n1";
+				break;
+			case 2:
+				save_file << "\n2";
+				break;
+			case 3:
+				save_file << "\n3";
+				break;
+			case 4:
+				save_file << "\n4";
+				break;
+			default:
+				throw std::runtime_error("unexpected musical Value input");
+				break;
+			}
+			
 			save_file.close();
 		}
-	}	
+	}		
 	const int getDeckSize()
 	{
 		std::ifstream save_file(fileName, std::ios::in);
 		if (!save_file)
 		{
-			c3::setDeckSize(36);
+			setDeckSize(36, 1);
 			return 36;
 		}
 		std::string size;
+		save_file.seekg(std::ios::beg);
 		std::getline(save_file, size);
 		if (size == "36")
 			return 36;
 		else if (size == "52")
 			return 52;
 		else return 0;
-		/*
-			int a;
-		std::ifstream save_file("./save.txt");
-		std::string size;
-		std::getline(save_file, size);
-		if (size == "36")
-			std::cout << 36 << std::endl;
-		else if (size == "52")
-			std::cout << 52 << std::endl;
-		else std::cout << 0 << std::endl;
-		std::cin >> a;
-		*/
+	}
+	void setMusicalNumber(const int num, const int currentDeckSize)
+	{
+		std::ofstream save_file(fileName, std::ios::out);
+		if (save_file)
+		{
+			save_file << currentDeckSize;
+			switch (num)
+			{
+			case 1:
+				save_file << "\n1";
+				break;
+			case 2:
+				save_file << "\n2";
+				break;
+			case 3:
+				save_file << "\n3";
+				break;
+			case 4:
+				save_file << "\n4";
+				break;
+			default:
+				throw std::runtime_error("Unexpected input Value experianced");
+				break;
+			}
+		}
 	}
 	
+	const int getMusicNumber()
+	{
+		std::ifstream save_file(fileName, std::ios::in);
+		if (!save_file)
+		{
+			setDeckSize(36, 1);
+			setMusicalNumber(1, 36);
+			return 1;
+		}
+		std::string num;
+		std::getline(save_file, num);
+		std::getline(save_file, num);
+		if (num == "1")
+			return 1;
+		else if (num == "2")
+			return 2;
+		else if (num == "3")
+			return 3;
+		else if (num == "4")
+			return 4;
+		else
+			throw std::runtime_error("Unexpected Value read");
+	}
 } 
 #endif // !SETUPFUNCTIONS_HPP

@@ -143,7 +143,7 @@ namespace c0 //This is used to display
 			DrawRectangle(1507, 102, 100, 20, WHITE);
 		}
 	}
-	void displayDeckSizeButtons(Rectangle& thirty, Rectangle& fifty, const bool& thirtySelected)
+	void displayDeckSizeButtons(Rectangle& thirty, Rectangle& fifty, const bool& thirtySelected, const int& currentMusicSize)
 	{
 		Vector2 mP = GetMousePosition();
 		std::string threeSix = "36";
@@ -156,7 +156,7 @@ namespace c0 //This is used to display
 			DrawText(fiveTwo.c_str(), static_cast<int>(fifty.x + (fifty.width / 2) - 35), static_cast<int>(fifty.y + (fifty.height / 2) - 25), 60, WHITE);
 			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
 			{
-				c3::setDeckSize(36);
+				c3::setDeckSize(36, currentMusicSize);
 			}
 		}
 		else if (CheckCollisionPointRec(mP, fifty))
@@ -168,7 +168,7 @@ namespace c0 //This is used to display
 			DrawText(fiveTwo.c_str(), static_cast<int>(fifty.x + (fifty.width / 2) - 35), static_cast<int>(fifty.y + (fifty.height / 2) - 25), 60, WHITE);
 			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
 			{
-				c3::setDeckSize(52);
+				c3::setDeckSize(52, currentMusicSize);
 			}
 		}
 		else
@@ -177,6 +177,98 @@ namespace c0 //This is used to display
 			DrawRectangleRec(fifty, (thirtySelected) ? BLUE : RED);
 			DrawText(threeSix.c_str(), static_cast<int>(thirty.x + (thirty.width / 2)-35), static_cast<int>(thirty.y + (thirty.height / 2)-25), 60, WHITE);
 			DrawText(fiveTwo.c_str(), static_cast<int>(fifty.x + (fifty.width / 2)-35), static_cast<int>(fifty.y + (fifty.height / 2)-25), 60, WHITE);
+		}
+	}
+	void displayTextForMusicButtons(const std::string& msg, const int x, const int y)
+	{
+		DrawText(msg.c_str(), x, y, 20, WHITE);
+	}
+	void displayMusicButtons(Rectangle& noMusic, Rectangle& jazzMusic, Rectangle& lofiMusic, Rectangle& electroSwingMusic,  Music& JazzMusic, Music& LofiMusic, Music& eSwingMusic, const int& selection, const int& deckSize, int& currentMusicNum)
+	{
+		std::string nM = "No Music";
+		std::string jM = "Jazz Music";
+		std::string lM = "LoFi Music";
+		std::string eM = "Electro Swing Music";
+
+		Vector2 mP = GetMousePosition();
+		if (CheckCollisionPointRec(mP, noMusic))
+		{
+			DrawRectangleRec(noMusic, (selection == 1) ? ORANGE : SKYBLUE);
+			DrawRectangleRec(jazzMusic, (selection == 2) ? RED : BLUE);
+			DrawRectangleRec(lofiMusic, (selection == 3) ? RED : BLUE);
+			DrawRectangleRec(electroSwingMusic, (selection == 4) ? RED : BLUE);
+			displayTextForMusicButtons(nM, static_cast<int>(noMusic.x + (noMusic.width / 2) - 35), static_cast<int>(noMusic.y + (noMusic.height / 2) - 25));
+			displayTextForMusicButtons(jM, static_cast<int>(jazzMusic.x + (jazzMusic.width / 2) - 35), static_cast<int>(jazzMusic.y + (jazzMusic.height / 2) - 25));
+			displayTextForMusicButtons(lM, static_cast<int>(lofiMusic.x + (lofiMusic.width / 2) - 35), static_cast<int>(lofiMusic.y + (lofiMusic.height / 2) - 25));
+			displayTextForMusicButtons(eM, static_cast<int>(electroSwingMusic.x + (electroSwingMusic.width / 2) - 75), static_cast<int>(electroSwingMusic.y + (electroSwingMusic.height / 2) - 25));
+			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
+			{
+				c3::setMusicalNumber(1, deckSize);
+				currentMusicNum = 1;
+				c2::playMusic(1, JazzMusic, LofiMusic, eSwingMusic);
+			}
+		}
+		else if (CheckCollisionPointRec(mP, jazzMusic))
+		{
+			DrawRectangleRec(noMusic, (selection == 1) ? RED : BLUE);
+			DrawRectangleRec(jazzMusic, (selection == 2) ? ORANGE : SKYBLUE);
+			DrawRectangleRec(lofiMusic, (selection == 3) ? RED : BLUE);
+			DrawRectangleRec(electroSwingMusic, (selection == 4) ? RED : BLUE);
+			displayTextForMusicButtons(nM, static_cast<int>(noMusic.x + (noMusic.width / 2) - 35), static_cast<int>(noMusic.y + (noMusic.height / 2) - 25));
+			displayTextForMusicButtons(jM, static_cast<int>(jazzMusic.x + (jazzMusic.width / 2) - 35), static_cast<int>(jazzMusic.y + (jazzMusic.height / 2) - 25));
+			displayTextForMusicButtons(lM, static_cast<int>(lofiMusic.x + (lofiMusic.width / 2) - 35), static_cast<int>(lofiMusic.y + (lofiMusic.height / 2) - 25));
+			displayTextForMusicButtons(eM, static_cast<int>(electroSwingMusic.x + (electroSwingMusic.width / 2) - 75), static_cast<int>(electroSwingMusic.y + (electroSwingMusic.height / 2) - 25));
+			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
+			{
+				c3::setMusicalNumber(2, deckSize);
+				currentMusicNum = 2;
+				c2::playMusic(2, JazzMusic, LofiMusic, eSwingMusic);
+			}
+		}
+		else if (CheckCollisionPointRec(mP, lofiMusic))
+		{
+			DrawRectangleRec(noMusic, (selection == 1) ? RED : BLUE);
+			DrawRectangleRec(jazzMusic, (selection == 2) ? RED : BLUE);
+			DrawRectangleRec(lofiMusic, (selection == 3) ? ORANGE : SKYBLUE);
+			DrawRectangleRec(electroSwingMusic, (selection == 4) ? RED : BLUE);
+			displayTextForMusicButtons(nM, static_cast<int>(noMusic.x + (noMusic.width / 2) - 35), static_cast<int>(noMusic.y + (noMusic.height / 2) - 25));
+			displayTextForMusicButtons(jM, static_cast<int>(jazzMusic.x + (jazzMusic.width / 2) - 35), static_cast<int>(jazzMusic.y + (jazzMusic.height / 2) - 25));
+			displayTextForMusicButtons(lM, static_cast<int>(lofiMusic.x + (lofiMusic.width / 2) - 35), static_cast<int>(lofiMusic.y + (lofiMusic.height / 2) - 25));
+			displayTextForMusicButtons(eM, static_cast<int>(electroSwingMusic.x + (electroSwingMusic.width / 2) - 75), static_cast<int>(electroSwingMusic.y + (electroSwingMusic.height / 2) - 25));
+			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
+			{
+				c3::setMusicalNumber(3, deckSize);
+				currentMusicNum = 3;
+				c2::playMusic(3, JazzMusic, LofiMusic, eSwingMusic);
+			}
+		}
+		else if (CheckCollisionPointRec(mP, electroSwingMusic))
+		{
+			DrawRectangleRec(noMusic, (selection == 1) ? RED : BLUE);
+			DrawRectangleRec(jazzMusic, (selection == 2) ? RED : BLUE);
+			DrawRectangleRec(lofiMusic, (selection == 3) ? RED : BLUE);
+			DrawRectangleRec(electroSwingMusic, (selection == 4) ? ORANGE : SKYBLUE);
+			displayTextForMusicButtons(nM, static_cast<int>(noMusic.x + (noMusic.width / 2) - 35), static_cast<int>(noMusic.y + (noMusic.height / 2) - 25));
+			displayTextForMusicButtons(jM, static_cast<int>(jazzMusic.x + (jazzMusic.width / 2) - 35), static_cast<int>(jazzMusic.y + (jazzMusic.height / 2) - 25));
+			displayTextForMusicButtons(lM, static_cast<int>(lofiMusic.x + (lofiMusic.width / 2) - 35), static_cast<int>(lofiMusic.y + (lofiMusic.height / 2) - 25));
+			displayTextForMusicButtons(eM, static_cast<int>(electroSwingMusic.x + (electroSwingMusic.width / 2) - 75), static_cast<int>(electroSwingMusic.y + (electroSwingMusic.height / 2) - 25));
+			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
+			{
+				c3::setMusicalNumber(4, deckSize);
+				currentMusicNum = 4;
+				c2::playMusic(4, JazzMusic, LofiMusic, eSwingMusic);
+			}
+		}
+		else
+		{
+			DrawRectangleRec(noMusic, (selection == 1) ? RED : BLUE);
+			DrawRectangleRec(jazzMusic, (selection == 2) ? RED : BLUE);
+			DrawRectangleRec(lofiMusic, (selection == 3) ? RED : BLUE);
+			DrawRectangleRec(electroSwingMusic, (selection == 4) ? RED : BLUE);
+			displayTextForMusicButtons(nM, static_cast<int>(noMusic.x + (noMusic.width / 2) - 35), static_cast<int>(noMusic.y + (noMusic.height / 2) - 25));
+			displayTextForMusicButtons(jM, static_cast<int>(jazzMusic.x + (jazzMusic.width / 2) - 35), static_cast<int>(jazzMusic.y + (jazzMusic.height / 2) - 25));
+			displayTextForMusicButtons(lM, static_cast<int>(lofiMusic.x + (lofiMusic.width / 2) - 35), static_cast<int>(lofiMusic.y + (lofiMusic.height / 2) - 25));
+			displayTextForMusicButtons(eM, static_cast<int>(electroSwingMusic.x + (electroSwingMusic.width / 2) - 75), static_cast<int>(electroSwingMusic.y + (electroSwingMusic.height / 2) - 25));
 		}
 	}
 }

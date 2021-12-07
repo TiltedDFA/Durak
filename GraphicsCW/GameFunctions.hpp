@@ -171,6 +171,40 @@ namespace c2
 			}
 		}
 		return 2;
+	}	
+	void playMusic(const int musicNum, Music& JazzMusic,Music& LofiMusic, Music& eSwingMusic)
+	{
+		switch (musicNum)
+		{
+		case 2:
+			PlayMusicStream(JazzMusic);
+			break;
+		case 3:
+			PlayMusicStream(LofiMusic);
+			break;
+		case 4:
+			PlayMusicStream(eSwingMusic);
+			break;
+		default:
+			break;
+		}		
+	}
+	void continuePlayingMusic(const int musicNum, Music& JazzMusic, Music& LofiMusic, Music& eSwingMusic)
+	{
+		switch (musicNum)
+		{
+		case 2:
+			UpdateMusicStream(JazzMusic);
+			break;
+		case 3:
+			UpdateMusicStream(LofiMusic);
+			break;
+		case 4:
+			UpdateMusicStream(eSwingMusic);
+			break;
+		default:
+			break;
+		}
 	}
 }
 #endif // !GAMEFUNCTIONS_HPP
