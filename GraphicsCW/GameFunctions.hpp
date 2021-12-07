@@ -209,11 +209,11 @@ namespace c2
 }
 namespace c4 //This will be my finite state machine AI
 {
-constexpr auto ZeroValue = 0.0f;
+constexpr auto ZeroValue = 0.0f;// These are all values that are declared here so they can be tweaked in order finetune the AI
 constexpr auto MSValue = 0.5f;
 constexpr auto sameSuitConst = 1.0f;
 
-	const int findDefendingEval(std::shared_ptr<Card> cardOne, std::shared_ptr<Card> cardTwo, Deck& deck)
+	const double findDefendingEval(std::shared_ptr<Card> cardOne, std::shared_ptr<Card> cardTwo, Deck& deck)
 	{
 		const cardSuit ms = deck.getMasterSuit();
 		if (cardOne->Suit != cardTwo->Suit && cardOne->Suit != ms) //Different suits and non ms 
@@ -232,13 +232,23 @@ constexpr auto sameSuitConst = 1.0f;
 		{
 			return (1/(sameSuitConst*((static_cast<int>(cardOne->Value) - static_cast<int>(cardTwo->Value)))));
 		}
-	}
-	std::vector<std::shared_ptr<Card>>::iterator evaluatePlayerHand(Player& bot, Table& table)
+	}	
+	std::vector<std::shared_ptr<Card>>::iterator evaluatePlayerHand(Player& bot, Table& table,Deck& deck)
 	{
+		auto handSize = bot.getPlayerHandSize();
 		if (bot.isPlyrAtk())
 		{
 
 		}
-	}
+		else if (!bot.isPlyrAtk())
+		{
+			std::vector<double>cardEvals;
+			for (int i = 0; i < handSize; ++i)
+			{
+				//cardEvals.push_back(findDefendingEval());
+			}
+		}
+		//return std::vector<std::shared_ptr<Card>::;
+	}	
 }
 #endif // !GAMEFUNCTIONS_HPP
