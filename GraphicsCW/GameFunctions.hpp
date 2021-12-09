@@ -206,13 +206,70 @@ namespace c2
 			break;
 		}
 	}
+	
 }
 namespace c4 //This will be my finite state machine AI
 {
 constexpr auto ZeroValue = 0.0f;// These are all values that are declared here so they can be tweaked in order finetune the AI
-constexpr auto MSValue = 0.5f;
+constexpr auto MSValue = 20.0f;
 constexpr auto sameSuitConst = 1.0f;
 
+	const double findDefendingEval(std::shared_ptr<Card> cardUsedToDefend, std::shared_ptr<Card> cardToDefend, Deck& deck)
+	{
+		const cardSuit ms = deck.getMasterSuit();
+		if (cardUsedToDefend->Suit != cardToDefend->Suit && cardUsedToDefend->Suit != ms) //Different suits and non ms 
+		{
+			return ZeroValue;
+		}
+		else if (cardUsedToDefend->Suit == cardToDefend->Suit && cardUsedToDefend->Value < cardToDefend->Value) //same suit lower value
+		{
+			return ZeroValue;
+		}
+		else if (cardUsedToDefend->Suit == ms && cardToDefend->Suit != ms)//Master suit vs non ms 
+		{
+			return (static_cast<float>(cardUsedToDefend->Value) + MSValue);
+		}
+		else if (cardUsedToDefend->Suit == cardToDefend->Suit && cardUsedToDefend->Value > cardToDefend->Value) //Same suit higher val
+		{
+			return (static_cast<float>(cardUsedToDefend->Value) - static_cast<float>(cardToDefend->Value));
+		}
+		return 9999999999999999999;
+	}
+	auto returnBestPlayerHandEval(const std::shared_ptr<Card>& card, Player& player, Deck& deck)
+	{	
+		std::vector<std::pair<double, std::vector<std::shared_ptr<Card>>::iterator>>evaluations;
+		auto hand = player.getEntireHand();
+		for (int i = 0; i < static_cast<int>(player.getPlayerHandSize()); ++i)
+		{
+			std::pair<double, std::vector<std::shared_ptr<Card>>::iterator>evalInfo;
+			evalInfo.first = findDefendingEval(hand[i], card, deck);
+			evalInfo.second = (hand.begin() + i);
+			evaluations.push_back(evalInfo);
+		}
+		std::sort(evaluations.begin(), evaluations.end(), [](const std::pair<double, std::vector<std::shared_ptr<Card>>::iterator>& a, const std::pair<double, std::vector<std::shared_ptr<Card>>::iterator>& b)->bool { return (a.first < b.first); });
+		
+		for (int i = 0; i < static_cast<int>(evaluations.size()); ++i)
+		{
+			if (static_cast<int>(evaluations[i].first))
+			{
+				return evaluations[(i + 1)].second;
+			}		
+		}
+		return hand.end();
+	}
+	auto defendACardBot(Table& table,Player& bot)
+	{
+		std::array<std::array<std::shared_ptr<Card>, 2>, 6>_t = table.getEntireTable();
+		for(const auto& i : _t)
+		{
+			if (i[0] != nullptr && i[1] == nullptr)
+			{
+				//evaluations.push_back();
+			}
+		}
+	}
+	
+	/*
 	const double findDefendingEval(std::shared_ptr<Card> cardOne, std::shared_ptr<Card> cardTwo, Deck& deck)
 	{
 		const cardSuit ms = deck.getMasterSuit();
@@ -230,9 +287,12 @@ constexpr auto sameSuitConst = 1.0f;
 		}
 		else if (cardOne->Suit == cardTwo->Suit && cardOne->Value > cardTwo->Value) //Same suit higher val
 		{
-			return (1/(sameSuitConst*((static_cast<int>(cardOne->Value) - static_cast<int>(cardTwo->Value)))));
+			return (1/(sameSuitConst*((static_cast<int>(cardOne->Value)
+				- static_cast<int>(cardTwo->Value)))));
 		}
-	}	
+	}
+	*/
+	/*
 	std::vector<std::shared_ptr<Card>>::iterator evaluatePlayerHand(Player& bot, Table& table,Deck& deck)
 	{
 		auto handSize = bot.getPlayerHandSize();
@@ -245,10 +305,11 @@ constexpr auto sameSuitConst = 1.0f;
 			std::vector<double>cardEvals;
 			for (int i = 0; i < handSize; ++i)
 			{
-				//cardEvals.push_back(findDefendingEval());
+			//	cardEvals.push_back(findDefendingEval());
 			}
 		}
 		//return std::vector<std::shared_ptr<Card>::;
-	}	
+	}
+	*/
 }
 #endif // !GAMEFUNCTIONS_HPP

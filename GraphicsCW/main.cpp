@@ -102,6 +102,10 @@ int main()
 			DrawCircleV(GetMousePosition(), 10, WHITE);
 			EndDrawing();
 
+
+			c4::returnBestPlayerHandEval(deck.dealCard(), players[0], deck);
+
+
 			for (int i = 0; i < cardsVisible.size(); ++i)
 			{
 				if (cardsVisible[i]->canBeTouched)
