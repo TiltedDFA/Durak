@@ -253,11 +253,11 @@ constexpr auto sameSuitConst = 1.0f;
 			if (static_cast<int>(evaluations[i].first))
 			{
 				return evaluations[(i + 1)].second;
-			}		
+			}
 		}
 		return hand.end();
 	}
-	auto defendACardBot(Table& table,Player& bot, Deck& deck)
+	auto defendACardBot(Table& table,Player& bot, Deck& deck, MainGame& mg)
 	{
 		int j = 0; // Counts the index of the table
 		int k = 0; // checks how many times it's been defended
@@ -267,8 +267,12 @@ constexpr auto sameSuitConst = 1.0f;
 			if (i[0] != nullptr && i[1] == nullptr)
 			{
 				auto returnVal = returnBestPlayerHandEval(i[0],bot,deck);
-				c2::moveCardFromPlayerHandToTable(bot, table, std::move(i[0]),j);
-				++k;
+				if (!(returnVal == bot.getEntireHand().end()))
+				{
+					c2::moveCardFromPlayerHandToTable(bot, table, std::move(i[0]), j);
+					mg.incramentCardsPlayed();
+					++k;
+				}			
 			}
 			++j;
 		}
