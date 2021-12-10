@@ -257,15 +257,20 @@ constexpr auto sameSuitConst = 1.0f;
 		}
 		return hand.end();
 	}
-	auto defendACardBot(Table& table,Player& bot)
+	auto defendACardBot(Table& table,Player& bot, Deck& deck)
 	{
-		std::array<std::array<std::shared_ptr<Card>, 2>, 6>_t = table.getEntireTable();
-		for(const auto& i : _t)
+		int j = 0; // Counts the index of the table
+		int k = 0; // checks how many times it's been defended
+		std::array<std::array<std::shared_ptr<Card>, 2>, 6>_t = table.getEntireTable();		
+		for(auto& i : _t)
 		{
 			if (i[0] != nullptr && i[1] == nullptr)
 			{
-				//evaluations.push_back();
+				auto returnVal = returnBestPlayerHandEval(i[0],bot,deck);
+				c2::moveCardFromPlayerHandToTable(bot, table, std::move(i[0]),j);
+				++k;
 			}
+			++j;
 		}
 	}
 	
