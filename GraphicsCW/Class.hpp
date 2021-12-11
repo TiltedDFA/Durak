@@ -68,9 +68,10 @@ private:
 	std::vector<std::shared_ptr<Card>> deck;// The deck which is based on an std::shared_ptr system. The shared_ptrs are a type of smart pointers which delete the contents from the heap automatically
 	std::shared_ptr<Card> visibleCard;// This is what stores the card that will be visible from the start of the game.
 	std::pair<std::shared_ptr<Card>, std::shared_ptr<Card>>topOfDeck;
-	cardSuit masterSuit = cardSuit::CLUBS;// This value detirmins how the game will be played and adds a lot of power to cards of the same suit. The value for this is derived from the visible card.
+	// This value detirmins how the game will be played and adds a lot of power to cards of the same suit. The value for this is derived from the visible card.
 	bool hasCardsRemaining = true;
 public:
+	inline static cardSuit masterSuit;
 	Deck();
 	Deck(const int deckSize);
 	~Deck(); 
@@ -95,14 +96,11 @@ public:
 	~Player();
 	void addToPlayerHand(std::shared_ptr<Card> cardToAdd);
 	std::shared_ptr<Card> getPlayerHandIndex(const int index);
-
 	std::size_t getPlayerHandSize();
 	bool isPlyrAtk();
 	void setPlyrAtk(bool bol);
-
 	std::vector<std::shared_ptr<Card>> getEntireHand();
 	void setEntireHand(std::vector<std::shared_ptr<Card>> hand);
-
 	void setPlayerHandIndex(std::shared_ptr<Card> card, const int index);
 };
 //-------------------------------------------------------------------------------------------------------------
