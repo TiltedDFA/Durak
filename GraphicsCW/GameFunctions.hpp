@@ -287,7 +287,7 @@ namespace c2 {// This namespace is for game functions
 		return l;
 	}
 	
-	void endAttack(Deck& deck, MainGame& mg, DiscardedCards& bPile,Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible, std::array<Player, 2> players) {
+	void endAttack(Deck& deck, MainGame& mg, DiscardedCards& bPile,Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible, std::array<Player, 2>& players) {
 
 		c2::moveAllTableToBPile(bPile, table, cardsVisible);
 
@@ -296,6 +296,15 @@ namespace c2 {// This namespace is for game functions
 		mg.switchPTurn();
 
 		c2::switchPlayerStates(players);
+	}
+
+	void takeDefender(std::array<Player, 2>&players, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck, Table& table, MainGame& mg) {
+
+		c2::moveAllTableToPlayerHand(players[mg.getPTurn()], table);
+
+		c1::addNeededCardsToPlayerHands(players, cardsVisible, deck);
+
+		mg.switchPTurn();
 	}
 }
 
@@ -401,9 +410,9 @@ constexpr auto sameSuitConst = 1.0f;
 		}
 	}
 	
-	auto attack(Table& table, Player& bot) {
+	auto attack(Table&table, std::array<Player, 2>&players, Deck& deck, MainGame& mg, DiscardedCards& bPile, std::vector<std::shared_ptr<Card>>&cardsVisible) {
 	
-		auto hand = bot.getEntireHand();
+		auto hand = players[0].getEntireHand();
 		
 		auto mS = Deck::masterSuit;
 		
@@ -413,17 +422,17 @@ constexpr auto sameSuitConst = 1.0f;
 		
 		std::sort(hand.begin(), hand.end(), [](std::shared_ptr<Card>a, std::shared_ptr<Card>b)->bool { return (a->Value < b->Value);});
 		
-		for (int i = 0; i < bot.getPlayerHandSize(); ++i) {
+		for (int i = 0; i < players[0].getPlayerHandSize(); ++i) {
 	
 			if (hand[i]->Suit != mS &&  c2::canCardBePlayed(table, hand[i])) {
 
 				auto x = c2::findEmptyTablePile(table);
 
 				if (!x) {
-					//end the attack
+					c2::endAttack(deck, mg, bPile, table, cardsVisible, players);
 				}
 				else {
-					c2::moveCardFromPlayerHandToTable(bot, table, hand[i], x);
+					c2::moveCardFromPlayerHandToTable(players[0], table, hand[i], x);
 				}
 			}
 			else if (c2::canCardBePlayed(table, hand[i])) {
@@ -431,15 +440,15 @@ constexpr auto sameSuitConst = 1.0f;
 				auto x = c2::findEmptyTablePile(table);
 
 				if (!x) {
-					//end the attack
+					c2::endAttack(deck, mg, bPile, table, cardsVisible, players);
 				}
 				else {
-					c2::moveCardFromPlayerHandToTable(bot, table, hand[i], x);
+					c2::moveCardFromPlayerHandToTable(players[0], table, hand[i], x);
 				}
 			}			
 			else
 			{
-				//End the attack
+				c2::endAttack(deck, mg, bPile, table, cardsVisible, players);
 			}
 		}		
 	}

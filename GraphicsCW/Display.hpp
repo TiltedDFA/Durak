@@ -78,15 +78,9 @@ namespace c0 {//This is used to display
 		
 			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
 				
-				c2::moveAllTableToBPile(bPile, table, cardsVisible); //This moves all the cards on the table to the discarded pile 
+				c2::endAttack(deck, mg, bPile, table, cardsVisible, players);
 		
 				DrawTexture(endMid, 1733, 936, WHITE);
-		
-				c1::addNeededCardsToPlayerHands(players, cardsVisible, deck);	
-		
-				mg.switchPTurn();
-			
-				c2::switchPlayerStates(players);
 			}
 			else {
 			
@@ -113,13 +107,9 @@ namespace c0 {//This is used to display
 	
 			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT && !c2::canEndAtk(table))) {
 			
-				c2::moveAllTableToPlayerHand(players[mg.getPTurn()], table);
+				c2::takeDefender(players, cardsVisible, deck, table, mg);
 	
-				c1::addNeededCardsToPlayerHands(players, cardsVisible, deck);
-	
-				DrawTexture(takeMid, 1733, 936, WHITE);	
-	
-				mg.switchPTurn();
+				DrawTexture(takeMid, 1733, 936, WHITE);					
 			}
 			else {
 			
