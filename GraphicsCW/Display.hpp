@@ -23,13 +23,9 @@ namespace c0 {//This is used to display
 	
 	void displayDeckExtraCards(Deck& deck, Texture2D& backOfCard, Texture2D& frontOfCard) {
 	
-		auto vCard = deck.getVisibleCard();
-	
-		auto topCards = deck.getTopOfDeck();
-		//Still need to display visible card
-		DrawTexture(backOfCard, static_cast<int>(topCards.first->cardPosition.x), static_cast<int>(topCards.first->cardPosition.y), WHITE);
+		auto vCard = deck.getTopOfVisDeck();			
 
-		DrawTexture(backOfCard, static_cast<int>(topCards.second->cardPosition.x), static_cast<int>(topCards.second->cardPosition.y), WHITE);
+		DrawTexture(backOfCard, static_cast<int>(vCard->cardPosition.x), static_cast<int>(vCard->cardPosition.y), WHITE);		
 	}
 	
 	void displayPassButtons(std::array<Player, 2>& players, Table& table, MainGame& mg, Texture2D& passLow, Texture2D& passMid, Texture2D& passHigh, Sound& fxButton) {
@@ -349,5 +345,33 @@ namespace c0 {//This is used to display
 		
 		}
 	}
+
+	void displaySpecialCards(Deck& deck, Texture2D& backOfCard, Texture2D& blankCard) {
+
+		const std::shared_ptr<Card> deckCard = deck.getTopOfVisDeck();
+
+		const std::shared_ptr<Card> visibleCard = deck.getLastCard();
+
+		DrawTextureEx(blankCard, visibleCard->cardPosition, 90.0f, 1.0f, WHITE);
+
+		std::string cValStr = (static_cast<int>(visibleCard->Value) > 10) ? visibleCard->valueToString(visibleCard->Value) : std::to_string(static_cast<int>(visibleCard->Value));
+		std::string cSuitStr = visibleCard->suitToString(visibleCard->Suit);
+		DrawText(cValStr.c_str(), static_cast<int>((visibleCard->cardPosition.x - 105)), static_cast<int>((visibleCard->cardPosition.y + 20)), 30, BLACK);
+		DrawText(cSuitStr.c_str(), static_cast<int>((visibleCard->cardPosition.x - 105)), static_cast<int>((visibleCard->cardPosition.y + 65)), 25, BLACK);
+		
+		DrawTexture(backOfCard, deckCard->cardPosition.x, deckCard->cardPosition.y, WHITE);
+	}
+
+	/*
+	void Deck::displayVisisbleCard(Texture2D& visiCardTexture)
+{
+	DrawTextureEx(visiCardTexture, visibleCard->cardPosition, 90.0, 1.0, WHITE);
+	std::shared_ptr<Card> card = visibleCard;
+	std::string cValStr = (static_cast<int>(card->Value) > 10) ? card->valueToString(card->Value) : std::to_string(static_cast<int>(card->Value));
+	std::string cSuitStr = card->suitToString(card->Suit);
+	DrawText(cValStr.c_str(), static_cast<int>((card->cardPosition.x - 105)), static_cast<int>((card->cardPosition.y + 20)), 30, BLACK);
+	DrawText(cSuitStr.c_str(), static_cast<int>((card->cardPosition.x - 105)), static_cast<int>((card->cardPosition.y + 65)), 25, BLACK);	
+}
+*/
 }
 #endif // !DISPLAY_HPP

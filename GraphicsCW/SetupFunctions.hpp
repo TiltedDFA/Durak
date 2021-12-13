@@ -21,19 +21,9 @@ namespace c1 {// Used to setup or maintain
 	}
 	
 	void setTopCards(Deck& deck) {
-		//376, 503
-	
-		std::pair<std::shared_ptr<Card>, std::shared_ptr<Card>> cPair;
+		//376, 503		
 		
-		cPair.first = deck.dealCard();
-		
-		cPair.second = deck.dealCard();
-		
-		cPair.first->cardPosition = { 153, 470 };
-		
-		cPair.second->cardPosition = { 153, 470 };
-		
-		deck.setTopOfDeck(cPair);
+		deck.setPosTopCardDeck({ 153, 470 });
 	}
 	
 	void addCardsToVisibleVec(std::vector<std::shared_ptr<Card>>& cardsVisible, std::shared_ptr<Card> card) {
@@ -80,22 +70,16 @@ namespace c1 {// Used to setup or maintain
 			players[1].addToPlayerHand(card);
 
 			cardsVisible.push_back(card);
-		}
-	
-		std::shared_ptr<Card> card = deck.dealCard();
-		
-		card->cardPosition = { 376, 503 };
-		
-		deck.setVisibleCard(card);
-		
-		deck.setMasterSuit(card->Suit);
+		}		
+
+		deck.setPosLastCard({ 376, 503 });	
 	}
 	
 	int findStartingPlayer(std::array<Player, 2>players, Deck deck) {
 		
 		cardValue lowestVal[2] = { cardValue::ACE, cardValue::ACE };
 		
-		auto mS = deck.getMasterSuit();
+		auto mS = Deck::masterSuit;
 		
 		for (int i = 0; i < 2; ++i) {
 	

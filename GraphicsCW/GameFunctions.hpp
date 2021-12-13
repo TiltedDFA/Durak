@@ -66,7 +66,7 @@ namespace c2 {// This namespace is for game functions
 	
 		if (cardTwo == nullptr) { return false; }// This code assumes that the only cards that will be passed to the function will be from the table
 		
-		cardSuit mS = deck.getMasterSuit();
+		cardSuit mS = Deck::masterSuit;
 		
 		if (cardOne->Suit == mS && cardTwo->Suit != mS) { return true; }
 		
@@ -318,7 +318,7 @@ constexpr auto sameSuitConst = 1.0f;
 
 	const double findDefendingEval(std::shared_ptr<Card> cardUsedToDefend, std::shared_ptr<Card> cardToDefend, Deck& deck) {
 		
-		const cardSuit ms = deck.getMasterSuit();
+		const cardSuit ms = Deck::masterSuit;
 		
 		if (cardUsedToDefend->Suit != cardToDefend->Suit && cardUsedToDefend->Suit != ms) {  //Different suits and non ms 
 		

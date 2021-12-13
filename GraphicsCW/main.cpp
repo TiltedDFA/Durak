@@ -150,7 +150,7 @@ int main()
 
 			c0::cTable(cardsVisible, CardBacking, blankCard);			
 
-			if(deck.getDeckSize()) { deck.displayVisisbleCard(blankCard); }
+			if (deck.getDeckSize()) { c0::displaySpecialCards(deck, CardBacking,blankCard); }
 
 			if (deck.getDeckSize() > 1) { c0::displayDeckExtraCards(deck, CardBacking, blankCard); }
 

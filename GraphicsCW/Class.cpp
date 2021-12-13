@@ -53,8 +53,8 @@ void Card::displayCardWithValueText(const std::shared_ptr<Card>& card)
 Deck::Deck()
 {		
 }
-Deck::Deck(const int deckSize)
-{
+Deck::Deck(const int deckSize){
+	
 	int startValue = 0;
 	switch (deckSize)
 	{
@@ -82,50 +82,45 @@ Deck::Deck(const int deckSize)
 	auto rng = std::default_random_engine{ rd() };
 	std::shuffle(std::begin(deck), std::end(deck), rng);
 }
-Deck::~Deck()
-{
+Deck::~Deck(){
 }
-std::shared_ptr<Card> Deck::dealCard()
-{
+
+std::shared_ptr<Card> Deck::dealCard() {
+	
 	std::shared_ptr<Card> holder = deck[0];
+
 	deck.erase(deck.begin());
+
 	return holder;
 }
-cardSuit Deck::getMasterSuit()
-{
-	return masterSuit;
+
+const std::shared_ptr<Card>& Deck::getLastCard() { // This is the visibleCard
+
+	return deck[deck.size()-1];
 }
-void Deck::setMasterSuit(cardSuit suit)
-{
+
+void Deck::setPosLastCard(const Vector2& pos) { // Visible Card
+
+	deck[deck.size()-1]->cardPosition = pos;
+}
+
+void Deck::setPosTopCardDeck(const Vector2& pos) { //Top of deck (hidden)
+
+	deck[(deck.size() - 2)]->cardPosition = pos;
+}
+
+const std::shared_ptr<Card>& Deck::getTopOfVisDeck() { //This is the top of the deck(hidden)
+
+	return *(deck.end() - 2);
+}
+
+void Deck::setMasterSuit(cardSuit suit){
+
 	masterSuit = suit;
 }
-void Deck::setVisibleCard(std::shared_ptr<Card> card)
-{
-	visibleCard = card;
-}
-void Deck::displayVisisbleCard(Texture2D& visiCardTexture)
-{
-	DrawTextureEx(visiCardTexture, visibleCard->cardPosition, 90.0, 1.0, WHITE);
-	std::shared_ptr<Card> card = visibleCard;
-	std::string cValStr = (static_cast<int>(card->Value) > 10) ? card->valueToString(card->Value) : std::to_string(static_cast<int>(card->Value));
-	std::string cSuitStr = card->suitToString(card->Suit);
-	DrawText(cValStr.c_str(), static_cast<int>((card->cardPosition.x - 105)), static_cast<int>((card->cardPosition.y + 20)), 30, BLACK);
-	DrawText(cSuitStr.c_str(), static_cast<int>((card->cardPosition.x - 105)), static_cast<int>((card->cardPosition.y + 65)), 25, BLACK);	
-}
-std::shared_ptr<Card> Deck::getVisibleCard()
-{
-	return visibleCard;
-}
-std::pair<std::shared_ptr<Card>, std::shared_ptr<Card>> Deck::getTopOfDeck()
-{
-	return topOfDeck;
-}
-void Deck::setTopOfDeck(std::pair<std::shared_ptr<Card>, std::shared_ptr<Card>> pair)
-{
-	topOfDeck = pair;
-}
-int Deck::getDeckSize()
-{
+
+int Deck::getDeckSize(){
+	
 	return static_cast<int>(deck.size());
 }
 //-------------------------------------------------------------------------------------------------------------
