@@ -206,11 +206,12 @@ namespace c2 {// This namespace is for game functions
 		table.setEntireTable(cTable);
 	}
 	
-	int checkIfPlayersWon(Deck& deck, std::array<Player, 2>& players) {
+	const int checkIfPlayersWon(Deck& deck, std::array<Player, 2>& players, Table& table) {
 	
+		const int numCardsTable = table.getNumCardsOnTable();
 		for (int i = 0; i < 2; ++i) {
 		
-			if (deck.getDeckSize() == 0 && players[i].getPlayerHandSize() == 0) {
+			if (deck.getDeckSize() == 0 && players[i].getPlayerHandSize() == 0 && numCardsTable == 0) {
 				return i;
 			}
 		}
@@ -290,6 +291,8 @@ namespace c2 {// This namespace is for game functions
 	void endAttack(Deck& deck, MainGame& mg, DiscardedCards& bPile,Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible, std::array<Player, 2>& players) {
 
 		c2::moveAllTableToBPile(bPile, table, cardsVisible);
+
+		c1::removeTableFromFromVisibleVec(table, cardsVisible);
 
 		c1::addNeededCardsToPlayerHands(players, cardsVisible, deck);
 

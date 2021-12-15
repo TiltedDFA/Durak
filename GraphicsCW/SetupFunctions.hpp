@@ -3,29 +3,7 @@
 #define SETUPFUNCTIONS_HPP
 #include "Class.hpp"
 namespace c1 {// Used to setup or maintain
-
-	bool playerHasWon(Deck& deck, Player player) {
-
-		auto deckSize = deck.getDeckSize();
-
-		auto playerHandSize = static_cast<int>(player.getPlayerHandSize());
-
-		if (!deckSize && !playerHandSize) {
-	
-			return true;
-		}
-		else {
 			
-			return false;
-		}
-	}
-	
-	void setTopCards(Deck& deck) {
-		//376, 503		
-		
-		deck.setPosTopCardDeck({ 153, 470 });
-	}
-	
 	void addCardsToVisibleVec(std::vector<std::shared_ptr<Card>>& cardsVisible, std::shared_ptr<Card> card) {
 		
 		cardsVisible.push_back(card);
@@ -136,16 +114,7 @@ namespace c1 {// Used to setup or maintain
 		auto cTwoPos = std::find(cardsVisible.begin(), cardsVisible.end(), cardTwo);
 	
 		if (cOnePos < cTwoPos) { std::iter_swap(cOnePos, cTwoPos); }		
-	}
-	
-	void sendCardToBack(std::shared_ptr<Card> card, std::vector<std::shared_ptr<Card>>& cardsVisible) {
-	
-		auto pos = std::find(cardsVisible.begin(), cardsVisible.end(), card);
-
-		cardsVisible.erase(pos);
-
-		cardsVisible.push_back(card);
-	}
+	}	
 	
 	void removeTableFromFromVisibleVec(Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible) {
 	

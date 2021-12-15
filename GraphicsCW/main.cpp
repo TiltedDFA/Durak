@@ -115,12 +115,12 @@ int main()
 	//Code something that moves the cards when the mouse moves them. The co-ordinates of the cards will be the mouse co-ordinates + the offset of where the mouse clicks the card	
 	c1::setUpPlayerHandPos(cardsVisible, deck, players);
 
-	c1::setTopCards(deck);		
+	deck.setPosTopCardDeck({ 153, 470 });
 
 	if (c1::findStartingPlayer(players, deck) == 0) { players[0].setPlyrAtk(true); mainGame.setPTurn(0); }
 	
 	else { players[1].setPlyrAtk(true); mainGame.setPTurn(1); }
-	
+	deck.setMasterSuit(deck.getLastCard()->Suit);
 	while (!WindowShouldClose())
 	{
 		c2::continuePlayingMusic(musicalNumber, JazzMusic, LoFiMusic, ElectroSwingMusic);
@@ -128,7 +128,7 @@ int main()
 		hC = false;
 		if (screens[1].first) // Main Game Screen;
 		{
-			if (c2::checkIfPlayersWon(deck, players) != 2) { winner = c2::checkIfPlayersWon(deck, players); screens[1].first = !screens[1].first; screens[2].first = !screens[2].first; }
+			if (c2::checkIfPlayersWon(deck, players, table) != 2) { winner = c2::checkIfPlayersWon(deck, players, table); screens[1].first = !screens[1].first; screens[2].first = !screens[2].first; }
 
 			int round = mainGame.getRound();
 

@@ -193,6 +193,16 @@ void Table::setEntireTable(std::array<std::array<std::shared_ptr<Card>, 2>, 6> t
 {
 	cardsOnTable = table;
 }
+const int Table::getNumCardsOnTable() {
+
+	int count = 0;
+	for (int i = 0; i < 6; ++i)
+		for (int j = 0; j < 2; ++j)
+			if (cardsOnTable[i][j] != nullptr)
+				++count;
+				
+	return 	count;
+}
 //-------------------------------------------------------------------------------------------------------------
 DiscardedCards::DiscardedCards() {};
 DiscardedCards::~DiscardedCards() {};

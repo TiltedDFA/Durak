@@ -118,6 +118,7 @@ public:
 	std::shared_ptr<Card> getCardFromTableDef(const int index);
 	std::array<std::array<std::shared_ptr<Card>, 2>, 6>& getEntireTable();
 	void setEntireTable(std::array<std::array<std::shared_ptr<Card>, 2>, 6> table);
+	const int getNumCardsOnTable();
 };
 //-------------------------------------------------------------------------------------------------------------
 class DiscardedCards
