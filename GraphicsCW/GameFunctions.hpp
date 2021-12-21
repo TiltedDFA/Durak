@@ -370,7 +370,7 @@ constexpr auto sameSuitConst = 1.0f;
 		return hand.end();
 	}
 	
-	auto defendACardBot(Table& table,Player& bot, Deck& deck, MainGame& mg) {
+	auto defendACardBot(Table& table,Player& bot, Deck& deck, MainGame& mg) { //This function *fully* plays a card for the defence of the bot
 	
 		int j = 0; // Counts the index of the table
 		
@@ -402,8 +402,10 @@ constexpr auto sameSuitConst = 1.0f;
 				
 					i[0]->cardPosition = pos[j];
 					
+					//was not thinking properly here, why would i check if the table is empty when i need not do so for the defending function
+
 					c2::moveCardFromPlayerHandToTable(bot, table, std::move(i[0]), j);
-					
+										
 					mg.incramentCardsPlayed();
 					
 					++k;
@@ -413,15 +415,11 @@ constexpr auto sameSuitConst = 1.0f;
 		}
 	}
 	
-	auto attack(Table&table, std::array<Player, 2>&players, Deck& deck, MainGame& mg, DiscardedCards& bPile, std::vector<std::shared_ptr<Card>>&cardsVisible) {
+	auto attack(Table&table, std::array<Player, 2>&players, Deck& deck, MainGame& mg, DiscardedCards& bPile, std::vector<std::shared_ptr<Card>>&cardsVisible) { //This function *fully* attacks for the bot
 	
 		auto hand = players[0].getEntireHand();
 		
-		auto mS = Deck::masterSuit;
-		
-		std::vector<cardValue>valOnTable;
-		
-		std::array<std::array<std::shared_ptr<Card>, 2>, 6> _t = table.getEntireTable();		
+		auto mS = Deck::masterSuit; //The master suit
 		
 		std::sort(hand.begin(), hand.end(), [](std::shared_ptr<Card>a, std::shared_ptr<Card>b)->bool { return (a->Value < b->Value);});
 		
@@ -432,9 +430,11 @@ constexpr auto sameSuitConst = 1.0f;
 				auto x = c2::findEmptyTablePile(table);
 
 				if (!x) {
+
 					c2::endAttack(deck, mg, bPile, table, cardsVisible, players);
 				}
 				else {
+
 					c2::moveCardFromPlayerHandToTable(players[0], table, hand[i], x);
 				}
 			}
@@ -443,14 +443,16 @@ constexpr auto sameSuitConst = 1.0f;
 				auto x = c2::findEmptyTablePile(table);
 
 				if (!x) {
+
 					c2::endAttack(deck, mg, bPile, table, cardsVisible, players);
 				}
 				else {
+
 					c2::moveCardFromPlayerHandToTable(players[0], table, hand[i], x);
 				}
 			}			
-			else
-			{
+			else {
+
 				c2::endAttack(deck, mg, bPile, table, cardsVisible, players);
 			}
 		}		
