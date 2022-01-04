@@ -4,19 +4,19 @@
 #include "Class.hpp"
 namespace c1 {// Used to setup or maintain
 			
-	void addCardsToVisibleVec(std::vector<std::shared_ptr<Card>>& cardsVisible, std::shared_ptr<Card> card) {
+	inline void addCardsToVisibleVec(std::vector<std::shared_ptr<Card>>& cardsVisible, std::shared_ptr<Card> card) {
 		
 		cardsVisible.push_back(card);
 	}
 	
-	void removeCardFromVisibleVect(std::vector<std::shared_ptr<Card>>& cardsVisible, std::shared_ptr<Card> card) {
+	inline void removeCardFromVisibleVect(std::vector<std::shared_ptr<Card>>& cardsVisible, std::shared_ptr<Card> card) {
 
 		auto positionOfCardToRemove = std::find(cardsVisible.begin(), cardsVisible.end(), card);
 
 		if (positionOfCardToRemove != cardsVisible.end()) { cardsVisible.erase(positionOfCardToRemove); }
 	}
 
-	void setUpPlayerHandPos(std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck, std::array<Player, 2>& players) {
+	inline void setUpPlayerHandPos(std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck, std::array<Player, 2>& players) {
 
 		float x = 600;
 		
@@ -53,15 +53,16 @@ namespace c1 {// Used to setup or maintain
 		deck.setPosLastCard({ 376, 503 });	
 	}
 	
-	int findStartingPlayer(std::array<Player, 2>players, Deck deck) {
+	inline auto findStartingPlayer(std::array<Player, 2> players, Deck& deck) -> int
+	{
 		
 		cardValue lowestVal[2] = { cardValue::ACE, cardValue::ACE };
 		
-		auto mS = Deck::masterSuit;
+		const auto mS = Deck::masterSuit;
 		
 		for (int i = 0; i < 2; ++i) {
 	
-			auto hSize = players[i].getPlayerHandSize();
+			const auto hSize = players[i].getPlayerHandSize();
 			
 			for (int j = 0; j < hSize; ++j) {
 	
@@ -82,7 +83,7 @@ namespace c1 {// Used to setup or maintain
 		else { return 0; }
 	}
 	
-	void lockCardsInHand(std::array<Player, 2>players, MainGame mg) {
+	inline void lockCardsInHand(std::array<Player, 2>players, MainGame mg) {
 	
 		auto pTurn = mg.getPTurn();
 		
@@ -107,7 +108,7 @@ namespace c1 {// Used to setup or maintain
 		}
 	}
 	
-	void bringCardOneToTop(std::shared_ptr<Card> cardOne, std::shared_ptr<Card> cardTwo, std::vector<std::shared_ptr<Card>>& cardsVisible) {
+	inline void bringCardOneToTop(std::shared_ptr<Card> cardOne, std::shared_ptr<Card> cardTwo, std::vector<std::shared_ptr<Card>>& cardsVisible) {
 	
 		auto cOnePos = std::find(cardsVisible.begin(), cardsVisible.end(), cardOne);
 	
@@ -116,7 +117,7 @@ namespace c1 {// Used to setup or maintain
 		if (cOnePos < cTwoPos) { std::iter_swap(cOnePos, cTwoPos); }		
 	}	
 	
-	void removeTableFromFromVisibleVec(Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible) {
+	inline void removeTableFromVisibleVec(Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible) {
 	
 		const std::array<std::array<std::shared_ptr<Card>, 2>, 6> _Table = table.getEntireTable();
 		
@@ -126,23 +127,17 @@ namespace c1 {// Used to setup or maintain
 			
 				if (i[j] != nullptr) {
 				
+
 					auto posInCardsVisible = std::find(cardsVisible.begin(), cardsVisible.end(), i[j]);
-			
-					cardsVisible.erase(posInCardsVisible);
+					if (posInCardsVisible != cardsVisible.end()) 
+						cardsVisible.erase(posInCardsVisible);
+					
 				}
 			}
 		}
 	}
-	
-	void addCardsEx(Player& player, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck, const int& cardsNeeded) {
-		
-		for (int i = 0; i < cardsNeeded; ++i) {
-		
-			player.addToPlayerHand(deck.dealCard());
-		}
-	}
-	
-	bool doesDeckHaveEnoughCardsRemaining(Deck& deck, const int numOfCardsNeeded) {
+			
+	inline bool doesDeckHaveEnoughCardsRemaining(Deck& deck, const int numOfCardsNeeded) {
 	
 		int deckSize = deck.getDeckSize();
 	
@@ -151,11 +146,11 @@ namespace c1 {// Used to setup or maintain
 		else { return false; }
 	}
 	
-	void addNeededCardsToPlayerHands(std::array<Player, 2>&players, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck) {		
+	inline void addNeededCardsToPlayerHands(std::array<Player, 2>&players, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck) {		
 	
 		for (int i = 0; i < 2; ++i) {
 		
-			auto cardsNeeded = (6 - players[i].getPlayerHandSize());
+			const auto cardsNeeded = (6 - players[i].getPlayerHandSize());
 			
 			if (deck.getDeckSize()) { // code below will not run if deckSize == 0;
 			
@@ -180,7 +175,7 @@ namespace c1 {// Used to setup or maintain
 }
 namespace c3  {// C3 will be for reading and writing to files (for settings)
 
-	void setDeckSize(const int deckSize, const int currentMusicVal) {
+	inline void setDeckSize(const int deckSize, const int currentMusicVal) {
 	
 		std::ofstream save_file(fileName, std::ios::out); // This creates the file		
 		if (save_file) {
@@ -243,7 +238,7 @@ namespace c3  {// C3 will be for reading and writing to files (for settings)
 		}
 	}		
 	
-	const int getDeckSize() {
+	inline const int getDeckSize() {
 		
 		std::ifstream save_file(fileName, std::ios::in);
 	
@@ -269,7 +264,7 @@ namespace c3  {// C3 will be for reading and writing to files (for settings)
 		else return 0;
 	}
 	
-	void setMusicalNumber(const int num, const int currentDeckSize) {
+	inline void setMusicalNumber(const int num, const int currentDeckSize) {
 	
 		std::ofstream save_file(fileName, std::ios::out);
 		
@@ -312,7 +307,7 @@ namespace c3  {// C3 will be for reading and writing to files (for settings)
 		}
 	}	
 	
-	const int getMusicNumber() {
+	inline const int getMusicNumber() {
 		
 		std::ifstream save_file(fileName, std::ios::in);
 	

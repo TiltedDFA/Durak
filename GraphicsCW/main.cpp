@@ -152,8 +152,6 @@ int main()
 
 			if (deck.getDeckSize()) { c0::displaySpecialCards(deck, CardBacking,blankCard); }
 
-			if (deck.getDeckSize() > 1) { c0::displayDeckExtraCards(deck, CardBacking, blankCard); }
-
 			c0::displayWhosTurnItIs(mainGame);
 
 			DrawCircleV(GetMousePosition(), 10, WHITE);
@@ -166,10 +164,8 @@ int main()
 			{
 				if (cardsVisible[i]->canBeTouched)
 				{
-					Rectangle card;
+					Rectangle card = { cardsVisible[i]->cardPosition.x, cardsVisible[i]->cardPosition.y, 120, 170 };
 
-					card = { cardsVisible[i]->cardPosition.x, cardsVisible[i]->cardPosition.y, 120, 170 };
-					
 					if (!hC)
 					{
 						if (CheckCollisionPointRec(mP, card) && IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
@@ -240,11 +236,9 @@ int main()
 						
 									c1::bringCardOneToTop(cardsVisible[i], table.getCardFromTableAtk(box.second), cardsVisible);
 								}
-								else {
-									
-									Vector2 resetPos = { box.first.x , (box.first.y + 250.0f) };
+								else {			
 								
-									cardsVisible[i]->cardPosition = resetPos;
+									cardsVisible[i]->cardPosition = { box.first.x , (box.first.y + 250.0f) };
 								}
 							}
 						}

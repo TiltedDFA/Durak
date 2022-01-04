@@ -4,7 +4,7 @@
 #include "GameFunctions.hpp"
 namespace c0 {//This is used to display
 
-	void cTable(std::vector<std::shared_ptr<Card>>cardsVisible, Texture2D& cBack, Texture2D& cBlank) {
+	inline void cTable(std::vector<std::shared_ptr<Card>>cardsVisible, Texture2D& cBack, Texture2D& cBlank) {
 		
 		for (const auto& i : cardsVisible) {
 		
@@ -19,16 +19,9 @@ namespace c0 {//This is used to display
 				DrawTexture(cBack, static_cast<int>(i->cardPosition.x), static_cast<int>(i->cardPosition.y), WHITE);
 			}
 		}
-	}
+	}	
 	
-	void displayDeckExtraCards(Deck& deck, Texture2D& backOfCard, Texture2D& frontOfCard) {
-	
-		auto vCard = deck.getTopOfVisDeck();			
-
-		DrawTexture(backOfCard, static_cast<int>(vCard->cardPosition.x), static_cast<int>(vCard->cardPosition.y), WHITE);		
-	}
-	
-	void displayPassButtons(std::array<Player, 2>& players, Table& table, MainGame& mg, Texture2D& passLow, Texture2D& passMid, Texture2D& passHigh, Sound& fxButton) {
+	inline void displayPassButtons(std::array<Player, 2>& players, Table& table, MainGame& mg, Texture2D& passLow, Texture2D& passMid, Texture2D& passHigh, Sound& fxButton) {
 		// 1520, 936
 		//CheckCollisionPointRec
 		int cardsPlayedThisRound = mg.getCardsPlayed();		
@@ -64,7 +57,7 @@ namespace c0 {//This is used to display
 		
 	}
 	
-	void displayEndButtons(std::array<Player, 2>& players,MainGame& mg, Texture2D& endLow, Texture2D& endMid, Texture2D& endHigh, Sound& fxButton, DiscardedCards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck) {
+	inline void displayEndButtons(std::array<Player, 2>& players,MainGame& mg, Texture2D& endLow, Texture2D& endMid, Texture2D& endHigh, Sound& fxButton, DiscardedCards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck) {
 		// 1733, 936				
 		Vector2 mP = GetMousePosition();
 	
@@ -93,7 +86,7 @@ namespace c0 {//This is used to display
 		}		
 	}
 	
-	void displayTakeButtons(Deck& deck, std::vector<std::shared_ptr<Card>>& cardsVisible,std::array<Player, 2>& players, MainGame& mg, Table& table, Texture2D& takeHigh, Texture2D& takeMid, Texture2D& takeLow) {
+	inline void displayTakeButtons(Deck& deck, std::vector<std::shared_ptr<Card>>& cardsVisible,std::array<Player, 2>& players, MainGame& mg, Table& table, Texture2D& takeHigh, Texture2D& takeMid, Texture2D& takeLow) {
 		//Either something incorrectly writes to this or the system isn't right since 
 		Vector2 mP = GetMousePosition();
 	
@@ -120,7 +113,7 @@ namespace c0 {//This is used to display
 
 	}
 	
-	void displayPlayerState(Texture2D& atkHigh, Texture2D& atkLow, Texture2D& defHigh, Texture2D& defLow, bool atkState) { 
+	inline void displayPlayerState(Texture2D& atkHigh, Texture2D& atkLow, Texture2D& defHigh, Texture2D& defLow, bool atkState) {
 		//Atk pos is: 1658. 42
 		//Def pos is: 1507.44
 		if (atkState) {
@@ -137,7 +130,7 @@ namespace c0 {//This is used to display
 		}
 	}
 	
-	void displayWhosTurnItIs(MainGame& mg) {
+	inline void displayWhosTurnItIs(MainGame& mg) {
 		
 		auto turn = mg.getPTurn();
 		if (turn) {
@@ -150,7 +143,7 @@ namespace c0 {//This is used to display
 		}
 	}
 	
-	void displayDeckSizeButtons(Rectangle& thirty, Rectangle& fifty, const bool& thirtySelected, const int& currentMusicSize) {
+	inline void displayDeckSizeButtons(Rectangle& thirty, Rectangle& fifty, const bool& thirtySelected, const int& currentMusicSize) {
 
 		Vector2 mP = GetMousePosition();
 	
@@ -200,12 +193,12 @@ namespace c0 {//This is used to display
 		}
 	}
 	
-	void displayTextForMusicButtons(const std::string& msg, const int x, const int y) {
+	inline void displayTextForMusicButtons(const std::string& msg, const int x, const int y) {
 	
 		DrawText(msg.c_str(), x, y, 20, WHITE);
 	}
 	
-	void displayMusicButtons(Rectangle& noMusic, Rectangle& jazzMusic, Rectangle& lofiMusic, Rectangle& electroSwingMusic,  Music& JazzMusic, Music& LofiMusic, Music& eSwingMusic, const int& selection, const int& deckSize, int& currentMusicNum) {
+	inline void displayMusicButtons(Rectangle& noMusic, Rectangle& jazzMusic, Rectangle& lofiMusic, Rectangle& electroSwingMusic,  Music& JazzMusic, Music& LofiMusic, Music& eSwingMusic, const int& selection, const int& deckSize, int& currentMusicNum) {
 	
 		std::string nM = "No Music";
 		
@@ -346,23 +339,26 @@ namespace c0 {//This is used to display
 		}
 	}
 
-	void displaySpecialCards(Deck& deck, Texture2D& backOfCard, Texture2D& blankCard) {
+	inline void displaySpecialCards(Deck& deck, Texture2D& backOfCard, Texture2D& blankCard) {
 
 		const std::shared_ptr<Card> deckCard = deck.getTopOfVisDeck();
 
-		const std::shared_ptr<Card> visibleCard = deck.getLastCard();
-
-		DrawTextureEx(blankCard, visibleCard->cardPosition, 90.0f, 1.0f, WHITE);
-
-		std::string cValStr = (static_cast<int>(visibleCard->Value) > 10) ? visibleCard->valueToString(visibleCard->Value) : std::to_string(static_cast<int>(visibleCard->Value));
-		
-		std::string cSuitStr = visibleCard->suitToString(visibleCard->Suit);
-		
-		DrawText(cValStr.c_str(), static_cast<int>((visibleCard->cardPosition.x - 105)), static_cast<int>((visibleCard->cardPosition.y + 20)), 30, BLACK);
-		
-		DrawText(cSuitStr.c_str(), static_cast<int>((visibleCard->cardPosition.x - 105)), static_cast<int>((visibleCard->cardPosition.y + 65)), 25, BLACK);
-		
 		DrawTexture(backOfCard, deckCard->cardPosition.x, deckCard->cardPosition.y, WHITE);
+
+		if (deck.getDeckSize() > 0) {
+
+			const std::shared_ptr<Card> visibleCard = deck.getLastCard();
+
+			DrawTextureEx(blankCard, visibleCard->cardPosition, 90.0f, 1.0f, WHITE);
+
+			std::string cValStr = (static_cast<int>(visibleCard->Value) > 10) ? visibleCard->valueToString(visibleCard->Value) : std::to_string(static_cast<int>(visibleCard->Value));
+
+			std::string cSuitStr = visibleCard->suitToString(visibleCard->Suit);
+
+			DrawText(cValStr.c_str(), static_cast<int>((visibleCard->cardPosition.x - 105)), static_cast<int>((visibleCard->cardPosition.y + 20)), 30, BLACK);
+
+			DrawText(cSuitStr.c_str(), static_cast<int>((visibleCard->cardPosition.x - 105)), static_cast<int>((visibleCard->cardPosition.y + 65)), 25, BLACK);
+		}
 	}
 }
 #endif // !DISPLAY_HPP

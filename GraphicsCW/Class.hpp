@@ -57,8 +57,8 @@ public:
 
 	cardSuit Suit{};
 	cardValue Value{};	
-	std::string suitToString(const cardSuit&); // A fucntion that converts the enumarated values to a string(Which can be used to display)
-	std::string valueToString(const cardValue&);
+	static std::string suitToString(const cardSuit&); // A fucntion that converts the enumarated values to a string(Which can be used to display)
+	static std::string valueToString(const cardValue&);
 	void displayCardWithValueText(const std::shared_ptr<Card>& card);
 };
 //-------------------------------------------------------------------------------------------------------------
@@ -66,8 +66,7 @@ class Deck
 {
 private:
 	std::vector<std::shared_ptr<Card>> deck;// The deck which is based on an std::shared_ptr system. The shared_ptrs are a type of smart pointers which delete the contents from the heap automatically	
-	// This value detirmins how the game will be played and adds a lot of power to cards of the same suit. The value for this is derived from the visible card.
-	bool hasCardsRemaining = true;
+	// This value detirmins how the game will be played and adds a lot of power to cards of the same suit. The value for this is derived from the visible card.	
 public:
 	inline static cardSuit masterSuit;
 	Deck();//Change how deck works
@@ -136,8 +135,7 @@ class MainGame
 private:
 	int  pTurn = 1;
 	unsigned int _round = 0;
-	unsigned short int cardsPlayedThisPass = 0;
-	bool hasAtkPlayedCard = false;
+	unsigned short int cardsPlayedThisPass = 0;	
 public:
 	int getRound();
 
