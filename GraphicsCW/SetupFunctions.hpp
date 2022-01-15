@@ -143,7 +143,7 @@ namespace c1 {// Used to setup or maintain
 	
 		if ((deckSize - numOfCardsNeeded) > 0) { return true; }
 	
-		else { return false; }
+		return false;
 	}
 	
 	inline void addNeededCardsToPlayerHands(std::array<Player, 2>&players, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck) {		

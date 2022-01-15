@@ -129,9 +129,7 @@ int main()
 		if (screens[1].first) // Main Game Screen;
 		{
 			if (c2::checkIfPlayersWon(deck, players, table) != 2) { winner = c2::checkIfPlayersWon(deck, players, table); screens[1].first = !screens[1].first; screens[2].first = !screens[2].first; }
-
-			int round = mainGame.getRound();
-
+			
 			c1::lockCardsInHand(players, mainGame);
 
 			BeginDrawing();

@@ -343,8 +343,6 @@ namespace c0 {//This is used to display
 
 		const std::shared_ptr<Card> deckCard = deck.getTopOfVisDeck();
 
-		DrawTexture(backOfCard, deckCard->cardPosition.x, deckCard->cardPosition.y, WHITE);
-
 		if (deck.getDeckSize() > 0) {
 
 			const std::shared_ptr<Card> visibleCard = deck.getLastCard();
@@ -359,6 +357,8 @@ namespace c0 {//This is used to display
 
 			DrawText(cSuitStr.c_str(), static_cast<int>((visibleCard->cardPosition.x - 105)), static_cast<int>((visibleCard->cardPosition.y + 65)), 25, BLACK);
 		}
+
+		DrawTexture(backOfCard, deckCard->cardPosition.x, deckCard->cardPosition.y, WHITE);		
 	}
 }
 #endif // !DISPLAY_HPP
