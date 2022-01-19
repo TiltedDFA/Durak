@@ -30,7 +30,7 @@ namespace c1 {// Used to setup or maintain
 
 			card->cardIsFaceUp = false;
 
-			card->cardPosition = { (x + 125 * i),y };
+			card->card_position = { (x + 125 * i),y };
 
 			players[0].addToPlayerHand(card);
 
@@ -43,7 +43,7 @@ namespace c1 {// Used to setup or maintain
 
 			std::shared_ptr<Card> card = deck.dealCard();
 
-			card->cardPosition = { (x + 125 * i),y };
+			card->card_position = { (x + 125 * i),y };
 
 			players[1].addToPlayerHand(card);
 
@@ -160,9 +160,9 @@ namespace c1 {// Used to setup or maintain
 					
 						std::shared_ptr<Card>card = deck.dealCard();
 						
-						card->cardPosition.y = (i) ? 850.0f : 0.0f;
+						card->card_position.y = (i) ? 850.0f : 0.0f;
 						
-						card->cardPosition.x = static_cast<float>(120 * j);
+						card->card_position.x = static_cast<float>(120 * j);
 						
 						players[i].addToPlayerHand(card);
 						

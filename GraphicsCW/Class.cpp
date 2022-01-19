@@ -3,21 +3,21 @@
 //-------------------------------------------------------------------------------------------------------------
 
 Card::Card()
-	: Suit(cardSuit::CLUBS), Value(cardValue::TWO) //This is a member initilizer list (it needs to be written in order for the vars)
+	: Suit(card_suit::CLUBS), Value(cardValue::TWO) //This is a member initilizer list (it needs to be written in order for the vars)
 {
 }
 Card::~Card() {}
-std::string Card::suitToString(const cardSuit& suit)
+std::string Card::suitToString(const card_suit& suit)
 {
 	switch (suit)
 	{
-	case cardSuit::SPADES:
+	case card_suit::SPADES:
 		return "Spades";
-	case cardSuit::HEARTS:
+	case card_suit::HEARTS:
 		return "Hearts";
-	case cardSuit::DIAMONDS:
+	case card_suit::DIAMONDS:
 		return "Diamonds";
-	case cardSuit::CLUBS:
+	case card_suit::CLUBS:
 		return "Clubs";
 	default:
 		break;
@@ -45,8 +45,8 @@ void Card::displayCardWithValueText(const std::shared_ptr<Card>& card)
 {
 	std::string cValStr = (static_cast<int>(card->Value) > 10) ? card->valueToString(card->Value) : std::to_string(static_cast<int>(card->Value));
 	std::string cSuitStr = card->suitToString(card->Suit);
-	DrawText(cValStr.c_str(), static_cast<int>((card->cardPosition.x + 10)), static_cast<int>((card->cardPosition.y + 65)), 20, BLACK);
-	DrawText(cSuitStr.c_str(), static_cast<int>((card->cardPosition.x + 10)), static_cast<int>((card->cardPosition.y + 95)), 20, BLACK);
+	DrawText(cValStr.c_str(), static_cast<int>((card->card_position.x + 10)), static_cast<int>((card->card_position.y + 65)), 20, BLACK);
+	DrawText(cSuitStr.c_str(), static_cast<int>((card->card_position.x + 10)), static_cast<int>((card->card_position.y + 95)), 20, BLACK);
 
 }
 //-------------------------------------------------------------------------------------------------------------
@@ -74,7 +74,7 @@ Deck::Deck(const int deckSize){
 		{
 			std::shared_ptr<Card> C = std::make_shared<Card>(); //This declares a card pointer and allocates it to the heap
 			C->Value = static_cast<cardValue>(i + 2); //This is to make up for the array indexing 
-			C->Suit = static_cast<cardSuit>(j + 1); // As is this 
+			C->Suit = static_cast<card_suit>(j + 1); // As is this 
 			deck.emplace_back(C);
 		}
 	}
@@ -101,12 +101,12 @@ const std::shared_ptr<Card>& Deck::getLastCard() { // This is the visibleCard
 
 void Deck::setPosLastCard(const Vector2& pos) { // Visible Card
 
-	deck[deck.size()-1]->cardPosition = pos;
+	deck[deck.size()-1]->card_position = pos;
 }
 
 void Deck::setPosTopCardDeck(const Vector2& pos) { //Top of deck (hidden)
 
-	deck[(deck.size() - 2)]->cardPosition = pos;
+	deck[(deck.size() - 2)]->card_position = pos;
 }
 
 const std::shared_ptr<Card>& Deck::getTopOfVisDeck() { //This is the top of the deck(hidden)
@@ -114,7 +114,7 @@ const std::shared_ptr<Card>& Deck::getTopOfVisDeck() { //This is the top of the 
 	return *(deck.end() - 2);
 }
 
-void Deck::setMasterSuit(cardSuit suit){
+void Deck::setMasterSuit(card_suit suit){
 
 	masterSuit = suit;
 }

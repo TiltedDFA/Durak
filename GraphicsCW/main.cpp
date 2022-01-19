@@ -162,7 +162,7 @@ int main()
 			{
 				if (cardsVisible[i]->canBeTouched)
 				{
-					Rectangle card = { cardsVisible[i]->cardPosition.x, cardsVisible[i]->cardPosition.y, 120, 170 };
+					Rectangle card = { cardsVisible[i]->card_position.x, cardsVisible[i]->card_position.y, 120, 170 };
 
 					if (!hC)
 					{
@@ -182,9 +182,9 @@ int main()
 							
 							Vector2 mD = GetMouseDelta();
 							
-							cardsVisible[i]->cardPosition.x = (cardsVisible[i]->cardPosition.x + mD.x);
+							cardsVisible[i]->card_position.x = (cardsVisible[i]->card_position.x + mD.x);
 							
-							cardsVisible[i]->cardPosition.y = (cardsVisible[i]->cardPosition.y + mD.y);
+							cardsVisible[i]->card_position.y = (cardsVisible[i]->card_position.y + mD.y);
 						
 						}
 						if (!CheckCollisionPointRec(mP, card) && !IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
@@ -200,7 +200,7 @@ int main()
 							
 							auto box = c2::find_colliding_placement(cardsVisible[i]);
 							
-							cardsVisible[i]->cardPosition = box.first;
+							cardsVisible[i]->card_position = box.first;
 						
 							if (players[mainGame.getPTurn()].isPlyrAtk() && table.getCardFromTableAtk(box.second) == nullptr) {
 						
@@ -218,7 +218,7 @@ int main()
 									
 									else {										
 									
-										cardsVisible[i]->cardPosition = { box.first.x , (box.first.y + 250.0f) };
+										cardsVisible[i]->card_position = { box.first.x , (box.first.y + 250.0f) };
 									}
 								}							
 							}
@@ -226,7 +226,7 @@ int main()
 								
 								if (c2::attacking_card_beats_card(cardsVisible[i], table.getCardFromTableAtk(box.second), deck)) {									
 							
-									cardsVisible[i]->cardPosition = Vector2Add(cardsVisible[i]->cardPosition, { 40,40 });
+									cardsVisible[i]->card_position = Vector2Add(cardsVisible[i]->card_position, { 40,40 });
 						
 									cardsVisible[i]->canBeTouched = false;
 						
@@ -236,7 +236,7 @@ int main()
 								}
 								else {			
 								
-									cardsVisible[i]->cardPosition = { box.first.x , (box.first.y + 250.0f) };
+									cardsVisible[i]->card_position = { box.first.x , (box.first.y + 250.0f) };
 								}
 							}
 						}

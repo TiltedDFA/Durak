@@ -21,7 +21,7 @@ namespace c2 {// This namespace is for game functions
 		
 		pos[5] = { 1300.0,457.0 };
 		
-		Rectangle rCard = { card->cardPosition.x, card->cardPosition.y, 120, 170 };
+		Rectangle rCard = { card->card_position.x, card->card_position.y, 120, 170 };
 		
 		for (int i = 0; i < 6; ++i) {
 	
@@ -29,7 +29,7 @@ namespace c2 {// This namespace is for game functions
 			
 			if (CheckCollisionRecs(rCard, placeHB)) {				
 		
-				auto oSetArea = (placeHB.width - sqrt(((card->cardPosition.x - placeHB.x) * (card->cardPosition.x - placeHB.x)))) * (placeHB.height - sqrt(((card->cardPosition.y - placeHB.y) * (card->cardPosition.y - placeHB.y))));
+				auto oSetArea = (placeHB.width - sqrt(((card->card_position.x - placeHB.x) * (card->card_position.x - placeHB.x)))) * (placeHB.height - sqrt(((card->card_position.y - placeHB.y) * (card->card_position.y - placeHB.y))));
 				
 				auto percentOverlap = ((oSetArea / (placeHB.width * placeHB.height)) * 100);
 				
@@ -88,7 +88,7 @@ namespace c2 {// This namespace is for game functions
 
 		pos[5] = { 1300.0,457.0 };
 
-		Rectangle rCard = { card->cardPosition.x, card->cardPosition.y, 120, 170 };
+		Rectangle rCard = { card->card_position.x, card->card_position.y, 120, 170 };
 
 		for (int i = 0; i < 6; ++i) {
 	
@@ -178,7 +178,7 @@ namespace c2 {// This namespace is for game functions
 		return false;
 	}
 	
-	inline void moveAllTableToPlayerHand(Player& player, Table& table) {
+	inline void table_to_hand(Player& player, Table& table) {
 	
 		std::array<std::array<std::shared_ptr<Card>, 2>, 6> cTable = table.getEntireTable();
 		
@@ -192,7 +192,7 @@ namespace c2 {// This namespace is for game functions
 				
 					takenCardPos.x = (75.0f * i);
 					
-					cTable[i][j]->cardPosition = takenCardPos;
+					cTable[i][j]->card_position = takenCardPos;
 					
 					cTable[i][j]->canBeTouched = true;
 					
@@ -215,9 +215,9 @@ namespace c2 {// This namespace is for game functions
 		return 2;
 	}	
 	
-	inline void play_music(const int musicNum, Music& JazzMusic,Music& LofiMusic, Music& eSwingMusic) {
+	inline void play_music(const int music_number, Music& JazzMusic,Music& LofiMusic, Music& eSwingMusic) {
 	
-		switch (musicNum) {
+		switch (music_number) {
 	
 		case 2:
 		
@@ -243,9 +243,9 @@ namespace c2 {// This namespace is for game functions
 		}		
 	}
 	
-	inline void continuePlayingMusic(const int musicNum, Music& JazzMusic, Music& LofiMusic, Music& eSwingMusic) {
+	inline void continuePlayingMusic(const int music_number, Music& JazzMusic, Music& LofiMusic, Music& eSwingMusic) {
 
-		switch (musicNum) {
+		switch (music_number) {
 	
 		case 2:
 		
@@ -300,7 +300,7 @@ namespace c2 {// This namespace is for game functions
 
 	inline void takeDefender(std::array<Player, 2>&players, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck, Table& table, MainGame& mg) {
 
-		c2::moveAllTableToPlayerHand(players[mg.getPTurn()], table);
+		c2::table_to_hand(players[mg.getPTurn()], table);
 
 		c1::addNeededCardsToPlayerHands(players, cardsVisible, deck);
 
@@ -318,7 +318,7 @@ constexpr auto sameSuitConst = 1.0f;
 
     inline const double findDefendingEval(std::shared_ptr<Card> cardUsedToDefend, std::shared_ptr<Card> cardToDefend, Deck& deck) {
 		
-		const cardSuit ms = Deck::masterSuit;
+		const card_suit ms = Deck::masterSuit;
 		
 		if (cardUsedToDefend->Suit != cardToDefend->Suit && cardUsedToDefend->Suit != ms) {  //Different suits and non ms 
 		
@@ -397,7 +397,7 @@ constexpr auto sameSuitConst = 1.0f;
 				
 				if (!(returnVal == bot.getEntireHand().end())) {
 				
-					i[0]->cardPosition = pos[j];
+					i[0]->card_position = pos[j];
 					
 					//was not thinking properly here, why would i check if the table is empty when i need not do so for the defending function
 
@@ -479,7 +479,7 @@ constexpr auto sameSuitConst = 1.0f;
 	/*
 	const double findDefendingEval(std::shared_ptr<Card> cardOne, std::shared_ptr<Card> cardTwo, Deck& deck)
 	{
-		const cardSuit ms = deck.getMasterSuit();
+		const card_suit ms = deck.getMasterSuit();
 		if (cardOne->Suit != cardTwo->Suit && cardOne->Suit != ms) //Different suits and non ms 
 		{
 			return ZeroValue;

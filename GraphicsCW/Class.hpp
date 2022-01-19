@@ -18,7 +18,7 @@ constexpr auto fileName = "SAVE.txt";// This globally declares the filename
 constexpr auto screenWidth = 1920;// This globally declares screenwidth
 constexpr auto screenHeight = 1050; // This globallydeclares the screenheight
 
-enum class cardSuit //This sets up the card's suits
+enum class card_suit //This sets up the card's suits
 {
 	SPADES = 1,
 	HEARTS,
@@ -49,15 +49,15 @@ public:
 	Card();
 	~Card();
 
-	Vector2 cardPosition = { 0,0 };
+	Vector2 card_position = { 0,0 };
 	bool cardIsFaceUp = true;
 	bool cardIsHeld = false;
 	bool canBeTouched = true;
 	bool inDefTablePile = false;
 
-	cardSuit Suit{};
+	card_suit Suit{};
 	cardValue Value{};	
-	static std::string suitToString(const cardSuit&); // A fucntion that converts the enumarated values to a string(Which can be used to display)
+	static std::string suitToString(const card_suit&); // A fucntion that converts the enumarated values to a string(Which can be used to display)
 	static std::string valueToString(const cardValue&);
 	void displayCardWithValueText(const std::shared_ptr<Card>& card);
 };
@@ -68,7 +68,7 @@ private:
 	std::vector<std::shared_ptr<Card>> deck;// The deck which is based on an std::shared_ptr system. The shared_ptrs are a type of smart pointers which delete the contents from the heap automatically	
 	// This value detirmins how the game will be played and adds a lot of power to cards of the same suit. The value for this is derived from the visible card.	
 public:
-	inline static cardSuit masterSuit;
+	inline static card_suit masterSuit;
 	Deck();//Change how deck works
 	Deck(const int deckSize);
 	~Deck(); 
@@ -81,7 +81,7 @@ public:
 	const std::shared_ptr<Card>& getTopOfVisDeck();
 	void setPosTopCardDeck(const Vector2& pos);
 
-	void setMasterSuit(cardSuit suit);	
+	void setMasterSuit(card_suit suit);	
 		
 	int getDeckSize();
 };

@@ -10,13 +10,13 @@ namespace c0 {//This is used to display
 		
 			if (i->cardIsFaceUp) {
 			
-				DrawTexture(cBlank, static_cast<int>(i->cardPosition.x), static_cast<int>(i->cardPosition.y), WHITE);
+				DrawTexture(cBlank, static_cast<int>(i->card_position.x), static_cast<int>(i->card_position.y), WHITE);
 		
 				i->displayCardWithValueText(i);
 			}
 			else if (!i->cardIsFaceUp) {
 
-				DrawTexture(cBack, static_cast<int>(i->cardPosition.x), static_cast<int>(i->cardPosition.y), WHITE);
+				DrawTexture(cBack, static_cast<int>(i->card_position.x), static_cast<int>(i->card_position.y), WHITE);
 			}
 		}
 	}	
@@ -347,18 +347,18 @@ namespace c0 {//This is used to display
 
 			const std::shared_ptr<Card> visibleCard = deck.getLastCard();
 
-			DrawTextureEx(blankCard, visibleCard->cardPosition, 90.0f, 1.0f, WHITE);
+			DrawTextureEx(blankCard, visibleCard->card_position, 90.0f, 1.0f, WHITE);
 
 			std::string cValStr = (static_cast<int>(visibleCard->Value) > 10) ? visibleCard->valueToString(visibleCard->Value) : std::to_string(static_cast<int>(visibleCard->Value));
 
 			std::string cSuitStr = visibleCard->suitToString(visibleCard->Suit);
 
-			DrawText(cValStr.c_str(), static_cast<int>((visibleCard->cardPosition.x - 105)), static_cast<int>((visibleCard->cardPosition.y + 20)), 30, BLACK);
+			DrawText(cValStr.c_str(), static_cast<int>((visibleCard->card_position.x - 105)), static_cast<int>((visibleCard->card_position.y + 20)), 30, BLACK);
 
-			DrawText(cSuitStr.c_str(), static_cast<int>((visibleCard->cardPosition.x - 105)), static_cast<int>((visibleCard->cardPosition.y + 65)), 25, BLACK);
+			DrawText(cSuitStr.c_str(), static_cast<int>((visibleCard->card_position.x - 105)), static_cast<int>((visibleCard->card_position.y + 65)), 25, BLACK);
 		}
 
-		DrawTexture(backOfCard, deckCard->cardPosition.x, deckCard->cardPosition.y, WHITE);		
+		DrawTexture(backOfCard, deckCard->card_position.x, deckCard->card_position.y, WHITE);		
 	}
 }
 #endif // !DISPLAY_HPP
