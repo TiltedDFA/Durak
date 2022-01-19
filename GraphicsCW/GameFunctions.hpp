@@ -5,7 +5,7 @@
 
 namespace c2 {// This namespace is for game functions
 	
-	inline const int  placeHBC(int percentCertanty, std::shared_ptr<Card> card) {
+	inline const int  collision_percent_finder(int percentCertanty, std::shared_ptr<Card> card) {
 	
 		std::array<Vector2, 6>pos{};
 		
@@ -42,40 +42,37 @@ namespace c2 {// This namespace is for game functions
 		return 0;
 	}
 
-	inline bool canCardBePlayed(Table& table, std::shared_ptr<Card> card) {
+	inline bool can_attacker_attack(Table& table, std::shared_ptr<Card> card) {
 	
-		if (!card->cardIsFaceUp) { return false; }
-		
-		const std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();		
-		
+		if (!card->cardIsFaceUp) 
+			return false; 
 		int l = 0;
-		
-		for (const auto& i : cardsOnTable) {
-	
-			for (int j = 0; j < 2; ++j) {
-		
-				if (i[j] != nullptr) { ++l; if (i[j]->Value == card->Value) { return true; } }
-			}
-		}
+		const std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();		
+				
+		for (const auto& i : cardsOnTable) 
+			for (int j = 0; j < 2; ++j)
+				if (i[j] != nullptr) { ++l; if (i[j]->Value == card->Value) { return true; } }		
+
 		if (!l)
 			return true;
 		return false;
 	}	
 	
-	inline bool cardBeatsCard(const std::shared_ptr<Card> cardOne, const std::shared_ptr<Card> cardTwo, Deck& deck) {
+	inline bool attacking_card_beats_card(const std::shared_ptr<Card>& card_one, const std::shared_ptr<Card>& card_two, Deck& deck) {
 	
-		if (cardTwo == nullptr) { return false; }// This code assumes that the only cards that will be passed to the function will be from the table
+		if (card_one != nullptr && card_two == nullptr) 
+			return true; // This code assumes that the only cards that will be passed to the function will be from the table
+
+		if (card_one->Suit == Deck::masterSuit && card_two->Suit != Deck::masterSuit)  
+			return true; 
 		
-		cardSuit mS = Deck::masterSuit;
-		
-		if (cardOne->Suit == mS && cardTwo->Suit != mS) { return true; }
-		
-		else if (cardOne->Suit == cardTwo->Suit && cardOne->Value > cardTwo->Value) { return true; }
-		
+		else if (card_one->Suit == card_two->Suit && card_one->Value > card_two->Value)  
+			return true; 
+
 		return false;
 	}
 	
-	inline std::pair<Vector2, int> BoxColFinder(const std::shared_ptr<Card> card) {
+	inline std::pair<Vector2, int> find_colliding_placement(const std::shared_ptr<Card> card) {
 
 		std::array<Vector2, 6>pos{};
 
@@ -102,7 +99,7 @@ namespace c2 {// This namespace is for game functions
 		return { { 0,0 }, 7 };
 	}
 	
-	inline void moveCardFromPlayerHandToTable(Player& player, Table& table, std::shared_ptr<Card> card, const int cardPile) {
+	inline void hand_to_table(Player& player, Table& table, std::shared_ptr<Card> card, const int cardPile) {
 
 		std::vector<std::shared_ptr<Card>> playerHand = player.getEntireHand();
 
@@ -119,7 +116,7 @@ namespace c2 {// This namespace is for game functions
 
 	}
 	
-	inline void moveAllTableToBPile(DiscardedCards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible) {
+	inline void discard_table(DiscardedCards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible) {
 		
 		std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();
 		
@@ -140,7 +137,7 @@ namespace c2 {// This namespace is for game functions
 		table.setEntireTable(cardsOnTable);
 	}
 	
-	inline bool canPassDef(Table& table) {
+	inline bool defend_can_pass(Table& table) {
 
 		const std::array<std::array<std::shared_ptr<Card>, 2>, 6> cardsOnTable = table.getEntireTable();
 
@@ -160,7 +157,7 @@ namespace c2 {// This namespace is for game functions
 		return false;
 	}
 	
-	inline void switchPlayerStates(std::array<Player, 2>& players) {
+	inline void switch_player_state(std::array<Player, 2>& players) {
 	
 		players[0].setPlyrAtk(!players[0].isPlyrAtk()); players[1].setPlyrAtk(!players[1].isPlyrAtk()); 
 	}
@@ -218,7 +215,7 @@ namespace c2 {// This namespace is for game functions
 		return 2;
 	}	
 	
-	inline void playMusic(const int musicNum, Music& JazzMusic,Music& LofiMusic, Music& eSwingMusic) {
+	inline void play_music(const int musicNum, Music& JazzMusic,Music& LofiMusic, Music& eSwingMusic) {
 	
 		switch (musicNum) {
 	
@@ -290,7 +287,7 @@ namespace c2 {// This namespace is for game functions
 	
 	inline void endAttack(Deck& deck, MainGame& mg, DiscardedCards& bPile,Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible, std::array<Player, 2>& players) {
 
-		c2::moveAllTableToBPile(bPile, table, cardsVisible);
+		c2::discard_table(bPile, table, cardsVisible);
 
 		c1::removeTableFromVisibleVec(table, cardsVisible);
 
@@ -298,7 +295,7 @@ namespace c2 {// This namespace is for game functions
 
 		mg.switchPTurn();
 
-		c2::switchPlayerStates(players);
+		c2::switch_player_state(players);
 	}
 
 	inline void takeDefender(std::array<Player, 2>&players, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck, Table& table, MainGame& mg) {
@@ -404,7 +401,7 @@ constexpr auto sameSuitConst = 1.0f;
 					
 					//was not thinking properly here, why would i check if the table is empty when i need not do so for the defending function
 
-					c2::moveCardFromPlayerHandToTable(bot, table, std::move(i[0]), j);
+					c2::hand_to_table(bot, table, std::move(i[0]), j);
 										
 					mg.incramentCardsPlayed();
 					
@@ -426,7 +423,7 @@ constexpr auto sameSuitConst = 1.0f;
 		
 		for (int i = 0; i < players[0].getPlayerHandSize(); ++i) {
 	
-			if (hand[i]->Suit != mS &&  c2::canCardBePlayed(table, hand[i])) {
+			if (hand[i]->Suit != mS &&  c2::can_attacker_attack(table, hand[i])) {
 
 				auto x = c2::findEmptyTablePile(table);
 
@@ -436,10 +433,10 @@ constexpr auto sameSuitConst = 1.0f;
 				}
 				else {
 
-					c2::moveCardFromPlayerHandToTable(players[0], table, hand[i], x);
+					c2::hand_to_table(players[0], table, hand[i], x);
 				}
 			}
-			else if (c2::canCardBePlayed(table, hand[i])) {
+			else if (c2::can_attacker_attack(table, hand[i])) {
 
 				auto x = c2::findEmptyTablePile(table);
 
@@ -449,7 +446,7 @@ constexpr auto sameSuitConst = 1.0f;
 				}
 				else {
 
-					c2::moveCardFromPlayerHandToTable(players[0], table, hand[i], x);
+					c2::hand_to_table(players[0], table, hand[i], x);
 				}
 			}			
 			else {
@@ -521,5 +518,13 @@ constexpr auto sameSuitConst = 1.0f;
 		//return std::vector<std::shared_ptr<Card>::;
 	}
 	*/
+}
+
+namespace c5 {
+	inline bool trump_suit_checker(std::shared_ptr<Card>&Card) {
+
+		return (Card->Suit == Deck::masterSuit) ? true : false;
+	}
+	
 }
 #endif // !GAMEFUNCTIONS_HPP

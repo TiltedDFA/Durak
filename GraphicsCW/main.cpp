@@ -106,7 +106,7 @@ int main()
 	
 	srand(time(NULL));
 
-	c2::playMusic(musicalNumber, JazzMusic, LoFiMusic, ElectroSwingMusic);
+	c2::play_music(musicalNumber, JazzMusic, LoFiMusic, ElectroSwingMusic);
 
 	//--------------------------------------------------------------------------------------
 	// Main game loop
@@ -194,11 +194,11 @@ int main()
 					}					
 					if (!cardsVisible[i]->cardIsHeld && !cardsVisible[i]->inDefTablePile) {
 						
-						int overlap = c2::placeHBC(50, cardsVisible[i]);
+						int overlap = c2::collision_percent_finder(50, cardsVisible[i]);
 					
 						if (overlap >= 50) {
 							
-							auto box = c2::BoxColFinder(cardsVisible[i]);
+							auto box = c2::find_colliding_placement(cardsVisible[i]);
 							
 							cardsVisible[i]->cardPosition = box.first;
 						
@@ -207,11 +207,11 @@ int main()
 								if (overlap == 100)
 								{
 						
-									if (c2::canCardBePlayed(table, cardsVisible[i]) && table.getCardFromTableAtk(box.second) == nullptr) {																			
+									if (c2::can_attacker_attack(table, cardsVisible[i]) && table.getCardFromTableAtk(box.second) == nullptr) {																			
 								
 										cardsVisible[i]->canBeTouched = false;
 										
-										c2::moveCardFromPlayerHandToTable(players[mainGame.getPTurn()], table, cardsVisible[i], box.second);
+										c2::hand_to_table(players[mainGame.getPTurn()], table, cardsVisible[i], box.second);
 										
 										mainGame.incramentCardsPlayed();									
 									}
@@ -224,13 +224,13 @@ int main()
 							}
 							else if (!players[mainGame.getPTurn()].isPlyrAtk()) {
 								
-								if (c2::cardBeatsCard(cardsVisible[i], table.getCardFromTableAtk(box.second), deck)) {									
+								if (c2::attacking_card_beats_card(cardsVisible[i], table.getCardFromTableAtk(box.second), deck)) {									
 							
 									cardsVisible[i]->cardPosition = Vector2Add(cardsVisible[i]->cardPosition, { 40,40 });
 						
 									cardsVisible[i]->canBeTouched = false;
 						
-									c2::moveCardFromPlayerHandToTable(players[mainGame.getPTurn()], table, cardsVisible[i], box.second);
+									c2::hand_to_table(players[mainGame.getPTurn()], table, cardsVisible[i], box.second);
 						
 									c1::bringCardOneToTop(cardsVisible[i], table.getCardFromTableAtk(box.second), cardsVisible);
 								}

@@ -26,7 +26,7 @@ namespace c0 {//This is used to display
 		//CheckCollisionPointRec
 		int cardsPlayedThisRound = mg.getCardsPlayed();		
 
-		if (players[mg.getPTurn()].isPlyrAtk() && cardsPlayedThisRound || !players[mg.getPTurn()].isPlyrAtk() && c2::canPassDef(table)) {
+		if (players[mg.getPTurn()].isPlyrAtk() && cardsPlayedThisRound || !players[mg.getPTurn()].isPlyrAtk() && c2::defend_can_pass(table)) {
 	
 			Vector2 mP = GetMousePosition();
 	
@@ -234,7 +234,7 @@ namespace c0 {//This is used to display
 				
 				currentMusicNum = 1;
 				
-				c2::playMusic(1, JazzMusic, LofiMusic, eSwingMusic);
+				c2::play_music(1, JazzMusic, LofiMusic, eSwingMusic);
 			}
 		}
 		else if (CheckCollisionPointRec(mP, jazzMusic)) {
@@ -261,7 +261,7 @@ namespace c0 {//This is used to display
 				
 				currentMusicNum = 2;
 				
-				c2::playMusic(2, JazzMusic, LofiMusic, eSwingMusic);
+				c2::play_music(2, JazzMusic, LofiMusic, eSwingMusic);
 			}
 		}
 		else if (CheckCollisionPointRec(mP, lofiMusic)) {
@@ -288,7 +288,7 @@ namespace c0 {//This is used to display
 				
 				currentMusicNum = 3;
 				
-				c2::playMusic(3, JazzMusic, LofiMusic, eSwingMusic);
+				c2::play_music(3, JazzMusic, LofiMusic, eSwingMusic);
 			}
 		}
 		else if (CheckCollisionPointRec(mP, electroSwingMusic)) {
@@ -315,7 +315,7 @@ namespace c0 {//This is used to display
 				
 				currentMusicNum = 4;
 				
-				c2::playMusic(4, JazzMusic, LofiMusic, eSwingMusic);
+				c2::play_music(4, JazzMusic, LofiMusic, eSwingMusic);
 			}
 		}
 		else {
