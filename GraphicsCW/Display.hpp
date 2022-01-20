@@ -8,13 +8,13 @@ namespace c0 {//This is used to display
 		
 		for (const auto& i : cardsVisible) {
 		
-			if (i->cardIsFaceUp) {
+			if (i->is_card_face_up) {
 			
 				DrawTexture(cBlank, static_cast<int>(i->card_position.x), static_cast<int>(i->card_position.y), WHITE);
 		
 				i->displayCardWithValueText(i);
 			}
-			else if (!i->cardIsFaceUp) {
+			else if (!i->is_card_face_up) {
 
 				DrawTexture(cBack, static_cast<int>(i->card_position.x), static_cast<int>(i->card_position.y), WHITE);
 			}
@@ -57,7 +57,7 @@ namespace c0 {//This is used to display
 		
 	}
 	
-	inline void displayEndButtons(std::array<Player, 2>& players,MainGame& mg, Texture2D& endLow, Texture2D& endMid, Texture2D& endHigh, Sound& fxButton, DiscardedCards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck) {
+	inline void displayEndButtons(std::array<Player, 2>& players,MainGame& mg, Texture2D& endLow, Texture2D& endMid, Texture2D& endHigh, Sound& fxButton, Discardediscarded_cards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck) {
 		// 1733, 936				
 		Vector2 mP = GetMousePosition();
 	

@@ -39,7 +39,7 @@ int main()
 	
 	Table table;
 	
-	DiscardedCards bPile;
+	Discardediscarded_cards bPile;
 	
 	MainGame mainGame;
 	
@@ -113,14 +113,14 @@ int main()
 
 
 	//Code something that moves the cards when the mouse moves them. The co-ordinates of the cards will be the mouse co-ordinates + the offset of where the mouse clicks the card	
-	c1::setUpPlayerHandPos(cardsVisible, deck, players);
+	c1::setUpplayer_handPos(cardsVisible, deck, players);
 
 	deck.setPosTopCardDeck({ 153, 470 });
 
 	if (c1::findStartingPlayer(players, deck) == 0) { players[0].setPlyrAtk(true); mainGame.setPTurn(0); }
 	
 	else { players[1].setPlyrAtk(true); mainGame.setPTurn(1); }
-	deck.setMasterSuit(deck.getLastCard()->Suit);
+	deck.setmaster_suit(deck.getLastCard()->Suit);
 	while (!WindowShouldClose())
 	{
 		c2::continuePlayingMusic(musicalNumber, JazzMusic, LoFiMusic, ElectroSwingMusic);
@@ -170,7 +170,7 @@ int main()
 						
 							hC = true;
 					
-							cardsVisible[i]->cardIsFaceUp = !cardsVisible[i]->cardIsFaceUp; // this function changes the state of the card in the cardsVisible pointer vector
+							cardsVisible[i]->is_card_face_up = !cardsVisible[i]->is_card_face_up; // this function changes the state of the card in the cardsVisible pointer vector
 						
 						}
 					

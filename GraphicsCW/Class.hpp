@@ -50,7 +50,7 @@ public:
 	~Card();
 
 	Vector2 card_position = { 0,0 };
-	bool cardIsFaceUp = true;
+	bool is_card_face_up = true;
 	bool cardIsHeld = false;
 	bool canBeTouched = true;
 	bool inDefTablePile = false;
@@ -68,7 +68,7 @@ private:
 	std::vector<std::shared_ptr<Card>> deck;// The deck which is based on an std::shared_ptr system. The shared_ptrs are a type of smart pointers which delete the contents from the heap automatically	
 	// This value detirmins how the game will be played and adds a lot of power to cards of the same suit. The value for this is derived from the visible card.	
 public:
-	inline static card_suit masterSuit;
+	inline static card_suit master_suit;
 	Deck();//Change how deck works
 	Deck(const int deckSize);
 	~Deck(); 
@@ -81,7 +81,7 @@ public:
 	const std::shared_ptr<Card>& getTopOfVisDeck();
 	void setPosTopCardDeck(const Vector2& pos);
 
-	void setMasterSuit(card_suit suit);	
+	void setmaster_suit(card_suit suit);	
 		
 	int getDeckSize();
 };
@@ -89,19 +89,19 @@ public:
 class Player
 {
 private:
-	std::vector<std::shared_ptr<Card>>playerHand;
+	std::vector<std::shared_ptr<Card>>player_hand;
 	bool plyrAtk = false;
 public:
 	Player();
 	~Player();
-	void addToPlayerHand(std::shared_ptr<Card> cardToAdd);
-	std::shared_ptr<Card> getPlayerHandIndex(const int index);
-	std::size_t getPlayerHandSize();
+	void addToplayer_hand(std::shared_ptr<Card> cardToAdd);
+	std::shared_ptr<Card> getplayer_handIndex(const int index);
+	std::size_t getplayer_handSize();
 	bool isPlyrAtk();
 	void setPlyrAtk(bool bol);
 	std::vector<std::shared_ptr<Card>> getEntireHand();
 	void setEntireHand(std::vector<std::shared_ptr<Card>> hand);
-	void setPlayerHandIndex(std::shared_ptr<Card> card, const int index);
+	void setplayer_handIndex(std::shared_ptr<Card> card, const int index);
 };
 //-------------------------------------------------------------------------------------------------------------
 class Table
@@ -120,13 +120,13 @@ public:
 	const int getNumCardsOnTable();
 };
 //-------------------------------------------------------------------------------------------------------------
-class DiscardedCards
+class Discardediscarded_cards
 {
 private:
-	std::vector<std::shared_ptr<Card>>dCards;
+	std::vector<std::shared_ptr<Card>>discarded_cards;
 public:
-	DiscardedCards();
-	~DiscardedCards();
+	Discardediscarded_cards();
+	~Discardediscarded_cards();
 	void addToPile(std::shared_ptr<Card> card);
 };
 //-------------------------------------------------------------------------------------------------------------

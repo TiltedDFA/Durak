@@ -114,9 +114,9 @@ const std::shared_ptr<Card>& Deck::getTopOfVisDeck() { //This is the top of the 
 	return *(deck.end() - 2);
 }
 
-void Deck::setMasterSuit(card_suit suit){
+void Deck::setmaster_suit(card_suit suit){
 
-	masterSuit = suit;
+	master_suit = suit;
 }
 
 int Deck::getDeckSize(){
@@ -130,17 +130,17 @@ Player::Player()
 Player::~Player()
 {
 }
-void Player::addToPlayerHand(std::shared_ptr<Card> cardToAdd)
+void Player::addToplayer_hand(std::shared_ptr<Card> cardToAdd)
 {
-	playerHand.push_back(cardToAdd);
+	player_hand.push_back(cardToAdd);
 }
-std::shared_ptr<Card> Player::getPlayerHandIndex(const int index)
+std::shared_ptr<Card> Player::getplayer_handIndex(const int index)
 {
-	return playerHand[index];
+	return player_hand[index];
 }
-std::size_t Player::getPlayerHandSize()
+std::size_t Player::getplayer_handSize()
 {
-	return playerHand.size();
+	return player_hand.size();
 }
 bool Player::isPlyrAtk()
 {
@@ -152,15 +152,15 @@ void Player::setPlyrAtk(bool bol)
 }
 std::vector<std::shared_ptr<Card>> Player::getEntireHand()
 {
-	return playerHand;
+	return player_hand;
 }
 void Player::setEntireHand(std::vector<std::shared_ptr<Card>> hand)
 {
-	playerHand = hand;
+	player_hand = hand;
 }
-void Player::setPlayerHandIndex(std::shared_ptr<Card> card, const int index)
+void Player::setplayer_handIndex(std::shared_ptr<Card> card, const int index)
 {
-	playerHand[index] = card;
+	player_hand[index] = card;
 }
 //-------------------------------------------------------------------------------------------------------------
 Table::Table()
@@ -204,12 +204,12 @@ const int Table::getNumCardsOnTable() {
 	return 	count;
 }
 //-------------------------------------------------------------------------------------------------------------
-DiscardedCards::DiscardedCards() {};
-DiscardedCards::~DiscardedCards() {};
+Discardediscarded_cards::Discardediscarded_cards() {};
+Discardediscarded_cards::~Discardediscarded_cards() {};
 
-void DiscardedCards::addToPile(std::shared_ptr<Card> card)
+void Discardediscarded_cards::addToPile(std::shared_ptr<Card> card)
 {
-	dCards.emplace_back(card);
+	discarded_cards.emplace_back(card);
 }
 //-------------------------------------------------------------------------------------------------------------
 MainGame::MainGame() {}

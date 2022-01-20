@@ -29,9 +29,9 @@ namespace c2 {// This namespace is for game functions
 			
 			if (CheckCollisionRecs(rCard, placeHB)) {				
 		
-				auto oSetArea = (placeHB.width - sqrt(((card->card_position.x - placeHB.x) * (card->card_position.x - placeHB.x)))) * (placeHB.height - sqrt(((card->card_position.y - placeHB.y) * (card->card_position.y - placeHB.y))));
+				auto oSetArea = (placeHB.width - sqrt((card->card_position.x - placeHB.x) * (card->card_position.x - placeHB.x))) * (placeHB.height - sqrt((card->card_position.y - placeHB.y) * (card->card_position.y - placeHB.y)));
 				
-				auto percentOverlap = ((oSetArea / (placeHB.width * placeHB.height)) * 100);
+				auto percentOverlap = oSetArea / (placeHB.width * placeHB.height) * 100;
 				
 				if (static_cast<int>(percentOverlap > percentCertanty)) {
 					
@@ -44,7 +44,7 @@ namespace c2 {// This namespace is for game functions
 
 	inline bool can_attacker_attack(Table& table, std::shared_ptr<Card> card) {
 	
-		if (!card->cardIsFaceUp) 
+		if (!card->is_card_face_up) 
 			return false; 
 		int l = 0;
 		const std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();		
@@ -63,7 +63,7 @@ namespace c2 {// This namespace is for game functions
 		if (card_one != nullptr && card_two == nullptr) 
 			return true; // This code assumes that the only cards that will be passed to the function will be from the table
 
-		if (card_one->Suit == Deck::masterSuit && card_two->Suit != Deck::masterSuit)  
+		if (card_one->Suit == Deck::master_suit && card_two->Suit != Deck::master_suit)  
 			return true; 
 		
 		else if (card_one->Suit == card_two->Suit && card_one->Value > card_two->Value)  
@@ -101,22 +101,22 @@ namespace c2 {// This namespace is for game functions
 	
 	inline void hand_to_table(Player& player, Table& table, std::shared_ptr<Card> card, const int cardPile) {
 
-		std::vector<std::shared_ptr<Card>> playerHand = player.getEntireHand();
+		std::vector<std::shared_ptr<Card>> player_hand = player.getEntireHand();
 
-		auto posInHand = std::find(playerHand.begin(), playerHand.end(), card);
+		auto posInHand = std::find(player_hand.begin(), player_hand.end(), card);
 
-		if (posInHand != playerHand.end()) {
+		if (posInHand != player_hand.end()) {
 	
-			if (player.isPlyrAtk()) { table.addCardToTableAtk(std::move(*posInHand), cardPile); playerHand.erase(posInHand); }
+			if (player.isPlyrAtk()) { table.addCardToTableAtk(std::move(*posInHand), cardPile); player_hand.erase(posInHand); }
 
-			else { table.addCardToTableDef(std::move(*posInHand), cardPile); playerHand.erase(posInHand); card->inDefTablePile = true; }
+			else { table.addCardToTableDef(std::move(*posInHand), cardPile); player_hand.erase(posInHand); card->inDefTablePile = true; }
 
-			player.setEntireHand(playerHand);
+			player.setEntireHand(player_hand);
 		}
 
 	}
 	
-	inline void discard_table(DiscardedCards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible) {
+	inline void discard_table(Discardediscarded_cards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible) {
 		
 		std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();
 		
@@ -196,7 +196,7 @@ namespace c2 {// This namespace is for game functions
 					
 					cTable[i][j]->canBeTouched = true;
 					
-					player.addToPlayerHand(std::move(cTable[i][j]));
+					player.addToplayer_hand(std::move(cTable[i][j]));
 				}				
 			}
 		}
@@ -208,7 +208,7 @@ namespace c2 {// This namespace is for game functions
 		const int numCardsTable = table.getNumCardsOnTable();
 		for (int i = 0; i < 2; ++i) {
 		
-			if (deck.getDeckSize() == 0 && players[i].getPlayerHandSize() == 0 && numCardsTable == 0) {
+			if (deck.getDeckSize() == 0 && players[i].getplayer_handSize() == 0 && numCardsTable == 0) {
 				return i;
 			}
 		}
@@ -285,13 +285,13 @@ namespace c2 {// This namespace is for game functions
 		return l;
 	}
 	
-	inline void endAttack(Deck& deck, MainGame& mg, DiscardedCards& bPile,Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible, std::array<Player, 2>& players) {
+	inline void endAttack(Deck& deck, MainGame& mg, Discardediscarded_cards& bPile,Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible, std::array<Player, 2>& players) {
 
 		c2::discard_table(bPile, table, cardsVisible);
 
 		c1::removeTableFromVisibleVec(table, cardsVisible);
 
-		c1::addNeededCardsToPlayerHands(players, cardsVisible, deck);
+		c1::add_need_cards_to_players(players, cardsVisible, deck);
 
 		mg.switchPTurn();
 
@@ -302,7 +302,7 @@ namespace c2 {// This namespace is for game functions
 
 		c2::table_to_hand(players[mg.getPTurn()], table);
 
-		c1::addNeededCardsToPlayerHands(players, cardsVisible, deck);
+		c1::add_need_cards_to_players(players, cardsVisible, deck);
 
 		mg.switchPTurn();
 	}
@@ -318,7 +318,7 @@ constexpr auto sameSuitConst = 1.0f;
 
     inline const double findDefendingEval(std::shared_ptr<Card> cardUsedToDefend, std::shared_ptr<Card> cardToDefend, Deck& deck) {
 		
-		const card_suit ms = Deck::masterSuit;
+		const card_suit ms = Deck::master_suit;
 		
 		if (cardUsedToDefend->Suit != cardToDefend->Suit && cardUsedToDefend->Suit != ms) {  //Different suits and non ms 
 		
@@ -339,13 +339,13 @@ constexpr auto sameSuitConst = 1.0f;
 		return 9999999999999999999;
 	}	
 
-	inline auto returnBestDefPlayerHandEval(const std::shared_ptr<Card>& card, Player& player, Deck& deck) {
+	inline auto returnBestDefplayer_handEval(const std::shared_ptr<Card>& card, Player& player, Deck& deck) {
 	
 		std::vector<std::pair<double, std::vector<std::shared_ptr<Card>>::iterator>>evaluations;
 		
 		auto hand = player.getEntireHand();
 		
-		for (int i = 0; i < static_cast<int>(player.getPlayerHandSize()); ++i) {
+		for (int i = 0; i < static_cast<int>(player.getplayer_handSize()); ++i) {
 		
 			std::pair<double, std::vector<std::shared_ptr<Card>>::iterator>evalInfo;
 			
@@ -393,7 +393,7 @@ constexpr auto sameSuitConst = 1.0f;
 	
 			if (i[0] != nullptr && i[1] == nullptr) {
 	
-				auto returnVal = returnBestDefPlayerHandEval(i[0],bot,deck);
+				auto returnVal = returnBestDefplayer_handEval(i[0],bot,deck);
 				
 				if (!(returnVal == bot.getEntireHand().end())) {
 				
@@ -413,15 +413,15 @@ constexpr auto sameSuitConst = 1.0f;
 		}
 	}
 	
-	auto attack(Table&table, std::array<Player, 2>&players, Deck& deck, MainGame& mg, DiscardedCards& bPile, std::vector<std::shared_ptr<Card>>&cardsVisible) {
+	auto attack(Table&table, std::array<Player, 2>&players, Deck& deck, MainGame& mg, Discardediscarded_cards& bPile, std::vector<std::shared_ptr<Card>>&cardsVisible) {
 	
 		auto hand = players[0].getEntireHand();
 		
-		auto mS = Deck::masterSuit; //The master suit
+		auto mS = Deck::master_suit; //The master suit
 		
 		std::sort(hand.begin(), hand.end(), [](std::shared_ptr<Card>a, std::shared_ptr<Card>b)->bool { return (a->Value < b->Value);});
 		
-		for (int i = 0; i < players[0].getPlayerHandSize(); ++i) {
+		for (int i = 0; i < players[0].getplayer_handSize(); ++i) {
 	
 			if (hand[i]->Suit != mS &&  c2::can_attacker_attack(table, hand[i])) {
 
@@ -479,7 +479,7 @@ constexpr auto sameSuitConst = 1.0f;
 	/*
 	const double findDefendingEval(std::shared_ptr<Card> cardOne, std::shared_ptr<Card> cardTwo, Deck& deck)
 	{
-		const card_suit ms = deck.getMasterSuit();
+		const card_suit ms = deck.getmaster_suit();
 		if (cardOne->Suit != cardTwo->Suit && cardOne->Suit != ms) //Different suits and non ms 
 		{
 			return ZeroValue;
@@ -500,9 +500,9 @@ constexpr auto sameSuitConst = 1.0f;
 	}
 	*/
 	/*
-	std::vector<std::shared_ptr<Card>>::iterator evaluatePlayerHand(Player& bot, Table& table,Deck& deck)
+	std::vector<std::shared_ptr<Card>>::iterator evaluateplayer_hand(Player& bot, Table& table,Deck& deck)
 	{
-		auto handSize = bot.getPlayerHandSize();
+		auto handSize = bot.getplayer_handSize();
 		if (bot.isPlyrAtk())
 		{
 
@@ -523,7 +523,7 @@ constexpr auto sameSuitConst = 1.0f;
 namespace c5 {
 	inline bool trump_suit_checker(std::shared_ptr<Card>&Card) {
 
-		return (Card->Suit == Deck::masterSuit) ? true : false;
+		return (Card->Suit == Deck::master_suit) ? true : false;
 	}
 	
 }

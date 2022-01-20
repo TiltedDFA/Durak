@@ -4,7 +4,7 @@
 #include "Class.hpp"
 namespace c1 {// Used to setup or maintain
 			
-	inline void addCardsToVisibleVec(std::vector<std::shared_ptr<Card>>& cardsVisible, std::shared_ptr<Card> card) {
+	inline void addiscarded_cardsToVisibleVec(std::vector<std::shared_ptr<Card>>& cardsVisible, std::shared_ptr<Card> card) {
 		
 		cardsVisible.push_back(card);
 	}
@@ -16,7 +16,7 @@ namespace c1 {// Used to setup or maintain
 		if (positionOfCardToRemove != cardsVisible.end()) { cardsVisible.erase(positionOfCardToRemove); }
 	}
 
-	inline void setUpPlayerHandPos(std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck, std::array<Player, 2>& players) {
+	inline void setUpplayer_handPos(std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck, std::array<Player, 2>& players) {
 
 		float x = 600;
 		
@@ -28,11 +28,11 @@ namespace c1 {// Used to setup or maintain
 
 			//card->canBeTouched = false; Temp disabled until ai is made
 
-			card->cardIsFaceUp = false;
+			card->is_card_face_up = false;
 
 			card->card_position = { (x + 125 * i),y };
 
-			players[0].addToPlayerHand(card);
+			players[0].addToplayer_hand(card);
 
 			cardsVisible.push_back(card);
 		}
@@ -45,7 +45,7 @@ namespace c1 {// Used to setup or maintain
 
 			card->card_position = { (x + 125 * i),y };
 
-			players[1].addToPlayerHand(card);
+			players[1].addToplayer_hand(card);
 
 			cardsVisible.push_back(card);
 		}		
@@ -58,17 +58,17 @@ namespace c1 {// Used to setup or maintain
 		
 		cardValue lowestVal[2] = { cardValue::ACE, cardValue::ACE };
 		
-		const auto mS = Deck::masterSuit;
+		const auto mS = Deck::master_suit;
 		
 		for (int i = 0; i < 2; ++i) {
 	
-			const auto hSize = players[i].getPlayerHandSize();
+			const auto hSize = players[i].getplayer_handSize();
 			
 			for (int j = 0; j < hSize; ++j) {
 	
-				if (players[i].getPlayerHandIndex(j)->Suit == mS && players[i].getPlayerHandIndex(j)->Value < lowestVal[i])	{
+				if (players[i].getplayer_handIndex(j)->Suit == mS && players[i].getplayer_handIndex(j)->Value < lowestVal[i])	{
 		
-					lowestVal[i] = players[i].getPlayerHandIndex(j)->Value;
+					lowestVal[i] = players[i].getplayer_handIndex(j)->Value;
 				}
 			}
 		}
@@ -87,24 +87,24 @@ namespace c1 {// Used to setup or maintain
 	
 		auto pTurn = mg.getPTurn();
 		
-		for (int i = 0; i < players[pTurn].getPlayerHandSize(); ++i) {
+		for (int i = 0; i < players[pTurn].getplayer_handSize(); ++i) {
 		
-			auto card = players[pTurn].getPlayerHandIndex(i);
+			auto card = players[pTurn].getplayer_handIndex(i);
 			
 			card->canBeTouched = true;
 			
-			players[pTurn].setPlayerHandIndex(card, i);
+			players[pTurn].setplayer_handIndex(card, i);
 		}
 		
 		auto otherPlayer = (pTurn + 1) % 2;
 	
-		for (int i = 0; i < players[otherPlayer].getPlayerHandSize(); ++i) {
+		for (int i = 0; i < players[otherPlayer].getplayer_handSize(); ++i) {
 		
-			auto card = players[otherPlayer].getPlayerHandIndex(i);
+			auto card = players[otherPlayer].getplayer_handIndex(i);
 	
 			card->canBeTouched = false;
 	
-			players[otherPlayer].setPlayerHandIndex(card, i);
+			players[otherPlayer].setplayer_handIndex(card, i);
 		}
 	}
 	
@@ -146,15 +146,15 @@ namespace c1 {// Used to setup or maintain
 		return false;
 	}
 	
-	inline void addNeededCardsToPlayerHands(std::array<Player, 2>&players, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck) {		
+	inline void add_need_cards_to_players(std::array<Player, 2>&players, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck) {		
 	
 		for (int i = 0; i < 2; ++i) {
 		
-			const auto cardsNeeded = (6 - players[i].getPlayerHandSize());
+			const auto cardsNeeded = (6 - players[i].getplayer_handSize());
 			
 			if (deck.getDeckSize()) { // code below will not run if deckSize == 0;
 			
-				if (doesDeckHaveEnoughCardsRemaining(deck, cardsNeeded) && static_cast<int>(players[i].getPlayerHandSize()) < 6) {
+				if (doesDeckHaveEnoughCardsRemaining(deck, cardsNeeded) && static_cast<int>(players[i].getplayer_handSize()) < 6) {
 				
 					for (auto j = 0; j < cardsNeeded; ++j) {
 					
@@ -164,7 +164,7 @@ namespace c1 {// Used to setup or maintain
 						
 						card->card_position.x = static_cast<float>(120 * j);
 						
-						players[i].addToPlayerHand(card);
+						players[i].addToplayer_hand(card);
 						
 						cardsVisible.push_back(card);
 					}
