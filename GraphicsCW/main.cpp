@@ -1,4 +1,5 @@
 #include "Display.hpp"
+#include "textures.hpp"
 
 int main()
 {
@@ -7,15 +8,9 @@ int main()
 
 	InitAudioDevice();// This initilizes the audio device
 
-	SetTargetFPS(120);//This sets the target framerate	
+	SetTargetFPS(90);//This sets the target framerate	
 
 	//---------------------------------------------------------------------------------------
-
-	Vector2 mP = {0.0f,0.0f}; //This is to store the mouse position 
-
-	Vector2 dMP = { 0.0f, 0.0f }; //This is to store the delta of the position
-
-	std::array<std::pair<bool, std::string>, 4> screens;
 
 	screens[0].first = true; screens[0].second = "Title Screen";
 
@@ -25,14 +20,12 @@ int main()
 
 	screens[3].first = false; screens[3].second = "Settings Screen";
 
+
 	//bool _TScreen = true; // This is to help the store which screen to display
 	//bool prePlayScreen = false; //This is also to help with the screen display system
 
 	bool hC = false; //This variable is used primarily in the system that controlls the amnt of cards you pick up 	
-					 //bool winScreen = false; //This is also for the system 
-	
-	int winner = 2;
-	
+					 //bool winScreen = false; //This is also for the system 	
 	int musicalNumber = c3::getMusicNumber();
 	
 	Deck deck(c3::getDeckSize());
@@ -46,63 +39,57 @@ int main()
 	std::array<Player, 2>players;
 	
 	std::vector<std::shared_ptr<Card>>cardsVisible;
-	
-	//---------------------------------------------------------------------------------------
-	
-	Rectangle playButton = { 773, 509, 287, 105 };
-	
-	Rectangle settingsButton = { 773, 754, 287, 105 };
+
+	Sound fxButton = LoadSound("buttonfx.wav");
+
+	Texture2D blankCard = LoadTexture("170pixelBlank.png");
+
+	Texture2D TitleScreen = LoadTexture("TitleScreen.png");
+
+	Texture2D SettingScreen = LoadTexture("Settings.png");
+
+	Texture2D  _Table = LoadTexture("TableCardHole.png");
+
+	Texture2D progTable = LoadTexture("TableWithButton.png");
+
+	Texture2D CardBacking = LoadTexture("170CardBacking.png");
+
+	Texture2D PassButtonHigh = LoadTexture("PassHigh.png");
+
+	Texture2D PassButtonMid = LoadTexture("PassMid.png");
+
+	Texture2D PassButtonLow = LoadTexture("PassLow.png");
+
+	Texture2D EndButtonHigh = LoadTexture("EndHigh.png");
+
+	Texture2D EndButtonMid = LoadTexture("EndMid.png");
+
+	Texture2D EndButtonLow = LoadTexture("EndLow.png");
+
+	Texture2D TakeButtonHigh = LoadTexture("TakeHigh.png");
+
+	Texture2D TakeButtonMid = LoadTexture("TakeMid.png");
+
+	Texture2D TakeButtonLow = LoadTexture("TakeLow.png");
+
+	Texture2D AtkHigh = LoadTexture("AtkHigh.png");
+
+	Texture2D AtkLow = LoadTexture("AtkLow.png");
+
+	Texture2D DefHigh = LoadTexture("DefHigh.png");
+
+	Texture2D DefLow = LoadTexture("DefLow.png");
+
+	Music JazzMusic = LoadMusicStream("JazzMusic.mp3");
+
+	Music LoFiMusic = LoadMusicStream("LoFiMusic.mp3");
+
+	Music ElectroSwingMusic = LoadMusicStream("ElectroSwingMusic.mp3");
 	
 	//---------------------------------------------------------------------------------------
 	Image appIcon = LoadImage("appIcon.png");
 
 	SetWindowIcon(appIcon);
-	
-	Sound fxButton = LoadSound("buttonfx.wav");
-	
-	Texture2D blankCard = LoadTexture("170pixelBlank.png");
-
-	Texture2D TitleScreen = LoadTexture("TitleScreen.png");
-	
-	Texture2D SettingScreen = LoadTexture("Settings.png");
-
-	Texture2D  _Table = LoadTexture("TableCardHole.png");
-	
-	Texture2D progTable = LoadTexture("TableWithButton.png");
-	
-	Texture2D CardBacking = LoadTexture("170CardBacking.png");
-
-	Texture2D PassButtonHigh = LoadTexture("PassHigh.png");
-	
-	Texture2D PassButtonMid = LoadTexture("PassMid.png");
-	
-	Texture2D PassButtonLow = LoadTexture("PassLow.png");
-
-	Texture2D EndButtonHigh = LoadTexture("EndHigh.png");
-	
-	Texture2D EndButtonMid = LoadTexture("EndMid.png");
-	
-	Texture2D EndButtonLow = LoadTexture("EndLow.png");
-
-	Texture2D TakeButtonHigh = LoadTexture("TakeHigh.png");
-	
-	Texture2D TakeButtonMid = LoadTexture("TakeMid.png");
-	
-	Texture2D TakeButtonLow = LoadTexture("TakeLow.png");
-
-	Texture2D AtkHigh = LoadTexture("AtkHigh.png");
-	
-	Texture2D AtkLow = LoadTexture("AtkLow.png");
-	
-	Texture2D DefHigh = LoadTexture("DefHigh.png");
-	
-	Texture2D DefLow = LoadTexture("DefLow.png");
-
-	Music JazzMusic = LoadMusicStream("JazzMusic.mp3");
-	
-	Music LoFiMusic = LoadMusicStream("LoFiMusic.mp3");
-	
-	Music ElectroSwingMusic = LoadMusicStream("ElectroSwingMusic.mp3");
 	
 	srand(time(NULL));
 
@@ -110,8 +97,6 @@ int main()
 
 	//--------------------------------------------------------------------------------------
 	// Main game loop
-
-
 	//Code something that moves the cards when the mouse moves them. The co-ordinates of the cards will be the mouse co-ordinates + the offset of where the mouse clicks the card	
 	c1::setUpplayer_handPos(cardsVisible, deck, players);
 
@@ -128,7 +113,7 @@ int main()
 		hC = false;
 		if (screens[1].first) // Main Game Screen;
 		{
-			if (c2::checkIfPlayersWon(deck, players, table) != 2) { winner = c2::checkIfPlayersWon(deck, players, table); screens[1].first = !screens[1].first; screens[2].first = !screens[2].first; }
+			if (c2::checkIfPlayersWon(deck, players, table) != 2) {  players[c2::checkIfPlayersWon(deck, players, table)].set_player_winstate(true); screens[1].first = !screens[1].first; screens[2].first = !screens[2].first; }
 			
 			c1::lockCardsInHand(players, mainGame);
 
@@ -282,15 +267,15 @@ int main()
 	
 			std::string win;
 		
-			switch (winner) {
+			switch (players[0].get_player_winstate()) {
 		
-			case 0:
+			case true:
 			
 				win = "The Bot Wins";
 				
 				break;
 		
-			case 1:
+			case false:
 			
 				win = "Well Done, You win!";
 				
@@ -298,9 +283,7 @@ int main()
 			
 			default:
 		
-				throw std::runtime_error("Unexpected Winstate");
-				
-				break;
+				throw std::runtime_error("Unexpected Winstate");							
 			}
 		
 		BeginDrawing();

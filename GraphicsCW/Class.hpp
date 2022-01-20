@@ -88,6 +88,8 @@ public:
 //-------------------------------------------------------------------------------------------------------------
 class Player
 {
+protected:
+	bool player_has_won = false;
 private:
 	std::vector<std::shared_ptr<Card>>player_hand;
 	bool plyrAtk = false;
@@ -102,6 +104,8 @@ public:
 	std::vector<std::shared_ptr<Card>> getEntireHand();
 	void setEntireHand(std::vector<std::shared_ptr<Card>> hand);
 	void setplayer_handIndex(std::shared_ptr<Card> card, const int index);
+	void set_player_winstate(bool has_won);
+	const bool get_player_winstate();
 };
 //-------------------------------------------------------------------------------------------------------------
 class Table

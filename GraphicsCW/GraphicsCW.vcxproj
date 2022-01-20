@@ -183,6 +183,7 @@
     <ClInclude Include="Display.hpp" />
     <ClInclude Include="GameFunctions.hpp" />
     <ClInclude Include="SetupFunctions.hpp" />
+    <ClInclude Include="textures.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="DevLog.txt" />

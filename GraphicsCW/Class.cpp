@@ -162,6 +162,14 @@ void Player::setplayer_handIndex(std::shared_ptr<Card> card, const int index)
 {
 	player_hand[index] = card;
 }
+void Player::set_player_winstate(bool has_won) {
+
+	player_has_won = has_won;
+}
+const bool Player::get_player_winstate()
+{
+	return player_has_won;
+}
 //-------------------------------------------------------------------------------------------------------------
 Table::Table()
 {
