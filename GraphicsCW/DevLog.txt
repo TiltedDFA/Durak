@@ -168,3 +168,9 @@ There is also a known issue with the system that distrobutes cards. Issue has oc
 ->THE MAIN GAME LOOP WORKS LOL
 will need to now work to add win states 
 }
+
+21/01/22
+{
+a lot has changed.
+Focus on adding 'detailed information' where you will get to see detailed information ingame like num of cards in hand, num of cards remaining in deck and so on
+}

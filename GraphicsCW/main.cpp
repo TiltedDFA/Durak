@@ -98,7 +98,7 @@ int main()
 	//--------------------------------------------------------------------------------------
 	// Main game loop
 	//Code something that moves the cards when the mouse moves them. The co-ordinates of the cards will be the mouse co-ordinates + the offset of where the mouse clicks the card	
-	c1::setUpplayer_handPos(cardsVisible, deck, players);
+	c1::init_player_hands(cardsVisible, deck, players);
 
 	deck.setPosTopCardDeck({ 153, 470 });
 
@@ -113,7 +113,7 @@ int main()
 		hC = false;
 		if (screens[1].first) // Main Game Screen;
 		{
-			if (c2::checkIfPlayersWon(deck, players, table) != 2) {  players[c2::checkIfPlayersWon(deck, players, table)].set_player_winstate(true); screens[1].first = !screens[1].first; screens[2].first = !screens[2].first; }
+			if (c2::check_for_winner(deck, players, table) != 2) {  players[c2::check_for_winner(deck, players, table)].set_player_winstate(true); screens[1].first = !screens[1].first; screens[2].first = !screens[2].first; }
 			
 			c1::lockCardsInHand(players, mainGame);
 
@@ -279,11 +279,7 @@ int main()
 			
 				win = "Well Done, You win!";
 				
-				break;
-			
-			default:
-		
-				throw std::runtime_error("Unexpected Winstate");							
+				break;								
 			}
 		
 		BeginDrawing();

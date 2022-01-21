@@ -43,10 +43,12 @@ namespace c2 {// This namespace is for game functions
 	}
 
 	inline bool can_attacker_attack(Table& table, std::shared_ptr<Card> card) {
-	
+		
 		if (!card->is_card_face_up) 
 			return false; 
+
 		int l = 0;
+
 		const std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();		
 				
 		for (const auto& i : cardsOnTable) 
@@ -55,13 +57,14 @@ namespace c2 {// This namespace is for game functions
 
 		if (!l)
 			return true;
+
 		return false;
 	}	
 	
 	inline bool attacking_card_beats_card(const std::shared_ptr<Card>& card_one, const std::shared_ptr<Card>& card_two, Deck& deck) {
 	
-		if (card_one != nullptr && card_two == nullptr) 
-			return true; // This code assumes that the only cards that will be passed to the function will be from the table
+		if (card_one != nullptr && card_two == nullptr) // This code assumes that the only cards that will be passed to the function will be from the table
+			return true; 
 
 		if (card_one->Suit == Deck::master_suit && card_two->Suit != Deck::master_suit)  
 			return true; 
@@ -94,8 +97,10 @@ namespace c2 {// This namespace is for game functions
 	
 			Rectangle box = { pos[i].x, pos[i].y, 120, 170 };
 			
-			if (CheckCollisionRecs(rCard, box)) { return { pos[i], i }; }
+			if (CheckCollisionRecs(rCard, box))  
+				return { pos[i], i }; 
 		}
+
 		return { { 0,0 }, 7 };
 	}
 	
@@ -200,15 +205,17 @@ namespace c2 {// This namespace is for game functions
 				}				
 			}
 		}
+
 		table.setEntireTable(cTable);
 	}
 	
-	inline const int checkIfPlayersWon(Deck& deck, std::array<Player, 2>& players, Table& table) {
+	inline const int check_for_winner(Deck& deck, std::array<Player, 2>& players, Table& table) {
 	
-		const int numCardsTable = table.getNumCardsOnTable();
+		const int numCardsTable = table.get_amount_of_card_in_table();
+
 		for (int i = 0; i < 2; ++i) {
 		
-			if (deck.getDeckSize() == 0 && players[i].getplayer_handSize() == 0 && numCardsTable == 0) {
+			if (deck.getDeckSize() == 0 && players[i].get_hand_size() == 0 && numCardsTable == 0) {
 				return i;
 			}
 		}
@@ -289,7 +296,7 @@ namespace c2 {// This namespace is for game functions
 
 		c2::discard_table(bPile, table, cardsVisible);
 
-		c1::removeTableFromVisibleVec(table, cardsVisible);
+		c1::remove_table_from_visible_vector(table, cardsVisible);
 
 		c1::add_need_cards_to_players(players, cardsVisible, deck);
 
@@ -345,7 +352,7 @@ constexpr auto sameSuitConst = 1.0f;
 		
 		auto hand = player.getEntireHand();
 		
-		for (int i = 0; i < static_cast<int>(player.getplayer_handSize()); ++i) {
+		for (int i = 0; i < static_cast<int>(player.get_hand_size()); ++i) {
 		
 			std::pair<double, std::vector<std::shared_ptr<Card>>::iterator>evalInfo;
 			
@@ -421,7 +428,7 @@ constexpr auto sameSuitConst = 1.0f;
 		
 		std::sort(hand.begin(), hand.end(), [](std::shared_ptr<Card>a, std::shared_ptr<Card>b)->bool { return (a->Value < b->Value);});
 		
-		for (int i = 0; i < players[0].getplayer_handSize(); ++i) {
+		for (int i = 0; i < players[0].get_hand_size(); ++i) {
 	
 			if (hand[i]->Suit != mS &&  c2::can_attacker_attack(table, hand[i])) {
 
@@ -502,7 +509,7 @@ constexpr auto sameSuitConst = 1.0f;
 	/*
 	std::vector<std::shared_ptr<Card>>::iterator evaluateplayer_hand(Player& bot, Table& table,Deck& deck)
 	{
-		auto handSize = bot.getplayer_handSize();
+		auto handSize = bot.get_hand_size();
 		if (bot.isPlyrAtk())
 		{
 

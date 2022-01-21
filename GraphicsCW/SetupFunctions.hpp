@@ -11,12 +11,14 @@ namespace c1 {// Used to setup or maintain
 	
 	inline void removeCardFromVisibleVect(std::vector<std::shared_ptr<Card>>& cardsVisible, std::shared_ptr<Card> card) {
 
+		assert(cardsVisible.size() > 0);
+
 		auto positionOfCardToRemove = std::find(cardsVisible.begin(), cardsVisible.end(), card);
 
 		if (positionOfCardToRemove != cardsVisible.end()) { cardsVisible.erase(positionOfCardToRemove); }
 	}
 
-	inline void setUpplayer_handPos(std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck, std::array<Player, 2>& players) {
+	inline void init_player_hands(std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck, std::array<Player, 2>& players) {
 
 		float x = 600;
 		
@@ -53,26 +55,24 @@ namespace c1 {// Used to setup or maintain
 		deck.setPosLastCard({ 376, 503 });	
 	}
 	
-	inline auto findStartingPlayer(std::array<Player, 2> players, Deck& deck) -> int
+	inline auto findStartingPlayer(std::array<Player, 2> players, Deck& deck)
 	{
 		
-		cardValue lowestVal[2] = { cardValue::ACE, cardValue::ACE };
-		
-		const auto mS = Deck::master_suit;
+		card_value lowestVal[2] = { card_value::ACE, card_value::ACE };
 		
 		for (int i = 0; i < 2; ++i) {
 	
-			const auto hSize = players[i].getplayer_handSize();
+			const auto hSize = players[i].get_hand_size();
 			
 			for (int j = 0; j < hSize; ++j) {
 	
-				if (players[i].getplayer_handIndex(j)->Suit == mS && players[i].getplayer_handIndex(j)->Value < lowestVal[i])	{
+				if (players[i].from_hand_by_index(j)->Suit == Deck::master_suit && players[i].from_hand_by_index(j)->Value < lowestVal[i]) {
 		
-					lowestVal[i] = players[i].getplayer_handIndex(j)->Value;
+					lowestVal[i] = players[i].from_hand_by_index(j)->Value;
 				}
 			}
 		}
-		if (lowestVal[0] == cardValue::ACE && lowestVal[1] == cardValue::ACE){ // This is to randomise the starting player if neither has a master suit
+		if (lowestVal[0] == card_value::ACE && lowestVal[1] == card_value::ACE){ // This is to randomise the starting player if neither has a master suit
 		
 			return rand() % 2 + 1;
 		}
@@ -87,28 +87,30 @@ namespace c1 {// Used to setup or maintain
 	
 		auto pTurn = mg.getPTurn();
 		
-		for (int i = 0; i < players[pTurn].getplayer_handSize(); ++i) {
+		for (int i = 0; i < players[pTurn].get_hand_size(); ++i) {
 		
-			auto card = players[pTurn].getplayer_handIndex(i);
+			auto card = players[pTurn].from_hand_by_index(i);
 			
 			card->canBeTouched = true;
 			
-			players[pTurn].setplayer_handIndex(card, i);
+			players[pTurn].set_hand_by_index(card, i);
 		}
 		
 		auto otherPlayer = (pTurn + 1) % 2;
 	
-		for (int i = 0; i < players[otherPlayer].getplayer_handSize(); ++i) {
+		for (int i = 0; i < players[otherPlayer].get_hand_size(); ++i) {
 		
-			auto card = players[otherPlayer].getplayer_handIndex(i);
+			auto card = players[otherPlayer].from_hand_by_index(i);
 	
 			card->canBeTouched = false;
 	
-			players[otherPlayer].setplayer_handIndex(card, i);
+			players[otherPlayer].set_hand_by_index(card, i);
 		}
 	}
 	
 	inline void bringCardOneToTop(std::shared_ptr<Card> cardOne, std::shared_ptr<Card> cardTwo, std::vector<std::shared_ptr<Card>>& cardsVisible) {
+
+		assert(cardsVisible.size() > 1);
 	
 		auto cOnePos = std::find(cardsVisible.begin(), cardsVisible.end(), cardOne);
 	
@@ -117,8 +119,10 @@ namespace c1 {// Used to setup or maintain
 		if (cOnePos < cTwoPos) { std::iter_swap(cOnePos, cTwoPos); }		
 	}	
 	
-	inline void removeTableFromVisibleVec(Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible) {
+	inline void remove_table_from_visible_vector(Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible) {
 	
+		assert(cardsVisible.size() >= table.get_amount_of_card_in_table());
+
 		const std::array<std::array<std::shared_ptr<Card>, 2>, 6> _Table = table.getEntireTable();
 		
 		for (const auto& i : _Table) {
@@ -126,22 +130,24 @@ namespace c1 {// Used to setup or maintain
 			for (int j = 0; j < 2; ++j)	{
 			
 				if (i[j] != nullptr) {
-				
 
 					auto posInCardsVisible = std::find(cardsVisible.begin(), cardsVisible.end(), i[j]);
+
 					if (posInCardsVisible != cardsVisible.end()) 
-						cardsVisible.erase(posInCardsVisible);
-					
+						cardsVisible.erase(posInCardsVisible);					
 				}
 			}
 		}
 	}
 			
-	inline bool doesDeckHaveEnoughCardsRemaining(Deck& deck, const int numOfCardsNeeded) {
-	
+	inline bool deck_has_enough_cards_left(Deck& deck, const int numOfCardsNeeded) {
+		
+		assert(deck.getDeckSize() > 0, numOfCardsNeeded > -1);
+
 		int deckSize = deck.getDeckSize();
 	
-		if ((deckSize - numOfCardsNeeded) > 0) { return true; }
+		if ((deckSize - numOfCardsNeeded) >= 0) 
+			return true; 
 	
 		return false;
 	}
@@ -150,11 +156,11 @@ namespace c1 {// Used to setup or maintain
 	
 		for (int i = 0; i < 2; ++i) {
 		
-			const auto cardsNeeded = (6 - players[i].getplayer_handSize());
+			const auto cardsNeeded = (6 - players[i].get_hand_size());
 			
 			if (deck.getDeckSize()) { // code below will not run if deckSize == 0;
 			
-				if (doesDeckHaveEnoughCardsRemaining(deck, cardsNeeded) && static_cast<int>(players[i].getplayer_handSize()) < 6) {
+				if (deck_has_enough_cards_left(deck, cardsNeeded) && static_cast<int>(players[i].get_hand_size()) < 6) {
 				
 					for (auto j = 0; j < cardsNeeded; ++j) {
 					
@@ -169,7 +175,7 @@ namespace c1 {// Used to setup or maintain
 						cardsVisible.push_back(card);
 					}
 				}
-			}					
+			}
 		}
 	}	
 }

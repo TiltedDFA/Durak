@@ -14,6 +14,7 @@
 #include "raymath.h"
 #include <fstream>
 #include <iterator>
+#include <cassert>
 constexpr auto fileName = "SAVE.txt";// This globally declares the filename
 constexpr auto screenWidth = 1920;// This globally declares screenwidth
 constexpr auto screenHeight = 1050; // This globallydeclares the screenheight
@@ -26,7 +27,7 @@ enum class card_suit //This sets up the card's suits
 	CLUBS,
 };
 //-------------------------------------------------------------------------------------------------------------
-enum class cardValue // This sets up the card's values
+enum class card_value // This sets up the card's values
 {
 	TWO = 2,
 	THREE,
@@ -56,9 +57,9 @@ public:
 	bool inDefTablePile = false;
 
 	card_suit Suit{};
-	cardValue Value{};	
+	card_value Value{};	
 	static std::string suitToString(const card_suit&); // A fucntion that converts the enumarated values to a string(Which can be used to display)
-	static std::string valueToString(const cardValue&);
+	static std::string valueToString(const card_value&);
 	void displayCardWithValueText(const std::shared_ptr<Card>& card);
 };
 //-------------------------------------------------------------------------------------------------------------
@@ -75,15 +76,15 @@ public:
 
 	std::shared_ptr<Card> dealCard();
 
-	const std::shared_ptr<Card>& getLastCard();
+	const std::shared_ptr<Card>& getLastCard()noexcept;
 	void setPosLastCard(const Vector2& pos);
 
-	const std::shared_ptr<Card>& getTopOfVisDeck();
+	const std::shared_ptr<Card>& getTopOfVisDeck()noexcept;
 	void setPosTopCardDeck(const Vector2& pos);
 
 	void setmaster_suit(card_suit suit);	
 		
-	int getDeckSize();
+	int getDeckSize()noexcept;
 };
 //-------------------------------------------------------------------------------------------------------------
 class Player
@@ -97,15 +98,15 @@ public:
 	Player();
 	~Player();
 	void addToplayer_hand(std::shared_ptr<Card> cardToAdd);
-	std::shared_ptr<Card> getplayer_handIndex(const int index);
-	std::size_t getplayer_handSize();
-	bool isPlyrAtk();
+	std::shared_ptr<Card> from_hand_by_index(const int index)noexcept;
+	std::size_t get_hand_size()noexcept;
+	bool isPlyrAtk() noexcept;
 	void setPlyrAtk(bool bol);
-	std::vector<std::shared_ptr<Card>> getEntireHand();
+	std::vector<std::shared_ptr<Card>> getEntireHand()noexcept;
 	void setEntireHand(std::vector<std::shared_ptr<Card>> hand);
-	void setplayer_handIndex(std::shared_ptr<Card> card, const int index);
-	void set_player_winstate(bool has_won);
-	const bool get_player_winstate();
+	void set_hand_by_index(std::shared_ptr<Card> card, const int index);
+	void set_player_winstate(bool has_won)noexcept;
+	const bool get_player_winstate()noexcept;
 };
 //-------------------------------------------------------------------------------------------------------------
 class Table
@@ -117,11 +118,11 @@ public:
 	~Table();
 	void addCardToTableAtk(std::shared_ptr<Card> card, const int pNum);
 	void addCardToTableDef(std::shared_ptr<Card> card, const int pNum);
-	std::shared_ptr<Card> getCardFromTableAtk(const int index);
-	std::shared_ptr<Card> getCardFromTableDef(const int index);
-	std::array<std::array<std::shared_ptr<Card>, 2>, 6>& getEntireTable();
+	std::shared_ptr<Card> getCardFromTableAtk(const int index)noexcept;
+	std::shared_ptr<Card> getCardFromTableDef(const int index)noexcept;
+	std::array<std::array<std::shared_ptr<Card>, 2>, 6>& getEntireTable()noexcept;
 	void setEntireTable(std::array<std::array<std::shared_ptr<Card>, 2>, 6> table);
-	const int getNumCardsOnTable();
+	const int get_amount_of_card_in_table()noexcept;
 };
 //-------------------------------------------------------------------------------------------------------------
 class Discardediscarded_cards
@@ -131,7 +132,7 @@ private:
 public:
 	Discardediscarded_cards();
 	~Discardediscarded_cards();
-	void addToPile(std::shared_ptr<Card> card);
+	void addToPile(std::shared_ptr<Card> card)noexcept;
 };
 //-------------------------------------------------------------------------------------------------------------
 class MainGame
@@ -141,7 +142,7 @@ private:
 	unsigned int _round = 0;
 	unsigned short int cardsPlayedThisPass = 0;	
 public:
-	int getRound();
+	int getRound()noexcept;
 
 	
 	void incramentRound();
@@ -149,9 +150,9 @@ public:
 
 	void setPTurn(const int player);
 	void switchPTurn();
-	const int getPTurn();
+	const int getPTurn()noexcept;
 
-	const unsigned short int getCardsPlayed();
+	const unsigned short int getCardsPlayed()noexcept;
 	void setCardsPlayed(const unsigned short int played);
 	void resetCardsPlayed();
 	void incramentCardsPlayed();

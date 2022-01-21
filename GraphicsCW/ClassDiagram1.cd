@@ -49,7 +49,7 @@
       <FileName>Class.hpp</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="cardValue">
+  <Enum Name="card_value">
     <Position X="6.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAABABAAJAiAAAAAABIAAAAAAAAABAQgBAAAg=</HashCode>
