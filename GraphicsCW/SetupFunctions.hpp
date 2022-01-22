@@ -65,9 +65,9 @@ namespace c1 {// Used to setup or maintain
 			
 			for (int j = 0; j < players[i].get_hand_size(); ++j) {
 	
-				if (players[i].from_hand_by_index(j)->Suit == Deck::master_suit && players[i].from_hand_by_index(j)->Value < lowestVal[i]) {
+				if (players[i].from_hand_by_index(j)->get_card_suit() == Deck::master_suit && players[i].from_hand_by_index(j)->get_card_value() < lowestVal[i]) {
 		
-					lowestVal[i] = players[i].from_hand_by_index(j)->Value;
+					lowestVal[i] = players[i].from_hand_by_index(j)->get_card_value();
 				}
 			}
 		}

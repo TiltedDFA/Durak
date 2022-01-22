@@ -43,12 +43,29 @@ std::string Card::valueToString(const card_value& value)
 }
 void Card::displayCardWithValueText(const std::shared_ptr<Card>& card)
 {
-	std::string cValStr = (static_cast<int>(card->Value) > 10) ? card->valueToString(card->Value) : std::to_string(static_cast<int>(card->Value));
-	std::string cSuitStr = card->suitToString(card->Suit);
+	const std::string cValStr = (static_cast<int>(card->Value) > 10) ? card->valueToString(card->Value) : std::to_string(static_cast<int>(card->Value));
+	const std::string cSuitStr = card->suitToString(card->Suit);
 	DrawText(cValStr.c_str(), static_cast<int>((card->card_position.x + 10)), static_cast<int>((card->card_position.y + 65)), 20, BLACK);
 	DrawText(cSuitStr.c_str(), static_cast<int>((card->card_position.x + 10)), static_cast<int>((card->card_position.y + 95)), 20, BLACK);
 
 }
+void Card::set_card_value(const card_value& value) {
+
+	Value = value;
+}
+void Card::set_card_suit(const card_suit& suit) {
+
+	Suit = suit;
+}
+card_value Card::get_card_value()noexcept{
+
+	return Value;
+}
+card_suit Card::get_card_suit()noexcept{
+
+	return Suit;
+}
+
 //-------------------------------------------------------------------------------------------------------------
 Deck::Deck()
 {		
@@ -73,8 +90,8 @@ Deck::Deck(const int deckSize){
 		for (int j = 0; j < 4; ++j) // 4 is for the four suits
 		{
 			std::shared_ptr<Card> C = std::make_shared<Card>(); //This declares a card pointer and allocates it to the heap
-			C->Value = static_cast<card_value>(i + 2); //This is to make up for the array indexing 
-			C->Suit = static_cast<card_suit>(j + 1); // As is this 
+			C->set_card_value(static_cast<card_value>(i + 2)); //This is to make up for the array indexing 
+			C->set_card_suit(static_cast<card_suit>(j + 1)); // As is this 
 			deck.emplace_back(C);
 		}
 	}

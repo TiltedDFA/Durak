@@ -53,7 +53,7 @@ namespace c2 {// This namespace is for game functions
 				
 		for (const auto& i : cardsOnTable) 
 			for (int j = 0; j < 2; ++j)
-				if (i[j] != nullptr) { ++l; if (i[j]->Value == card->Value) { return true; } }		
+				if (i[j] != nullptr) { ++l; if (i[j]->get_card_value() == card->get_card_value()) { return true; } }		
 
 		if (!l)
 			return true;
@@ -66,10 +66,10 @@ namespace c2 {// This namespace is for game functions
 		if (card_two == nullptr)
 			return false;
 
-		if (card_one != nullptr && card_two == nullptr || card_one->Suit == Deck::master_suit && card_two->Suit != Deck::master_suit) // This code assumes that the only cards that will be passed to the function will be from the table
+		if (card_one != nullptr && card_two == nullptr || card_one->get_card_suit() == Deck::master_suit && card_two->get_card_suit() != Deck::master_suit) // This code assumes that the only cards that will be passed to the function will be from the table
 			return true;
 
-		if (card_one->Suit == card_two->Suit && card_one->Value > card_two->Value)  
+		if (card_one->get_card_suit() == card_two->get_card_suit() && card_one->get_card_value() > card_two->get_card_value())  
 			return true; 
 
 		return false;
@@ -331,21 +331,21 @@ constexpr auto sameSuitConst = 1.0f;
 		
 		const card_suit ms = Deck::master_suit;
 		
-		if (cardUsedToDefend->Suit != cardToDefend->Suit && cardUsedToDefend->Suit != ms) {  //Different suits and non ms 
+		if (cardUsedToDefend->get_card_suit() != cardToDefend->get_card_suit() && cardUsedToDefend->get_card_suit() != ms) {  //Different suits and non ms 
 		
 			return ZeroValue;
 		}
-		else if (cardUsedToDefend->Suit == cardToDefend->Suit && cardUsedToDefend->Value < cardToDefend->Value) { //same suit lower value
+		if (cardUsedToDefend->get_card_suit() == cardToDefend->get_card_suit() && cardUsedToDefend->get_card_value() < cardToDefend->get_card_value()) { //same get_card_suit() lower get_card_value()
 		
 			return ZeroValue;
 		}
-		else if (cardUsedToDefend->Suit == ms && cardToDefend->Suit != ms) {//Master suit vs non ms 
+		if (cardUsedToDefend->get_card_suit() == ms && cardToDefend->get_card_suit() != ms) {//Master suit vs non ms 
 		
-			return (static_cast<float>(cardUsedToDefend->Value) + MSValue);
+			return (static_cast<float>(cardUsedToDefend->get_card_value()) + MSValue);
 		}
-		else if (cardUsedToDefend->Suit == cardToDefend->Suit && cardUsedToDefend->Value > cardToDefend->Value) {//Same suit higher val
+		if (cardUsedToDefend->get_card_suit() == cardToDefend->get_card_suit() && cardUsedToDefend->get_card_value() > cardToDefend->get_card_value()) {//Same get_card_suit() higher val
 		
-			return (static_cast<float>(cardUsedToDefend->Value) - static_cast<float>(cardToDefend->Value));
+			return (static_cast<float>(cardUsedToDefend->get_card_value()) - static_cast<float>(cardToDefend->get_card_value()));
 		}
 		return 9999999999999999999;
 	}	
@@ -430,11 +430,11 @@ constexpr auto sameSuitConst = 1.0f;
 		
 		auto mS = Deck::master_suit; //The master suit
 		
-		std::sort(hand.begin(), hand.end(), [](std::shared_ptr<Card>a, std::shared_ptr<Card>b)->bool { return (a->Value < b->Value);});
+		std::sort(hand.begin(), hand.end(), [](std::shared_ptr<Card>a, std::shared_ptr<Card>b)->bool { return (a->get_card_value() < b->get_card_value());});
 		
 		for (int i = 0; i < players[0].get_hand_size(); ++i) {
 	
-			if (hand[i]->Suit != mS &&  c2::can_attacker_attack(table, hand[i])) {
+			if (hand[i]->get_card_suit() != mS &&  c2::can_attacker_attack(table, hand[i])) {
 
 				auto x = c2::findEmptyTablePile(table);
 
@@ -534,7 +534,7 @@ constexpr auto sameSuitConst = 1.0f;
 namespace c5 {
 	inline bool trump_suit_checker(std::shared_ptr<Card>&Card) {
 
-		return (Card->Suit == Deck::master_suit) ? true : false;
+		return (Card->get_card_suit() == Deck::master_suit) ? true : false;
 	}
 	
 }

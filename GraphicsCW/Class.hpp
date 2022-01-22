@@ -46,6 +46,8 @@ enum class card_value // This sets up the card's values
 //-------------------------------------------------------------------------------------------------------------
 class Card // This is the card class, The majourity of the game is based around it
 {
+	card_suit Suit{};
+	card_value Value{};
 public:
 	Card();
 	~Card();
@@ -56,11 +58,15 @@ public:
 	bool canBeTouched = true;
 	bool inDefTablePile = false;
 
-	card_suit Suit{};
-	card_value Value{};	
 	static std::string suitToString(const card_suit&); // A fucntion that converts the enumarated values to a string(Which can be used to display)
 	static std::string valueToString(const card_value&);
 	void displayCardWithValueText(const std::shared_ptr<Card>& card);
+
+	void set_card_value(const card_value& value);
+	void set_card_suit(const card_suit& suit);
+
+	card_value get_card_value()noexcept;
+	card_suit get_card_suit()noexcept;
 };
 //-------------------------------------------------------------------------------------------------------------
 class Deck

@@ -106,7 +106,7 @@ int main()
 
 	else { players[1].setPlyrAtk(true); mainGame.setPTurn(1); }
 
-	deck.setmaster_suit(deck.getLastCard()->Suit);
+	deck.setmaster_suit(deck.getLastCard()->get_card_suit());
 
 	while (!WindowShouldClose())
 	{
