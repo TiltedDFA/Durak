@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <array>
 #include <cmath>
+#include <cstdlib>
+#include <ctime>
 #include <iostream>
 #include <memory>
 #include <random>
@@ -44,10 +46,12 @@ enum class card_value // This sets up the card's values
 	ACE,
 };
 //-------------------------------------------------------------------------------------------------------------
+inline int encrypt_data(int data)noexcept { return ~data; }
+//-------------------------------------------------------------------------------------------------------------
 class Card // This is the card class, The majourity of the game is based around it
 {
-	card_suit Suit{};
-	card_value Value{};
+	int Suit{};
+	int Value{};
 public:
 	Card();
 	~Card();
@@ -62,16 +66,16 @@ public:
 	static std::string valueToString(const card_value&);
 	void displayCardWithValueText(const std::shared_ptr<Card>& card);
 
-	void set_card_value(const card_value& value);
-	void set_card_suit(const card_suit& suit);
+	void set_card_value(const int& value);
+	void set_card_suit(const int& suit);
 
-	card_value get_card_value()noexcept;
-	card_suit get_card_suit()noexcept;
+	int get_card_value()noexcept;
+	int get_card_suit()noexcept;
 };
+
 //-------------------------------------------------------------------------------------------------------------
 class Deck
 {
-private:
 	std::vector<std::shared_ptr<Card>> deck;// The deck which is based on an std::shared_ptr system. The shared_ptrs are a type of smart pointers which delete the contents from the heap automatically	
 	// This value detirmins how the game will be played and adds a lot of power to cards of the same suit. The value for this is derived from the visible card.	
 public:

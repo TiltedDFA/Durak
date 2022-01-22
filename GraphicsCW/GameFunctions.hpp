@@ -53,7 +53,7 @@ namespace c2 {// This namespace is for game functions
 				
 		for (const auto& i : cardsOnTable) 
 			for (int j = 0; j < 2; ++j)
-				if (i[j] != nullptr) { ++l; if (i[j]->get_card_value() == card->get_card_value()) { return true; } }		
+				if (i[j] != nullptr) { ++l; if (encrypt_data(i[j]->get_card_value()) == encrypt_data(card->get_card_value())) { return true; } }		
 
 		if (!l)
 			return true;
@@ -66,10 +66,11 @@ namespace c2 {// This namespace is for game functions
 		if (card_two == nullptr)
 			return false;
 
-		if (card_one != nullptr && card_two == nullptr || card_one->get_card_suit() == Deck::master_suit && card_two->get_card_suit() != Deck::master_suit) // This code assumes that the only cards that will be passed to the function will be from the table
+		if (card_one != nullptr && card_two == nullptr || static_cast<card_suit>(encrypt_data(card_one->get_card_suit())) == Deck::master_suit &&
+			static_cast<card_suit>(encrypt_data(card_two->get_card_suit())) != Deck::master_suit) // This code assumes that the only cards that will be passed to the function will be from the table
 			return true;
 
-		if (card_one->get_card_suit() == card_two->get_card_suit() && card_one->get_card_value() > card_two->get_card_value())  
+		if (encrypt_data(card_one->get_card_suit()) == encrypt_data(card_two->get_card_suit()) && encrypt_data(card_one->get_card_value()) > encrypt_data(card_two->get_card_value()))
 			return true; 
 
 		return false;
@@ -320,7 +321,7 @@ namespace c2 {// This namespace is for game functions
 }
 
 namespace c4 { //This will be my finite state machine AI
-
+/*
 constexpr auto ZeroValue = 0.0f;// These are all values that are declared here so they can be tweaked in order finetune the AI
 
 constexpr auto MSValue = 20.0f;
@@ -486,7 +487,8 @@ constexpr auto sameSuitConst = 1.0f;
 				}
 			}
 		}
-		*/	
+		*/
+		
 	/*
 	const double findDefendingEval(std::shared_ptr<Card> cardOne, std::shared_ptr<Card> cardTwo, Deck& deck)
 	{
@@ -534,7 +536,7 @@ constexpr auto sameSuitConst = 1.0f;
 namespace c5 {
 	inline bool trump_suit_checker(std::shared_ptr<Card>&Card) {
 
-		return (Card->get_card_suit() == Deck::master_suit) ? true : false;
+		return (static_cast<card_suit>(encrypt_data(Card->get_card_suit())) == Deck::master_suit) ? true : false;
 	}
 	
 }

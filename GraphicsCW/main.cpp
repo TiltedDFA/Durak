@@ -91,7 +91,7 @@ int main()
 
 	SetWindowIcon(appIcon);
 	
-	srand(time(NULL));
+	
 
 	c2::play_music(musicalNumber, JazzMusic, LoFiMusic, ElectroSwingMusic);
 
@@ -106,7 +106,7 @@ int main()
 
 	else { players[1].setPlyrAtk(true); mainGame.setPTurn(1); }
 
-	deck.setmaster_suit(deck.getLastCard()->get_card_suit());
+	deck.setmaster_suit(static_cast<card_suit>(encrypt_data(deck.getLastCard()->get_card_suit())));
 
 	while (!WindowShouldClose())
 	{
@@ -343,7 +343,7 @@ int main()
 		} 
 	}
 	/*
-	 int precious_data;
+	  int precious_data;
 void save_data_to(int* address, int data) { *address= ~data; }
 int load_data_from(int* address) { return ~(*address); }
 

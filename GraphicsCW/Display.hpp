@@ -351,9 +351,9 @@ namespace c0 {//This is used to display
 
 			DrawTextureEx(blankCard, visibleCard->card_position, 90.0f, 1.0f, WHITE);
 
-			std::string cValStr = (static_cast<int>(visibleCard->get_card_value()) > 10) ? visibleCard->valueToString(visibleCard->get_card_value()) : std::to_string(static_cast<int>(visibleCard->get_card_value()));
+			std::string cValStr = (encrypt_data(visibleCard->get_card_value()) > 10) ? visibleCard->valueToString(static_cast<card_value>(encrypt_data(visibleCard->get_card_value()))) : std::to_string(encrypt_data(visibleCard->get_card_value()));
 
-			std::string cSuitStr = visibleCard->suitToString(visibleCard->get_card_suit());
+			std::string cSuitStr = visibleCard->suitToString(static_cast<card_suit>(encrypt_data(visibleCard->get_card_suit())));
 
 			DrawText(cValStr.c_str(), static_cast<int>((visibleCard->card_position.x - 105)), static_cast<int>((visibleCard->card_position.y + 20)), 30, BLACK);
 
