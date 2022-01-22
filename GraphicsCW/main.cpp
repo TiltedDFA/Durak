@@ -342,6 +342,18 @@ int main()
 		EndDrawing();
 		} 
 	}
+	/*
+	 int precious_data;
+void save_data_to(int* address, int data) { *address= ~data; }
+int load_data_from(int* address) { return ~(*address); }
+
+void main() {
+  save_data_to(&precious_data, 123);
+  // Cheat Engine will see 'precious_data' to be equal to -124
+  do_useful_stuff(load_data_from(&precious_data));
+  // But we can "decode" it to actual value back
+}
+	 */
 	// 36, 948
 	// De-Initialization
 	//--------------------------------------------------------------------------------------
