@@ -24,7 +24,9 @@ namespace c0 {//This is used to display
 	inline void displayPassButtons(std::array<Player, 2>& players, Table& table, MainGame& mg, Texture2D& passLow, Texture2D& passMid, Texture2D& passHigh, Sound& fxButton) {
 		// 1520, 936
 		//CheckCollisionPointRec
-		int cardsPlayedThisRound = mg.getCardsPlayed();		
+		const int cardsPlayedThisRound = mg.getCardsPlayed();		
+
+		assert(cardsPlayedThisRound > -1);
 
 		if (players[mg.getPTurn()].isPlyrAtk() && cardsPlayedThisRound || !players[mg.getPTurn()].isPlyrAtk() && c2::defend_can_pass(table)) {
 	
@@ -63,11 +65,11 @@ namespace c0 {//This is used to display
 	
 		Rectangle buttonHitBox = { 1733, 936, 150, 75 };
 	
-		if (CheckCollisionPointRec(mP, buttonHitBox) && c2::canEndAtk(table)) {
+		if (CheckCollisionPointRec(mP, buttonHitBox) && c2::can_end_attack(table)) {
 		
 			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
 				
-				c2::endAttack(deck, mg, bPile, table, cardsVisible, players);
+				c2::end_attack(deck, mg, bPile, table, cardsVisible, players);
 		
 				DrawTexture(endMid, 1733, 936, WHITE);
 			}
@@ -94,7 +96,7 @@ namespace c0 {//This is used to display
 	
 		if (CheckCollisionPointRec(mP, buttonHitBox)) {
 	
-			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT && !c2::canEndAtk(table))) {
+			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT && !c2::can_end_attack(table))) {
 			
 				c2::takeDefender(players, cardsVisible, deck, table, mg);
 	

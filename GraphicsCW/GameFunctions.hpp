@@ -61,21 +61,21 @@ namespace c2 {// This namespace is for game functions
 		return false;
 	}	
 	
-	inline bool attacking_card_beats_card(const std::shared_ptr<Card>& card_one, const std::shared_ptr<Card>& card_two, Deck& deck) {
-	
-		if (card_one != nullptr && card_two == nullptr) // This code assumes that the only cards that will be passed to the function will be from the table
-			return true; 
+	inline bool attacking_card_beats_card(const std::shared_ptr<Card>& card_one, const std::shared_ptr<Card>& card_two) {
 
-		if (card_one->Suit == Deck::master_suit && card_two->Suit != Deck::master_suit)  
-			return true; 
-		
-		else if (card_one->Suit == card_two->Suit && card_one->Value > card_two->Value)  
+		if (card_two == nullptr)
+			return false;
+
+		if (card_one != nullptr && card_two == nullptr || card_one->Suit == Deck::master_suit && card_two->Suit != Deck::master_suit) // This code assumes that the only cards that will be passed to the function will be from the table
+			return true;
+
+		if (card_one->Suit == card_two->Suit && card_one->Value > card_two->Value)  
 			return true; 
 
 		return false;
 	}
 	
-	inline std::pair<Vector2, int> find_colliding_placement(const std::shared_ptr<Card> card) {
+	inline std::pair<Vector2, int> find_colliding_placement(const std::shared_ptr<Card>& card) {
 
 		std::array<Vector2, 6>pos{};
 
@@ -91,11 +91,11 @@ namespace c2 {// This namespace is for game functions
 
 		pos[5] = { 1300.0,457.0 };
 
-		Rectangle rCard = { card->card_position.x, card->card_position.y, 120, 170 };
+		const Rectangle rCard = { card->card_position.x, card->card_position.y, 120, 170 };
 
 		for (int i = 0; i < 6; ++i) {
 	
-			Rectangle box = { pos[i].x, pos[i].y, 120, 170 };
+			const Rectangle box = { pos[i].x, pos[i].y, 120, 170 };
 			
 			if (CheckCollisionRecs(rCard, box))  
 				return { pos[i], i }; 
@@ -108,7 +108,7 @@ namespace c2 {// This namespace is for game functions
 
 		std::vector<std::shared_ptr<Card>> player_hand = player.getEntireHand();
 
-		auto posInHand = std::find(player_hand.begin(), player_hand.end(), card);
+		const auto posInHand = std::find(player_hand.begin(), player_hand.end(), card);
 
 		if (posInHand != player_hand.end()) {
 	
@@ -155,9 +155,11 @@ namespace c2 {// This namespace is for game functions
 			if (i[1] != nullptr) { ++cardsPlayed.second; }
 		}
 
-		if (!cardsPlayed.first) { return false; }
+		if (!cardsPlayed.first)  
+			return false; 
 	
-		else if (cardsPlayed.first == cardsPlayed.second) { return true; }
+		if (cardsPlayed.first == cardsPlayed.second) 
+			return true; 
 		
 		return false;
 	}
@@ -167,7 +169,7 @@ namespace c2 {// This namespace is for game functions
 		players[0].setPlyrAtk(!players[0].isPlyrAtk()); players[1].setPlyrAtk(!players[1].isPlyrAtk()); 
 	}
 	
-	inline bool canEndAtk(Table& table) {
+	inline bool can_end_attack(Table& table) {
 	
 		const std::array<std::array<std::shared_ptr<Card>, 2>, 6> cardsOnTable = table.getEntireTable();
 		
@@ -178,7 +180,8 @@ namespace c2 {// This namespace is for game functions
 			if (i[0] != nullptr && i[1] != nullptr) { ++completedValues; }
 		}
 	
-		if (completedValues) { return true; }
+		if (completedValues)  
+			return true; 
 		
 		return false;
 	}
@@ -209,13 +212,11 @@ namespace c2 {// This namespace is for game functions
 		table.setEntireTable(cTable);
 	}
 	
-	inline const int check_for_winner(Deck& deck, std::array<Player, 2>& players, Table& table) {
-	
-		const int numCardsTable = table.get_amount_of_card_in_table();
+	inline int check_for_winner(Deck& deck, std::array<Player, 2>& players, Table& table) {		
 
 		for (int i = 0; i < 2; ++i) {
 		
-			if (deck.getDeckSize() == 0 && players[i].get_hand_size() == 0 && numCardsTable == 0) {
+			if (deck.getDeckSize() == 0 && players[i].get_hand_size() == 0 && table.get_amount_of_card_in_table() == 0) {
 				return i;
 			}
 		}
@@ -278,7 +279,7 @@ namespace c2 {// This namespace is for game functions
 		}
 	}
 	
-	inline const int findEmptyTablePile(Table& table) {
+	inline int findEmptyTablePile(Table& table) {
 	
 		std::array<std::array<std::shared_ptr<Card>, 2>, 6> _t = table.getEntireTable();
 		
@@ -287,14 +288,17 @@ namespace c2 {// This namespace is for game functions
 		for (const auto& i : _t) {
 		
 			if (i[0] == nullptr)
+			{
 				++l;
+				break;				
+			}			
 		}
 		return l;
 	}
 	
-	inline void endAttack(Deck& deck, MainGame& mg, Discardediscarded_cards& bPile,Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible, std::array<Player, 2>& players) {
+	inline void end_attack(Deck& deck, MainGame& mg, Discardediscarded_cards& bPile,Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible, std::array<Player, 2>& players) {
 
-		c2::discard_table(bPile, table, cardsVisible);
+		discard_table(bPile, table, cardsVisible);
 
 		c1::remove_table_from_visible_vector(table, cardsVisible);
 
@@ -302,12 +306,12 @@ namespace c2 {// This namespace is for game functions
 
 		mg.switchPTurn();
 
-		c2::switch_player_state(players);
+		switch_player_state(players);
 	}
 
 	inline void takeDefender(std::array<Player, 2>&players, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck, Table& table, MainGame& mg) {
 
-		c2::table_to_hand(players[mg.getPTurn()], table);
+		table_to_hand(players[mg.getPTurn()], table);
 
 		c1::add_need_cards_to_players(players, cardsVisible, deck);
 
@@ -436,7 +440,7 @@ constexpr auto sameSuitConst = 1.0f;
 
 				if (!x) {
 
-					c2::endAttack(deck, mg, bPile, table, cardsVisible, players);
+					c2::end_attack(deck, mg, bPile, table, cardsVisible, players);
 				}
 				else {
 
@@ -449,7 +453,7 @@ constexpr auto sameSuitConst = 1.0f;
 
 				if (!x) {
 
-					c2::endAttack(deck, mg, bPile, table, cardsVisible, players);
+					c2::end_attack(deck, mg, bPile, table, cardsVisible, players);
 				}
 				else {
 
@@ -458,7 +462,7 @@ constexpr auto sameSuitConst = 1.0f;
 			}			
 			else {
 
-				c2::endAttack(deck, mg, bPile, table, cardsVisible, players);
+				c2::end_attack(deck, mg, bPile, table, cardsVisible, players);
 			}
 		}		
 	}

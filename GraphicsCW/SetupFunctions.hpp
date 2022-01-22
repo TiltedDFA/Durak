@@ -4,21 +4,22 @@
 #include "Class.hpp"
 namespace c1 {// Used to setup or maintain
 			
-	inline void addiscarded_cardsToVisibleVec(std::vector<std::shared_ptr<Card>>& cardsVisible, std::shared_ptr<Card> card) {
+	inline void addiscarded_cardsToVisibleVec(std::vector<std::shared_ptr<Card>>& cards_visible, std::shared_ptr<Card> card) {
 		
-		cardsVisible.push_back(card);
+		cards_visible.push_back(card);
 	}
 	
-	inline void removeCardFromVisibleVect(std::vector<std::shared_ptr<Card>>& cardsVisible, std::shared_ptr<Card> card) {
+	inline void removeCardFromVisibleVect(std::vector<std::shared_ptr<Card>>& cards_visible, std::shared_ptr<Card> card) {
 
-		assert(cardsVisible.size() > 0);
+		assert(cards_visible.size() > 0);
 
-		auto positionOfCardToRemove = std::find(cardsVisible.begin(), cardsVisible.end(), card);
+		auto positionOfCardToRemove = std::find(cards_visible.begin(), cards_visible.end(), card);
 
-		if (positionOfCardToRemove != cardsVisible.end()) { cardsVisible.erase(positionOfCardToRemove); }
+		if (positionOfCardToRemove != cards_visible.end()) 
+			cards_visible.erase(positionOfCardToRemove); 
 	}
 
-	inline void init_player_hands(std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck, std::array<Player, 2>& players) {
+	inline void init_player_hands(std::vector<std::shared_ptr<Card>>& cards_visible, Deck& deck, std::array<Player, 2>& players) {
 
 		float x = 600;
 		
@@ -36,7 +37,7 @@ namespace c1 {// Used to setup or maintain
 
 			players[0].addToplayer_hand(card);
 
-			cardsVisible.push_back(card);
+			cards_visible.push_back(card);
 		}
 	
 		y = 840;
@@ -49,22 +50,20 @@ namespace c1 {// Used to setup or maintain
 
 			players[1].addToplayer_hand(card);
 
-			cardsVisible.push_back(card);
+			cards_visible.push_back(card);
 		}		
 
 		deck.setPosLastCard({ 376, 503 });	
 	}
 	
-	inline auto findStartingPlayer(std::array<Player, 2> players, Deck& deck)
+	inline auto findStartingPlayer(std::array<Player, 2> players)
 	{
 		
 		card_value lowestVal[2] = { card_value::ACE, card_value::ACE };
 		
-		for (int i = 0; i < 2; ++i) {
-	
-			const auto hSize = players[i].get_hand_size();
+		for (int i = 0; i < 2; ++i) {			
 			
-			for (int j = 0; j < hSize; ++j) {
+			for (int j = 0; j < players[i].get_hand_size(); ++j) {
 	
 				if (players[i].from_hand_by_index(j)->Suit == Deck::master_suit && players[i].from_hand_by_index(j)->Value < lowestVal[i]) {
 		
@@ -80,7 +79,8 @@ namespace c1 {// Used to setup or maintain
 		
 			return 1;
 		}
-		else { return 0; }
+
+		return 0; 
 	}
 	
 	inline void lockCardsInHand(std::array<Player, 2>players, MainGame mg) {
@@ -108,20 +108,20 @@ namespace c1 {// Used to setup or maintain
 		}
 	}
 	
-	inline void bringCardOneToTop(std::shared_ptr<Card> cardOne, std::shared_ptr<Card> cardTwo, std::vector<std::shared_ptr<Card>>& cardsVisible) {
+	inline void bringCardOneToTop(std::shared_ptr<Card> cardOne, std::shared_ptr<Card> cardTwo, std::vector<std::shared_ptr<Card>>& cards_visible) {
 
-		assert(cardsVisible.size() > 1);
+		assert(cards_visible.size() > 1);
 	
-		auto cOnePos = std::find(cardsVisible.begin(), cardsVisible.end(), cardOne);
+		auto cOnePos = std::find(cards_visible.begin(), cards_visible.end(), cardOne);
 	
-		auto cTwoPos = std::find(cardsVisible.begin(), cardsVisible.end(), cardTwo);
+		auto cTwoPos = std::find(cards_visible.begin(), cards_visible.end(), cardTwo);
 	
 		if (cOnePos < cTwoPos) { std::iter_swap(cOnePos, cTwoPos); }		
 	}	
 	
-	inline void remove_table_from_visible_vector(Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible) {
+	inline void remove_table_from_visible_vector(Table& table, std::vector<std::shared_ptr<Card>>& cards_visible) {
 	
-		assert(cardsVisible.size() >= table.get_amount_of_card_in_table());
+		assert(cards_visible.size() >= table.get_amount_of_card_in_table());
 
 		const std::array<std::array<std::shared_ptr<Card>, 2>, 6> _Table = table.getEntireTable();
 		
@@ -131,10 +131,10 @@ namespace c1 {// Used to setup or maintain
 			
 				if (i[j] != nullptr) {
 
-					auto posInCardsVisible = std::find(cardsVisible.begin(), cardsVisible.end(), i[j]);
+					auto posInCardsVisible = std::find(cards_visible.begin(), cards_visible.end(), i[j]);
 
-					if (posInCardsVisible != cardsVisible.end()) 
-						cardsVisible.erase(posInCardsVisible);					
+					if (posInCardsVisible != cards_visible.end()) 
+						cards_visible.erase(posInCardsVisible);					
 				}
 			}
 		}
@@ -152,7 +152,7 @@ namespace c1 {// Used to setup or maintain
 		return false;
 	}
 	
-	inline void add_need_cards_to_players(std::array<Player, 2>&players, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck) {		
+	inline void add_need_cards_to_players(std::array<Player, 2>&players, std::vector<std::shared_ptr<Card>>& cards_visible, Deck& deck) {		
 	
 		for (int i = 0; i < 2; ++i) {
 		
@@ -172,7 +172,7 @@ namespace c1 {// Used to setup or maintain
 						
 						players[i].addToplayer_hand(card);
 						
-						cardsVisible.push_back(card);
+						cards_visible.push_back(card);
 					}
 				}
 			}
@@ -235,8 +235,7 @@ namespace c3  {// C3 will be for reading and writing to files (for settings)
 			
 			default:
 		
-				throw std::runtime_error("unexpected musical Value input");
-			
+				save_file << "\n1";
 				break;
 			}
 			
@@ -244,7 +243,7 @@ namespace c3  {// C3 will be for reading and writing to files (for settings)
 		}
 	}		
 	
-	inline const int getDeckSize() {
+	inline int getDeckSize() {
 		
 		std::ifstream save_file(fileName, std::ios::in);
 	
@@ -264,10 +263,10 @@ namespace c3  {// C3 will be for reading and writing to files (for settings)
 		if (size == "36")
 			return 36;
 	
-		else if (size == "52")
+		if (size == "52")
 			return 52;
 		
-		else return 0;
+		return 0;
 	}
 	
 	inline void setMusicalNumber(const int num, const int currentDeckSize) {
@@ -313,7 +312,7 @@ namespace c3  {// C3 will be for reading and writing to files (for settings)
 		}
 	}	
 	
-	inline const int getMusicNumber() {
+	inline int getMusicNumber() {
 		
 		std::ifstream save_file(fileName, std::ios::in);
 	

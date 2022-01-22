@@ -102,10 +102,12 @@ int main()
 
 	deck.setPosTopCardDeck({ 153, 470 });
 
-	if (c1::findStartingPlayer(players, deck) == 0) { players[0].setPlyrAtk(true); mainGame.setPTurn(0); }
-	
+	if (c1::findStartingPlayer(players) == 0) {players[0].setPlyrAtk(true); mainGame.setPTurn(0); }
+
 	else { players[1].setPlyrAtk(true); mainGame.setPTurn(1); }
+
 	deck.setmaster_suit(deck.getLastCard()->Suit);
+
 	while (!WindowShouldClose())
 	{
 		c2::continuePlayingMusic(musicalNumber, JazzMusic, LoFiMusic, ElectroSwingMusic);
@@ -140,8 +142,6 @@ int main()
 			DrawCircleV(GetMousePosition(), 10, WHITE);
 
 			EndDrawing();			
-
-
 
 			for (int i = 0; i < cardsVisible.size(); ++i)
 			{
@@ -209,7 +209,7 @@ int main()
 							}
 							else if (!players[mainGame.getPTurn()].isPlyrAtk()) {
 								
-								if (c2::attacking_card_beats_card(cardsVisible[i], table.getCardFromTableAtk(box.second), deck)) {									
+								if (c2::attacking_card_beats_card(cardsVisible[i], table.getCardFromTableAtk(box.second))) {									
 							
 									cardsVisible[i]->card_position = Vector2Add(cardsVisible[i]->card_position, { 40,40 });
 						
@@ -267,20 +267,11 @@ int main()
 	
 			std::string win;
 		
-			switch (players[0].get_player_winstate()) {
-		
-			case true:
-			
+			if(players[0].get_player_winstate())
 				win = "The Bot Wins";
-				
-				break;
-		
-			case false:
-			
-				win = "Well Done, You win!";
-				
-				break;								
-			}
+
+			else
+				win = "Well Done, You win!";		
 		
 		BeginDrawing();
 	
@@ -292,9 +283,7 @@ int main()
 		}
 		//---------------------------------------------------------------------------------
 		else if (screens[3].first) {// Settings Screen;
-	
-		Vector2 mP = GetMousePosition();
-	
+		
 		const int deckSize = c3::getDeckSize(); // This reads the current deckSize from the file
 		
 		const int musicSelection = c3::getMusicNumber();
@@ -339,9 +328,7 @@ int main()
 
 		default:
 
-			throw std::runtime_error("Unexpected DeckSize");
-
-			break;
+			throw std::runtime_error("Unexpected DeckSize");		
 		}		
 
 		c0::displayMusicButtons(NoMusic, JMusic, LMusic, eSwingMusic, JazzMusic, LoFiMusic, ElectroSwingMusic, musicSelection, deckSize, musicalNumber);
