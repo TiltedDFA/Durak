@@ -46,7 +46,7 @@ enum class card_value // This sets up the card's values
 	ACE,
 };
 //-------------------------------------------------------------------------------------------------------------
-inline int encrypt_data(int data)noexcept { return ~data; }
+inline int encrypt_data(int data)noexcept{ return ~data; }
 //-------------------------------------------------------------------------------------------------------------
 class Card // This is the card class, The majourity of the game is based around it
 {

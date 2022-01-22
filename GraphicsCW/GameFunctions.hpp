@@ -320,7 +320,7 @@ namespace c2 {// This namespace is for game functions
 	}
 }
 
-namespace c4 { //This will be my finite state machine AI
+//namespace c4 { //This will be my finite state machine AI
 /*
 constexpr auto ZeroValue = 0.0f;// These are all values that are declared here so they can be tweaked in order finetune the AI
 
@@ -531,9 +531,9 @@ constexpr auto sameSuitConst = 1.0f;
 		//return std::vector<std::shared_ptr<Card>::;
 	}
 	*/
-}
+//}
 
-namespace c5 {
+namespace c4 {
 	inline bool trump_suit_checker(std::shared_ptr<Card>&Card) {
 
 		return (static_cast<card_suit>(encrypt_data(Card->get_card_suit())) == Deck::master_suit) ? true : false;

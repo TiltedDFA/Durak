@@ -276,7 +276,9 @@ int main()
 		BeginDrawing();
 	
 		ClearBackground(RAYWHITE);
-	
+
+		DrawRectangle(0, 0, 1920, 1080, BLUE);
+
 		DrawText(win.c_str(), (screenWidth / 2), screenHeight / 2, 50, WHITE);
 		
 		EndDrawing();
