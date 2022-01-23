@@ -170,8 +170,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Class.cpp" />
+    <ClCompile Include="Card.cpp" />
+    <ClCompile Include="Deck.cpp" />
+    <ClCompile Include="Discardedcards.cpp" />
+    <ClCompile Include="Display.cpp" />
+    <ClCompile Include="File.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Maingame.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Setup.cpp" />
+    <ClCompile Include="Table.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\build\raylib.vcxproj">
@@ -179,11 +188,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Class.hpp" />
+    <ClInclude Include="Card.hpp" />
+    <ClInclude Include="Deck.hpp" />
+    <ClInclude Include="Discardedcards.hpp" />
     <ClInclude Include="Display.hpp" />
-    <ClInclude Include="GameFunctions.hpp" />
-    <ClInclude Include="SetupFunctions.hpp" />
-    <ClInclude Include="textures.hpp" />
+    <ClInclude Include="File.hpp" />
+    <ClInclude Include="Includes.hpp" />
+    <ClInclude Include="Maingame.hpp" />
+    <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Game.hpp" />
+    <ClInclude Include="Setup.hpp" />
+    <ClInclude Include="Table.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="DevLog.txt" />

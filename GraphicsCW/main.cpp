@@ -1,5 +1,4 @@
 #include "Display.hpp"
-#include "textures.hpp"
 
 int main()
 {
@@ -11,6 +10,14 @@ int main()
 	SetTargetFPS(90);//This sets the target framerate	
 
 	//---------------------------------------------------------------------------------------
+	Rectangle playButton = { 773, 509, 287, 105 };
+
+	Rectangle settingsButton = { 773, 754, 287, 105 };
+
+	Vector2 mP = { 0.0f,0.0f }; //This is to store the mouse position
+
+	std::array<std::pair<bool, std::string>, 4> screens;
+
 
 	screens[0].first = true; screens[0].second = "Title Screen";
 
