@@ -220,7 +220,7 @@ namespace c2 {// This namespace is for game functions
 		return 2;
 	}
 
-	extern inline void play_music(const int music_number, Music& JazzMusic, Music& LofiMusic, Music& eSwingMusic) {
+	extern inline void play_music(const int music_number, const  Music& JazzMusic, const Music& LofiMusic, const  Music& eSwingMusic) {
 
 		switch (music_number) {
 

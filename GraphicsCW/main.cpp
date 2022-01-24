@@ -34,6 +34,8 @@ int main()
 	bool hC = false; //This variable is used primarily in the system that controlls the amnt of cards you pick up 	
 					 //bool winScreen = false; //This is also for the system 	
 	int musicalNumber = c3::getMusicNumber();
+
+	bool pirivadnoy = c3::get_pirivadnoy_state();
 	
 	Deck deck(c3::getDeckSize());
 	
@@ -122,8 +124,8 @@ int main()
 		hC = false;
 		if (screens[1].first) // Main Game Screen;
 		{
-			if (c2::check_for_winner(deck, players, table) != 2) {  players[c2::check_for_winner(deck, players, table)].set_player_winstate(true); screens[1].first = !screens[1].first; screens[2].first = !screens[2].first; }
-			
+			if (c2::check_for_winner(deck, players, table) != 2) { players[c2::check_for_winner(deck, players, table)].set_player_winstate(true); screens[1].first = !screens[1].first; screens[2].first = !screens[2].first; }
+
 			c1::lockCardsInHand(players, mainGame);
 
 			BeginDrawing();
@@ -132,23 +134,23 @@ int main()
 
 			DrawTexture(progTable, 0, 0, WHITE);
 
-			c0::displayPassButtons(players, table, mainGame, PassButtonLow, PassButtonMid, PassButtonHigh, fxButton);	
+			c0::displayPassButtons(players, table, mainGame, PassButtonLow, PassButtonMid, PassButtonHigh, fxButton);
 
 			if (players[mainGame.getPTurn()].isPlyrAtk()) { c0::displayEndButtons(players, mainGame, EndButtonLow, EndButtonMid, EndButtonHigh, fxButton, bPile, table, cardsVisible, deck); }
 
-			else { c0::displayTakeButtons(deck, cardsVisible, players, mainGame, table, TakeButtonHigh, TakeButtonMid, TakeButtonLow); }			
+			else { c0::displayTakeButtons(deck, cardsVisible, players, mainGame, table, TakeButtonHigh, TakeButtonMid, TakeButtonLow); }
 
 			c0::displayPlayerState(AtkHigh, AtkLow, DefHigh, DefLow, players[1].isPlyrAtk());
 
-			c0::cTable(cardsVisible, CardBacking, blankCard);			
+			c0::cTable(cardsVisible, CardBacking, blankCard);
 
-			if (deck.getDeckSize()) { c0::displaySpecialCards(deck, CardBacking,blankCard); }
+			if (deck.getDeckSize()) { c0::displaySpecialCards(deck, CardBacking, blankCard); }
 
 			c0::displayWhosTurnItIs(mainGame);
 
 			DrawCircleV(GetMousePosition(), 10, WHITE);
 
-			EndDrawing();			
+			EndDrawing();
 
 			for (int i = 0; i < cardsVisible.size(); ++i)
 			{
@@ -159,75 +161,75 @@ int main()
 					if (!hC)
 					{
 						if (CheckCollisionPointRec(mP, card) && IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
-						
+
 							hC = true;
-					
+
 							cardsVisible[i]->is_card_face_up = !cardsVisible[i]->is_card_face_up; // this function changes the state of the card in the cardsVisible pointer vector
-						
+
 						}
-					
+
 						if (CheckCollisionPointRec(mP, card) && IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
-					
+
 							hC = true;
-						
+
 							cardsVisible[i]->cardIsHeld = true;
-							
+
 							Vector2 mD = GetMouseDelta();
-							
+
 							cardsVisible[i]->card_position.x = (cardsVisible[i]->card_position.x + mD.x);
-							
+
 							cardsVisible[i]->card_position.y = (cardsVisible[i]->card_position.y + mD.y);
-						
+
 						}
 						if (!CheckCollisionPointRec(mP, card) && !IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-						
-							cardsVisible[i]->cardIsHeld = false;					
+
+							cardsVisible[i]->cardIsHeld = false;
 						}
-					}					
+					}
 					if (!cardsVisible[i]->cardIsHeld && !cardsVisible[i]->inDefTablePile) {
-						
+
 						int overlap = c2::collision_percent_finder(50, cardsVisible[i]);
-					
+
 						if (overlap >= 50) {
-							
+
 							auto box = c2::find_colliding_placement(cardsVisible[i]);
-							
+
 							cardsVisible[i]->card_position = box.first;
-						
+
 							if (players[mainGame.getPTurn()].isPlyrAtk() && table.getCardFromTableAtk(box.second) == nullptr) {
-						
+
 								if (overlap == 100)
 								{
-						
-									if (c2::can_attacker_attack(table, cardsVisible[i]) && table.getCardFromTableAtk(box.second) == nullptr) {																			
-								
+
+									if (c2::can_attacker_attack(table, cardsVisible[i]) && table.getCardFromTableAtk(box.second) == nullptr) {
+
 										cardsVisible[i]->canBeTouched = false;
-										
+
 										c2::hand_to_table(players[mainGame.getPTurn()], table, cardsVisible[i], box.second);
-										
-										mainGame.incramentCardsPlayed();									
+
+										mainGame.incramentCardsPlayed();
 									}
-									
-									else {										
-									
+
+									else {
+
 										cardsVisible[i]->card_position = { box.first.x , (box.first.y + 250.0f) };
 									}
-								}							
+								}
 							}
 							else if (!players[mainGame.getPTurn()].isPlyrAtk()) {
-								
-								if (c2::attacking_card_beats_card(cardsVisible[i], table.getCardFromTableAtk(box.second))) {									
-							
+
+								if (c2::attacking_card_beats_card(cardsVisible[i], table.getCardFromTableAtk(box.second))) {
+
 									cardsVisible[i]->card_position = Vector2Add(cardsVisible[i]->card_position, { 40,40 });
-						
+
 									cardsVisible[i]->canBeTouched = false;
-						
+
 									c2::hand_to_table(players[mainGame.getPTurn()], table, cardsVisible[i], box.second);
-						
+
 									c1::bringCardOneToTop(cardsVisible[i], table.getCardFromTableAtk(box.second), cardsVisible);
 								}
-								else {			
-								
+								else {
+
 									cardsVisible[i]->card_position = { box.first.x , (box.first.y + 250.0f) };
 								}
 							}
@@ -239,137 +241,125 @@ int main()
 				hC = false;
 		}
 		else if (screens[0].first) { // Title Screen
-		
+
 			BeginDrawing();
-	
+
 			ClearBackground(RAYWHITE);
 
 			DrawTexture(TitleScreen, 0, 0, WHITE);
-			
+
 			DrawCircleV(GetMousePosition(), 10, WHITE);
-		
+
 			EndDrawing();
-		
+
 			if (CheckCollisionPointRec(mP, playButton)) {
-	
+
 				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
-		
+
 					screens[1].first = true;
-	
+
 					screens[0].first = false;
 				}
 			}
-			if (CheckCollisionPointRec(mP, settingsButton))	{
-			
+			if (CheckCollisionPointRec(mP, settingsButton)) {
+
 				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
-				
+
 					screens[3].first = true;
-					
+
 					screens[0].first = false;
 				}
 			}
 		}
 		//---------------------------------------------------------------------------------
 		else if (screens[2].first) { //Win screen
-	
+
 			std::string win;
-		
-			if(players[0].get_player_winstate())
+
+			if (players[0].get_player_winstate())
 				win = "The Bot Wins";
 
 			else
-				win = "Well Done, You win!";		
-		
-		BeginDrawing();
-	
-		ClearBackground(RAYWHITE);
+				win = "Well Done, You win!";
 
-		DrawRectangle(0, 0, 1920, 1080, BLUE);
+			BeginDrawing();
 
-		DrawText(win.c_str(), (screenWidth / 2), screenHeight / 2, 50, WHITE);
-		
-		EndDrawing();
+			ClearBackground(RAYWHITE);
+
+			DrawRectangle(0, 0, 1920, 1080, BLUE);
+
+			DrawText(win.c_str(), (screenWidth / 2), screenHeight / 2, 50, WHITE);
+
+			EndDrawing();
 		}
 		//---------------------------------------------------------------------------------
 		else if (screens[3].first) {// Settings Screen;
-		
-		const int deckSize = c3::getDeckSize(); // This reads the current deckSize from the file
-		
-		const int musicSelection = c3::getMusicNumber();
-		
-		//---------------------------------------------
-		
-		Rectangle ThirtySix = { 549, 379, 400, 86 };
-		
-		Rectangle FiftyTwo = { 963,378, 400, 86 };
-		
-		Rectangle ReturnButton = { 36, 948, 288,90 };
-		
-		//---------------------------------------------
-		
-		Rectangle NoMusic = { 547, 484, 205, 86 };
-		
-		Rectangle JMusic = { 755, 484, 205, 86};
-		
-		Rectangle LMusic = { 961, 484, 205, 86};
-		
-		Rectangle eSwingMusic = { 1169, 484, 205, 86};
-		
-		BeginDrawing();
-		
-		ClearBackground(RAYWHITE);
-		
-		DrawTexture(SettingScreen, 0, 0, WHITE);
-		
-		switch (deckSize) {
 
-		case 36:
+			const int deckSize = c3::getDeckSize(); // This reads the current deckSize from the file
 
-			c0::displayDeckSizeButtons(ThirtySix, FiftyTwo, true, musicalNumber);
+			const int musicSelection = c3::getMusicNumber();
 
-			break;
+			//---------------------------------------------
 
-		case 52:
+			Rectangle ThirtySix = { 549, 379, 400, 86 };
 
-			c0::displayDeckSizeButtons(ThirtySix, FiftyTwo, false, musicalNumber);
+			Rectangle FiftyTwo = { 963,378, 400, 86 };
 
-			break;
+			Rectangle ReturnButton = { 36, 948, 288,90 };
 
-		default:
+			//---------------------------------------------
 
-			throw std::runtime_error("Unexpected DeckSize");		
-		}		
+			Rectangle NoMusic = { 547, 484, 205, 86 };
 
-		c0::displayMusicButtons(NoMusic, JMusic, LMusic, eSwingMusic, JazzMusic, LoFiMusic, ElectroSwingMusic, musicSelection, deckSize, musicalNumber);
+			Rectangle JMusic = { 755, 484, 205, 86 };
 
-		if(CheckCollisionPointRec(mP, ReturnButton) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-		
-			screens[3].first = false;
-			
-			screens[0].first = true;
+			Rectangle LMusic = { 961, 484, 205, 86 };
+
+			Rectangle eSwingMusic = { 1169, 484, 205, 86 };
+
+			BeginDrawing();
+
+			ClearBackground(RAYWHITE);
+
+			DrawTexture(SettingScreen, 0, 0, WHITE);
+
+			switch (deckSize) {
+
+			case 36:
+
+				c0::displayDeckSizeButtons(ThirtySix, FiftyTwo, true, musicalNumber, pirivadnoy);
+
+				break;
+
+			case 52:
+
+				c0::displayDeckSizeButtons(ThirtySix, FiftyTwo, false, musicalNumber, pirivadnoy);
+
+				break;
+
+			default:
+
+				throw std::runtime_error("Unexpected DeckSize");
+			}
+
+			c0::displayMusicButtons(NoMusic, JMusic, LMusic, eSwingMusic, JazzMusic, LoFiMusic, ElectroSwingMusic, musicSelection, deckSize, musicalNumber, pirivadnoy);
+
+			c0::display_pirivadnoy_buttons(musicalNumber, deckSize, pirivadnoy);
+
+			if (CheckCollisionPointRec(mP, ReturnButton) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+
+				screens[3].first = false;
+
+				screens[0].first = true;
+			}
+			EndDrawing();
 		}
-		EndDrawing();
-		} 
 	}
-	/*
-	  int precious_data;
-void save_data_to(int* address, int data) { *address= ~data; }
-int load_data_from(int* address) { return ~(*address); }
-
-void main() {
-  save_data_to(&precious_data, 123);
-  // Cheat Engine will see 'precious_data' to be equal to -124
-  do_useful_stuff(load_data_from(&precious_data));
-  // But we can "decode" it to actual value back
-}
-	 */
-	// 36, 948
 	// De-Initialization
 	//--------------------------------------------------------------------------------------
 	UnloadTexture(blankCard);
 	UnloadTexture(CardBacking);
 	UnloadTexture(TitleScreen);
-	UnloadTexture(_Table);
 	UnloadTexture(progTable);
 	UnloadTexture(SettingScreen);
 	UnloadTexture(PassButtonHigh);
@@ -386,6 +376,9 @@ void main() {
 	UnloadTexture(TakeButtonMid);
 	UnloadTexture(TakeButtonLow);
 	UnloadSound(fxButton);
+	UnloadMusicStream(JazzMusic);
+	UnloadMusicStream(LoFiMusic);
+	UnloadMusicStream(ElectroSwingMusic);
 	CloseAudioDevice();
 	CloseWindow();// Close window and OpenGL context
 	//--------------------------------------------------------------------------------------

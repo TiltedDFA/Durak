@@ -14,11 +14,13 @@ namespace c0 {//This is used to display
 	
 	extern inline void displayWhosTurnItIs(MainGame& mg);
 	
-	extern inline void displayDeckSizeButtons(Rectangle& thirty, Rectangle& fifty, const bool& thirtySelected, const int& currentMusicSize);
+	extern inline void displayDeckSizeButtons(Rectangle& thirty, Rectangle& fifty, const bool& thirtySelected, const int& currentMusicSize, const bool& pirivadnoy);
 	
 	extern inline void displayTextForMusicButtons(const std::string& msg, const int x, const int y);
 	
-	extern inline void displayMusicButtons(Rectangle& noMusic, Rectangle& jazzMusic, Rectangle& lofiMusic, Rectangle& electroSwingMusic, Music& JazzMusic, Music& LofiMusic, Music& eSwingMusic, const int& selection, const int& deckSize, int& currentMusicNum);
+	extern inline void displayMusicButtons(const Rectangle& noMusic, const Rectangle& jazzMusic, const Rectangle& lofiMusic, const  Rectangle& electroSwingMusic, const  Music& JazzMusic, const  Music& LofiMusic, const Music& eSwingMusic, const int& selection, const int& deckSize, int& currentMusicNum, const bool& pirivadnoy);
 
 	extern inline void displaySpecialCards(Deck& deck, Texture2D& backOfCard, Texture2D& blankCard);
+
+	extern inline void display_pirivadnoy_buttons(const int& musical_number, const int& deck_size, bool& pirivadnoy);
 }

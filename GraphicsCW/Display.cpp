@@ -142,13 +142,13 @@ namespace c0 {//This is used to display
 		}
 	}
 
-	void displayDeckSizeButtons(Rectangle& thirty, Rectangle& fifty, const bool& thirtySelected, const int& currentMusicSize) {
+	void displayDeckSizeButtons(Rectangle& thirty, Rectangle& fifty, const bool& thirtySelected, const int& currentMusicSize, const bool& pirivadnoy) {
 
 		Vector2 mP = GetMousePosition();
 
-		std::string threeSix = "36";
+		const std::string threeSix = "36";
 
-		std::string fiveTwo = "52";
+		const std::string fiveTwo = "52";
 
 		if (CheckCollisionPointRec(mP, thirty)) {
 
@@ -162,7 +162,7 @@ namespace c0 {//This is used to display
 
 			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
 
-				c3::setDeckSize(36, currentMusicSize);
+				c3::setDeckSize(36, currentMusicSize, pirivadnoy);
 			}
 		}
 		else if (CheckCollisionPointRec(mP, fifty)) {
@@ -177,7 +177,7 @@ namespace c0 {//This is used to display
 
 			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
 
-				c3::setDeckSize(52, currentMusicSize);
+				c3::setDeckSize(52, currentMusicSize, pirivadnoy);
 			}
 		}
 		else {
@@ -197,17 +197,17 @@ namespace c0 {//This is used to display
 		DrawText(msg.c_str(), x, y, 20, WHITE);
 	}
 
-	void displayMusicButtons(Rectangle& noMusic, Rectangle& jazzMusic, Rectangle& lofiMusic, Rectangle& electroSwingMusic, Music& JazzMusic, Music& LofiMusic, Music& eSwingMusic, const int& selection, const int& deckSize, int& currentMusicNum) {
+	void displayMusicButtons(const Rectangle& noMusic, const Rectangle& jazzMusic, const Rectangle& lofiMusic, const Rectangle& electroSwingMusic, const  Music& JazzMusic, const Music& LofiMusic, const  Music& eSwingMusic, const int& selection, const int& deckSize, int& currentMusicNum, const bool& pirivadnoy) {
 
-		std::string nM = "No Music";
+		const std::string nM = "No Music";
 
-		std::string jM = "Jazz Music";
+		const std::string jM = "Jazz Music";
 
-		std::string lM = "LoFi Music";
+		const std::string lM = "LoFi Music";
 
-		std::string eM = "Electro Swing Music";
+		const std::string eM = "Electro Swing Music";
 
-		Vector2 mP = GetMousePosition();
+		const Vector2 mP = GetMousePosition();
 
 		if (CheckCollisionPointRec(mP, noMusic)) {
 
@@ -229,7 +229,7 @@ namespace c0 {//This is used to display
 
 			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
 
-				c3::setMusicalNumber(1, deckSize);
+				c3::setMusicalNumber(1, deckSize, pirivadnoy);
 
 				currentMusicNum = 1;
 
@@ -256,7 +256,7 @@ namespace c0 {//This is used to display
 
 			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
 
-				c3::setMusicalNumber(2, deckSize);
+				c3::setMusicalNumber(2, deckSize, pirivadnoy);
 
 				currentMusicNum = 2;
 
@@ -283,7 +283,7 @@ namespace c0 {//This is used to display
 
 			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
 
-				c3::setMusicalNumber(3, deckSize);
+				c3::setMusicalNumber(3, deckSize, pirivadnoy);
 
 				currentMusicNum = 3;
 
@@ -310,7 +310,7 @@ namespace c0 {//This is used to display
 
 			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
 
-				c3::setMusicalNumber(4, deckSize);
+				c3::setMusicalNumber(4, deckSize, pirivadnoy);
 
 				currentMusicNum = 4;
 
@@ -358,5 +358,64 @@ namespace c0 {//This is used to display
 		}
 
 		DrawTexture(backOfCard, deckCard->card_position.x, deckCard->card_position.y, WHITE);
+	}	
+
+	void display_pirivadnoy_buttons(const int& musical_number, const int& deck_size, bool& pirivadnoy) {
+
+		const Vector2 mouse_position = GetMousePosition();
+
+		const std::string text_no = "No";
+
+		const std::string text_yes = "Yes";
+
+		const Rectangle left_button = { 549,591,400,86 };
+
+		const Rectangle right_button = { 963,590,400,86 };
+
+		if (CheckCollisionPointRec(mouse_position, left_button)) {
+
+			DrawRectangleRec(left_button, pirivadnoy ? ORANGE : SKYBLUE);
+
+			DrawRectangleRec(right_button, pirivadnoy ? BLUE : RED);
+
+			DrawText(text_yes.c_str(), static_cast<int>(left_button.x + left_button.width / 2 - 35), static_cast<int>(left_button.y + left_button.height / 2 - 35), 60, WHITE);
+
+			DrawText(text_no.c_str(), static_cast<int>(right_button.x + right_button.width / 2 - 35), static_cast<int>(right_button.y + right_button.height / 2 - 35), 60, WHITE);
+
+			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
+
+				c3::set_pirivadnoy_state(deck_size, musical_number, true);
+				pirivadnoy = true;
+			}
+		}
+
+		else if (CheckCollisionPointRec(mouse_position, right_button)) {
+
+			DrawRectangleRec(right_button, pirivadnoy ? SKYBLUE : ORANGE);
+
+			DrawRectangleRec(left_button, pirivadnoy ? RED : BLUE);
+
+			DrawText(text_yes.c_str(), static_cast<int>(left_button.x + left_button.width / 2 - 35), static_cast<int>(left_button.y + left_button.height / 2 - 35), 60, WHITE);
+
+			DrawText(text_no.c_str(), static_cast<int>(right_button.x + right_button.width / 2 - 35), static_cast<int>(right_button.y + right_button.height / 2 - 35), 60, WHITE);
+
+			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
+
+				pirivadnoy = false;
+
+				c3::set_pirivadnoy_state(deck_size, musical_number, false);				
+			}
+		}
+
+		else {
+
+			DrawRectangleRec(right_button, pirivadnoy ? BLUE : RED);
+
+			DrawRectangleRec(left_button, pirivadnoy ? RED : BLUE);
+
+			DrawText(text_yes.c_str(), static_cast<int>(left_button.x + left_button.width / 2 - 35), static_cast<int>(left_button.y + left_button.height / 2 - 35), 60, WHITE);
+
+			DrawText(text_no.c_str(), static_cast<int>(right_button.x + right_button.width / 2 - 35), static_cast<int>(right_button.y + right_button.height / 2 - 35), 60, WHITE);
+		}
 	}
 }

@@ -2,7 +2,7 @@
 
 namespace c3 {// C3 will be for reading and writing to files (for settings)
 
-	extern inline void setDeckSize(const int deckSize, const int currentMusicVal) {
+	extern inline void setDeckSize(const int& deckSize, const int& currentMusicVal, const bool& pirivadnoy) {
 
 		std::ofstream save_file(fileName, std::ios::out); // This creates the file		
 		if (save_file) {
@@ -60,6 +60,12 @@ namespace c3 {// C3 will be for reading and writing to files (for settings)
 				break;
 			}
 
+			if (pirivadnoy)
+				save_file << "\n1";
+
+			else
+				save_file << "\n0";			
+
 			save_file.close();
 		}
 	}
@@ -70,7 +76,7 @@ namespace c3 {// C3 will be for reading and writing to files (for settings)
 
 		if (!save_file) {
 
-			setDeckSize(36, 1);
+			setDeckSize(36, 1, false);
 
 			return 36;
 		}
@@ -90,7 +96,7 @@ namespace c3 {// C3 will be for reading and writing to files (for settings)
 		return 0;
 	}
 
-	extern inline void setMusicalNumber(const int num, const int currentDeckSize) {
+	extern inline void setMusicalNumber(const int& num, const int& currentDeckSize, const bool& pirivadnoy) {
 
 		std::ofstream save_file(fileName, std::ios::out);
 
@@ -126,10 +132,14 @@ namespace c3 {// C3 will be for reading and writing to files (for settings)
 
 			default:
 
-				throw std::runtime_error("Unexpected input Value experianced");
-
-				break;
+				throw std::runtime_error("Unexpected input Value experianced");				
 			}
+
+			if(pirivadnoy)
+				save_file << "\n1";
+
+			else
+				save_file << "\n0";
 		}
 	}
 
@@ -139,9 +149,7 @@ namespace c3 {// C3 will be for reading and writing to files (for settings)
 
 		if (!save_file) {
 
-			setDeckSize(36, 1);
-
-			setMusicalNumber(1, 36);
+			setDeckSize(36, 1, false);			
 
 			return 1;
 		}
@@ -155,16 +163,54 @@ namespace c3 {// C3 will be for reading and writing to files (for settings)
 		if (num == "1")
 			return 1;
 
-		else if (num == "2")
+		if (num == "2")
 			return 2;
 
-		else if (num == "3")
+		if (num == "3")
 			return 3;
 
-		else if (num == "4")
+		if (num == "4")
 			return 4;
 
-		else
-			throw std::runtime_error("Unexpected Value read");
+		throw std::runtime_error("Unexpected Value read");
+	}
+
+	extern inline void set_pirivadnoy_state(const int& deckSize, const int& currentMusicVal, const bool& pirivadnoy) {
+
+		std::ofstream save_file(fileName, std::ios::out);
+
+		if (save_file) {
+
+			save_file << deckSize;
+
+			save_file << "\n" << currentMusicVal;
+
+			if (pirivadnoy)
+				save_file << "\n1";
+			else
+				save_file << "\n0";
+		}
+	}
+
+	extern inline bool get_pirivadnoy_state() {
+
+		std::ifstream save_file(fileName, std::ios::in);
+
+		if (!save_file) {
+
+			setDeckSize(36, 1, false);
+
+			return false;
+		}
+
+		std::string state;
+
+		std::getline(save_file, state);
+
+		std::getline(save_file, state);
+
+		std::getline(save_file, state);
+
+		return state == "1" ? true : false;
 	}
 }
