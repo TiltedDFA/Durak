@@ -202,6 +202,8 @@ namespace c2 {// This namespace is for game functions
 					cTable[i][j]->canBeTouched = true;
 
 					player.addToplayer_hand(std::move(cTable[i][j]));
+
+					cTable[i][j] = nullptr;
 				}
 			}
 		}
