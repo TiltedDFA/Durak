@@ -174,3 +174,12 @@ will need to now work to add win states
 a lot has changed.
 Focus on adding 'detailed information' where you will get to see detailed information ingame like num of cards in hand, num of cards remaining in deck and so on
 }
+25/01/22	
+{
+Focus on these outlying points:
+-Implament the pirivadnoy system	
+-Implament the AI
+-Implament the Music volume adjustor setting
+-Implament a tutorial
+-Make an installer
+}

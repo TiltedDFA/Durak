@@ -5,8 +5,8 @@ Player::Player()
 Player::~Player()
 {
 }
-void Player::addToplayer_hand(const std::shared_ptr<Card>& cardToAdd)
-{
+void Player::addToplayer_hand(const std::shared_ptr<Card>& cardToAdd) {
+
 	player_hand.push_back(cardToAdd);
 }
 std::shared_ptr<Card> Player::from_hand_by_index(const int index) noexcept {
@@ -21,20 +21,20 @@ bool Player::isPlyrAtk() noexcept {
 
 	return plyrAtk;
 }
-void Player::setPlyrAtk(bool bol)
-{
+void Player::setPlyrAtk(bool bol) {
+
 	plyrAtk = bol;
 }
 std::vector<std::shared_ptr<Card>> Player::getEntireHand() noexcept {
 
 	return player_hand;
 }
-void Player::setEntireHand(std::vector<std::shared_ptr<Card>> hand)
-{
+void Player::setEntireHand(std::vector<std::shared_ptr<Card>> hand) {
+
 	player_hand = hand;
 }
-void Player::set_hand_by_index(std::shared_ptr<Card> card, const int index)
-{
+void Player::set_hand_by_index(std::shared_ptr<Card> card, const int index) {
+
 	player_hand[index] = card;
 }
 void Player::set_player_winstate(bool has_won) noexcept {

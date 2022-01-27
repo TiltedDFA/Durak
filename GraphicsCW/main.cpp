@@ -9,6 +9,8 @@ int main()
 
 	SetTargetFPS(90);//This sets the target framerate	
 
+	//void SetMusicVolume(Music music, float volume);                                 // Set volume for music (1.0 is max level)
+
 	//---------------------------------------------------------------------------------------
 	Rectangle playButton = { 773, 509, 287, 105 };
 
