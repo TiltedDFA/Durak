@@ -314,4 +314,13 @@ namespace c2 {// This namespace is for game functions
 
 		mg.switchPTurn();
 	}
+/*
+	extern inline bool pirivadnoy_checker(Table& table, MainGame& mg, const std::shared_ptr<Card>& card) {
+
+		if (!(table.get_amount_of_card_in_table() == 1)) // if the table has more than one card on it then it'll not be possible to reverse 
+			return false; // in accordance with the game's rules so this is a checker for it
+		if(static_cast<card_value>(card->get_card_value()) == table.getCardFromTableAtk())
+
+	}
+	*/
 }

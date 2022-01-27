@@ -217,7 +217,10 @@ int main()
 								}
 							}
 							else if (!players[mainGame.getPTurn()].isPlyrAtk()) {
-
+								//if (c2::pirivadnoy_checker())
+								{
+									
+								}
 								if (c2::attacking_card_beats_card(cardsVisible[i], table.getCardFromTableAtk(box.second))) {
 
 									cardsVisible[i]->card_position = Vector2Add(cardsVisible[i]->card_position, { 40,40 });

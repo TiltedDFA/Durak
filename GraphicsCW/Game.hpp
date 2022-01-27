@@ -35,6 +35,6 @@ namespace c2 {// This namespace is for game functions
 
 	extern inline void takeDefender(std::array<Player, 2>& players, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck, Table& table, MainGame& mg);
 
-	extern inline void pirivadnoy_checker(const std::array<std::array<std::shared_ptr<Card>,2>,6>& table, MainGame& mg);
+	extern inline bool pirivadnoy_checker(Table& table, MainGame& mg, const std::shared_ptr<Card>& card);
 }
 
