@@ -46,6 +46,6 @@ public:
 	void set_card_value(const int& value);
 	void set_card_suit(const int& suit);
 
-	int get_card_value()noexcept;
-	int get_card_suit()noexcept;
+	int get_card_value();
+	int get_card_suit();
 };

@@ -66,7 +66,7 @@ int Table::find_card_in_atk() {
 
 	for (int i = 0; i < 6; ++i)
 	{
-		if (cardsOnTable[i][0] == nullptr)
+		if (!(cardsOnTable[i][0] == nullptr))
 			return i;
 	}
 	return 6;//if no free spots are found, it will return 6

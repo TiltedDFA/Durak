@@ -306,15 +306,20 @@ namespace c2 {// This namespace is for game functions
 		mg.switchPTurn();
 	}
 
-	extern inline bool pirivadnoy_checker(Table& table, MainGame& mg, const std::shared_ptr<Card>& card) {
+	extern inline bool pirivadnoy_checker(Table& table, const std::shared_ptr<Card>& card) {
 
-		if (!(table.get_amount_of_card_in_table() == 1)) // if the table has more than one card on it then it'll not be possible to reverse 
-			return false; // in accordance with the game's rules so this is a checker for it
-		if (table.find_card_in_atk() == 6)//Function will return 6 when no cards are found in attack
-			return true;
-		if (static_cast<card_value>(encrypt_data(card->get_card_value())) == static_cast<card_value>(encrypt_data(table.getCardFromTableAtk(table.find_card_in_atk())->get_card_suit()))
+		if (table.get_num_cards_in_defender_table()) // if there's more than zero cards, this will return false
+			return false;
+		if (static_cast<card_value>(encrypt_data(card->get_card_value())) == static_cast<card_value>(encrypt_data(table.getCardFromTableAtk(table.find_card_in_atk())->get_card_value()))
 			&& table.get_num_cards_in_defender_table() == 0)
 			return true;
+		return false;
 	}
+
+	void privadi(MainGame& mg, std::array<Player, 2>& players) {
+
+		c2::switch_player_state(players);
+	}
+
 	
 }

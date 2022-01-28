@@ -177,7 +177,7 @@ Focus on adding 'detailed information' where you will get to see detailed inform
 25/01/22	
 {
 Focus on these outlying points:
--Implament the pirivadnoy system	
+//-Implament the pirivadnoy system
 -Implament the AI
 -Implament the Music volume adjustor setting
 -Implament a tutorial

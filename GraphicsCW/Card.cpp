@@ -61,12 +61,12 @@ void Card::set_card_suit(const int& suit) {
 	Suit = suit;
 }
 
-int Card::get_card_value()noexcept {
+int Card::get_card_value(){
 
 	return Value;
 }
 
-int Card::get_card_suit()noexcept {
+int Card::get_card_suit(){
 
 	return Suit;
 }

@@ -225,7 +225,7 @@ namespace c0 {//This is used to display
 
 			displayTextForMusicButtons(lM, static_cast<int>(lofiMusic.x + (lofiMusic.width / 2) - 35), static_cast<int>(lofiMusic.y + (lofiMusic.height / 2) - 25));
 
-			displayTextForMusicButtons(eM, static_cast<int>(electroSwingMusic.x + (electroSwingMusic.width / 2) - 75), static_cast<int>(electroSwingMusic.y + (electroSwingMusic.height / 2) - 25));
+			displayTextForMusicButtons(eM, static_cast<int>(electroSwingMusic.x + (electroSwingMusic.width / 2) - 100), static_cast<int>(electroSwingMusic.y + (electroSwingMusic.height / 2) - 25));
 
 			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
 
@@ -252,7 +252,7 @@ namespace c0 {//This is used to display
 
 			displayTextForMusicButtons(lM, static_cast<int>(lofiMusic.x + (lofiMusic.width / 2) - 35), static_cast<int>(lofiMusic.y + (lofiMusic.height / 2) - 25));
 
-			displayTextForMusicButtons(eM, static_cast<int>(electroSwingMusic.x + (electroSwingMusic.width / 2) - 75), static_cast<int>(electroSwingMusic.y + (electroSwingMusic.height / 2) - 25));
+			displayTextForMusicButtons(eM, static_cast<int>(electroSwingMusic.x + (electroSwingMusic.width / 2) - 100), static_cast<int>(electroSwingMusic.y + (electroSwingMusic.height / 2) - 25));
 
 			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
 
@@ -279,7 +279,7 @@ namespace c0 {//This is used to display
 
 			displayTextForMusicButtons(lM, static_cast<int>(lofiMusic.x + (lofiMusic.width / 2) - 35), static_cast<int>(lofiMusic.y + (lofiMusic.height / 2) - 25));
 
-			displayTextForMusicButtons(eM, static_cast<int>(electroSwingMusic.x + (electroSwingMusic.width / 2) - 75), static_cast<int>(electroSwingMusic.y + (electroSwingMusic.height / 2) - 25));
+			displayTextForMusicButtons(eM, static_cast<int>(electroSwingMusic.x + (electroSwingMusic.width / 2) - 100), static_cast<int>(electroSwingMusic.y + (electroSwingMusic.height / 2) - 25));
 
 			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
 
@@ -306,7 +306,7 @@ namespace c0 {//This is used to display
 
 			displayTextForMusicButtons(lM, static_cast<int>(lofiMusic.x + (lofiMusic.width / 2) - 35), static_cast<int>(lofiMusic.y + (lofiMusic.height / 2) - 25));
 
-			displayTextForMusicButtons(eM, static_cast<int>(electroSwingMusic.x + (electroSwingMusic.width / 2) - 75), static_cast<int>(electroSwingMusic.y + (electroSwingMusic.height / 2) - 25));
+			displayTextForMusicButtons(eM, static_cast<int>(electroSwingMusic.x + (electroSwingMusic.width / 2) - 100), static_cast<int>(electroSwingMusic.y + (electroSwingMusic.height / 2) - 25));
 
 			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
 
@@ -333,7 +333,7 @@ namespace c0 {//This is used to display
 
 			displayTextForMusicButtons(lM, static_cast<int>(lofiMusic.x + (lofiMusic.width / 2) - 35), static_cast<int>(lofiMusic.y + (lofiMusic.height / 2) - 25));
 
-			displayTextForMusicButtons(eM, static_cast<int>(electroSwingMusic.x + (electroSwingMusic.width / 2) - 75), static_cast<int>(electroSwingMusic.y + (electroSwingMusic.height / 2) - 25));
+			displayTextForMusicButtons(eM, static_cast<int>(electroSwingMusic.x + (electroSwingMusic.width / 2) - 100), static_cast<int>(electroSwingMusic.y + (electroSwingMusic.height / 2) - 25));
 
 		}
 	}

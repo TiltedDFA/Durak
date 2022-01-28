@@ -59,8 +59,6 @@ int main()
 
 	Texture2D SettingScreen = LoadTexture("Settings.png");
 
-	Texture2D  _Table = LoadTexture("TableCardHole.png");
-
 	Texture2D progTable = LoadTexture("TableWithButton.png");
 
 	Texture2D CardBacking = LoadTexture("170CardBacking.png");
@@ -219,11 +217,11 @@ int main()
 								}
 							}
 							else if (!players[mainGame.getPTurn()].isPlyrAtk()) {
-								//if (c2::pirivadnoy_checker())
+								if (pirivadnoy && c2::pirivadnoy_checker(table, cardsVisible[i]))
 								{
-									
+									c2::privadi(mainGame, players);									
 								}
-								if (c2::attacking_card_beats_card(cardsVisible[i], table.getCardFromTableAtk(box.second))) {
+								else if (c2::attacking_card_beats_card(cardsVisible[i], table.getCardFromTableAtk(box.second))) {
 
 									cardsVisible[i]->card_position = Vector2Add(cardsVisible[i]->card_position, { 40,40 });
 
@@ -314,11 +312,11 @@ int main()
 
 			//---------------------------------------------
 
-			Rectangle NoMusic = { 547, 484, 205, 86 };
+			Rectangle NoMusic = { 547, 484, 206, 86 };
 
 			Rectangle JMusic = { 755, 484, 205, 86 };
 
-			Rectangle LMusic = { 961, 484, 205, 86 };
+			Rectangle LMusic = { 961, 484, 206, 86 };
 
 			Rectangle eSwingMusic = { 1169, 484, 205, 86 };
 
