@@ -26,7 +26,7 @@ public:
 
 	int get_num_cards_in_defender_table();
 
-	int get_num_cards_inAttacker_table();
+	int get_num_cards_in_atk_table();
 
 	int find_card_in_atk();
 };

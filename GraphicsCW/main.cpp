@@ -1,4 +1,4 @@
-#include "Display.hpp"
+#include "AI.hpp"
 
 int main()
 {
@@ -98,9 +98,7 @@ int main()
 	//---------------------------------------------------------------------------------------
 	Image appIcon = LoadImage("appIcon.png");
 
-	SetWindowIcon(appIcon);
-	
-	
+	SetWindowIcon(appIcon);	
 
 	c2::play_music(musicalNumber, JazzMusic, LoFiMusic, ElectroSwingMusic);
 

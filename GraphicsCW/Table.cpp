@@ -51,7 +51,7 @@ int Table::get_num_cards_in_defender_table() {
 	}
 	return count;
 }
-int Table::get_num_cards_inAttacker_table() {
+int Table::get_num_cards_in_atk_table() {
 
 	int count = 0;
 

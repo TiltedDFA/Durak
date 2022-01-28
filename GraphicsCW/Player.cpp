@@ -45,3 +45,36 @@ const bool Player::get_player_winstate() noexcept {
 
 	return player_has_won;
 }
+int Player::find_lowest_card(int card_suit_value)
+{
+	int lowest_value = 15;
+
+	int count = 0;
+
+	int lowest_val_positon = 99;
+
+	if (!(card_suit_value && card_suit_value < 5))
+	{
+		for (const auto& i : player_hand)
+		{
+			if (encrypt_data(i->get_card_value()) < lowest_value)
+			{
+				lowest_value = encrypt_data(i->get_card_value());
+				lowest_val_positon = count;
+			}
+			++count;			
+		}
+		return lowest_val_positon;
+	}
+
+	for(const auto& i : player_hand)
+	{
+		if (encrypt_data(i->get_card_value()) < lowest_value && encrypt_data(i->get_card_suit()) == card_suit_value)
+		{
+			lowest_value = encrypt_data(i->get_card_value());
+			lowest_val_positon = count;
+		}
+		++count;
+	}
+	return lowest_val_positon;
+}
