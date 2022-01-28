@@ -108,14 +108,18 @@ namespace c2 {// This namespace is for game functions
 		const auto posInHand = std::find(player_hand.begin(), player_hand.end(), card);
 
 		if (posInHand != player_hand.end()) {
-
+			/*
 			if (player.isPlyrAtk()) { table.addCardToTableAtk(std::move(*posInHand), cardPile); player_hand.erase(posInHand); }
+
+			else { table.addCardToTableDef(std::move(*posInHand), cardPile); player_hand.erase(posInHand); card->inDefTablePile = true; }
+			*/
+
+			if (table.getCardFromTableAtk(cardPile) == nullptr) { table.addCardToTableAtk(std::move(*posInHand), cardPile); player_hand.erase(posInHand); }
 
 			else { table.addCardToTableDef(std::move(*posInHand), cardPile); player_hand.erase(posInHand); card->inDefTablePile = true; }
 
 			player.setEntireHand(player_hand);
 		}
-
 	}
 
 	extern inline void discard_table(Discardediscarded_cards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible) {
@@ -147,9 +151,11 @@ namespace c2 {// This namespace is for game functions
 
 		for (auto& i : cardsOnTable) {
 
-			if (i[0] != nullptr) { ++cardsPlayed.first; }
+			if (i[0] != nullptr)  
+				++cardsPlayed.first; 
 
-			if (i[1] != nullptr) { ++cardsPlayed.second; }
+			if (i[1] != nullptr) 
+				++cardsPlayed.second; 
 		}
 
 		if (!cardsPlayed.first)
@@ -278,23 +284,6 @@ namespace c2 {// This namespace is for game functions
 		}
 	}
 
-	extern inline int findEmptyTablePile(Table& table) {
-
-		std::array<std::array<std::shared_ptr<Card>, 2>, 6> _t = table.getEntireTable();
-
-		int l = 0;
-
-		for (const auto& i : _t) {
-
-			if (i[0] == nullptr)
-			{
-				++l;
-				break;
-			}
-		}
-		return l;
-	}
-
 	extern inline void end_attack(Deck& deck, MainGame& mg, Discardediscarded_cards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible, std::array<Player, 2>& players) {
 
 		discard_table(bPile, table, cardsVisible);
@@ -316,13 +305,16 @@ namespace c2 {// This namespace is for game functions
 
 		mg.switchPTurn();
 	}
-/*
+
 	extern inline bool pirivadnoy_checker(Table& table, MainGame& mg, const std::shared_ptr<Card>& card) {
 
 		if (!(table.get_amount_of_card_in_table() == 1)) // if the table has more than one card on it then it'll not be possible to reverse 
 			return false; // in accordance with the game's rules so this is a checker for it
-		if(static_cast<card_value>(card->get_card_value()) == table.getCardFromTableAtk())
-
+		if (table.find_card_in_atk() == 6)//Function will return 6 when no cards are found in attack
+			return true;
+		if (static_cast<card_value>(encrypt_data(card->get_card_value())) == static_cast<card_value>(encrypt_data(table.getCardFromTableAtk(table.find_card_in_atk())->get_card_suit()))
+			&& table.get_num_cards_in_defender_table() == 0)
+			return true;
 	}
-	*/
+	
 }
