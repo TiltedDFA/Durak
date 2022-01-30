@@ -101,11 +101,11 @@ namespace c2 {// This namespace is for game functions
 		return { { 0,0 }, 7 };
 	}
 
-	extern inline void hand_to_table(Player& player, Table& table, std::shared_ptr<Card> card, const int& cardPile) {
+	extern inline void hand_to_table(Player& player, Table& table, std::shared_ptr<Card> card_to_play, const int& cardPile) {
 
 		std::vector<std::shared_ptr<Card>> player_hand = player.getEntireHand();
 
-		const auto posInHand = std::find(player_hand.begin(), player_hand.end(), card);
+		const auto posInHand = std::find(player_hand.begin(), player_hand.end(), card_to_play);
 
 		if (posInHand != player_hand.end()) {
 			/*
@@ -116,7 +116,7 @@ namespace c2 {// This namespace is for game functions
 
 			if (table.getCardFromTableAtk(cardPile) == nullptr) { table.addCardToTableAtk(std::move(*posInHand), cardPile); player_hand.erase(posInHand); }
 
-			else { table.addCardToTableDef(std::move(*posInHand), cardPile); player_hand.erase(posInHand); card->inDefTablePile = true; }
+			else { table.addCardToTableDef(std::move(*posInHand), cardPile); player_hand.erase(posInHand); card_to_play->inDefTablePile = true; }
 
 			player.setEntireHand(player_hand);
 		}
@@ -310,7 +310,5 @@ namespace c2 {// This namespace is for game functions
 	void privadi(MainGame& mg, std::array<Player, 2>& players) {
 
 		c2::switch_player_state(players);
-	}
-
-	
+	}	
 }

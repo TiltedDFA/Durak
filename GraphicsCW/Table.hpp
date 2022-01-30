@@ -29,4 +29,6 @@ public:
 	int get_num_cards_in_atk_table();
 
 	int find_card_in_atk();
+
+	int find_empty_pile_atk();
 };

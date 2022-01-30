@@ -15,4 +15,8 @@ Defending States:
 
 _General rules for defending:
 -All ways defend if you can, no matter the card needed to do so
+
+Defending:
+-While(Num_atk_card_table != Num_def_card_table)->find_card_to_defend()->if(can_defend())->defend;else->take;
+
 }
