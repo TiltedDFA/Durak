@@ -61,7 +61,7 @@ namespace c4
 				return;
 			}
 
-			players[0].from_hand_by_index(lowest_val)->card_position = pos[c2::find_colliding_placement(players[0].from_hand_by_index(lowest_val)).second];
+			players[0].from_hand_by_index(lowest_val)->card_position = pos[table.find_empty_pile_atk()];
 
 			players[0].from_hand_by_index(lowest_val)->canBeTouched = false;
 
@@ -97,26 +97,26 @@ namespace c4
 
 		pos[5] = { 1300.0,457.0 };
 		while (table.get_num_cards_in_atk_table() != table.get_num_cards_in_defender_table()) {
-
+			int position_of_card_to_defend = find_card_to_defend(table);
 			//check if pirivadnoy works
-			if (find_card_to_defend(table) == 6) { //if no card to defend->pass
+			if (position_of_card_to_defend == 6) { //if no card to defend->pass
 
 				mg.switchPTurn();
 
 				return;
 			}
-			std::pair<bool, int> result = can_defend(players[0],table.getCardFromTableAtk(find_card_to_defend(table)));
+			std::pair<bool, int> result = can_defend(players[0],table.getCardFromTableAtk(position_of_card_to_defend));
 			if(result.first) {
 
-				players[0].from_hand_by_index(result.second)->card_position = pos[find_card_to_defend(table)];
+				players[0].from_hand_by_index(result.second)->card_position = pos[position_of_card_to_defend];
 
 				players[0].from_hand_by_index(result.second)->card_position = Vector2Add(players[0].from_hand_by_index(result.second)->card_position, {40,40});
 
 				players[0].from_hand_by_index(result.second)->canBeTouched = false;
 
-				c2::hand_to_table(players[mg.getPTurn()], table, players[0].from_hand_by_index(result.second), result.second);
+				c2::hand_to_table(players[mg.getPTurn()], table, players[0].from_hand_by_index(result.second), position_of_card_to_defend);
 
-				c1::bringCardOneToTop(players[0].from_hand_by_index(result.second), table.getCardFromTableAtk(result.second), cardsVisible);
+				c1::bringCardOneToTop(players[0].from_hand_by_index(result.second), table.getCardFromTableAtk(position_of_card_to_defend), cardsVisible);
 			}
 			else
 			{
