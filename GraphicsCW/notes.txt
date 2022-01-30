@@ -1,0 +1,18 @@
+_30/01/22->AI PLAN:
+{
+Attacking states:
+-No cards on table -> play lowest value card (account for suit types);
+-Continuation of attack -> play lowest suitable value, if none can be played then end attack;
+-Pirivadnoy -> if defending and can pirivady then pirivady
+
+_General Rules for attacking:
+-Save master suits.
+-Play as little as possible.
+
+Defending States:
+-If bot has card that can cover then cover;
+-If bot can pirivady then pirivady
+
+_General rules for defending:
+-All ways defend if you can, no matter the card needed to do so
+}

@@ -101,7 +101,7 @@ namespace c2 {// This namespace is for game functions
 		return { { 0,0 }, 7 };
 	}
 
-	extern inline void hand_to_table(Player& player, Table& table, std::shared_ptr<Card> card, const int cardPile) {
+	extern inline void hand_to_table(Player& player, Table& table, std::shared_ptr<Card> card, const int& cardPile) {
 
 		std::vector<std::shared_ptr<Card>> player_hand = player.getEntireHand();
 
@@ -174,18 +174,8 @@ namespace c2 {// This namespace is for game functions
 
 	extern inline bool can_end_attack(Table& table) {
 
-		const std::array<std::array<std::shared_ptr<Card>, 2>, 6> cardsOnTable = table.getEntireTable();
-
-		int completedValues = 0;
-
-		for (const auto& i : cardsOnTable) {
-
-			if (i[0] != nullptr && i[1] != nullptr) { ++completedValues; }
-		}
-
-		if (completedValues)
-			return true;
-
+		if (table.get_num_cards_in_atk_table())
+			return true;		
 		return false;
 	}
 
@@ -310,7 +300,8 @@ namespace c2 {// This namespace is for game functions
 
 		if (table.get_num_cards_in_defender_table()) // if there's more than zero cards, this will return false
 			return false;
-		if (static_cast<card_value>(encrypt_data(card->get_card_value())) == static_cast<card_value>(encrypt_data(table.getCardFromTableAtk(table.find_card_in_atk())->get_card_value()))
+		if (static_cast<card_value>(encrypt_data(card->get_card_value())) == 
+			static_cast<card_value>(encrypt_data(table.getCardFromTableAtk(table.find_card_in_atk())->get_card_value()))
 			&& table.get_num_cards_in_defender_table() == 0)
 			return true;
 		return false;

@@ -265,7 +265,7 @@ namespace c0 {//This is used to display
 		}
 		else if (CheckCollisionPointRec(mP, lofiMusic)) {
 
-			DrawRectangleRec(noMusic, (selection == 1) ? RED : BLUE);
+			DrawRectangleRec(noMusic, (selection == 1) ? RED : BLUE);			
 
 			DrawRectangleRec(jazzMusic, (selection == 2) ? RED : BLUE);
 
@@ -357,7 +357,7 @@ namespace c0 {//This is used to display
 			DrawText(cSuitStr.c_str(), static_cast<int>((visibleCard->card_position.x - 105)), static_cast<int>((visibleCard->card_position.y + 65)), 25, BLACK);
 		}
 
-		DrawTexture(backOfCard, deckCard->card_position.x, deckCard->card_position.y, WHITE);
+		DrawTexture(backOfCard, static_cast<int>(deckCard->card_position.x), static_cast<int>(deckCard->card_position.y), WHITE);
 	}	
 
 	void display_pirivadnoy_buttons(const int& musical_number, const int& deck_size, bool& pirivadnoy) {

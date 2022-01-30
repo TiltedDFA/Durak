@@ -142,7 +142,7 @@ namespace c1 {// Used to setup or maintain
 
 	extern inline bool deck_has_enough_cards_left(Deck& deck, const int numOfCardsNeeded) {
 
-		assert(deck.getDeckSize() > 0, numOfCardsNeeded > -1);
+		assert(numOfCardsNeeded > -1);
 
 		int deckSize = deck.getDeckSize();
 
@@ -160,7 +160,7 @@ namespace c1 {// Used to setup or maintain
 
 			if (deck.getDeckSize()) { // code below will not run if deckSize == 0;
 
-				if (deck_has_enough_cards_left(deck, cardsNeeded) && static_cast<int>(players[i].get_hand_size()) < 6) {
+				if (deck_has_enough_cards_left(deck, static_cast<int>(cardsNeeded)) && static_cast<int>(players[i].get_hand_size()) < 6) {
 
 					for (auto j = 0; j < cardsNeeded; ++j) {
 

@@ -103,10 +103,8 @@
     <Text Include="DevLog.txt">
       <Filter>Header Files</Filter>
     </Text>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd">
-      <Filter>Source Files\Misc</Filter>
-    </None>
+    <Text Include="notes.txt">
+      <Filter>Header Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

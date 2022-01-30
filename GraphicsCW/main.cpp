@@ -199,7 +199,7 @@ int main()
 								if (overlap == 100)
 								{
 
-									if (c2::can_attacker_attack(table, cardsVisible[i]) && table.getCardFromTableAtk(box.second) == nullptr) {
+									if (c2::can_attacker_attack(table, cardsVisible[i]) && table.getCardFromTableAtk(box.second-1) == nullptr) {
 
 										cardsVisible[i]->canBeTouched = false;
 
@@ -215,9 +215,13 @@ int main()
 								}
 							}
 							else if (!players[mainGame.getPTurn()].isPlyrAtk()) {
-								if (pirivadnoy && c2::pirivadnoy_checker(table, cardsVisible[i]))
-								{
-									c2::privadi(mainGame, players);									
+								if (pirivadnoy && c2::pirivadnoy_checker(table, cardsVisible[i])) {
+
+									c2::privadi(mainGame, players);
+
+									cardsVisible[i]->card_position = Vector2Add(cardsVisible[i]->card_position, { 40,40 });
+
+									cardsVisible[i]->canBeTouched = false;
 								}
 								else if (c2::attacking_card_beats_card(cardsVisible[i], table.getCardFromTableAtk(box.second))) {
 
@@ -233,6 +237,10 @@ int main()
 
 									cardsVisible[i]->card_position = { box.first.x , (box.first.y + 250.0f) };
 								}
+							}
+							else
+							{
+								cardsVisible[i]->card_position = { box.first.x , (box.first.y + 250.0f) };
 							}
 						}
 					}
@@ -358,28 +366,29 @@ int main()
 	}
 	// De-Initialization
 	//--------------------------------------------------------------------------------------
+	UnloadSound(fxButton);
 	UnloadTexture(blankCard);
-	UnloadTexture(CardBacking);
 	UnloadTexture(TitleScreen);
-	UnloadTexture(progTable);
 	UnloadTexture(SettingScreen);
+	UnloadTexture(progTable);
+	UnloadTexture(CardBacking);
 	UnloadTexture(PassButtonHigh);
 	UnloadTexture(PassButtonMid);
-	UnloadTexture(PassButtonLow);
+	UnloadTexture(PassButtonLow);	
 	UnloadTexture(EndButtonHigh);
 	UnloadTexture(EndButtonMid);
 	UnloadTexture(EndButtonLow);
+	UnloadTexture(TakeButtonHigh);
+	UnloadTexture(TakeButtonMid);
+	UnloadTexture(TakeButtonLow);
 	UnloadTexture(AtkHigh);
 	UnloadTexture(AtkLow);
 	UnloadTexture(DefHigh);
 	UnloadTexture(DefLow);
-	UnloadTexture(TakeButtonHigh);
-	UnloadTexture(TakeButtonMid);
-	UnloadTexture(TakeButtonLow);
-	UnloadSound(fxButton);
 	UnloadMusicStream(JazzMusic);
 	UnloadMusicStream(LoFiMusic);
 	UnloadMusicStream(ElectroSwingMusic);
+
 	CloseAudioDevice();
 	CloseWindow();// Close window and OpenGL context
 	//--------------------------------------------------------------------------------------
