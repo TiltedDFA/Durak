@@ -14,7 +14,7 @@ public:
 
 	void addCardToTableDef(std::shared_ptr<Card> card, const int pNum);
 
-	std::shared_ptr<Card> getCardFromTableAtk(const int index)noexcept;
+	std::shared_ptr<Card> getCardFromTableAtk(const int index);
 
 	std::shared_ptr<Card> getCardFromTableDef(const int index)noexcept;
 

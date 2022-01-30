@@ -29,7 +29,7 @@ namespace c1 {// Used to setup or maintain
 
 			//card->canBeTouched = false; Temp disabled until ai is made
 
-			card->is_card_face_up = false;
+			card->is_card_face_up = true;
 
 			card->card_position = { (x + 125 * i),y };
 
@@ -142,11 +142,9 @@ namespace c1 {// Used to setup or maintain
 
 	extern inline bool deck_has_enough_cards_left(Deck& deck, const int numOfCardsNeeded) {
 
-		assert(numOfCardsNeeded > -1);
-
 		int deckSize = deck.getDeckSize();
 
-		if ((deckSize - numOfCardsNeeded) >= 0)
+		if (deckSize - numOfCardsNeeded >= 0)
 			return true;
 
 		return false;
@@ -166,7 +164,7 @@ namespace c1 {// Used to setup or maintain
 
 						std::shared_ptr<Card>card = deck.dealCard();
 
-						card->card_position.y = (i) ? 850.0f : 0.0f;
+						card->card_position.y = i ? 850.0f : 0.0f;
 
 						card->card_position.x = static_cast<float>(120 * j);
 

@@ -12,7 +12,7 @@ namespace c4
 		return 6;
 	}
 
-	bool can_defend(Player& player, const std::shared_ptr<Card>& card_to_defend)
+	std::pair<bool, int> can_defend(Player& player, const std::shared_ptr<Card>& card_to_defend)
 	{
 		for(int i = 0; i < player.get_hand_size(); ++i)
 		{
@@ -21,20 +21,34 @@ namespace c4
 				static_cast<card_suit>(encrypt_data(card_to_defend->get_card_suit())) !=
 				Deck::master_suit)
 			{
-				return true;
+				return std::make_pair(true, i);
 			}
 			if (encrypt_data(player.from_hand_by_index(i)->get_card_suit()) == encrypt_data(card_to_defend->get_card_suit()))				
 			{
 				if(encrypt_data(player.from_hand_by_index(i)->get_card_value()) > encrypt_data(card_to_defend->get_card_value()))
 				{
-					return true;
+					return std::make_pair(true, i);
 				}
 			}				
 		}
-		return false;
+		return std::make_pair(false, 6);
 	}
 
 	void attack(Table& table, Deck& deck, MainGame& mg, Discardediscarded_cards& bPile, std::vector<std::shared_ptr<Card>>& cardsVisible, std::array<Player, 2>& players) {
+
+		std::array<Vector2, 6>pos{};
+
+		pos[0] = { 543.0, 457.0 };
+
+		pos[1] = { 688.0, 457.0 };
+
+		pos[2] = { 840.0, 457.0 };
+
+		pos[3] = { 990.0, 457.0 };
+
+		pos[4] = { 1143.0,457.0 };
+
+		pos[5] = { 1300.0,457.0 };
 
 		if (table.get_num_cards_in_atk_table()) {
 
@@ -46,6 +60,8 @@ namespace c4
 
 				return;
 			}
+
+			players[0].from_hand_by_index(lowest_val)->card_position = pos[c2::find_colliding_placement(players[0].from_hand_by_index(lowest_val)).second];
 
 			players[0].from_hand_by_index(lowest_val)->canBeTouched = false;
 
@@ -67,6 +83,19 @@ namespace c4
 
 	void defend(std::array<Player, 2>& players, Table& table,MainGame& mg, std::vector<std::shared_ptr<Card>>& cardsVisible, Deck& deck) {
 
+		std::array<Vector2, 6>pos{};
+
+		pos[0] = { 543.0, 457.0 };
+
+		pos[1] = { 688.0, 457.0 };
+
+		pos[2] = { 840.0, 457.0 };
+
+		pos[3] = { 990.0, 457.0 };
+
+		pos[4] = { 1143.0,457.0 };
+
+		pos[5] = { 1300.0,457.0 };
 		while (table.get_num_cards_in_atk_table() != table.get_num_cards_in_defender_table()) {
 
 			//check if pirivadnoy works
@@ -76,12 +105,23 @@ namespace c4
 
 				return;
 			}
-			if(can_defend(players[0], table.getCardFromTableAtk(table.find_empty_pile_atk()))) {
-				
+			std::pair<bool, int> result = can_defend(players[0],table.getCardFromTableAtk(find_card_to_defend(table)));
+			if(result.first) {
+
+				players[0].from_hand_by_index(result.second)->card_position = pos[find_card_to_defend(table)];
+
+				players[0].from_hand_by_index(result.second)->card_position = Vector2Add(players[0].from_hand_by_index(result.second)->card_position, {40,40});
+
+				players[0].from_hand_by_index(result.second)->canBeTouched = false;
+
+				c2::hand_to_table(players[mg.getPTurn()], table, players[0].from_hand_by_index(result.second), result.second);
+
+				c1::bringCardOneToTop(players[0].from_hand_by_index(result.second), table.getCardFromTableAtk(result.second), cardsVisible);
 			}
 			else
 			{
 				c2::takeDefender(players, cardsVisible, deck, table, mg);
+				return;
 			}
 		}
 		mg.switchPTurn();

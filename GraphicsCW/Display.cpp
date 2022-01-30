@@ -42,7 +42,10 @@ namespace c0 {//This is used to display
 					DrawTexture(passHigh, 1520, 936, WHITE);
 				}
 
-				if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) { PlaySound(fxButton); mg.switchPTurn(); }
+				if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
+				{
+					PlaySound(fxButton); mg.switchPTurn();
+				}
 			}
 			else {
 

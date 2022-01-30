@@ -14,7 +14,7 @@ void Table::addCardToTableDef(std::shared_ptr<Card> card, const int pNum)
 {
 	cardsOnTable[pNum][1] = card;
 }
-std::shared_ptr<Card> Table::getCardFromTableAtk(const int index) noexcept {
+std::shared_ptr<Card> Table::getCardFromTableAtk(const int index) {
 
 	return cardsOnTable[index][0];
 }

@@ -152,6 +152,15 @@ int main()
 
 			for (int i = 0; i < cardsVisible.size(); ++i)
 			{
+				if (!mainGame.getPTurn() && players[0].isPlyrAtk()) { //If turn = 0 (ai turn)
+
+					c4::attack(table, deck, mainGame, bPile, cardsVisible, players);
+				}
+				else if (!mainGame.getPTurn() && !players[0].isPlyrAtk()) {
+
+					c4::defend(players, table, mainGame, cardsVisible, deck);
+				}
+
 				if (cardsVisible[i]->canBeTouched)
 				{
 					Rectangle card = { cardsVisible[i]->card_position.x, cardsVisible[i]->card_position.y, 120, 170 };
@@ -184,6 +193,7 @@ int main()
 							cardsVisible[i]->cardIsHeld = false;
 						}
 					}
+					
 					if (!cardsVisible[i]->cardIsHeld && !cardsVisible[i]->inDefTablePile) {
 
 						int overlap = c2::collision_percent_finder(50, cardsVisible[i]);
@@ -194,12 +204,13 @@ int main()
 
 							cardsVisible[i]->card_position = box.first;
 
+							
 							if (players[mainGame.getPTurn()].isPlyrAtk() && table.getCardFromTableAtk(box.second) == nullptr) {
 
 								if (overlap == 100)
 								{
 
-									if (c2::can_attacker_attack(table, cardsVisible[i]) && table.getCardFromTableAtk(box.second-1) == nullptr) {
+									if (c2::can_attacker_attack(table, cardsVisible[i]) && table.getCardFromTableAtk(box.second) == nullptr) {
 
 										cardsVisible[i]->canBeTouched = false;
 
@@ -213,7 +224,7 @@ int main()
 										cardsVisible[i]->card_position = { box.first.x , (box.first.y + 250.0f) };
 									}
 								}
-							}
+							}							
 							else if (!players[mainGame.getPTurn()].isPlyrAtk()) {
 								if (pirivadnoy && c2::pirivadnoy_checker(table, cardsVisible[i])) {
 
