@@ -99,12 +99,6 @@ namespace c4
 		while (table.get_num_cards_in_atk_table() != table.get_num_cards_in_defender_table()) {
 			int position_of_card_to_defend = find_card_to_defend(table);
 			//check if pirivadnoy works
-			if (position_of_card_to_defend == 6) { //if no card to defend->pass
-
-				mg.switchPTurn();
-
-				return;
-			}
 			std::pair<bool, int> result = can_defend(players[0],table.getCardFromTableAtk(position_of_card_to_defend));
 			if(result.first) {
 

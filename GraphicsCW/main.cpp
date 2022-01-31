@@ -160,98 +160,102 @@ int main()
 
 					c4::defend(players, table, mainGame, cardsVisible, deck);
 				}
-
-				if (cardsVisible[i]->canBeTouched)
+				else
 				{
-					Rectangle card = { cardsVisible[i]->card_position.x, cardsVisible[i]->card_position.y, 120, 170 };
 
-					if (!hC)
+
+					if (cardsVisible[i]->canBeTouched)
 					{
-						if (CheckCollisionPointRec(mP, card) && IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
+						Rectangle card = { cardsVisible[i]->card_position.x, cardsVisible[i]->card_position.y, 120, 170 };
 
-							hC = true;
+						if (!hC)
+						{
+							if (CheckCollisionPointRec(mP, card) && IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
 
-							cardsVisible[i]->is_card_face_up = !cardsVisible[i]->is_card_face_up; // this function changes the state of the card in the cardsVisible pointer vector
+								hC = true;
 
+								cardsVisible[i]->is_card_face_up = !cardsVisible[i]->is_card_face_up; // this function changes the state of the card in the cardsVisible pointer vector
+
+							}
+
+							if (CheckCollisionPointRec(mP, card) && IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
+
+								hC = true;
+
+								cardsVisible[i]->cardIsHeld = true;
+
+								Vector2 mD = GetMouseDelta();
+
+								cardsVisible[i]->card_position.x = (cardsVisible[i]->card_position.x + mD.x);
+
+								cardsVisible[i]->card_position.y = (cardsVisible[i]->card_position.y + mD.y);
+
+							}
+							if (!CheckCollisionPointRec(mP, card) && !IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+
+								cardsVisible[i]->cardIsHeld = false;
+							}
 						}
 
-						if (CheckCollisionPointRec(mP, card) && IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
+						if (!cardsVisible[i]->cardIsHeld && !cardsVisible[i]->inDefTablePile) {
 
-							hC = true;
+							int overlap = c2::collision_percent_finder(50, cardsVisible[i]);
 
-							cardsVisible[i]->cardIsHeld = true;
+							if (overlap >= 50) {
 
-							Vector2 mD = GetMouseDelta();
+								auto box = c2::find_colliding_placement(cardsVisible[i]);
 
-							cardsVisible[i]->card_position.x = (cardsVisible[i]->card_position.x + mD.x);
+								cardsVisible[i]->card_position = box.first;
 
-							cardsVisible[i]->card_position.y = (cardsVisible[i]->card_position.y + mD.y);
 
-						}
-						if (!CheckCollisionPointRec(mP, card) && !IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+								if (players[mainGame.getPTurn()].isPlyrAtk() && table.getCardFromTableAtk(box.second) == nullptr) {
 
-							cardsVisible[i]->cardIsHeld = false;
-						}
-					}
-					
-					if (!cardsVisible[i]->cardIsHeld && !cardsVisible[i]->inDefTablePile) {
+									if (overlap == 100)
+									{
 
-						int overlap = c2::collision_percent_finder(50, cardsVisible[i]);
+										if (c2::can_attacker_attack(table, cardsVisible[i]) && table.getCardFromTableAtk(box.second) == nullptr) {
 
-						if (overlap >= 50) {
+											cardsVisible[i]->canBeTouched = false;
 
-							auto box = c2::find_colliding_placement(cardsVisible[i]);
+											c2::hand_to_table(players[mainGame.getPTurn()], table, cardsVisible[i], box.second);
 
-							cardsVisible[i]->card_position = box.first;
+											mainGame.incramentCardsPlayed();
+										}
 
-							
-							if (players[mainGame.getPTurn()].isPlyrAtk() && table.getCardFromTableAtk(box.second) == nullptr) {
+										else {
 
-								if (overlap == 100)
-								{
+											cardsVisible[i]->card_position = { box.first.x , (box.first.y + 250.0f) };
+										}
+									}
+								}
+								else if (!players[mainGame.getPTurn()].isPlyrAtk()) {
+									if (pirivadnoy && c2::pirivadnoy_checker(table, cardsVisible[i])) {
 
-									if (c2::can_attacker_attack(table, cardsVisible[i]) && table.getCardFromTableAtk(box.second) == nullptr) {
+										c2::privadi(mainGame, players);
+
+										cardsVisible[i]->card_position = Vector2Add(cardsVisible[i]->card_position, { 40,40 });
+
+										cardsVisible[i]->canBeTouched = false;
+									}
+									else if (c2::attacking_card_beats_card(cardsVisible[i], table.getCardFromTableAtk(box.second))) {
+
+										cardsVisible[i]->card_position = Vector2Add(cardsVisible[i]->card_position, { 40,40 });
 
 										cardsVisible[i]->canBeTouched = false;
 
 										c2::hand_to_table(players[mainGame.getPTurn()], table, cardsVisible[i], box.second);
 
-										mainGame.incramentCardsPlayed();
+										c1::bringCardOneToTop(cardsVisible[i], table.getCardFromTableAtk(box.second), cardsVisible);
 									}
-
 									else {
 
 										cardsVisible[i]->card_position = { box.first.x , (box.first.y + 250.0f) };
 									}
 								}
-							}							
-							else if (!players[mainGame.getPTurn()].isPlyrAtk()) {
-								if (pirivadnoy && c2::pirivadnoy_checker(table, cardsVisible[i])) {
-
-									c2::privadi(mainGame, players);
-
-									cardsVisible[i]->card_position = Vector2Add(cardsVisible[i]->card_position, { 40,40 });
-
-									cardsVisible[i]->canBeTouched = false;
-								}
-								else if (c2::attacking_card_beats_card(cardsVisible[i], table.getCardFromTableAtk(box.second))) {
-
-									cardsVisible[i]->card_position = Vector2Add(cardsVisible[i]->card_position, { 40,40 });
-
-									cardsVisible[i]->canBeTouched = false;
-
-									c2::hand_to_table(players[mainGame.getPTurn()], table, cardsVisible[i], box.second);
-
-									c1::bringCardOneToTop(cardsVisible[i], table.getCardFromTableAtk(box.second), cardsVisible);
-								}
-								else {
-
+								else
+								{
 									cardsVisible[i]->card_position = { box.first.x , (box.first.y + 250.0f) };
 								}
-							}
-							else
-							{
-								cardsVisible[i]->card_position = { box.first.x , (box.first.y + 250.0f) };
 							}
 						}
 					}
