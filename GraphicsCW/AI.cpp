@@ -50,7 +50,7 @@ namespace c4
 
 		pos[5] = { 1300.0,457.0 };
 
-		if (table.get_num_cards_in_atk_table()) {
+		if (table.get_num_cards_in_atk_table()) { //if number of cards in the attack pile <= 1 then, else;
 
 			const int lowest_val = players[0].find_lowest_card(encrypt_data(table.getCardFromTableAtk(table.find_card_in_atk())->get_card_suit()));
 
@@ -78,6 +78,8 @@ namespace c4
 			c2::hand_to_table(players[0], table, players[0].from_hand_by_index(lowest_val), table.find_empty_pile_atk());
 
 			mg.incramentCardsPlayed();
+
+			mg.switchPTurn();
 		}
 	}
 
@@ -96,11 +98,18 @@ namespace c4
 		pos[4] = { 1143.0,457.0 };
 
 		pos[5] = { 1300.0,457.0 };
+
 		while (table.get_num_cards_in_atk_table() != table.get_num_cards_in_defender_table()) {
+
 			int position_of_card_to_defend = find_card_to_defend(table);
 			//check if pirivadnoy works
 			std::pair<bool, int> result = can_defend(players[0],table.getCardFromTableAtk(position_of_card_to_defend));
+			
 			if(result.first) {
+
+				assert(position_of_card_to_defend != 6);
+
+				assert(result.second != 6);
 
 				players[0].from_hand_by_index(result.second)->card_position = pos[position_of_card_to_defend];
 
@@ -112,14 +121,13 @@ namespace c4
 
 				c1::bringCardOneToTop(players[0].from_hand_by_index(result.second), table.getCardFromTableAtk(position_of_card_to_defend), cardsVisible);
 			}
-			else
-			{
+			else {
+
 				c2::takeDefender(players, cardsVisible, deck, table, mg);
+				
 				return;
 			}
 		}
 		mg.switchPTurn();
 	}
-
-
 }

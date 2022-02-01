@@ -53,7 +53,7 @@ int Player::find_lowest_card(int card_suit_value)
 
 	int lowest_val_positon = 99;
 
-	if (!(card_suit_value && card_suit_value < 5))
+	if (!(card_suit_value && card_suit_value < 5)) //if card_suit_val == 0 then code below doesn't run else it does 
 	{
 		for (const auto& i : player_hand)
 		{
