@@ -4,7 +4,7 @@ namespace c4
 {
 	int find_card_to_defend(Table& table) {
 
-		for(int i = 0; i < 6; ++i) {
+		for(int i = 0; i < 6; ++i) { //iterates through the piles on the table
 
 			if (table.getCardFromTableAtk(i) != nullptr && table.getCardFromTableDef(i) == nullptr)
 				return i; // This will return the index of the attack pile that needs to be defended
@@ -19,9 +19,9 @@ namespace c4
 			if(static_cast<card_suit>(encrypt_data(player.from_hand_by_index(i)->get_card_suit())) ==
 				Deck::master_suit &&
 				static_cast<card_suit>(encrypt_data(card_to_defend->get_card_suit())) !=
-				Deck::master_suit)
+				Deck::master_suit) // if ur card is master suit and ur opponents isnt
 			{
-				return std::make_pair(true, i);
+				return std::make_pair(true, i); //returns position of card that master suit can cover and the value of true
 			}
 			if (encrypt_data(player.from_hand_by_index(i)->get_card_suit()) == encrypt_data(card_to_defend->get_card_suit()))				
 			{
@@ -103,13 +103,11 @@ namespace c4
 
 			int position_of_card_to_defend = find_card_to_defend(table);
 			//check if pirivadnoy works
-			std::pair<bool, int> result = can_defend(players[0],table.getCardFromTableAtk(position_of_card_to_defend));
+			const std::pair<bool, int> result = can_defend(players[0],table.getCardFromTableAtk(position_of_card_to_defend));
 			
 			if(result.first) {
 
 				assert(position_of_card_to_defend != 6);
-
-				assert(result.second != 6);
 
 				players[0].from_hand_by_index(result.second)->card_position = pos[position_of_card_to_defend];
 
