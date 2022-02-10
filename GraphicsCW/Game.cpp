@@ -25,7 +25,8 @@ namespace c2 {// This namespace is for game functions
 
 			if (CheckCollisionRecs(rCard, placeHB)) {
 
-				auto oSetArea = (placeHB.width - sqrt((card->card_position.x - placeHB.x) * (card->card_position.x - placeHB.x))) * (placeHB.height - sqrt((card->card_position.y - placeHB.y) * (card->card_position.y - placeHB.y)));
+				auto oSetArea = (placeHB.width - sqrt((card->card_position.x - placeHB.x) * (card->card_position.x - placeHB.x))) 
+					* (placeHB.height - sqrt((card->card_position.y - placeHB.y) * (card->card_position.y - placeHB.y)));
 
 				auto percentOverlap = oSetArea / (placeHB.width * placeHB.height) * 100;
 

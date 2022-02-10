@@ -20,9 +20,8 @@
 #include <cassert>
 constexpr auto fileName = "SAVE.txt";// This globally declares the filename
 constexpr auto screenWidth = 1920;// This globally declares screenwidth
-constexpr auto screenHeight = 1050; // This globallydeclares the screenheight
+constexpr auto screenHeight = 1050; // This globally declares the screenheight
 
-extern inline int encrypt_data(int data)noexcept { return ~data; }
-
+extern inline int encrypt_data(int data)noexcept{ return ~data; }
 
 #endif

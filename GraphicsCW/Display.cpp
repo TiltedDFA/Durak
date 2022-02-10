@@ -230,7 +230,7 @@ namespace c0 {//This is used to display
 
 			displayTextForMusicButtons(eM, static_cast<int>(electroSwingMusic.x + (electroSwingMusic.width / 2) - 100), static_cast<int>(electroSwingMusic.y + (electroSwingMusic.height / 2) - 25));
 
-			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
+			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT) && !(selection == 1)) {
 
 				c3::setMusicalNumber(1, deckSize, pirivadnoy);
 
@@ -257,7 +257,7 @@ namespace c0 {//This is used to display
 
 			displayTextForMusicButtons(eM, static_cast<int>(electroSwingMusic.x + (electroSwingMusic.width / 2) - 100), static_cast<int>(electroSwingMusic.y + (electroSwingMusic.height / 2) - 25));
 
-			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
+			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT) && !(selection == 2)) {
 
 				c3::setMusicalNumber(2, deckSize, pirivadnoy);
 
@@ -284,7 +284,7 @@ namespace c0 {//This is used to display
 
 			displayTextForMusicButtons(eM, static_cast<int>(electroSwingMusic.x + (electroSwingMusic.width / 2) - 100), static_cast<int>(electroSwingMusic.y + (electroSwingMusic.height / 2) - 25));
 
-			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
+			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT) && !(selection == 3)) {
 
 				c3::setMusicalNumber(3, deckSize, pirivadnoy);
 
@@ -311,7 +311,7 @@ namespace c0 {//This is used to display
 
 			displayTextForMusicButtons(eM, static_cast<int>(electroSwingMusic.x + (electroSwingMusic.width / 2) - 100), static_cast<int>(electroSwingMusic.y + (electroSwingMusic.height / 2) - 25));
 
-			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
+			if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT) && !(selection == 4)) {
 
 				c3::setMusicalNumber(4, deckSize, pirivadnoy);
 
