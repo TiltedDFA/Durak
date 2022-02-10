@@ -17,20 +17,20 @@ namespace c2 {// This namespace is for game functions
 
 		pos[5] = { 1300.0,457.0 };
 
-		Rectangle rCard = { card->card_position.x, card->card_position.y, 120, 170 };
+		const Rectangle rCard = { card->card_position.x, card->card_position.y, 120, 170 };
 
 		for (int i = 0; i < 6; ++i) {
 
-			Rectangle placeHB = { pos[i].x, pos[i].y, 120, 170 };
+			const Rectangle placeHB = { pos[i].x, pos[i].y, 120, 170 };
 
 			if (CheckCollisionRecs(rCard, placeHB)) {
 
-				auto oSetArea = (placeHB.width - sqrt((card->card_position.x - placeHB.x) * (card->card_position.x - placeHB.x))) 
+				const auto oSetArea = (placeHB.width - sqrt((card->card_position.x - placeHB.x) * (card->card_position.x - placeHB.x)))
 					* (placeHB.height - sqrt((card->card_position.y - placeHB.y) * (card->card_position.y - placeHB.y)));
 
-				auto percentOverlap = oSetArea / (placeHB.width * placeHB.height) * 100;
+				const auto percentOverlap = oSetArea / (placeHB.width * placeHB.height) * 100;
 
-				if (static_cast<int>(percentOverlap > percentCertanty)) {
+				if (static_cast<int>(percentOverlap > static_cast<int>(percentCertanty))) {
 
 					return static_cast<int>(percentOverlap);
 				}
@@ -102,7 +102,7 @@ namespace c2 {// This namespace is for game functions
 		return { { 0,0 }, 7 };
 	}
 
-	extern inline void hand_to_table(Player& player, Table& table, std::shared_ptr<Card> card_to_play, const int& cardPile) {
+	void hand_to_table(Player& player, Table& table,const std::shared_ptr<Card>& card_to_play, const int& cardPile) {
 
 		std::vector<std::shared_ptr<Card>> player_hand = player.getEntireHand();
 

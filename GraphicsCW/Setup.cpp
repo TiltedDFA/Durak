@@ -11,7 +11,7 @@ namespace c1 {// Used to setup or maintain
 
 		assert(cards_visible.size() > 0);
 
-		auto positionOfCardToRemove = std::find(cards_visible.begin(), cards_visible.end(), card);
+		const auto positionOfCardToRemove = std::find(cards_visible.begin(), cards_visible.end(), card);
 
 		if (positionOfCardToRemove != cards_visible.end())
 			cards_visible.erase(positionOfCardToRemove);
@@ -19,7 +19,7 @@ namespace c1 {// Used to setup or maintain
 
 	extern inline void init_player_hands(std::vector<std::shared_ptr<Card>>& cards_visible, Deck& deck, std::array<Player, 2>& players) {
 
-		float x = 600;
+		constexpr float x = 600;
 
 		float y = 75;
 
@@ -31,7 +31,7 @@ namespace c1 {// Used to setup or maintain
 
 			card->is_card_face_up = true;
 
-			card->card_position = { (x + 125 * i),y };
+			card->card_position = { (x + 125.0f * static_cast<float>(i)),y };
 
 			players[0].addToplayer_hand(card);
 
@@ -44,7 +44,7 @@ namespace c1 {// Used to setup or maintain
 
 			std::shared_ptr<Card> card = deck.dealCard();
 
-			card->card_position = { (x + 125 * i),y };
+			card->card_position = { (x + 125.0f * static_cast<float>(i)),y };
 
 			players[1].addToplayer_hand(card);
 
@@ -85,22 +85,22 @@ namespace c1 {// Used to setup or maintain
 
 	extern inline void lockCardsInHand(std::array<Player, 2>players, MainGame mg) {
 
-		auto pTurn = mg.getPTurn();
+		const auto pTurn = mg.getPTurn();
 
 		for (int i = 0; i < players[pTurn].get_hand_size(); ++i) {
 
-			auto card = players[pTurn].from_hand_by_index(i);
+			const auto card = players[pTurn].from_hand_by_index(i);
 
 			card->canBeTouched = true;
 
 			players[pTurn].set_hand_by_index(card, i);
 		}
 
-		auto otherPlayer = (pTurn + 1) % 2;
+		const auto otherPlayer = (pTurn + 1) % 2;
 
 		for (int i = 0; i < players[otherPlayer].get_hand_size(); ++i) {
 
-			auto card = players[otherPlayer].from_hand_by_index(i);
+			const auto card = players[otherPlayer].from_hand_by_index(i);
 
 			card->canBeTouched = false;
 
@@ -112,9 +112,9 @@ namespace c1 {// Used to setup or maintain
 
 		assert(cards_visible.size() > 1);
 
-		auto cOnePos = std::find(cards_visible.begin(), cards_visible.end(), cardOne);
+		const auto cOnePos = std::find(cards_visible.begin(), cards_visible.end(), cardOne);
 
-		auto cTwoPos = std::find(cards_visible.begin(), cards_visible.end(), cardTwo);
+		const auto cTwoPos = std::find(cards_visible.begin(), cards_visible.end(), cardTwo);
 
 		if (cOnePos < cTwoPos) { std::iter_swap(cOnePos, cTwoPos); }
 	}
@@ -123,9 +123,9 @@ namespace c1 {// Used to setup or maintain
 
 		assert(cards_visible.size() >= table.get_amount_of_card_in_table());
 
-		const std::array<std::array<std::shared_ptr<Card>, 2>, 6> _Table = table.getEntireTable();
+		const std::array<std::array<std::shared_ptr<Card>, 2>, 6> _table = table.getEntireTable();
 
-		for (const auto& i : _Table) {
+		for (const auto& i : _table) {
 
 			for (int j = 0; j < 2; ++j) {
 
@@ -142,7 +142,7 @@ namespace c1 {// Used to setup or maintain
 
 	extern inline bool deck_has_enough_cards_left(Deck& deck, const int numOfCardsNeeded) {
 
-		int deckSize = deck.getDeckSize();
+		const int deckSize = deck.getDeckSize();
 
 		if (deckSize - numOfCardsNeeded >= 0)
 			return true;

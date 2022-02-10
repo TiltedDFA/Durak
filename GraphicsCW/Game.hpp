@@ -11,7 +11,7 @@ namespace c2 {// This namespace is for game functions
 
 	extern inline std::pair<Vector2, int> find_colliding_placement(const std::shared_ptr<Card>& card);
 
-	extern inline void hand_to_table(Player& player, Table& table, std::shared_ptr<Card> card, const int& cardPile);
+	extern inline void hand_to_table(Player& player, Table& table, const std::shared_ptr<Card>& card_to_play, const int& cardPile);
 
 	extern inline void discard_table(Discardediscarded_cards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible);
 
