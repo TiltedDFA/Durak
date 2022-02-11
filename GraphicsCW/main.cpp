@@ -163,7 +163,6 @@ int main()
 				else
 				{
 
-
 					if (cardsVisible[i]->canBeTouched)
 					{
 						Rectangle card = { cardsVisible[i]->card_position.x, cardsVisible[i]->card_position.y, 120, 170 };
@@ -229,6 +228,7 @@ int main()
 									}
 								}
 								else if (!players[mainGame.getPTurn()].isPlyrAtk()) {
+
 									if (pirivadnoy && c2::pirivadnoy_checker(table, cardsVisible[i])) {
 
 										c2::privadi(mainGame, players);

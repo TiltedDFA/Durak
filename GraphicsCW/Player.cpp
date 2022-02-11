@@ -9,7 +9,7 @@ void Player::addToplayer_hand(const std::shared_ptr<Card>& cardToAdd) {
 
 	player_hand.push_back(cardToAdd);
 }
-std::shared_ptr<Card> Player::from_hand_by_index(const int index) noexcept {
+std::shared_ptr<Card> Player::from_hand_by_index(const int index) {
 
 	return player_hand[index];
 }

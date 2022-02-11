@@ -12,7 +12,7 @@ public:
 	Player();
 	~Player();
 	void addToplayer_hand(const std::shared_ptr<Card>& cardToAdd);
-	std::shared_ptr<Card> from_hand_by_index(const int index)noexcept;
+	std::shared_ptr<Card> from_hand_by_index(const int index);
 	std::size_t get_hand_size()noexcept;
 	bool isPlyrAtk() noexcept;
 	void setPlyrAtk(bool bol);

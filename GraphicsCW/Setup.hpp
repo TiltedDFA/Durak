@@ -14,7 +14,7 @@ namespace c1 {// Used to setup or maintain
 
 	extern inline void lockCardsInHand(std::array<Player, 2>players, MainGame mg);
 
-	extern inline void bringCardOneToTop(std::shared_ptr<Card> cardOne, std::shared_ptr<Card> cardTwo, std::vector<std::shared_ptr<Card>>& cards_visible);
+	extern inline void bringCardOneToTop(const std::shared_ptr<Card>& cardOne, const std::shared_ptr<Card>& cardTwo, std::vector<std::shared_ptr<Card>>& cards_visible);
 
 	extern inline void remove_table_from_visible_vector(Table& table, std::vector<std::shared_ptr<Card>>& cards_visible);
 
