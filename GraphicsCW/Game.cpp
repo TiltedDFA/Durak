@@ -1,7 +1,7 @@
 #include "Game.hpp"
 namespace c2 {// This namespace is for game functions
 
-	extern inline int  collision_percent_finder(int percentCertanty, std::shared_ptr<Card> card) {
+	extern inline int  collision_percent_finder(int percentCertanty, std::shared_ptr<Card> card) { //This function is used to find the amount of overlap between the card and the placement box
 
 		std::array<Vector2, 6>pos{};
 
@@ -58,7 +58,7 @@ namespace c2 {// This namespace is for game functions
 		return false;
 	}
 
-	extern inline bool attacking_card_beats_card(const std::shared_ptr<Card>& card_one, const std::shared_ptr<Card>& card_two) {
+	extern inline bool card_beats_card_def(const std::shared_ptr<Card>& card_one, const std::shared_ptr<Card>& card_two) { //This function checks where card one is able to beat card two for the defender
 
 		if (card_two == nullptr)
 			return false;
@@ -73,7 +73,7 @@ namespace c2 {// This namespace is for game functions
 		return false;
 	}
 
-	extern inline std::pair<Vector2, int> find_colliding_placement(const std::shared_ptr<Card>& card) {
+	extern inline std::pair<Vector2, int> find_colliding_placement(const std::shared_ptr<Card>& card) { // This function finds the placement box number that the card is currently touching
 
 		std::array<Vector2, 6>pos{};
 
@@ -102,19 +102,14 @@ namespace c2 {// This namespace is for game functions
 		return { { 0,0 }, 7 };
 	}
 
-	void hand_to_table(Player& player, Table& table,const std::shared_ptr<Card>& card_to_play, const int& cardPile) {
+	void hand_to_table(Player& player, Table& table,const std::shared_ptr<Card>& card_to_play, const int& cardPile) { //places a card from a hand to the table
 
 		std::vector<std::shared_ptr<Card>> player_hand = player.getEntireHand();
 
 		const auto posInHand = std::find(player_hand.begin(), player_hand.end(), card_to_play);
 
 		if (posInHand != player_hand.end()) {
-			/*
-			if (player.isPlyrAtk()) { table.addCardToTableAtk(std::move(*posInHand), cardPile); player_hand.erase(posInHand); }
-
-			else { table.addCardToTableDef(std::move(*posInHand), cardPile); player_hand.erase(posInHand); card->inDefTablePile = true; }
-			*/
-
+		
 			if (table.getCardFromTableAtk(cardPile) == nullptr) { table.addCardToTableAtk(std::move(*posInHand), cardPile); player_hand.erase(posInHand); }
 
 			else { table.addCardToTableDef(std::move(*posInHand), cardPile); player_hand.erase(posInHand); card_to_play->inDefTablePile = true; }
@@ -123,7 +118,7 @@ namespace c2 {// This namespace is for game functions
 		}
 	}
 
-	extern inline void discard_table(Discardediscarded_cards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible) {
+	extern inline void discard_table(Discardediscarded_cards& bPile, Table& table, std::vector<std::shared_ptr<Card>>& cardsVisible) { //empties table
 
 		std::array<std::array<std::shared_ptr<Card>, 2>, 6>cardsOnTable = table.getEntireTable();
 
@@ -144,7 +139,7 @@ namespace c2 {// This namespace is for game functions
 		table.setEntireTable(cardsOnTable);
 	}
 
-	extern inline bool defend_can_pass(Table& table) {
+	extern inline bool defend_can_pass(Table& table) { // checks whether the defender is able to pass
 
 		const std::array<std::array<std::shared_ptr<Card>, 2>, 6> cardsOnTable = table.getEntireTable();
 
@@ -180,7 +175,7 @@ namespace c2 {// This namespace is for game functions
 		return false;
 	}
 
-	extern inline void table_to_hand(Player& player, Table& table) {
+	extern inline void table_to_hand(Player& player, Table& table) { //moves all card on table to a player's hand
 
 		std::array<std::array<std::shared_ptr<Card>, 2>, 6> cTable = table.getEntireTable();
 
@@ -297,7 +292,7 @@ namespace c2 {// This namespace is for game functions
 		mg.switchPTurn();
 	}
 
-	extern inline bool pirivadnoy_checker(Table& table, const std::shared_ptr<Card>& card) {
+	extern inline bool pirivadnoy_checker(Table& table, const std::shared_ptr<Card>& card) { // This function checks whether the defender is able to pirivadit
 
 		if (table.get_num_cards_in_defender_table()) // if there's more than zero cards, this will return false
 			return false;
@@ -311,5 +306,6 @@ namespace c2 {// This namespace is for game functions
 	void privadi(MainGame& mg, std::array<Player, 2>& players) {
 
 		c2::switch_player_state(players);
+		mg.switchPTurn();
 	}	
 }

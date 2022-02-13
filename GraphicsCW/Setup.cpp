@@ -17,7 +17,7 @@ namespace c1 {// Used to setup or maintain
 			cards_visible.erase(positionOfCardToRemove);
 	}
 
-	extern inline void init_player_hands(std::vector<std::shared_ptr<Card>>& cards_visible, Deck& deck, std::array<Player, 2>& players) {
+	extern inline void init_player_hands(std::vector<std::shared_ptr<Card>>& cards_visible, Deck& deck, std::array<Player, 2>& players) { // This function is used to set up both the player hands when the program starts
 
 		constexpr float x = 600;
 
@@ -26,8 +26,6 @@ namespace c1 {// Used to setup or maintain
 		for (int i = 0; i < 6; ++i) {
 
 			std::shared_ptr<Card> card = deck.dealCard();
-
-			//card->canBeTouched = false; Temp disabled until ai is made
 
 			card->is_card_face_up = true;
 
@@ -83,7 +81,7 @@ namespace c1 {// Used to setup or maintain
 		return 0;
 	}
 
-	extern inline void lockCardsInHand(std::array<Player, 2>players, MainGame mg) {
+	extern inline void lockCardsInHand(std::array<Player, 2>players, MainGame mg) { // This function is used to stop players interacting with the other players hand. E.g. player one won't be able to interact with player two's hand
 
 		const auto pTurn = mg.getPTurn();
 
@@ -108,7 +106,7 @@ namespace c1 {// Used to setup or maintain
 		}
 	}
 
-	extern inline void bringCardOneToTop(const std::shared_ptr<Card>& cardOne, const std::shared_ptr<Card>& cardTwo, std::vector<std::shared_ptr<Card>>& cards_visible) {
+	extern inline void bringCardOneToTop(const std::shared_ptr<Card>& cardOne, const std::shared_ptr<Card>& cardTwo, std::vector<std::shared_ptr<Card>>& cards_visible) { // This function is used to bring a card atop of another. This is used to make defending cards always appear attacking cards
 
 		assert(cards_visible.size() > 1);
 

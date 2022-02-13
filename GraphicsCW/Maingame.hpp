@@ -4,14 +4,10 @@
 class MainGame
 {
 	int  pTurn = 1;
-	unsigned int _round = 0;
 	unsigned short int cardsPlayedThisPass = 0;
 public:
-	int getRound()noexcept;
-
 
 	void incramentRound();
-	void setRound(const int num);
 
 	void setPTurn(const int player);
 	void switchPTurn();

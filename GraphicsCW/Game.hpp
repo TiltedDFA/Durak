@@ -7,7 +7,7 @@ namespace c2 {// This namespace is for game functions
 
 	extern inline bool can_attacker_attack(Table& table, std::shared_ptr<Card> card);
 
-	extern inline bool attacking_card_beats_card(const std::shared_ptr<Card>& card_one, const std::shared_ptr<Card>& card_two);
+	extern inline bool card_beats_card_def(const std::shared_ptr<Card>& card_one, const std::shared_ptr<Card>& card_two);
 
 	extern inline std::pair<Vector2, int> find_colliding_placement(const std::shared_ptr<Card>& card);
 

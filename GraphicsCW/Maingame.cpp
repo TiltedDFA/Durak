@@ -3,17 +3,6 @@
 MainGame::MainGame() {}
 MainGame::~MainGame() {}
 
-int MainGame::getRound() noexcept {
-	return _round;
-}
-void MainGame::incramentRound()
-{
-	++_round;
-}
-void MainGame::setRound(const int num)
-{
-	_round = num;
-}
 void MainGame::switchPTurn()
 {
 	pTurn = (pTurn) ? 0 : 1;

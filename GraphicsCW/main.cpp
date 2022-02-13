@@ -29,10 +29,6 @@ int main()
 
 	screens[3].first = false; screens[3].second = "Settings Screen";
 
-
-	//bool _TScreen = true; // This is to help the store which screen to display
-	//bool prePlayScreen = false; //This is also to help with the screen display system
-
 	bool hC = false; //This variable is used primarily in the system that controlls the amnt of cards you pick up 	
 					 //bool winScreen = false; //This is also for the system 	
 	int musicalNumber = c3::getMusicNumber();
@@ -117,8 +113,10 @@ int main()
 
 	while (!WindowShouldClose())
 	{
-		c2::continuePlayingMusic(musicalNumber, JazzMusic, LoFiMusic, ElectroSwingMusic);
+		c2::continuePlayingMusic(musicalNumber, JazzMusic, LoFiMusic, ElectroSwingMusic); //used to play the music
+
 		mP = GetMousePosition();
+
 		hC = false;
 		if (screens[1].first) // Main Game Screen;
 		{
@@ -237,7 +235,7 @@ int main()
 
 										cardsVisible[i]->canBeTouched = false;
 									}
-									else if (c2::attacking_card_beats_card(cardsVisible[i], table.getCardFromTableAtk(box.second))) {
+									else if (c2::card_beats_card_def(cardsVisible[i], table.getCardFromTableAtk(box.second))) {
 
 										cardsVisible[i]->card_position = Vector2Add(cardsVisible[i]->card_position, { 40,40 });
 
@@ -403,7 +401,7 @@ int main()
 	UnloadMusicStream(JazzMusic);
 	UnloadMusicStream(LoFiMusic);
 	UnloadMusicStream(ElectroSwingMusic);
-
+	UnloadImage(appIcon);
 	CloseAudioDevice();
 	CloseWindow();// Close window and OpenGL context
 	//--------------------------------------------------------------------------------------
