@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical" MembersFormat="FullSignature">
+  <Class Name="Card">
+    <Position X="5" Y="5.75" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>gABAEABgAAAABABBAAAAIAAAAAAIAAAAAUAgAAAAAAg=</HashCode>
+      <FileName>Card.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Deck">
+    <Position X="0.5" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAEEAAAAAAJQAAABAAAAAAAAAAAEAEAAAABAAAAEAAA=</HashCode>
+      <FileName>Deck.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Discardediscarded_cards">
+    <Position X="7.5" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAEEAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Discardedcards.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainGame">
+    <Position X="5.75" Y="2.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>BBDAgAAIAAAAAAEAAACAAAAABAAEAAAAAAAAQAAEAAA=</HashCode>
+      <FileName>Maingame.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player">
+    <Position X="0.5" Y="3.75" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAkRAAEAAAABAAAIAAYACAAAAAACACACAQAAABA=</HashCode>
+      <FileName>Player.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Table">
+    <Position X="9.5" Y="2.25" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQABAQAAQAQAhAACCABAAEAEAAAAAAAAA=</HashCode>
+      <FileName>Table.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="card_suit">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAQAAAAAAAAAEAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Card.hpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="card_value">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABABAAJAiAAAAAABIAAAAAAAAABAQgBAAAg=</HashCode>
+      <FileName>Card.hpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
