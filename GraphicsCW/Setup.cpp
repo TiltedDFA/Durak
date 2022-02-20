@@ -27,7 +27,7 @@ namespace c1 {// Used to setup or maintain
 
 			std::shared_ptr<Card> card = deck.dealCard();
 
-			card->is_card_face_up = true;
+			card->is_card_face_up = false;
 
 			card->card_position = { (x + 125.0f * static_cast<float>(i)),y };
 
