@@ -65,6 +65,8 @@ namespace c4
 
 			players[0].from_hand_by_index(lowest_val)->canBeTouched = false;
 
+			players[0].from_hand_by_index(lowest_val)->is_card_face_up = true;
+
 			c2::hand_to_table(players[0], table, players[0].from_hand_by_index(lowest_val), table.find_empty_pile_atk());
 
 			mg.incramentCardsPlayed();
@@ -114,6 +116,8 @@ namespace c4
 				players[0].from_hand_by_index(result.second)->card_position = Vector2Add(players[0].from_hand_by_index(result.second)->card_position, {40,40});
 
 				players[0].from_hand_by_index(result.second)->canBeTouched = false;
+
+				players[0].from_hand_by_index(result.second)->is_card_face_up = true;
 
 				c2::hand_to_table(players[mg.getPTurn()], table, players[0].from_hand_by_index(result.second), position_of_card_to_defend);
 
