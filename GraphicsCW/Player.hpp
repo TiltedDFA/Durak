@@ -21,5 +21,5 @@ public:
 	void set_hand_by_index(std::shared_ptr<Card> card, const int index);
 	void set_player_winstate(bool has_won)noexcept;
 	const bool get_player_winstate()noexcept;
-	int find_lowest_card(int val);
+	int find_lowest_card(const int& val);
 };

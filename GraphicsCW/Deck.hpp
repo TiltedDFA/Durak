@@ -20,7 +20,7 @@ public:
 	const std::shared_ptr<Card>& getTopOfVisDeck()noexcept;
 	void setPosTopCardDeck(const Vector2& pos);
 
-	void setmaster_suit(card_suit suit);
+	void setmaster_suit(const card_suit& suit);
 
 	int getDeckSize()noexcept;
 };

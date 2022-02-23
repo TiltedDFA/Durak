@@ -142,7 +142,7 @@ int main()
 
 			if (deck.getDeckSize()) { c0::displaySpecialCards(deck, CardBacking, blankCard); }
 
-			c0::displayWhosTurnItIs(mainGame);
+			c0::displayWhosTurnItIs(mainGame,players[mainGame.getPTurn()].isPlyrAtk());
 
 			DrawCircleV(GetMousePosition(), 10, WHITE);
 
