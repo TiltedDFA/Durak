@@ -39,7 +39,7 @@ std::string Card::valueToString(const card_value& value)
 	default:
 		break;
 	}
-	throw std::runtime_error("Unexpected Error with Value display");;
+	throw std::runtime_error("Unexpected Error with Value display");
 }
 
 void Card::displayCardWithValueText(const std::shared_ptr<Card>& card)

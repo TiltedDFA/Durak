@@ -1,7 +1,7 @@
 #pragma once
 
-
 #include "Card.hpp"
+
 class Deck
 {
 	std::vector<std::shared_ptr<Card>> deck;// The deck which is based on an std::shared_ptr system. The shared_ptrs are a type of smart pointers which delete the contents from the heap automatically	

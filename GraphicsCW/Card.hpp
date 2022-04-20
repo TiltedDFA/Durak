@@ -25,7 +25,8 @@ enum class card_value // This sets up the card's values
 	ACE,
 };
 //-------------------------------------------------------------------------------------------------------------
-class Card // This is the card class, The majourity of the game is based around it
+class Card
+// This is the card class, The majourity of the game is based around it
 {
 	int Suit{};
 	int Value{};
@@ -39,7 +40,8 @@ public:
 	bool canBeTouched = true;
 	bool inDefTablePile = false;
 
-	static std::string suitToString(const card_suit&); // A fucntion that converts the enumarated values to a string(Which can be used to display)
+	static std::string suitToString(const card_suit&);
+	// A fucntion that converts the enumarated values to a string(Which can be used to display)
 	static std::string valueToString(const card_value&);
 	void displayCardWithValueText(const std::shared_ptr<Card>& card);
 

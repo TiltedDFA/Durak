@@ -102,17 +102,27 @@ namespace c2 {// This namespace is for game functions
 		return { { 0,0 }, 7 };
 	}
 
-	void hand_to_table(Player& player, Table& table,const std::shared_ptr<Card>& card_to_play, const int& cardPile) { //places a card from a hand to the table
+	void hand_to_table(Player& player, Table& table,const std::shared_ptr<Card>& card_to_play, const int& cardPile) {
+		//places a card from a hand to the table
 
 		std::vector<std::shared_ptr<Card>> player_hand = player.getEntireHand();
 
-		const auto posInHand = std::find(player_hand.begin(), player_hand.end(), card_to_play);
+		const auto posInHand = 
+			std::find(player_hand.begin(), player_hand.end(), card_to_play);
 
 		if (posInHand != player_hand.end()) {
 		
-			if (table.getCardFromTableAtk(cardPile) == nullptr) { table.addCardToTableAtk(std::move(*posInHand), cardPile); player_hand.erase(posInHand); }
+			if (table.getCardFromTableAtk(cardPile) == nullptr)
+			{
+				table.addCardToTableAtk(std::move(*posInHand), cardPile);
+				player_hand.erase(posInHand);
+			}
 
-			else { table.addCardToTableDef(std::move(*posInHand), cardPile); player_hand.erase(posInHand); card_to_play->inDefTablePile = true; }
+			else
+			{
+				table.addCardToTableDef(std::move(*posInHand), cardPile);
+				player_hand.erase(posInHand); card_to_play->inDefTablePile = true;
+			}
 
 			player.setEntireHand(player_hand);
 		}
@@ -292,12 +302,14 @@ namespace c2 {// This namespace is for game functions
 		mg.switchPTurn();
 	}
 
-	extern inline bool pirivadnoy_checker(Table& table, const std::shared_ptr<Card>& card) { // This function checks whether the defender is able to pirivadit
+	extern inline bool pirivadnoy_checker(Table& table, const std::shared_ptr<Card>& card) {
+		// This function checks whether the defender is able to pirivadit
 
 		if (table.get_num_cards_in_defender_table()) // if there's more than zero cards, this will return false
 			return false;
 		if (static_cast<card_value>(encrypt_data(card->get_card_value())) == 
-			static_cast<card_value>(encrypt_data(table.getCardFromTableAtk(table.find_card_in_atk())->get_card_value()))
+			static_cast<card_value>(encrypt_data(table.getCardFromTableAtk(
+				table.find_card_in_atk())->get_card_value()))
 			&& table.get_num_cards_in_defender_table() == 0)
 			return true;
 		return false;
