@@ -3263,8 +3263,7 @@ void DrawTexturePro(Texture2D texture, Rectangle source, Rectangle dest, Vector2
 
 		Vector2 topLeft = { 0 };
 		Vector2 topRight = { 0 };
-		Vector2 bottomLeft = { 0 };
-		Vector2 bottomRight = { 0 };
+		Vector2 bottomLeft = { 0 };		Vector2 bottomRight = { 0 };
 
 		// Only calculate rotation if needed
 		if (rotation == 0.0f)

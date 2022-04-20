@@ -1014,7 +1014,6 @@ bool WindowShouldClose(void)
 #endif
 
 #if defined(PLATFORM_DESKTOP)
-	if (CORE.Window.ready)
 	{
 		// While window minimized, stop loop execution
 		while (IsWindowState(FLAG_WINDOW_MINIMIZED) && !IsWindowState(FLAG_WINDOW_ALWAYS_RUN)) glfwWaitEvents();
@@ -1026,7 +1025,7 @@ bool WindowShouldClose(void)
 
 		return CORE.Window.shouldClose;
 	}
-	else return true;
+#else return true;
 #endif
 
 #if defined(PLATFORM_ANDROID) || defined(PLATFORM_RPI) || defined(PLATFORM_DRM)
