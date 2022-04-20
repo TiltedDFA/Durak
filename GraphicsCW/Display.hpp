@@ -12,7 +12,7 @@ namespace c0 {//This is used to display
 	
 	extern inline void displayPlayerState(Texture2D& atkHigh, Texture2D& atkLow, Texture2D& defHigh, Texture2D& defLow, bool atkState);
 	
-	extern inline void displayWhosTurnItIs(MainGame& mg);
+	extern inline void displayWhosTurnItIs(MainGame& mg, const bool& player_state);
 	
 	extern inline void displayDeckSizeButtons(Rectangle& thirty, Rectangle& fifty, const bool& thirtySelected, const int& currentMusicSize, const bool& pirivadnoy);
 	

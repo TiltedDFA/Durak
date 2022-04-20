@@ -45,7 +45,7 @@ const bool Player::get_player_winstate() noexcept {
 
 	return player_has_won;
 }
-int Player::find_lowest_card(int card_suit_value)
+int Player::find_lowest_card(const int& card_suit_value)
 {
 	int lowest_value = 15;
 

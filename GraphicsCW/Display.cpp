@@ -132,17 +132,32 @@ namespace c0 {//This is used to display
 		}
 	}
 
-	void displayWhosTurnItIs(MainGame& mg) {
+	void displayWhosTurnItIs(MainGame& mg, const bool& player_state) {
 
 		auto turn = mg.getPTurn();
-		if (turn) {
+		if (player_state)
+		{
+			if (turn) {
 
-			DrawRectangle(1658, 102, 100, 20, WHITE);
-		}
-		else if (!turn) {
+				DrawRectangle(1658, 102, 100, 20, WHITE);
+			}
+			else if (!turn) {
 
-			DrawRectangle(1507, 102, 100, 20, WHITE);
+				DrawRectangle(1507, 102, 100, 20, WHITE);
+			}
 		}
+		else
+		{
+			if (turn) {
+
+				DrawRectangle(1507, 102, 100, 20, WHITE);
+			}
+			else if (!turn) {
+				
+				DrawRectangle(1658, 102, 100, 20, WHITE);
+			}
+		}
+		
 	}
 
 	void displayDeckSizeButtons(Rectangle& thirty, Rectangle& fifty, const bool& thirtySelected, const int& currentMusicSize, const bool& pirivadnoy) {

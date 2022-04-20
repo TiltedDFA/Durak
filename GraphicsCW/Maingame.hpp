@@ -6,9 +6,6 @@ class MainGame
 	int  pTurn = 1;
 	unsigned short int cardsPlayedThisPass = 0;
 public:
-
-	void incramentRound();
-
 	void setPTurn(const int player);
 	void switchPTurn();
 	const int getPTurn()noexcept;

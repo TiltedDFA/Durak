@@ -71,7 +71,7 @@ const std::shared_ptr<Card>& Deck::getTopOfVisDeck() noexcept { //This is the to
 	return *(deck.end() - 2);
 }
 
-void Deck::setmaster_suit(card_suit suit) {
+void Deck::setmaster_suit(const card_suit& suit) {
 
 	master_suit = suit;
 }
