@@ -74,24 +74,35 @@ namespace c3 {// C3 will be for reading and writing to files (for settings)
 
 		std::ifstream save_file(fileName, std::ios::in);
 
-		if (!save_file) {
+		std::string size;
+
+		try
+		{
+			save_file.seekg(std::ios::beg);
+
+			std::getline(save_file, size);
+
+			if (size == "")
+				throw std::exception();
+
+			if (size == "36")
+				return 36;
+
+			if (size == "52")
+				return 52;
+			throw std::exception();
+		}
+		catch (const std::exception&)
+		{
+			//throw std::runtime_error("Error opening or reading deck size");
 
 			setDeckSize(36, 1, false);
 
 			return 36;
 		}
+		
 
-		std::string size;
-
-		save_file.seekg(std::ios::beg);
-
-		std::getline(save_file, size);
-
-		if (size == "36")
-			return 36;
-
-		if (size == "52")
-			return 52;
+		
 
 		return 0;
 	}
@@ -147,32 +158,42 @@ namespace c3 {// C3 will be for reading and writing to files (for settings)
 
 		std::ifstream save_file(fileName, std::ios::in);
 
-		if (!save_file) {
 
-			setDeckSize(36, 1, false);			
+		try
+		{
+			std::string num;
+
+			std::getline(save_file, num);
+
+			std::getline(save_file, num);
+
+			if (num == "")
+				throw std::exception();
+
+			if (num == "1")
+				return 1;
+
+			if (num == "2")
+				return 2;
+
+			if (num == "3")
+				return 3;
+
+			if (num == "4")
+				return 4;
+
+			throw std::exception();
+		}
+		catch (const std::exception&)
+		{
+			//throw std::runtime_error("Error reading music number");
+
+			setDeckSize(36, 1, false);
 
 			return 1;
 		}
 
-		std::string num;
-
-		std::getline(save_file, num);
-
-		std::getline(save_file, num);
-
-		if (num == "1")
-			return 1;
-
-		if (num == "2")
-			return 2;
-
-		if (num == "3")
-			return 3;
-
-		if (num == "4")
-			return 4;
-
-		throw std::runtime_error("Unexpected Value read");
+		
 	}
 
 	extern inline void set_pirivadnoy_state(const int& deckSize, const int& currentMusicVal, const bool& pirivadnoy) {
@@ -196,21 +217,30 @@ namespace c3 {// C3 will be for reading and writing to files (for settings)
 
 		std::ifstream save_file(fileName, std::ios::in);
 
-		if (!save_file) {
+		try
+		{
+			std::string state;
+
+			std::getline(save_file, state);
+
+			std::getline(save_file, state);
+
+			std::getline(save_file, state);
+
+			if (state == "")
+				throw std::exception();
+
+			return state == "1" ? true : false;
+
+			throw std::exception();
+		}
+		catch (const std::exception&)
+		{
+			//throw std::runtime_error("Error reading pirivadnoy state");
 
 			setDeckSize(36, 1, false);
 
 			return false;
 		}
-
-		std::string state;
-
-		std::getline(save_file, state);
-
-		std::getline(save_file, state);
-
-		std::getline(save_file, state);
-
-		return state == "1" ? true : false;
 	}
 }
