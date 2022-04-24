@@ -1,530 +1,813 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DirectedGraph DataVirtualized="True" Layout="ForceDirected" ZoomLevel="2" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+<DirectedGraph DataVirtualized="True" GraphDirection="TopToBottom" Layout="Sugiyama" ZoomLevel="-1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
   <Nodes>
-    <Node Id="(Name=BeginDrawing @6 @23 @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="365.057305908203,769.681364427621,110.05,25.96" Label="BeginDrawing" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=1904 StartCharacterOffset=0 EndLineNumber=1904 EndCharacterOffset=0)">
+    <Node Id="(Name=&quot;[Inline Frame] GetTime&quot; @4 @28 @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1385.02315165202,279.800097151693,155.813333333334,25.96" Label="[Inline Frame] GetTime" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=1981 StartCharacterOffset=0 EndLineNumber=1981 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=Card::Card @1 @23 @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="469.260806070964,2112.72376442762,60.7766666666666,25.96" Label="Card">
+    <Node Id="(Name=&quot;std::use_facet&lt;std::codecvt&lt;char,char,_Mbstatet&gt;&gt;&quot; @6 Type=&quot;const std::codecvt&lt;char,char,_Mbstatet&gt; &amp;&quot; OverloadingParameters=[(Type=&quot;const std::locale &amp;&quot; Name=_Loc)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="4924.60780171767,327.472824462795,84.8899999999994,25.96" CodeSchemaProperty_IsExternal="True" Label="use_facet" SourceLocation="(Assembly=&quot;file:///C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Tools/MSVC/14.31.31103/include/xlocale&quot; StartLineNumber=424 StartCharacterOffset=0 EndLineNumber=424 EndCharacterOffset=0)" UseManualLocation="True">
       <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+      <Category Ref="ExternalCallStackEntry" />
+    </Node>
+    <Node Id="(Name=BeginDrawing @4 @28 @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1367.15859375,105.241163044521,110.049999999999,25.96" Label="BeginDrawing" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=1904 StartCharacterOffset=0 EndLineNumber=1904 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=Card::Card @6 @28 @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="275.256866666666,167.879951096864,60.7766666666666,25.96" Label="Card">
+      <Category Ref="CallStackEntry" />
+    </Node>
+    <Node Id="(Name=Card::set_card_suit @6 @28 OverloadingParameters=[(@45 Name=suit)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="508.147066666666,167.879907953821,103.143333333333,25.96" Label="set_card_suit" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Card.cpp&quot; StartLineNumber=59 StartCharacterOffset=0 EndLineNumber=59 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=Card::set_card_suit @6 @28 OverloadingParameters=[(Name=suit)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="142.113433333333,167.879951096864,103.143333333333,25.96" Label="set_card_suit" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Card.cpp&quot; StartLineNumber=57 StartCharacterOffset=0 EndLineNumber=57 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=Card::set_card_value @6 @28 OverloadingParameters=[(@45 Name=value)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="366.033633333333,167.879951096864,112.113333333333,25.96" Label="set_card_value" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Card.cpp&quot; StartLineNumber=54 StartCharacterOffset=0 EndLineNumber=54 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=Card::set_card_value @6 @28 OverloadingParameters=[(Name=value)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="0,167.879951096864,112.113333333333,25.96" Label="set_card_value" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Card.cpp&quot; StartLineNumber=52 StartCharacterOffset=0 EndLineNumber=52 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=Deck::setPosTopCardDeck @6 @28 OverloadingParameters=[(Type=&quot;const Vector2 &amp;&quot; Name=pos)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1099.29529296875,105.241163044521,140.01,25.96" Label="setPosTopCardDeck" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Deck.cpp&quot; StartLineNumber=62 StartCharacterOffset=0 EndLineNumber=62 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=Discardediscarded_cards::Discardediscarded_cards @6 @28 @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2372.84949333352,111.92,165.843333333332,25.96" Label="Discardediscarded_cards">
+      <Category Ref="CallStackEntry" />
+    </Node>
+    <Node Id="(Name=DrawRectangle @4 @28 OverloadingParameters=[(@14 Name=posX),(@14 Name=posY),(@14 Name=width),(@14 Name=height),@72] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2739.19824974756,320.456532178865,115.226666666666,25.96" Label="DrawRectangle" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rshapes.c&quot; StartLineNumber=645 StartCharacterOffset=0 EndLineNumber=645 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=DrawRectanglePro @4 @28 OverloadingParameters=[(Name=rec),@98,(Name=rotation),@72] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5052.5067569736,303.036502108882,133.15,25.96" Label="DrawRectanglePro" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rshapes.c&quot; StartLineNumber=721 StartCharacterOffset=0 EndLineNumber=721 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=DrawRectanglePro @4 @28 OverloadingParameters=[@71,@98,@100,@72] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5527.93946511841,303.036478848509,133.15,25.96" Label="DrawRectanglePro" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rshapes.c&quot; StartLineNumber=663 StartCharacterOffset=0 EndLineNumber=663 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=DrawText @4 @28 OverloadingParameters=[(@49 Name=text),(@14 Name=posX),(@14 Name=posY),(@14 Name=fontSize),@72] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2458.12138308089,335.759959483406,84.3333333333339,25.96" Label="DrawText" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rtext.c&quot; StartLineNumber=830 StartCharacterOffset=0 EndLineNumber=830 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=DrawTextCodepoint @4 @28 OverloadingParameters=[(Type=Font Name=font),(@14 Name=codepoint),@113,(@84 Name=fontSize),@102] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5691.08956511841,287.180133586205,139.983333333334,25.96" Label="DrawTextCodepoint" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rtext.c&quot; StartLineNumber=912 StartCharacterOffset=0 EndLineNumber=912 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=DrawTextureEx @4 @28 OverloadingParameters=[(Type=Texture Name=texture),@113,@100,(@84 Name=scale),@102] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2884.42501641422,335.759955221604,113.15,25.96" Label="DrawTextureEx" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rtextures.c&quot; StartLineNumber=3130 StartCharacterOffset=0 EndLineNumber=3130 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=DrawTexturePro @4 @28 OverloadingParameters=[(Type=Texture Name=texture),(@70 Name=source),(@70 Name=dest),@98,@100,@102] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="6229.76646123482,343.140137512759,119.496666666666,25.96" Label="DrawTexturePro" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rtextures.c&quot; StartLineNumber=3329 StartCharacterOffset=0 EndLineNumber=3329 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=GetMouseDelta @4 @26 @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1679.43561848958,109.15215712382,118.313333333335,25.96" Label="GetMouseDelta" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=3460 StartCharacterOffset=0 EndLineNumber=3460 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=InitAudioDevice @4 @28 @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5042.09119333352,111.92,119.653333333332,25.96" Label="InitAudioDevice" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/raudio.c&quot; StartLineNumber=405 StartCharacterOffset=0 EndLineNumber=405 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=InitWindow @4 @28 OverloadingParameters=[(@14 Name=width),(@14 Name=height),(@49 Name=title)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="4010.92382666685,111.92,96.6333333333337,25.96" Label="InitWindow">
+      <Category Ref="CallStackEntry" />
+    </Node>
+    <Node Id="(Name=IsMouseButtonPressed @4 @7 OverloadingParameters=[(@14 Name=button)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="4434.0629,167.88,156.576666666668,25.96" Label="IsMouseButtonPressed" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=3380 StartCharacterOffset=0 EndLineNumber=3380 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=IsMouseButtonPressed @4 @7 OverloadingParameters=[(Name=button)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3350.68676000019,111.919978300604,156.576666666668,25.96" Label="IsMouseButtonPressed" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=3386 StartCharacterOffset=0 EndLineNumber=3386 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=IsMouseButtonReleased @4 @7 OverloadingParameters=[(@14 Name=button)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2991.03656000019,111.919951710856,162.706666666666,25.96" Label="IsMouseButtonReleased" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=3406 StartCharacterOffset=0 EndLineNumber=3406 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=LoadImage @4 Type=Image @50 @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5191.74462666685,111.92,94.8333333333339,25.96" Label="LoadImage" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rtextures.c&quot; StartLineNumber=222 StartCharacterOffset=0 EndLineNumber=222 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=LoadMusicStream @4 Type=Music @50 @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="4882.18109333352,111.92,129.91,25.96" Label="LoadMusicStream" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/raudio.c&quot; StartLineNumber=1203 StartCharacterOffset=0 EndLineNumber=1203 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=LoadSound @4 Type=Sound @50 @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="4813.34643333333,167.88,95.9033333333336,25.96" Label="LoadSound" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/raudio.c&quot; StartLineNumber=803 StartCharacterOffset=0 EndLineNumber=803 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=LoadTexture @4 Type=Texture @50 @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="4568.37756000018,111.92,100.060000000001,25.96" Label="LoadTexture" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rtextures.c&quot; StartLineNumber=2815 StartCharacterOffset=0 EndLineNumber=2815 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=MainGame::getCardsPlayed @6 Type=&quot;const unsigned short&quot; @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3798.83848761848,279.8,118.163333333334,25.96" Label="getCardsPlayed" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Maingame.cpp&quot; StartLineNumber=17 StartCharacterOffset=0 EndLineNumber=17 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=Card::set_card_suit @1 @23 OverloadingParameters=[(@32 Name=suit)] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="379.408268025716,2056.76366442762,103.143333333333,25.96" Label="set_card_suit" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Card.cpp&quot; StartLineNumber=59 StartCharacterOffset=0 EndLineNumber=59 EndCharacterOffset=0)">
+    <Node Id="(Name=MainGame::incramentCardsPlayed @6 @28 @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="4698.43766000019,111.919910937471,153.743333333332,25.96" Label="incramentCardsPlayed" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Maingame.cpp&quot; StartLineNumber=29 StartCharacterOffset=0 EndLineNumber=29 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=Card::set_card_suit @1 @23 OverloadingParameters=[(Name=suit)] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="449.558017781576,2168.68386442762,103.143333333333,25.96" Label="set_card_suit" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Card.cpp&quot; StartLineNumber=57 StartCharacterOffset=0 EndLineNumber=57 EndCharacterOffset=0)">
+    <Node Id="(Name=MainGame::setPTurn @6 @28 OverloadingParameters=[(@14 Name=player)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="4307.23069333352,111.92,82.1966666666667,25.96" Label="setPTurn" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Maingame.cpp&quot; StartLineNumber=12 StartCharacterOffset=0 EndLineNumber=12 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=Card::set_card_value @1 @23 OverloadingParameters=[(@32 Name=value)] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="512.551640218099,2056.76366442762,112.113333333333,25.96" Label="set_card_value" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Card.cpp&quot; StartLineNumber=54 StartCharacterOffset=0 EndLineNumber=54 EndCharacterOffset=0)">
+    <Node Id="(Name=PlayMusicStream @4 @28 OverloadingParameters=[(Type=Music Name=music)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3643.24172095181,279.799964859969,125.596666666666,25.96" Label="PlayMusicStream" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/raudio.c&quot; StartLineNumber=1609 StartCharacterOffset=0 EndLineNumber=1609 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=Card::set_card_value @1 @23 OverloadingParameters=[(Name=value)] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="445.133015340169,1832.92326442762,112.113333333333,25.96" Label="set_card_value" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Card.cpp&quot; StartLineNumber=52 StartCharacterOffset=0 EndLineNumber=52 EndCharacterOffset=0)">
+    <Node Id="(Name=Player::Player @6 @28 @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3692.53573333333,167.880012720259,67.9899999999998,25.96" Label="Player" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.hpp&quot; StartLineNumber=4 StartCharacterOffset=0 EndLineNumber=4 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=Deck::setPosTopCardDeck @1 @23 OverloadingParameters=[(Type=&quot;const Vector2 &amp;&quot; Name=pos)] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="505.107424861578,783.440000000001,140.01,25.96" Label="setPosTopCardDeck" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Deck.cpp&quot; StartLineNumber=62 StartCharacterOffset=0 EndLineNumber=62 EndCharacterOffset=0)">
+    <Node Id="(Name=Player::addToplayer_hand @6 @28 OverloadingParameters=[(@12 Name=cardToAdd)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2542.62936795288,453.566350934193,132.443333333333,25.96" Label="addToplayer_hand" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.cpp&quot; StartLineNumber=8 StartCharacterOffset=0 EndLineNumber=8 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=Discardediscarded_cards::Discardediscarded_cards @1 @23 @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="538.19964070638,657.761164427621,165.843333333333,25.96" Label="Discardediscarded_cards">
+    <Node Id="(Name=Player::find_lowest_card @6 @14 OverloadingParameters=[(Name=card_suit_value)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1854.05796666667,167.879959374082,123.416666666667,25.96" Label="find_lowest_card" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.cpp&quot; StartLineNumber=47 StartCharacterOffset=0 EndLineNumber=47 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=Player::get_player_winstate @6 Type=&quot;const bool&quot; @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="4137.55726000019,111.919925682371,139.673333333332,25.96" Label="get_player_winstate" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.cpp&quot; StartLineNumber=46 StartCharacterOffset=0 EndLineNumber=46 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=Player::set_hand_by_index @6 @28 OverloadingParameters=[@60,(@10 Name=index)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2004.59711196264,279.799959374082,134.536666666667,25.96" Label="set_hand_by_index" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.cpp&quot; StartLineNumber=36 StartCharacterOffset=0 EndLineNumber=36 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=SetTargetFPS @4 @28 OverloadingParameters=[(@14 Name=fps)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3876.62372666685,111.92,104.299999999999,25.96" Label="SetTargetFPS" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=2561 StartCharacterOffset=0 EndLineNumber=2561 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=SetWindowIcon @4 @28 OverloadingParameters=[(Type=Image Name=image)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="4419.42746000018,111.919998387775,118.950000000001,25.96" Label="SetWindowIcon" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=1470 StartCharacterOffset=0 EndLineNumber=1470 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=Table::addCardToTableAtk @6 @28 OverloadingParameters=[@60,(@10 Name=pNum)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1161.22025838216,343.988688964844,138.216666666667,25.96" Label="addCardToTableAtk" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Table.cpp&quot; StartLineNumber=8 StartCharacterOffset=0 EndLineNumber=8 EndCharacterOffset=0)" UseManualLocation="True">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=Table::addCardToTableAtk @6 @28 OverloadingParameters=[@60,(Name=pNum)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="639.560383080889,223.84,138.216666666667,25.96" Label="addCardToTableAtk" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Table.cpp&quot; StartLineNumber=11 StartCharacterOffset=0 EndLineNumber=11 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=Table::find_card_in_atk @6 @14 @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="641.290499999998,167.87984162395,120.183333333333,25.96" Label="find_card_in_atk" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Table.cpp&quot; StartLineNumber=65 StartCharacterOffset=0 EndLineNumber=65 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=Table::find_empty_pile_atk @6 @14 @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1683.77784667969,165.11225712382,140.28,25.96" Label="find_empty_pile_atk" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Table.cpp&quot; StartLineNumber=81 StartCharacterOffset=0 EndLineNumber=81 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=Table::getCardFromTableDef @6 @38 OverloadingParameters=[(@10 Name=index)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="458.243616414222,223.839933468345,151.316666666667,25.96" Label="getCardFromTableDef" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Table.cpp&quot; StartLineNumber=21 StartCharacterOffset=0 EndLineNumber=21 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=WindowShouldClose @4 @7 @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="4258.6928,167.88,145.369999999999,25.96" Label="WindowShouldClose" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=1026 StartCharacterOffset=0 EndLineNumber=1026 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=c0::displayWhosTurnItIs @6 @28 OverloadingParameters=[@59,(Name=player_state)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3580.10254655091,223.839980114544,142.65,25.96" Label="displayWhosTurnItIs" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Display.cpp&quot; StartLineNumber=133 StartCharacterOffset=0 EndLineNumber=133 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=c1::bringCardOneToTop @6 @28 OverloadingParameters=[(@12 Name=cardOne),(@12 Name=cardTwo),(Name=cards_visible)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1507.20893229167,109.15215712382,142.226666666666,25.96" Label="bringCardOneToTop" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Setup.cpp&quot; StartLineNumber=117 StartCharacterOffset=0 EndLineNumber=117 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=c1::bringCardOneToTop @6 @28 OverloadingParameters=[(@12 Name=cardOne),(@12 Name=cardTwo),(Type=&quot;std::vector&lt;std::shared_ptr&lt;Card&gt;,std::allocator&lt;std::shared_ptr&lt;Card&gt;&gt;&gt; &amp;&quot; Name=cards_visible)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3537.26352666685,111.919935353833,142.226666666666,25.96" Label="bringCardOneToTop" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Setup.cpp&quot; StartLineNumber=109 StartCharacterOffset=0 EndLineNumber=109 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=c1::bringCardOneToTop @6 @28 OverloadingParameters=[(Name=cardOne),(@12 Name=cardTwo),(Name=cards_visible)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="4086.46603333333,167.879925682371,142.226666666666,25.96" Label="bringCardOneToTop" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Setup.cpp&quot; StartLineNumber=113 StartCharacterOffset=0 EndLineNumber=113 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=c1::init_player_hands @6 @28 OverloadingParameters=[(Type=&quot;std::vector&lt;std::shared_ptr&lt;Card&gt;,std::allocator&lt;std::shared_ptr&lt;Card&gt;&gt;&gt; &amp;&quot; Name=cards_visible),@75,@78] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2834.23646000019,111.92,126.8,25.96" Label="init_player_hands" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Setup.cpp&quot; StartLineNumber=47 StartCharacterOffset=0 EndLineNumber=47 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=c2::card_beats_card_def @6 @7 OverloadingParameters=[(@12 Name=card_one),(@12 Name=card_two)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3914.04926666666,167.88,142.416666666668,25.96" Label="card_beats_card_def" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=61 StartCharacterOffset=0 EndLineNumber=61 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=c2::continuePlayingMusic @6 @28 OverloadingParameters=[(@10 Name=music_number),(Type=&quot;Music &amp;&quot; Name=JazzMusic),(Type=&quot;Music &amp;&quot; Name=LofiMusic),(Type=&quot;Music &amp;&quot; Name=eSwingMusic)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2029.80929333352,111.919948669985,151.606666666667,25.96" Label="continuePlayingMusic" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=253 StartCharacterOffset=0 EndLineNumber=253 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=c2::pirivadnoy_checker @6 @7 OverloadingParameters=[@55,(Name=card)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3709.49029333352,111.919953043162,137.133333333333,25.96" Label="pirivadnoy_checker" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=315 StartCharacterOffset=0 EndLineNumber=315 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=c2::takeDefender @6 @28 OverloadingParameters=[(Name=players),(Name=cardsVisible),(Name=deck),(Name=table),@59] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1251.30068308089,223.839915236446,107.443333333333,25.96" Label="takeDefender" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=294 StartCharacterOffset=0 EndLineNumber=294 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=rlColor4ub @4 @28 OverloadingParameters=[(Name=x),(Name=y),(Type=&quot;unsigned char&quot; Name=z),(Name=w)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="6107.80302790149,366.249766030281,91.9633333333331,25.96" Label="rlColor4ub" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rlgl.h&quot; StartLineNumber=1358 StartCharacterOffset=0 EndLineNumber=1358 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=rlEnd @4 @28 @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="6014.79626123482,366.249747314208,63.006666666668,25.96" Label="rlEnd" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rlgl.h&quot; StartLineNumber=1249 StartCharacterOffset=0 EndLineNumber=1249 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=rlMatrixMultiply @4 Type=Matrix OverloadingParameters=[(Type=Matrix Name=left),(Type=Matrix Name=right)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1011.39025838216,392.961070556641,119.83,25.96" Label="rlMatrixMultiply" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rlgl.h&quot; StartLineNumber=4412 StartCharacterOffset=0 EndLineNumber=4412 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=DrawRectangle @6 @23 OverloadingParameters=[(@11 Name=posX),(@11 Name=posY),(@11 Name=width),(@11 Name=height),(Type=Color Name=color)] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="728.668983522505,1175.15997322824,115.226666666666,25.96" Label="DrawRectangle" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rshapes.c&quot; StartLineNumber=645 StartCharacterOffset=0 EndLineNumber=645 EndCharacterOffset=0)">
+    <Node Id="(Name=rlVertex2f @4 @28 OverloadingParameters=[(@84 Name=x),(@84 Name=y)] @2)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="6335.70555412672,399.18594198526,86.2966666666671,25.96" Label="rlVertex2f" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rlgl.h&quot; StartLineNumber=1327 StartCharacterOffset=0 EndLineNumber=1327 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=DrawText @6 @23 OverloadingParameters=[(Type=&quot;const char *&quot; Name=text),(@11 Name=posX),(@11 Name=posY),(@11 Name=fontSize),(Type=Color Name=color)] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="560.844655354818,322.000564427621,84.3333333333334,25.96" Label="DrawText" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rtext.c&quot; StartLineNumber=830 StartCharacterOffset=0 EndLineNumber=830 EndCharacterOffset=0)">
+    <Node Id="@101" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3790.52583333333,204.774079535438,93.5233333333326,25.96" Label="play_music" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=245 StartCharacterOffset=0 EndLineNumber=245 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=DrawTextureEx @6 @23 OverloadingParameters=[(Type=Texture Name=texture),(@21 Name=position),(Type=float Name=rotation),(Type=float Name=scale),(Type=Color Name=tint)] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="461.319989013672,-13.7600355723791,113.15,25.96" Label="DrawTextureEx" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rtextures.c&quot; StartLineNumber=3130 StartCharacterOffset=0 EndLineNumber=3130 EndCharacterOffset=0)">
+    <Node Id="@103" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2583.73751993815,223.840053967285,101.573333333333,25.96" Label="DrawTexture" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rtextures.c&quot; StartLineNumber=3114 StartCharacterOffset=0 EndLineNumber=3114 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=GetMouseDelta @6 @21 @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="622.760250461017,951.320000000001,118.313333333334,25.96" Label="GetMouseDelta" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=3466 StartCharacterOffset=0 EndLineNumber=3466 EndCharacterOffset=0)">
+    <Node Id="@104" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2211.41606000019,111.919990996984,131.433333333332,25.96" Label="displayPlayerState" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Display.cpp&quot; StartLineNumber=123 StartCharacterOffset=0 EndLineNumber=123 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=InitAudioDevice @6 @23 @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="641.35747639974,489.880864427621,119.653333333333,25.96" Label="InitAudioDevice" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/raudio.c&quot; StartLineNumber=405 StartCharacterOffset=0 EndLineNumber=405 EndCharacterOffset=0)">
+    <Node Id="@105" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5885.26264906338,175.260167506643,84.3333333333321,25.96" Label="DrawText" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rtext.c&quot; StartLineNumber=846 StartCharacterOffset=0 EndLineNumber=846 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=InitWindow @6 @23 OverloadingParameters=[(@11 Name=width),(@11 Name=height),(Type=&quot;const char *&quot; Name=title)] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="484.12479314191,1678.8,96.6333333333332,25.96" Label="InitWindow">
+    <Node Id="@107" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1090.80736653646,161.201263044521,96.6533333333332,25.96" Label="can_defend" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/AI.cpp&quot; StartLineNumber=106 StartCharacterOffset=0 EndLineNumber=106 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@108" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="918.127376708984,161.201263044521,142.68,25.96" Label="find_card_to_defend" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/AI.cpp&quot; StartLineNumber=104 StartCharacterOffset=0 EndLineNumber=104 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=LoadImage @6 Type=Image @36 @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="590.712090686865,1175.16,94.8333333333334,25.96" Label="LoadImage" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rtextures.c&quot; StartLineNumber=222 StartCharacterOffset=0 EndLineNumber=222 EndCharacterOffset=0)">
+    <Node Id="@109" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1827.74905598958,109.15215712382,73.2333333333336,25.96" Label="defend" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/AI.cpp&quot; StartLineNumber=133 StartCharacterOffset=0 EndLineNumber=133 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=LoadMusicStream @6 Type=Music @36 @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="530.497697753906,1888.88336442762,129.91,25.96" Label="LoadMusicStream" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/raudio.c&quot; StartLineNumber=1203 StartCharacterOffset=0 EndLineNumber=1203 EndCharacterOffset=0)">
+    <Node Id="@11" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3133.93418660482,223.83996449585,84.1700000000001,25.96" Label="getPTurn" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Maingame.cpp&quot; StartLineNumber=31 StartCharacterOffset=0 EndLineNumber=31 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=LoadSound @6 Type=Sound @36 @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="527.391900227865,377.960664427621,95.9033333333333,25.96" Label="LoadSound" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/raudio.c&quot; StartLineNumber=803 StartCharacterOffset=0 EndLineNumber=803 EndCharacterOffset=0)">
+    <Node Id="@110" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2596.61972379544,391.719887160774,110.22,25.96" Label="table_to_hand" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=296 StartCharacterOffset=0 EndLineNumber=296 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=LoadTexture @6 Type=Texture @36 @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="467.022838412715,1622.84,100.06,25.96" Label="LoadTexture" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rtextures.c&quot; StartLineNumber=2815 StartCharacterOffset=0 EndLineNumber=2815 EndCharacterOffset=0)">
+    <Node Id="@111" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2655.29513333333,167.880014562326,107.443333333333,25.96" Label="takeDefender" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=296 StartCharacterOffset=0 EndLineNumber=296 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=MainGame::getCardsPlayed @1 Type=&quot;const unsigned short&quot; @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="384.227598470052,42.2000644276209,118.163333333333,25.96" Label="getCardsPlayed" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Maingame.cpp&quot; StartLineNumber=17 StartCharacterOffset=0 EndLineNumber=17 EndCharacterOffset=0)">
+    <Node Id="@112" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5779.86169333352,119.300167506643,160.836666666666,25.96" Label="displayDeckSizeButtons" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Display.cpp&quot; StartLineNumber=183 StartCharacterOffset=0 EndLineNumber=183 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=MainGame::setPTurn @1 @23 OverloadingParameters=[(@11 Name=player)] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="526.946949629675,1566.88,82.1966666666667,25.96" Label="setPTurn" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Maingame.cpp&quot; StartLineNumber=12 StartCharacterOffset=0 EndLineNumber=12 EndCharacterOffset=0)">
+    <Node Id="@114" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="6078.74649718578,287.180133586205,139.983333333334,25.96" Label="DrawTextCodepoint" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rtext.c&quot; StartLineNumber=931 StartCharacterOffset=0 EndLineNumber=931 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=PlayMusicStream @6 @23 OverloadingParameters=[(Type=Music Name=music)] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="771.073728527568,951.319984761202,125.596666666667,25.96" Label="PlayMusicStream" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/raudio.c&quot; StartLineNumber=1609 StartCharacterOffset=0 EndLineNumber=1609 EndCharacterOffset=0)">
+    <Node Id="@115" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1269.30532796224,105.241163044521,67.8533333333335,25.96" Label="attack" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/AI.cpp&quot; StartLineNumber=78 StartCharacterOffset=0 EndLineNumber=78 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=Player::Player @1 @23 @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="545.802790527344,601.801064427621,67.99,25.96" Label="Player" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.hpp&quot; StartLineNumber=4 StartCharacterOffset=0 EndLineNumber=4 EndCharacterOffset=0)">
+    <Node Id="@116" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="6379.26322790149,343.140133586205,119.496666666666,25.96" Label="DrawTexturePro" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rtextures.c&quot; StartLineNumber=3309 StartCharacterOffset=0 EndLineNumber=3309 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=Player::find_lowest_card @1 @11 OverloadingParameters=[(Name=card_suit_value)] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="261.270197550456,1665.04296442762,123.416666666667,25.96" Label="find_lowest_card" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.cpp&quot; StartLineNumber=47 StartCharacterOffset=0 EndLineNumber=47 EndCharacterOffset=0)">
+    <Node Id="@117" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5863.08565013903,231.220133586205,95.9099999999999,25.96" Label="DrawTextEx" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rtext.c&quot; StartLineNumber=885 StartCharacterOffset=0 EndLineNumber=885 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=Player::getEntireHand @1 Type=&quot;std::vector&lt;std::shared_ptr&lt;Card&gt;,std::allocator&lt;std::shared_ptr&lt;Card&gt;&gt;&gt;&quot; @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="119.093368326823,1665.04296442762,112.176666666667,25.96" Label="getEntireHand" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.cpp&quot; StartLineNumber=30 StartCharacterOffset=0 EndLineNumber=30 EndCharacterOffset=0)">
+    <Node Id="@118" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3526.27563333333,167.88,136.26,25.96" Label="displayPassButtons" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Display.cpp&quot; StartLineNumber=34 StartCharacterOffset=0 EndLineNumber=34 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=Player::setPlyrAtk @1 @23 OverloadingParameters=[(@2 Name=bol)] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="465.150204769255,1454.96,88.8133333333333,25.96" Label="setPlyrAtk" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.cpp&quot; StartLineNumber=23 StartCharacterOffset=0 EndLineNumber=23 EndCharacterOffset=0)">
+    <Node Id="@119" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3183.74332666685,111.920014562326,136.943333333333,25.96" Label="displayTakeButtons" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Display.cpp&quot; StartLineNumber=103 StartCharacterOffset=0 EndLineNumber=103 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=Player::set_hand_by_index @1 @23 OverloadingParameters=[@43,(@7 Name=index)] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="210.329475504557,1105.44196442762,134.536666666667,25.96" Label="set_hand_by_index" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.cpp&quot; StartLineNumber=36 StartCharacterOffset=0 EndLineNumber=36 EndCharacterOffset=0)">
+    <Node Id="@120" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2568.69292666685,111.92,133.583333333333,25.96" Label="displayEndButtons" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Display.cpp&quot; StartLineNumber=87 StartCharacterOffset=0 EndLineNumber=87 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=SetTargetFPS @6 @23 OverloadingParameters=[(@11 Name=fps)] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="583.813600511681,727.480046606369,104.3,25.96" Label="SetTargetFPS" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=2561 StartCharacterOffset=0 EndLineNumber=2561 EndCharacterOffset=0)">
+    <Node Id="@122" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5148.62663333333,167.88,144.766666666666,25.96" Label="displayMusicButtons" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Display.cpp&quot; StartLineNumber=344 StartCharacterOffset=0 EndLineNumber=344 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=SetWindowIcon @6 @23 OverloadingParameters=[(Type=Image Name=image)] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="381.547583007812,1888.88336442762,118.95,25.96" Label="SetWindowIcon" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=1470 StartCharacterOffset=0 EndLineNumber=1470 EndCharacterOffset=0)">
+    <Node Id="@13" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3158.16521641422,335.760014562326,99.1033333333335,25.96" Label="getLastCard" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Deck.cpp&quot; StartLineNumber=50 StartCharacterOffset=0 EndLineNumber=50 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=Table::addCardToTableAtk @1 @23 OverloadingParameters=[@43,(@7 Name=pNum)] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="0,1506.53518110351,138.216666666667,25.96" Label="addCardToTableAtk" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Table.cpp&quot; StartLineNumber=8 StartCharacterOffset=0 EndLineNumber=8 EndCharacterOffset=0)">
+    <Node Id="@15" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5491.14482666685,111.92,100.59,25.96" Label="getDeckSize" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/File.cpp&quot; StartLineNumber=79 StartCharacterOffset=0 EndLineNumber=79 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=Table::find_empty_pile_atk @1 @11 @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="168.216781005859,1441.20256442762,140.28,25.96" Label="find_empty_pile_atk" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Table.cpp&quot; StartLineNumber=81 StartCharacterOffset=0 EndLineNumber=81 EndCharacterOffset=0)">
+    <Node Id="@16" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5621.73492666685,111.92,128.126666666667,25.96" Label="getMusicNumber" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/File.cpp&quot; StartLineNumber=173 StartCharacterOffset=0 EndLineNumber=173 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=Table::get_num_cards_in_defender_table @1 @11 @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="160.631072998047,1161.40206442762,214,25.96" Label="get_num_cards_in_defender_table" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Table.cpp&quot; StartLineNumber=45 StartCharacterOffset=0 EndLineNumber=45 EndCharacterOffset=0)">
+    <Node Id="@17" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1736.09751993815,223.839999694824,105.116666666667,25.96" Label="get_card_suit" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Card.cpp&quot; StartLineNumber=69 StartCharacterOffset=0 EndLineNumber=69 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=WindowShouldClose @6 @2 @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="523.68788430525,1343.04,145.37,25.96" Label="WindowShouldClose" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=1026 StartCharacterOffset=0 EndLineNumber=1026 EndCharacterOffset=0)">
+    <Node Id="@18" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2015.70429003861,335.759959374082,114.086666666667,25.96" Label="get_card_value" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Card.cpp&quot; StartLineNumber=64 StartCharacterOffset=0 EndLineNumber=64 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=c0::displayWhosTurnItIs @1 @23 OverloadingParameters=[@42,(Name=player_state)] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="618.587562714815,1063.24,142.65,25.96" Label="displayWhosTurnItIs" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Display.cpp&quot; StartLineNumber=133 StartCharacterOffset=0 EndLineNumber=133 EndCharacterOffset=0)">
+    <Node Id="@19" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3027.57511641422,335.760014562326,100.59,25.96" Label="getDeckSize" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Deck.cpp&quot; StartLineNumber=77 StartCharacterOffset=0 EndLineNumber=77 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=c1::init_player_hands @1 @23 OverloadingParameters=[(Type=&quot;std::vector&lt;std::shared_ptr&lt;Card&gt;,std::allocator&lt;std::shared_ptr&lt;Card&gt;&gt;&gt; &amp;&quot; Name=cards_visible),@48,@58] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="454.722894287109,1776.96316442762,126.8,25.96" Label="init_player_hands" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Setup.cpp&quot; StartLineNumber=47 StartCharacterOffset=0 EndLineNumber=47 EndCharacterOffset=0)">
+    <Node Id="@20" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3298.4797856076,55.96,62.1399999999994,25.96" Label="main" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/main.cpp&quot; StartLineNumber=112 StartCharacterOffset=0 EndLineNumber=112 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=c2::continuePlayingMusic @1 @23 OverloadingParameters=[(@7 Name=music_number),(Type=&quot;Music &amp;&quot; Name=JazzMusic),(Type=&quot;Music &amp;&quot; Name=LofiMusic),(Type=&quot;Music &amp;&quot; Name=eSwingMusic)] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="442.223155924479,1944.84346442762,151.606666666667,25.96" Label="continuePlayingMusic" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=253 StartCharacterOffset=0 EndLineNumber=253 EndCharacterOffset=0)">
+    <Node Id="@21" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1388.74411641422,223.84,182.453333333333,25.96" Label="get_num_cards_in_atk_table" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Table.cpp&quot; StartLineNumber=54 StartCharacterOffset=0 EndLineNumber=54 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="(Name=rlMatrixMultiply @6 Type=Matrix OverloadingParameters=[(Type=Matrix Name=left),(Type=Matrix Name=right)] @3)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="860.64519735308,1734.76025919408,119.83,25.96" Label="rlMatrixMultiply" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rlgl.h&quot; StartLineNumber=4412 StartCharacterOffset=0 EndLineNumber=4412 EndCharacterOffset=0)">
+    <Node Id="@22" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1007.30056762695,217.161363044521,214,25.96" Label="get_num_cards_in_defender_table" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Table.cpp&quot; StartLineNumber=43 StartCharacterOffset=0 EndLineNumber=43 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@10" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="542.492431233724,545.840964427621,99.1033333333334,25.96" Label="getLastCard" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Deck.cpp&quot; StartLineNumber=50 StartCharacterOffset=0 EndLineNumber=50 EndCharacterOffset=0)">
+    <Node Id="@23" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2795.06399093812,447.679887160774,110.976666666666,25.96" Label="getEntireTable" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Table.cpp&quot; StartLineNumber=25 StartCharacterOffset=0 EndLineNumber=25 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@12" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="599.144350856544,839.400000000001,100.59,25.96" Label="getDeckSize" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/File.cpp&quot; StartLineNumber=79 StartCharacterOffset=0 EndLineNumber=79 EndCharacterOffset=0)">
+    <Node Id="@24" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2232.49418660482,223.83996449585,112.176666666667,25.96" Label="getEntireHand" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.cpp&quot; StartLineNumber=27 StartCharacterOffset=0 EndLineNumber=27 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@13" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="598.323264215264,895.360000000001,128.126666666667,25.96" Label="getMusicNumber" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/File.cpp&quot; StartLineNumber=152 StartCharacterOffset=0 EndLineNumber=152 EndCharacterOffset=0)">
+    <Node Id="@25" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1745.23315165202,279.800096689182,109.826666666667,25.96" Label="get_hand_size" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.cpp&quot; StartLineNumber=18 StartCharacterOffset=0 EndLineNumber=18 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@14" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="389.241196695963,1273.32226442762,105.116666666667,25.96" Label="get_card_suit" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Card.cpp&quot; StartLineNumber=67 StartCharacterOffset=0 EndLineNumber=67 EndCharacterOffset=0)">
+    <Node Id="@27" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="4457.99623333333,223.84,132.643333333333,25.9600000000001" Label="GetMousePosition" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=3445 StartCharacterOffset=0 EndLineNumber=3445 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@15" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="340.03799601237,1721.00306442762,114.086666666667,25.96" Label="get_card_value" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Card.cpp&quot; StartLineNumber=62 StartCharacterOffset=0 EndLineNumber=62 EndCharacterOffset=0)">
+    <Node Id="@30" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2885.28751993815,223.840002503662,99.8333333333339,25.96" Label="switchPTurn" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Maingame.cpp&quot; StartLineNumber=8 StartCharacterOffset=0 EndLineNumber=8 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@16" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="415.212736206055,601.801064427621,100.59,25.96" Label="getDeckSize" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Deck.cpp&quot; StartLineNumber=77 StartCharacterOffset=0 EndLineNumber=77 EndCharacterOffset=0)">
+    <Node Id="@31" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2369.74214392655,279.800021290563,76.1999999999998,25.96" Label="~Player" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.cpp&quot; StartLineNumber=6 StartCharacterOffset=0 EndLineNumber=6 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@17" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="487.287705901546,1037.68447599582,62.1399999999999,25.96" Label="main" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/main.cpp&quot; StartLineNumber=159 StartCharacterOffset=0 EndLineNumber=159 EndCharacterOffset=0)">
+    <Node Id="@34" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2007.47473333333,167.879959374082,100.056666666665,25.96" Label="EndDrawing" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=1981 StartCharacterOffset=0 EndLineNumber=1981 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
-      <Category Ref="CurrentCallStackEntry" />
     </Node>
-    <Node Id="@18" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="73.5542509719164,1320.41107985939,182.453333333333,25.96" Label="get_num_cards_in_atk_table" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Table.cpp&quot; StartLineNumber=53 StartCharacterOffset=0 EndLineNumber=53 EndCharacterOffset=0)">
+    <Node Id="@35" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="807.777151692708,217.161363044521,169.523333333334,25.96" Label="rlDrawRenderBatchActive" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rlgl.h&quot; StartLineNumber=2534 StartCharacterOffset=0 EndLineNumber=2534 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@19" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="206.746293436687,433.920764427621,110.976666666666,25.96" Label="getEntireTable" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Table.cpp&quot; StartLineNumber=25 StartCharacterOffset=0 EndLineNumber=25 EndCharacterOffset=0)">
+    <Node Id="@36" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="4620.63966666666,175.260167506643,162.706666666667,25.96" Label="IsMouseButtonReleased" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=3412 StartCharacterOffset=0 EndLineNumber=3412 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@20" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="383.861111246745,1329.28236442762,109.826666666667,25.96" Label="get_hand_size" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.cpp&quot; StartLineNumber=18 StartCharacterOffset=0 EndLineNumber=18 EndCharacterOffset=0)">
+    <Node Id="@37" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3162.34876666666,167.880014562326,166.96,25.96" Label="find_colliding_placement" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=96 StartCharacterOffset=0 EndLineNumber=96 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@22" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="398.201221516927,322.000564427621,132.643333333333,25.96" Label="GetMousePosition" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=3441 StartCharacterOffset=0 EndLineNumber=3441 EndCharacterOffset=0)">
+    <Node Id="@39" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2051.85418660482,223.839965362549,150.639999999999,25.96" Label="getCardFromTableAtk" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Table.cpp&quot; StartLineNumber=19 StartCharacterOffset=0 EndLineNumber=19 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@24" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="275.542805989583,937.561664427621,99.8333333333335,25.96" Label="switchPTurn" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Maingame.cpp&quot; StartLineNumber=8 StartCharacterOffset=0 EndLineNumber=8 EndCharacterOffset=0)">
+    <Node Id="@40" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="981.443032845146,304.799112061609,137.243333333334,25.96" Label="rlDrawRenderBatch" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rlgl.h&quot; StartLineNumber=2475 StartCharacterOffset=0 EndLineNumber=2475 EndCharacterOffset=0)" UseManualLocation="True">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@25" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="335.582281494141,1385.24246442762,76.2,25.96" Label="~Player" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.cpp&quot; StartLineNumber=6 StartCharacterOffset=0 EndLineNumber=6 EndCharacterOffset=0)">
+    <Node Id="@41" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3015.12085327149,223.840002503662,88.8133333333335,25.96" Label="setPlyrAtk" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.cpp&quot; StartLineNumber=26 StartCharacterOffset=0 EndLineNumber=26 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@26" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="553.319941376784,1510.92,100.056666666666,25.96" Label="EndDrawing" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=2016 StartCharacterOffset=0 EndLineNumber=2016 EndCharacterOffset=0)">
+    <Node Id="@42" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3914.04926666666,223.84,146.783333333333,25.96" Label="IsMouseButtonDown" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=3389 StartCharacterOffset=0 EndLineNumber=3389 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@27" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="610.967184142714,1622.83992839086,169.523333333334,25.96" Label="rlDrawRenderBatchActive" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rlgl.h&quot; StartLineNumber=2534 StartCharacterOffset=0 EndLineNumber=2534 EndCharacterOffset=0)">
+    <Node Id="@43" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2792.73856666666,167.879996846172,166.959999999999,25.96" Label="find_colliding_placement" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=74 StartCharacterOffset=0 EndLineNumber=74 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@28" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="756.989671020334,1678.80019486966,137.243333333334,25.96" Label="rlDrawRenderBatch" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rlgl.h&quot; StartLineNumber=2475 StartCharacterOffset=0 EndLineNumber=2475 EndCharacterOffset=0)">
+    <Node Id="@44" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2137.5315,167.880005549025,172.309999999999,25.96" Label="displayCardWithValueText" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Card.cpp&quot; StartLineNumber=46 StartCharacterOffset=0 EndLineNumber=46 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@29" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="307.182368977865,98.1601644276209,146.783333333333,25.96" Label="IsMouseButtonDown" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rcore.c&quot; StartLineNumber=3389 StartCharacterOffset=0 EndLineNumber=3389 EndCharacterOffset=0)">
+    <Node Id="@46" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1390.141,167.88,123.416666666667,25.96" Label="find_lowest_card" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.cpp&quot; StartLineNumber=66 StartCharacterOffset=0 EndLineNumber=66 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@47" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1602.06085327148,221.07235712382,104.036666666667,25.96" Label="encrypt_data" UseManualLocation="True">
+      <Category Ref="CallStackEntry" />
     </Node>
-    <Node Id="@30" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="575.819032137019,1399,166.96,25.96" Label="find_colliding_placement" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=96 StartCharacterOffset=0 EndLineNumber=96 EndCharacterOffset=0)">
+    <Node Id="@48" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="839.96508219401,105.241163044521,62.1966666666667,25.96" Label="Deck" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Deck.cpp&quot; StartLineNumber=30 StartCharacterOffset=0 EndLineNumber=30 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@31" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="420.450127740214,981.724475995817,172.31,25.96" Label="displayCardWithValueText" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Card.cpp&quot; StartLineNumber=46 StartCharacterOffset=0 EndLineNumber=46 EndCharacterOffset=0)">
+    <Node Id="@51" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5285.04594075521,403.697309779176,98.003333333334,25.96" Label="rlSetTexture" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rlgl.h&quot; StartLineNumber=1384 StartCharacterOffset=0 EndLineNumber=1384 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@33" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="373.530182963008,1566.88,123.416666666667,25.96" Label="find_lowest_card" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.cpp&quot; StartLineNumber=66 StartCharacterOffset=0 EndLineNumber=66 EndCharacterOffset=0)">
+    <Node Id="@52" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1570.83648498535,279.800049237061,144.396666666667,25.96" Label="from_hand_by_index" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.cpp&quot; StartLineNumber=12 StartCharacterOffset=0 EndLineNumber=12 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@34" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="441.782265470352,1399,104.036666666667,25.96" Label="encrypt_data">
+    <Node Id="@53" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1871.21418660482,223.840016773987,150.639999999999,25.96" Label="getCardFromTableAtk" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Table.cpp&quot; StartLineNumber=17 StartCharacterOffset=0 EndLineNumber=17 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@35" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="470.317010904948,2000.80356442762,62.1966666666667,25.96" Label="Deck" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Deck.cpp&quot; StartLineNumber=30 StartCharacterOffset=0 EndLineNumber=30 EndCharacterOffset=0)">
+    <Node Id="@54" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2495.6217,167.88,129.673333333332,25.96" Label="findStartingPlayer" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Setup.cpp&quot; StartLineNumber=72 StartCharacterOffset=0 EndLineNumber=72 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@37" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="199.133423258463,1553.12276442762,144.396666666667,25.96" Label="from_hand_by_index" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.cpp&quot; StartLineNumber=12 StartCharacterOffset=0 EndLineNumber=12 EndCharacterOffset=0)">
+    <Node Id="@56" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1217.46096435547,161.201263044521,142.68,25.96" Label="find_card_to_defend" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/AI.cpp&quot; StartLineNumber=9 StartCharacterOffset=0 EndLineNumber=9 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
-      <Category Ref="CurrentCallStackEntry" />
     </Node>
-    <Node Id="@38" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="239.810004882813,993.521764427621,150.64,25.96" Label="getCardFromTableAtk" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Table.cpp&quot; StartLineNumber=17 StartCharacterOffset=0 EndLineNumber=17 EndCharacterOffset=0)">
+    <Node Id="@57" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5817.04949456815,399.100057476182,167.746666666666,25.96" Label="rlCheckRenderBatchLimit" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rlgl.h&quot; StartLineNumber=2534 StartCharacterOffset=0 EndLineNumber=2534 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@39" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="377.574360365878,1510.92,129.673333333333,25.96" Label="findStartingPlayer" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Setup.cpp&quot; StartLineNumber=72 StartCharacterOffset=0 EndLineNumber=72 EndCharacterOffset=0)">
+    <Node Id="@58" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5382.69269845174,247.076541171047,133.873333333333,25.96" Label="DrawRectangleRec" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rshapes.c&quot; StartLineNumber=658 StartCharacterOffset=0 EndLineNumber=658 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@4" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="583.963638102588,1454.96,144.566666666667,25.96" Label="get_pirivadnoy_state" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/File.cpp&quot; StartLineNumber=201 StartCharacterOffset=0 EndLineNumber=201 EndCharacterOffset=0)">
+    <Node Id="@64" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5270.78259845174,231.220128483189,81.9099999999999,25.96" CodeSchemaProperty_IsExternal="True" Label="operator" SourceLocation="(Assembly=&quot;file:///C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Tools/MSVC/14.31.31103/include/ostream&quot; StartLineNumber=764 StartCharacterOffset=0 EndLineNumber=764 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
+      <Category Ref="ExternalCallStackEntry" />
     </Node>
-    <Node Id="@41" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="246.760280761719,1049.48186442762,142.68,25.96" Label="find_card_to_defend" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/AI.cpp&quot; StartLineNumber=9 StartCharacterOffset=0 EndLineNumber=9 EndCharacterOffset=0)">
+    <Node Id="@65" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="932.161818440755,105.241163044521,137.133333333333,25.96" Label="pirivadnoy_checker" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=308 StartCharacterOffset=0 EndLineNumber=308 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@44" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="593.58392291167,1287.08,160.223333333333,25.96" Label="collision_percent_finder" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=24 StartCharacterOffset=0 EndLineNumber=24 EndCharacterOffset=0)">
+    <Node Id="@66" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2505.7844899766,279.79991559049,138.556666666665,25.96" Label="can_attacker_attack" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=55 StartCharacterOffset=0 EndLineNumber=55 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@45" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="246.656196503007,713.397016389234,138.556666666666,25.96" Label="can_attacker_attack" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=52 StartCharacterOffset=0 EndLineNumber=52 EndCharacterOffset=0)">
+    <Node Id="@67" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3424.98418660482,279.800183062744,160.223333333332,25.96" Label="collision_percent_finder" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=24 StartCharacterOffset=0 EndLineNumber=24 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@46" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="338.496866666667,1454.96,96.6533333333332,25.96" Label="can_defend" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/AI.cpp&quot; StartLineNumber=33 StartCharacterOffset=0 EndLineNumber=33 EndCharacterOffset=0)">
+    <Node Id="@68" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3099.78085327148,279.80006449585,138.556666666665,25.96" Label="can_attacker_attack" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=42 StartCharacterOffset=0 EndLineNumber=42 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@47" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="289.146834716797,1217.36216442762,125.78,25.96" Label="lockCardsInHand" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Setup.cpp&quot; StartLineNumber=92 StartCharacterOffset=0 EndLineNumber=92 EndCharacterOffset=0)">
+    <Node Id="@69" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="791.473870442708,161.201263044521,96.6533333333332,25.96" Label="can_defend" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/AI.cpp&quot; StartLineNumber=33 StartCharacterOffset=0 EndLineNumber=33 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@49" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="256.887274983724,489.880864427621,184.493333333333,25.96" Label="deck_has_enough_cards_left" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Setup.cpp&quot; StartLineNumber=141 StartCharacterOffset=0 EndLineNumber=141 EndCharacterOffset=0)">
+    <Node Id="@73" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5106.90916511841,223.84,133.873333333333,25.96" Label="DrawRectangleRec" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rshapes.c&quot; StartLineNumber=653 StartCharacterOffset=0 EndLineNumber=653 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@5" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="416.015127360026,377.960664427621,81.3766666666666,25.96" Label="isPlyrAtk" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.cpp&quot; StartLineNumber=20 StartCharacterOffset=0 EndLineNumber=20 EndCharacterOffset=0)">
+    <Node Id="@74" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2339.8416,167.880014562326,125.78,25.96" Label="lockCardsInHand" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Setup.cpp&quot; StartLineNumber=92 StartCharacterOffset=0 EndLineNumber=92 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@50" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="634.363686614724,1119.2,142.65,25.96" Label="displayWhosTurnItIs" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Display.cpp&quot; StartLineNumber=142 StartCharacterOffset=0 EndLineNumber=142 EndCharacterOffset=0)">
+    <Node Id="@76" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2885.28751993815,279.800102503662,184.493333333333,25.96" Label="deck_has_enough_cards_left" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Setup.cpp&quot; StartLineNumber=141 StartCharacterOffset=0 EndLineNumber=141 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@51" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="388.840424194336,154.120264427621,158.72,25.96" Label="CheckCollisionPointRec" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rshapes.c&quot; StartLineNumber=1547 StartCharacterOffset=0 EndLineNumber=1547 EndCharacterOffset=0)">
+    <Node Id="@77" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2989.69866666666,167.879951710856,142.65,25.96" Label="displayWhosTurnItIs" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Display.cpp&quot; StartLineNumber=142 StartCharacterOffset=0 EndLineNumber=142 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@52" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="639.143716296342,1566.88,136.743333333333,25.96" Label="CheckCollisionRecs" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rshapes.c&quot; StartLineNumber=1585 StartCharacterOffset=0 EndLineNumber=1585 EndCharacterOffset=0)">
+    <Node Id="@79" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3359.30886666666,167.880018734291,136.966666666667,25.96" Label="switch_player_state" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=320 StartCharacterOffset=0 EndLineNumber=320 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@53" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="273.288513793945,377.960664427621,110.22,25.96" Label="table_to_hand" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=208 StartCharacterOffset=0 EndLineNumber=208 EndCharacterOffset=0)">
+    <Node Id="@8" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5316.57806000019,111.92,144.566666666666,25.96" Label="get_pirivadnoy_state" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/File.cpp&quot; StartLineNumber=201 StartCharacterOffset=0 EndLineNumber=201 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@54" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="606.629517583259,1231.12,98.6166666666667,25.96" Label="setDeckSize">
+    <Node Id="@80" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2732.27636000019,111.920018734291,71.96,25.96" Label="privadi" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=320 StartCharacterOffset=0 EndLineNumber=320 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@56" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="471.380700480143,489.880864427621,139.976666666667,25.96" Label="displaySpecialCards" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Display.cpp&quot; StartLineNumber=373 StartCharacterOffset=0 EndLineNumber=373 EndCharacterOffset=0)">
+    <Node Id="@81" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3248.10418660482,223.840010375977,158.719999999999,25.96" Label="CheckCollisionPointRec" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rshapes.c&quot; StartLineNumber=1558 StartCharacterOffset=0 EndLineNumber=1558 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@57" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="484.986935221354,713.721264427621,68.8266666666668,25.96" Label="cTable" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Display.cpp&quot; StartLineNumber=18 StartCharacterOffset=0 EndLineNumber=18 EndCharacterOffset=0)">
+    <Node Id="@82" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2572.45481641423,335.75991559049,136.743333333332,25.96" Label="CheckCollisionRecs" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rshapes.c&quot; StartLineNumber=1592 StartCharacterOffset=0 EndLineNumber=1592 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@59" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="316.184195963542,881.601564427621,179.066666666667,25.96" Label="add_need_cards_to_players" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Setup.cpp&quot; StartLineNumber=172 StartCharacterOffset=0 EndLineNumber=172 EndCharacterOffset=0)">
+    <Node Id="@83" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2739.19824974756,386.737811005245,110.22,25.96" Label="table_to_hand" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=208 StartCharacterOffset=0 EndLineNumber=208 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@60" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="675.117556883308,783.440046606369,98.6166666666667,25.96" Label="setDeckSize" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/File.cpp&quot; StartLineNumber=8 StartCharacterOffset=0 EndLineNumber=8 EndCharacterOffset=0)">
+    <Node Id="@85" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5684.11272790149,399.100133586205,102.936666666665,25.96" Label="rlTexCoord2f" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rlgl.h&quot; StartLineNumber=1340 StartCharacterOffset=0 EndLineNumber=1340 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@61" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="423.050369669596,266.040464427621,126.646666666667,25.96" Label="check_for_winner" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=218 StartCharacterOffset=0 EndLineNumber=218 EndCharacterOffset=0)">
+    <Node Id="@86" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5289.54267578125,291.777109779176,63.1499999999996,25.96" CodeSchemaProperty_IsExternal="True" Label="open" SourceLocation="(Assembly=&quot;file:///C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Tools/MSVC/14.31.31103/include/fstream&quot; StartLineNumber=294 StartCharacterOffset=0 EndLineNumber=294 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
+      <Category Ref="ExternalCallStackEntry" />
+    </Node>
+    <Node Id="@87" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5415.98954036183,167.880005984814,98.6166666666668,25.96" Label="setDeckSize">
+      <Category Ref="CallStackEntry" />
     </Node>
-    <Node Id="@62" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="179.500260009766,1497.16266442762,110.22,25.96" Label="hand_to_table" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=115 StartCharacterOffset=0 EndLineNumber=115 EndCharacterOffset=0)">
+    <Node Id="@88" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5546.56613178507,237.913525505461,114.523333333334,25.96" CodeSchemaProperty_IsExternal="True" Label="basic_ofstream" SourceLocation="(Assembly=&quot;file:///C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Tools/MSVC/14.31.31103/include/fstream&quot; StartLineNumber=1003 StartCharacterOffset=0 EndLineNumber=1003 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
+      <Category Ref="ExternalCallStackEntry" />
     </Node>
-    <Node Id="@63" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="698.719398725269,1007.28,93.5233333333333,25.96" Label="play_music" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=245 StartCharacterOffset=0 EndLineNumber=245 EndCharacterOffset=0)">
+    <Node Id="@9" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3468.72583083758,223.840015567149,81.376666666667,25.96" Label="isPlyrAtk" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Player.cpp&quot; StartLineNumber=22 StartCharacterOffset=0 EndLineNumber=22 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@64" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="483.965805257162,98.1601644276209,101.573333333333,25.96" Label="DrawTexture" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rtextures.c&quot; StartLineNumber=3114 StartCharacterOffset=0 EndLineNumber=3114 EndCharacterOffset=0)">
+    <Node Id="@90" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2715.31085327148,264.496531982422,139.976666666667,25.96" Label="displaySpecialCards" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Display.cpp&quot; StartLineNumber=373 StartCharacterOffset=0 EndLineNumber=373 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@65" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="514.666481526693,433.920764427621,131.433333333333,25.96" Label="displayPlayerState" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Display.cpp&quot; StartLineNumber=123 StartCharacterOffset=0 EndLineNumber=123 EndCharacterOffset=0)">
+    <Node Id="@91" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1930.98252666685,111.919959374082,68.8266666666668,25.96" Label="cTable" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Display.cpp&quot; StartLineNumber=18 StartCharacterOffset=0 EndLineNumber=18 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@67" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="286.007753499349,1273.32226442762,73.2333333333333,25.96" Label="defend" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/AI.cpp&quot; StartLineNumber=112 StartCharacterOffset=0 EndLineNumber=112 EndCharacterOffset=0)">
+    <Node Id="@92" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2374.67085327148,223.839968032837,179.066666666668,25.96" Label="add_need_cards_to_players" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Setup.cpp&quot; StartLineNumber=172 StartCharacterOffset=0 EndLineNumber=172 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
-      <Category Ref="CurrentCallStackEntry" />
     </Node>
-    <Node Id="@68" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="277.769306144252,657.437016389234,107.443333333333,25.96" Label="takeDefender" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=302 StartCharacterOffset=0 EndLineNumber=302 EndCharacterOffset=0)">
+    <Node Id="@93" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="4939.24986666666,167.88,179.376666666667,25.96" Label="display_pirivadnoy_buttons" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Display.cpp&quot; StartLineNumber=412 StartCharacterOffset=0 EndLineNumber=412 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@69" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="286.007690022787,1329.28236442762,67.8533333333332,25.96" Label="attack" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/AI.cpp&quot; StartLineNumber=78 StartCharacterOffset=0 EndLineNumber=78 EndCharacterOffset=0)">
+    <Node Id="@94" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5544.6063070285,175.260129451398,98.6166666666668,25.96" Label="setDeckSize" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/File.cpp&quot; StartLineNumber=22 StartCharacterOffset=0 EndLineNumber=22 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@70" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="376.232350463867,545.840964427621,136.26,25.96" Label="displayPassButtons" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Display.cpp&quot; StartLineNumber=34 StartCharacterOffset=0 EndLineNumber=34 EndCharacterOffset=0)">
+    <Node Id="@95" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="3268.33751993815,279.800110375977,126.646666666667,25.96" Label="check_for_winner" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=218 StartCharacterOffset=0 EndLineNumber=218 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@71" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="347.72305074056,433.920764427621,136.943333333333,25.96" Label="displayTakeButtons" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Display.cpp&quot; StartLineNumber=103 StartCharacterOffset=0 EndLineNumber=103 EndCharacterOffset=0)">
+    <Node Id="@96" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5567.81596123482,399.100133586205,86.2966666666671,25.96" Label="rlVertex3f" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rlgl.h&quot; StartLineNumber=1294 StartCharacterOffset=0 EndLineNumber=1294 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@72" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="458.491399129232,210.080364427621,133.583333333333,25.96" Label="displayEndButtons" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Display.cpp&quot; StartLineNumber=87 StartCharacterOffset=0 EndLineNumber=87 EndCharacterOffset=0)">
+    <Node Id="@97" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="1543.55778564453,165.11225712382,110.22,25.96" Label="hand_to_table" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Game.cpp&quot; StartLineNumber=105 StartCharacterOffset=0 EndLineNumber=105 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="@8" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="320.36421875,825.641464427621,84.1700000000001,25.96" Label="getPTurn" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/GraphicsCW/Maingame.cpp&quot; StartLineNumber=31 StartCharacterOffset=0 EndLineNumber=31 EndCharacterOffset=0)">
+    <Node Id="@99" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="5861.07299845174,310.289768298746,133.15,25.96" Label="DrawRectanglePro" SourceLocation="(Assembly=&quot;file:///C:/Users/Madta/Desktop/Graphics CW/raylib/src/rshapes.c&quot; StartLineNumber=719 StartCharacterOffset=0 EndLineNumber=719 EndCharacterOffset=0)">
       <Category Ref="CallStackEntry" />
       <Category Ref="CodeSchema_SourceLocation" />
     </Node>
-    <Node Id="ExternalCodeRootNode" Category="ExternalCallStackEntry" Bounds="415.212873942057,657.761164427621,92.9866666666667,25.96" Label="External Code">
+    <Node Id="ExternalCodeRootNode" Category="ExternalCallStackEntry" Bounds="2277.92930972196,-2.8421709430404E-14,92.9866666666667,25.96" Label="External Code">
       <Category Ref="CallStackEntry" />
-      <Category Ref="CurrentCallStackEntry" />
     </Node>
   </Nodes>
   <Links>
-    <Link Source="@12" Target="@54" Category="CallStackDirectCall" Bounds="586.450866699219,865.359191894531,38.78369140625,362.164733886719" />
-    <Link Source="@12" Target="@60" Category="CallStackDirectCall" Bounds="666.832563369433,814.781875794348,32.9872398676399,24.6173406411983" />
-    <Link Source="@13" Target="@54" Category="CallStackDirectCall" Bounds="585.472045898438,921.3193359375,57.250244140625,306.20458984375" />
-    <Link Source="@13" Target="@60" Category="CallStackDirectCall" Bounds="681.150451660156,818.250366210938,39.2564086914063,77.1089477539063" />
-    <Link Source="@17" Target="(Name=BeginDrawing @6 @23 @3)" Category="CallStackDirectCall" Bounds="438.900451660156,802.109191894531,163.993896484375,236.730041503906" />
-    <Link Source="@17" Target="(Name=Deck::setPosTopCardDeck @1 @23 OverloadingParameters=[(Type=&quot;const Vector2 &amp;&quot; Name=pos)] @3)" Category="CallStackDirectCall" Bounds="548.793029785156,818.3291015625,49.6826171875,220.510131835938" />
-    <Link Source="@17" Target="(Name=Discardediscarded_cards::Discardediscarded_cards @1 @23 @3)" Category="CallStackDirectCall" Bounds="494.973205566406,690.983337402344,113.15869140625,347.855895996094" />
-    <Link Source="@17" Target="(Name=GetMouseDelta @6 @21 @3)" Category="CallStackDirectCall" Bounds="542.939390143883,981.48185051448,106.437263223578,56.2026935040748" />
-    <Link Source="@17" Target="(Name=InitAudioDevice @6 @23 @3)" Category="CallStackDirectCall" Bounds="548.793029785156,524.838073730469,155.567504882813,514.001159667969" />
-    <Link Source="@17" Target="(Name=InitWindow @6 @23 OverloadingParameters=[(@11 Name=width),(@11 Name=height),(Type=&quot;const char *&quot; Name=title)] @3)" Category="CallStackDirectCall" Bounds="516.164672851563,1063.64453125,61.0523681640625,609.739868164063" />
-    <Link Source="@17" Target="(Name=LoadImage @6 Type=Image @36 @3)" Category="CallStackDirectCall" Bounds="529.666145634594,1063.64454401855,91.2421944653519,104.729381511889" />
-    <Link Source="@17" Target="(Name=LoadMusicStream @6 Type=Music @36 @3)" Category="CallStackDirectCall" Bounds="516.164672851563,1063.64453125,77.9029541015625,816.256713867188" />
-    <Link Source="@17" Target="(Name=LoadSound @6 Type=Sound @36 @3)" Category="CallStackDirectCall" Bounds="548.793029785156,407.333709716797,158.702514648438,631.505523681641" />
-    <Link Source="@17" Target="(Name=LoadTexture @6 Type=Texture @36 @3)" Category="CallStackDirectCall" Bounds="516.164672851563,1063.64453125,44.46533203125,550.196411132813" />
-    <Link Source="@17" Target="(Name=MainGame::setPTurn @1 @23 OverloadingParameters=[(@11 Name=player)] @3)" Category="CallStackDirectCall" Bounds="516.164672851563,1063.64453125,45.0022583007813,494.789428710938" />
-    <Link Source="@17" Target="(Name=Player::Player @1 @23 @3)" Category="CallStackIndirectCall" Bounds="481.730407714844,634.023559570313,126.401489257813,404.815673828125" Label="External Code" LabelBounds="561.316967299986,635.456230087225,72.9866666666671,15.96" />
-    <Link Source="@17" Target="(Name=Player::setPlyrAtk @1 @23 OverloadingParameters=[(@2 Name=bol)] @3)" Category="CallStackDirectCall" Bounds="516.164672851563,1063.64453125,39.7884521484375,386.026733398438" />
-    <Link Source="@17" Target="(Name=SetTargetFPS @6 @23 OverloadingParameters=[(@11 Name=fps)] @3)" Category="CallStackDirectCall" Bounds="548.793029785156,762.182678222656,98.332275390625,276.656555175781" />
-    <Link Source="@17" Target="(Name=SetWindowIcon @6 @23 OverloadingParameters=[(Type=Image Name=image)] @3)" Category="CallStackDirectCall" Bounds="441.725280761719,1063.64453125,118.904724121094,816.243530273438" />
-    <Link Source="@17" Target="(Name=WindowShouldClose @6 @2 @3)" Category="CallStackDirectCall" Bounds="521.673980514224,1063.64454401855,69.1547862305854,270.675669145369" />
-    <Link Source="@17" Target="(Name=c0::displayWhosTurnItIs @1 @23 OverloadingParameters=[@42,(Name=player_state)] @3)" Category="CallStackDirectCall" Bounds="549.427727050781,1055.29277975257,60.3259124253814,8.98624214915935" />
-    <Link Source="@17" Target="(Name=c1::init_player_hands @1 @23 OverloadingParameters=[(Type=&quot;std::vector&lt;std::shared_ptr&lt;Card&gt;,std::allocator&lt;std::shared_ptr&lt;Card&gt;&gt;&gt; &amp;&quot; Name=cards_visible),@48,@58] @3)" Category="CallStackDirectCall" Bounds="463.266479492188,1063.64453125,97.363525390625,705.107543945313" />
-    <Link Source="@17" Target="(Name=c2::continuePlayingMusic @1 @23 OverloadingParameters=[(@7 Name=music_number),(Type=&quot;Music &amp;&quot; Name=JazzMusic),(Type=&quot;Music &amp;&quot; Name=LofiMusic),(Type=&quot;Music &amp;&quot; Name=eSwingMusic)] @3)" Category="CallStackDirectCall" Bounds="516.164672851563,1063.64453125,70.9652709960938,872.2060546875" />
-    <Link Source="@17" Target="@10" Category="CallStackDirectCall" Bounds="481.730407714844,576.457702636719,126.401489257813,462.381530761719" />
-    <Link Source="@17" Target="@12" Category="CallStackDirectCall" Bounds="548.793029785156,869.777282714844,68.6005249023438,169.061950683594" />
-    <Link Source="@17" Target="@13" Category="CallStackDirectCall" Bounds="548.793029785156,926.396850585938,86.498291015625,112.4423828125" />
-    <Link Source="@17" Target="@14" Category="CallStackDirectCall" Bounds="448.797688661569,1063.64454401855,65.3428638400193,201.118156896267" />
-    <Link Source="@17" Target="@16" Category="CallStackDirectCall" Bounds="481.730407714844,632.586547851563,126.401489257813,406.252685546875" />
-    <Link Source="@17" Target="@22" Category="CallStackDirectCall" Bounds="461.246490478516,353.651062011719,146.885406494141,685.188171386719" />
-    <Link Source="@17" Target="@26" Category="CallStackDirectCall" Bounds="516.164672851563,1063.64453125,72.9168090820313,439.90380859375" />
-    <Link Source="@17" Target="@30" Category="CallStackDirectCall" Bounds="521.458129882813,1063.64453125,149.926635742188,326.627685546875" />
-    <Link Source="@17" Target="@34" Category="CallStackDirectCall" Bounds="495.293079718315,1063.64454401855,22.1824505235908,326.376387784811" />
-    <Link Source="@17" Target="@35" Category="CallStackDirectCall" Bounds="371.413360595703,1063.64453125,189.216644287109,932.075927734375" />
-    <Link Source="@17" Target="@38" Category="CallStackDirectCall" Bounds="383.655946584611,1021.39292212675,103.63178046617,22.5198975342586" />
-    <Link Source="@17" Target="@39" Category="CallStackDirectCall" Bounds="436.253845214844,1063.64453125,81.50439453125,438.304321289063" />
-    <Link Source="@17" Target="@4" Category="CallStackDirectCall" Bounds="516.164672851563,1063.64453125,95.8395385742188,388.22998046875" />
-    <Link Source="@17" Target="@44" Category="CallStackDirectCall" Bounds="523.041320800781,1063.64453125,111.86474609375,219.911987304688" />
-    <Link Source="@17" Target="@45" Category="CallStackDirectCall" Bounds="309.567901611328,748.345092773438,177.719818115234,292.873779296875" />
-    <Link Source="@17" Target="@47" Category="CallStackDirectCall" Bounds="370.165674692877,1063.64454401855,136.176948987879,147.112908098013" />
-    <Link Source="@17" Target="@5" Category="CallStackDirectCall" Bounds="461.246490478516,411.361663818359,146.885406494141,627.477569580078" />
-    <Link Source="@17" Target="@50" Category="CallStackDirectCall" Bounds="547.619678537854,1063.39758808876,119.986945634118,52.2111133730402" />
-    <Link Source="@17" Target="@51" Category="CallStackDirectCall" Bounds="201.20198059082,186.262252807617,286.085739135742,854.956619262695" />
-    <Link Source="@17" Target="@56" Category="CallStackDirectCall" Bounds="481.730407714844,524.776123046875,126.401489257813,514.063110351563" />
-    <Link Source="@17" Target="@57" Category="CallStackDirectCall" Bounds="502.644317626953,748.385009765625,105.487579345703,290.454223632813" />
-    <Link Source="@17" Target="@61" Category="CallStackDirectCall" Bounds="461.246490478516,296.708679199219,146.885406494141,742.130554199219" />
-    <Link Source="@17" Target="@63" Category="CallStackDirectCall" Bounds="549.427727050781,1027.71368271745,140.371293297081,18.7915176160948" />
-    <Link Source="@17" Target="@65" Category="CallStackDirectCall" Bounds="548.793029785156,466.835571289063,158.702514648438,572.003662109375" />
-    <Link Source="@17" Target="@67" Category="CallStackDirectCall" Bounds="367.34228515625,1063.64453125,145.043823242188,208.319091796875">
-      <Category Ref="CurrentCallStackCall" />
-    </Link>
-    <Link Source="@17" Target="@69" Category="CallStackDirectCall" Bounds="338.798370361328,1063.64453125,173.587738037109,259.178833007813" />
-    <Link Source="@17" Target="@70" Category="CallStackDirectCall" Bounds="405.078582763672,577.796447753906,203.053314208984,461.042785644531" />
-    <Link Source="@17" Target="@71" Category="CallStackDirectCall" Bounds="430.764282226563,467.192016601563,177.367614746094,571.647216796875" />
-    <Link Source="@17" Target="@72" Category="CallStackDirectCall" Bounds="461.246490478516,242.526016235352,146.885406494141,796.313217163086" />
-    <Link Source="@17" Target="@8" Category="CallStackDirectCall" Bounds="308.035522460938,855.379028320313,179.252197265625,185.83984375" />
-    <Link Source="@26" Target="@27" Category="CallStackDirectCall" Bounds="609.915710449219,1536.88037109375,51.0773315429688,82.0186767578125" />
-    <Link Source="@27" Target="@28" Category="CallStackDirectCall" Bounds="725.855249532746,1648.80061643555,61.3642758895983,26.4389092327037" />
-    <Link Source="@28" Target="(Name=rlMatrixMultiply @6 Type=Matrix OverloadingParameters=[(Type=Matrix Name=left),(Type=Matrix Name=right)] @3)" Category="CallStackDirectCall" Bounds="847.634863820994,1704.75995663606,43.1482816934499,25.4303216039098" />
-    <Link Source="@30" Target="@52" Category="CallStackDirectCall" Bounds="690.66259765625,1424.96020507813,42.2153930664063,133.150634765625" />
-    <Link Source="@31" Target="@34" Category="CallStackDirectCall" Bounds="497.538513183594,1007.68444824219,54.5103149414063,382.444580078125" />
-    <Link Source="@33" Target="@14" Category="CallStackDirectCall" Bounds="326.802947998047,1303.23229980469,80.0088500976563,263.648193359375" />
-    <Link Source="@33" Target="@15" Category="CallStackDirectCall" Bounds="402.457770731317,1592.84051643555,29.5672053693719,119.426307508751" />
-    <Link Source="@33" Target="@34" Category="CallStackDirectCall" Bounds="457.752044677734,1428.1748046875,103.326263427734,138.705688476563" />
-    <Link Source="@35" Target="(Name=Card::Card @1 @23 @3)" Category="CallStackIndirectCall" Bounds="499.995986562255,2026.76356442762,1.21452120553147,76.9613204605994" Label="External Code" LabelBounds="423.161135015276,2086.0931619001,72.9866666666676,15.96" />
-    <Link Source="@35" Target="(Name=Card::set_card_suit @1 @23 OverloadingParameters=[(@32 Name=suit)] @3)" Category="CallStackDirectCall" Bounds="454.364222794731,2026.76356442762,30.7135592178618,24.4015596170771" />
-    <Link Source="@35" Target="(Name=Card::set_card_suit @1 @23 OverloadingParameters=[(Name=suit)] @3)" Category="CallStackDirectCall" Bounds="501.579833984375,2026.76354980469,38.5918579101563,134.537719726563" />
-    <Link Source="@35" Target="(Name=Card::set_card_value @1 @23 OverloadingParameters=[(@32 Name=value)] @3)" Category="CallStackDirectCall" Bounds="517.000817730133,2026.76356442762,29.1063016458844,24.2405080321173" />
-    <Link Source="@35" Target="(Name=Card::set_card_value @1 @23 OverloadingParameters=[(Name=value)] @3)" Category="CallStackDirectCall" Bounds="432.088928222656,1867.81982421875,73.4682312011719,132.983764648438" />
-    <Link Source="@35" Target="@34" Category="CallStackDirectCall" Bounds="371.413360595703,1428.1748046875,189.216644287109,572.628784179688" />
-    <Link Source="@39" Target="@14" Category="CallStackDirectCall" Bounds="376.146759033203,1302.47241210938,65.0050354003906,208.447998046875" />
-    <Link Source="@39" Target="@15" Category="CallStackDirectCall" Bounds="368.094451904297,1536.88037109375,43.0914916992188,175.219116210938" />
-    <Link Source="@39" Target="@20" Category="CallStackDirectCall" Bounds="439.214468935063,1364.24056119693,2.93666989007676,146.679855238622" />
-    <Link Source="@39" Target="@25" Category="CallStackIndirectCall" Bounds="396.273620605469,1416.94677734375,45.2955932617188,93.9736328125" Label="External Code" LabelBounds="363.786515175177,1490.84858546711,72.9866666666676,15.96" />
-    <Link Source="@39" Target="@34" Category="CallStackDirectCall" Bounds="444.480133056641,1430.77661132813,27.1256408691406,80.143798828125" />
-    <Link Source="@39" Target="@37" Category="CallStackDirectCall" Bounds="332.687948261665,1536.88041643555,57.1049304446196,14.0868170056933" />
-    <Link Source="@4" Target="@54" Category="CallStackDirectCall" Bounds="694.447448730469,1259.69860839844,67.162353515625,195.26171875" />
-    <Link Source="@41" Target="@38" Category="CallStackDirectCall" Bounds="316.295997906126,1028.46911320061,1.11532445651562,21.0127512270146" />
-    <Link Source="@44" Target="@52" Category="CallStackDirectCall" Bounds="685.274169921875,1313.0400390625,59.7975463867188,245.08447265625" />
-    <Link Source="@45" Target="@19" Category="CallStackDirectCall" Bounds="251.949401855469,468.730682373047,44.8982238769531,244.666351318359" />
-    <Link Source="@46" Target="@14" Category="CallStackDirectCall" Bounds="376.146759033203,1302.47241210938,45.7696838378906,152.487915039063" />
-    <Link Source="@46" Target="@20" Category="CallStackDirectCall" Bounds="392.883697509766,1363.66528320313,37.8331298828125,91.2950439453125" />
-    <Link Source="@46" Target="@34" Category="CallStackDirectCall" Bounds="411.636979060877,1429.1318623627,49.3753914476985,25.8284540728489" />
-    <Link Source="@46" Target="@37" Category="CallStackDirectCall" Bounds="293.460829154334,1480.92031643555,78.0912628318875,66.3738043644855" />
-    <Link Source="@47" Target="(Name=Player::set_hand_by_index @1 @23 OverloadingParameters=[@43,(@7 Name=index)] @3)" Category="CallStackDirectCall" Bounds="317.238800048828,1134.84948730469,67.5264892578125,82.5126953125" />
-    <Link Source="@47" Target="@20" Category="CallStackDirectCall" Bounds="356.480377197266,1243.32214355469,50.8304138183594,81.6199951171875" />
-    <Link Source="@47" Target="@25" Category="CallStackIndirectCall" Bounds="355.207092285156,1243.32214355469,16.5556335449219,132.95458984375" Label="External Code" LabelBounds="370.253486143809,1305.18180566673,72.9866666666676,15.96" />
-    <Link Source="@47" Target="@37" Category="CallStackDirectCall" Bounds="281.265380859375,1243.32214355469,84.5986022949219,301.656127929688" />
-    <Link Source="@47" Target="@8" Category="CallStackDirectCall" Bounds="308.035522460938,855.379028320313,88.6893310546875,361.983154296875" />
-    <Link Source="@49" Target="@16" Category="CallStackDirectCall" Bounds="351.918609619141,515.840881347656,65.7589416503906,83.1366577148438" />
-    <Link Source="@50" Target="(Name=DrawRectangle @6 @23 OverloadingParameters=[(@11 Name=posX),(@11 Name=posY),(@11 Name=width),(@11 Name=height),(Type=Color Name=color)] @3)" Category="CallStackDirectCall" Bounds="724.382437674897,1145.15971643555,35.8134410616045,24.8670153677519" />
-    <Link Source="@53" Target="@19" Category="CallStackDirectCall" Bounds="284.453147948029,403.920664427621,28.5985874525509,24.1881165948545" />
-    <Link Source="@56" Target="(Name=DrawText @6 @23 OverloadingParameters=[(Type=&quot;const char *&quot; Name=text),(@11 Name=posX),(@11 Name=posY),(@11 Name=fontSize),(Type=Color Name=color)] @3)" Category="CallStackDirectCall" Bounds="507.546478271484,351.2265625,53.1903381347656,138.654296875" />
-    <Link Source="@56" Target="@10" Category="CallStackDirectCall" Bounds="553.123164557491,515.840864427621,21.1256663475505,23.3289177365015" />
-    <Link Source="@56" Target="@16" Category="CallStackDirectCall" Bounds="495.881896972656,515.840881347656,42.4105834960938,81.4736938476563" />
-    <Link Source="@57" Target="@31" Category="CallStackDirectCall" Bounds="498.104888916016,739.681274414063,14.4919738769531,233.055541992188" />
-    <Link Source="@57" Target="@64" Category="CallStackDirectCall" Bounds="520.280883789063,131.835494995117,135.508605957031,581.885757446289" />
-    <Link Source="@59" Target="@16" Category="CallStackDirectCall" Bounds="417.340850830078,632.586547851563,100.992889404297,249.015014648438" />
-    <Link Source="@59" Target="@20" Category="CallStackDirectCall" Bounds="379.106994628906,907.561584472656,38.95263671875,417.322204589844" />
-    <Link Source="@59" Target="@49" Category="CallStackDirectCall" Bounds="354.794769287109,524.549133300781,52.0654296875,357.052429199219" />
-    <Link Source="@61" Target="@16" Category="CallStackDirectCall" Bounds="461.246490478516,292.000457763672,79.7322692871094,305.250457763672" />
-    <Link Source="@62" Target="(Name=Player::getEntireHand @1 Type=&quot;std::vector&lt;std::shared_ptr&lt;Card&gt;,std::allocator&lt;std::shared_ptr&lt;Card&gt;&gt;&gt;&quot; @3)" Category="CallStackDirectCall" Bounds="177.426040649414,1523.12268066406,39.1596984863281,132.967041015625" />
-    <Link Source="@62" Target="(Name=Table::addCardToTableAtk @1 @23 OverloadingParameters=[@43,(@7 Name=pNum)] @3)" Category="CallStackDirectCall" Bounds="147.202304071157,1513.26359739757,32.2979559386089,1.82906469879595" />
-    <Link Source="@63" Target="(Name=PlayMusicStream @6 @23 OverloadingParameters=[(Type=Music Name=music)] @3)" Category="CallStackDirectCall" Bounds="765.983479518405,982.093605402261,39.7820388485648,25.1859110332853" />
-    <Link Source="@64" Target="(Name=DrawTextureEx @6 @23 OverloadingParameters=[(Type=Texture Name=texture),(@21 Name=position),(Type=float Name=rotation),(Type=float Name=scale),(Type=Color Name=tint)] @3)" Category="CallStackDirectCall" Bounds="521.190508874898,21.099579785274,11.6069082136648,77.0605846423469" />
-    <Link Source="@65" Target="@64" Category="CallStackDirectCall" Bounds="547.182434082031,131.835494995117,101.442443847656,302.08528137207" />
-    <Link Source="@67" Target="(Name=Table::get_num_cards_in_defender_table @1 @11 @3)" Category="CallStackDirectCall" Bounds="270.781555175781,1196.27026367188,34.6083984375,77.052001953125" />
-    <Link Source="@67" Target="@18" Category="CallStackDirectCall" Bounds="216.914760146583,1297.18453936908,69.2318921783892,20.6536893563675" />
-    <Link Source="@67" Target="@24" Category="CallStackDirectCall" Bounds="358.772094726563,966.83642578125,62.2399597167969,307.875244140625" />
-    <Link Source="@67" Target="@37" Category="CallStackDirectCall" Bounds="275.873474121094,1299.2822265625,37.5112915039063,245.69580078125">
-      <Category Ref="CurrentCallStackCall" />
-    </Link>
-    <Link Source="@67" Target="@38" Category="CallStackDirectCall" Bounds="356.888519287109,1022.74432373047,63.9749755859375,251.967346191406" />
-    <Link Source="@67" Target="@41" Category="CallStackDirectCall" Bounds="331.206146240234,1083.0322265625,93.8548889160156,191.679443359375" />
-    <Link Source="@67" Target="@46" Category="CallStackDirectCall" Bounds="333.349060058594,1299.2822265625,84.8222961425781,147.47802734375" />
-    <Link Source="@67" Target="@62" Category="CallStackDirectCall" Bounds="265.809539794922,1299.2822265625,56.9482116699219,193.4990234375" />
-    <Link Source="@67" Target="@8" Category="CallStackDirectCall" Bounds="150.496856689453,855.667053222656,174.598785400391,417.655212402344" />
-    <Link Source="@68" Target="@24" Category="CallStackDirectCall" Bounds="310.337860107422,683.39697265625,85.0092163085938,246.077941894531" />
-    <Link Source="@68" Target="@53" Category="CallStackDirectCall" Bounds="246.753067016602,412.920440673828,81.4949798583984,244.516510009766" />
-    <Link Source="@68" Target="@59" Category="CallStackDirectCall" Bounds="354.923095703125,683.39697265625,54.0059814453125,189.249145507813" />
-    <Link Source="@68" Target="@8" Category="CallStackDirectCall" Bounds="356.725555419922,683.39697265625,38.6215209960938,133.277648925781" />
-    <Link Source="@69" Target="(Name=Player::find_lowest_card @1 @11 OverloadingParameters=[(Name=card_suit_value)] @3)" Category="CallStackDirectCall" Bounds="321.317108154297,1355.24243164063,24.7776794433594,301.00146484375" />
-    <Link Source="@69" Target="(Name=Table::find_empty_pile_atk @1 @11 @3)" Category="CallStackDirectCall" Bounds="253.11901849644,1355.24236442762,57.3543389062623,78.6871763161212" />
-    <Link Source="@69" Target="@18" Category="CallStackDirectCall" Bounds="264.992935875078,1339.12096304609,21.0147541477087,1.20156662739396" />
-    <Link Source="@69" Target="@33" Category="CallStackDirectCall" Bounds="321.001007080078,1355.24230957031,77.3203735351563,207.93017578125" />
-    <Link Source="@69" Target="@37" Category="CallStackDirectCall" Bounds="281.265625,1355.24230957031,41.6758117675781,189.736083984375" />
-    <Link Source="@69" Target="@62" Category="CallStackDirectCall" Bounds="270.672607421875,1355.24230957031,48.6502685546875,138.120361328125" />
-    <Link Source="@70" Target="(Name=MainGame::getCardsPlayed @1 Type=&quot;const unsigned short&quot; @3)" Category="CallStackDirectCall" Bounds="447.133880615234,76.5231170654297,155.075042724609,469.317825317383" />
-    <Link Source="@70" Target="@22" Category="CallStackDirectCall" Bounds="447.133880615234,353.651062011719,57.3128967285156,192.189880371094" />
-    <Link Source="@70" Target="@29" Category="CallStackDirectCall" Bounds="382.004241943359,133.101135253906,112.796356201172,412.739807128906" />
-    <Link Source="@70" Target="@5" Category="CallStackDirectCall" Bounds="447.133880615234,411.361663818359,47.6667175292969,134.479278564453" />
-    <Link Source="@70" Target="@51" Category="CallStackDirectCall" Bounds="394.746978759766,187.95442199707,100.053619384766,357.886520385742" />
-    <Link Source="@70" Target="@64" Category="CallStackDirectCall" Bounds="447.133880615234,131.828643798828,155.075042724609,414.012298583984" />
-    <Link Source="@70" Target="@8" Category="CallStackDirectCall" Bounds="359.4931640625,571.800964355469,69.3450622558594,244.873657226563" />
-    <Link Source="@71" Target="@29" Category="CallStackDirectCall" Bounds="381.240814208984,133.116027832031,30.8427124023438,300.804748535156" />
-    <Link Source="@71" Target="@51" Category="CallStackDirectCall" Bounds="392.307373046875,188.181350708008,65.6902465820313,245.73942565918" />
-    <Link Source="@71" Target="@68" Category="CallStackDirectCall" Bounds="337.06494140625,459.880767822266,114.449890136719,188.839263916016" />
-    <Link Source="@72" Target="@51" Category="CallStackDirectCall" Bounds="487.867638645429,186.380719160019,24.175052526616,23.6996452676019" />
-    <Link Source="@72" Target="@64" Category="CallStackDirectCall" Bounds="538.091430664063,132.554275512695,18.5922241210938,77.5260925292969" />
-    <Link Source="ExternalCodeRootNode" Target="@17" Category="CallStackIndirectCall" Bounds="464.608276367188,683.72119140625,143.523620605469,351.856323242188">
-      <Category Ref="CurrentCallStackCall" />
-    </Link>
+    <Link Source="@101" Target="(Name=PlayMusicStream @4 @28 OverloadingParameters=[(Type=Music Name=music)] @2)" Category="CallStackDirectCall" Bounds="3736.56026220781,230.734079535438,78.0205167983599,44.5994077400334" />
+    <Link Source="@103" Target="(Name=DrawTextureEx @4 @28 OverloadingParameters=[(Type=Texture Name=texture),@113,@100,(@84 Name=scale),@102] @2)" Category="CallStackDirectCall" Bounds="2648.90502929688,249.800048828125,258.226806640625,81.9186096191406" />
+    <Link Source="@104" Target="@103" Category="CallStackDirectCall" Bounds="2342.72143554688,135.746063232422,232.4609375,87.9956970214844" />
+    <Link Source="@105" Target="@117" Category="CallStackDirectCall" Bounds="5917.37155644417,201.220167506644,6.25638315443302,21.3627514185513" />
+    <Link Source="@107" Target="@17" Category="CallStackDirectCall" Bounds="1187.46069335938,182.495223999023,556.357788085938,38.4327239990234" />
+    <Link Source="@107" Target="@25" Category="CallStackDirectCall" Bounds="1154.578125,187.161254882813,594.951171875,90.0657348632813" />
+    <Link Source="@107" Target="@52" Category="CallStackDirectCall" Bounds="1154.578125,187.161254882813,428.024169921875,90.4623413085938" />
+    <Link Source="@108" Target="(Name=Table::getCardFromTableDef @6 @38 OverloadingParameters=[(@10 Name=index)] @2)" Category="CallStackDirectCall" Bounds="618.447027458863,183.990276132691,299.680349250121,41.2050528183599" />
+    <Link Source="@108" Target="@39" Category="CallStackDirectCall" Bounds="1035.21997070313,187.161270141602,1029.74755859375,34.5900726318359" />
+    <Link Source="@108" Target="@53" Category="CallStackDirectCall" Bounds="1035.21997070313,187.161270141602,849.10888671875,34.5836029052734" />
+    <Link Source="@109" Target="(Name=c2::takeDefender @6 @28 OverloadingParameters=[(Name=players),(Name=cardsVisible),(Name=deck),(Name=table),@59] @2)" Category="CallStackDirectCall" Bounds="1354.94934082031,128.438232421875,472.799682617188,92.7579803466797" />
+    <Link Source="@109" Target="@107" Category="CallStackDirectCall" Bounds="1194.94128417969,124.26244354248,632.807739257813,36.815544128418" />
+    <Link Source="@109" Target="@108" Category="CallStackDirectCall" Bounds="1067.36962890625,123.909614562988,760.37939453125,36.9104843139648" />
+    <Link Source="@109" Target="@11" Category="CallStackDirectCall" Bounds="1892.69226074219,135.112152099609,1232.44445800781,90.6956329345703" />
+    <Link Source="@109" Target="@111" Category="CallStackDirectCall" Bounds="1892.69226074219,135.112152099609,771.921020507813,29.9410400390625" />
+    <Link Source="@109" Target="@17" Category="CallStackDirectCall" Bounds="1811.10974121094,135.112152099609,46.1629638671875,81.8947601318359" />
+    <Link Source="@109" Target="@21" Category="CallStackDirectCall" Bounds="1555.84741210938,130.421127319336,271.901611328125,91.7081146240234" />
+    <Link Source="@109" Target="@22" Category="CallStackDirectCall" Bounds="1224.38305664063,124.824478149414,603.365966796875,91.1914215087891" />
+    <Link Source="@109" Target="@30" Category="CallStackDirectCall" Bounds="1892.69226074219,135.112152099609,983.619262695313,97.406494140625" />
+    <Link Source="@109" Target="@39" Category="CallStackDirectCall" Bounds="1900.92492675781,132.696670532227,166.217163085938,88.9329528808594" />
+    <Link Source="@109" Target="@52" Category="CallStackDirectCall" Bounds="1677.35607910156,135.112167358398,171.3212890625,139.936080932617" />
+    <Link Source="@109" Target="@53" Category="CallStackDirectCall" Bounds="1852.04467773438,135.112152099609,45.3685302734375,85.9840850830078" />
+    <Link Source="@109" Target="@56" Category="CallStackDirectCall" Bounds="1369.10438830029,125.443455088262,458.644667689289,41.4758602562749" />
+    <Link Source="@109" Target="@69" Category="CallStackDirectCall" Bounds="896.038269042969,123.621795654297,931.710754394531,37.9036712646484" />
+    <Link Source="@109" Target="@97" Category="CallStackDirectCall" Bounds="1662.16051432963,129.844194151202,165.588541659954,34.8755110949036" />
+    <Link Source="@110" Target="(Name=Player::addToplayer_hand @6 @28 OverloadingParameters=[(@12 Name=cardToAdd)] @2)" Category="CallStackDirectCall" Bounds="2622.97807444949,417.679887160774,19.7525028863902,28.4902005559514" />
+    <Link Source="@110" Target="@23" Category="CallStackDirectCall" Bounds="2697.84690310528,417.679887160774,97.9248508101791,27.5616284980586" />
+    <Link Source="@111" Target="@11" Category="CallStackDirectCall" Bounds="2750.3408203125,193.839950561523,388.01123046875,26.6240997314453" />
+    <Link Source="@111" Target="@110" Category="CallStackDirectCall" Bounds="2696.8515625,193.839950561523,16.568359375,194.874893188477" />
+    <Link Source="@111" Target="@17" Category="CallStackDirectCall" Bounds="1832.40002441406,193.839950561523,835.292846679688,27.1552734375" />
+    <Link Source="@111" Target="@30" Category="CallStackDirectCall" Bounds="2760.75859823584,193.661174216741,116.696062434951,28.871267926461" />
+    <Link Source="@111" Target="@83" Category="CallStackDirectCall" Bounds="2707.11401367188,193.839950561523,60.12255859375,187.853042602539" />
+    <Link Source="@111" Target="@92" Category="CallStackDirectCall" Bounds="2529.76249816432,192.943088048535,126.393259685782,28.8913596803596" />
+    <Link Source="@112" Target="@105" Category="CallStackDirectCall" Bounds="5875.85539786128,145.260167506643,29.0846695550517,24.238203129282" />
+    <Link Source="@112" Target="@27" Category="CallStackDirectCall" Bounds="4599.63671875,145.260162353516,1234.947265625,89.5956115722656" />
+    <Link Source="@112" Target="@36" Category="CallStackDirectCall" Bounds="4762.1044921875,137.176651000977,1017.75732421875,35.918701171875" />
+    <Link Source="@112" Target="@58" Category="CallStackDirectCall" Bounds="5501.533203125,145.260162353516,324.85498046875,99.2414703369141" />
+    <Link Source="@112" Target="@73" Category="CallStackDirectCall" Bounds="5249.75146484375,145.260162353516,584.83251953125,85.2401275634766" />
+    <Link Source="@112" Target="@94" Category="CallStackDirectCall" Bounds="5652.00728033002,145.260167506643,146.488881693525,30.7754410534123" />
+    <Link Source="@114" Target="(Name=DrawTexturePro @4 @28 OverloadingParameters=[(Type=Texture Name=texture),(@70 Name=source),(@70 Name=dest),@98,@100,@102] @2)" Category="CallStackDirectCall" Bounds="6181.39149727766,313.140133586205,67.1065095629892,26.6754540121489" />
+    <Link Source="@114" Target="@116" Category="CallStackDirectCall" Bounds="6216.00288900928,313.127680918206,154.805019821139,29.8438954010633" />
+    <Link Source="@115" Target="(Name=Player::find_lowest_card @6 @14 OverloadingParameters=[(Name=card_suit_value)] @2)" Category="CallStackDirectCall" Bounds="1327.97485351563,131.201156616211,538.848388671875,34.0227661132813" />
+    <Link Source="@115" Target="(Name=Table::find_empty_pile_atk @6 @14 @2)" Category="CallStackDirectCall" Bounds="1327.97485351563,131.201156616211,346.883422851563,36.2406005859375" />
+    <Link Source="@115" Target="@21" Category="CallStackDirectCall" Bounds="1329.72607421875,131.201156616211,102.1953125,89.8157501220703" />
+    <Link Source="@115" Target="@46" Category="CallStackDirectCall" Bounds="1334.02848976814,131.201163044521,78.7309198357832,33.1832351327121" />
+    <Link Source="@115" Target="@52" Category="CallStackDirectCall" Bounds="1314.85290527344,131.201171875,309.10302734375,142.1826171875" />
+    <Link Source="@115" Target="@97" Category="CallStackDirectCall" Bounds="1337.15869140625,125.739196777344,197.608032226563,40.1438140869141" />
+    <Link Source="@116" Target="(Name=rlVertex2f @4 @28 OverloadingParameters=[(@84 Name=x),(@84 Name=y)] @2)" Category="CallStackDirectCall" Bounds="6399.37120893318,369.100133586205,25.7080596306732,23.9508759891013" />
+    <Link Source="@116" Target="@57" Category="CallStackDirectCall" Bounds="5993.79150390625,368.032287597656,386.1767578125,41.1214294433594" />
+    <Link Source="@116" Target="@85" Category="CallStackDirectCall" Bounds="5778.6376953125,366.746520996094,600.69580078125,68.4478149414063" />
+    <Link Source="@116" Target="@96" Category="CallStackDirectCall" Bounds="5649.2509765625,366.746520996094,730.08251953125,68.4478149414063" />
+    <Link Source="@117" Target="(Name=DrawTextCodepoint @4 @28 OverloadingParameters=[(Type=Font Name=font),(@14 Name=codepoint),@113,(@84 Name=fontSize),@102] @2)" Category="CallStackDirectCall" Bounds="5804.29655926828,257.180133586205,71.9607947622026,26.85343887763" />
+    <Link Source="@117" Target="@114" Category="CallStackDirectCall" Bounds="5958.72464970618,255.426151789304,126.118746228258,29.6915391695779" />
+    <Link Source="@118" Target="(Name=MainGame::getCardsPlayed @6 Type=&quot;const unsigned short&quot; @2)" Category="CallStackDirectCall" Bounds="3634.63500976563,193.839996337891,196.421630859375,80.9526062011719" />
+    <Link Source="@118" Target="@103" Category="CallStackDirectCall" Bounds="2694.2919921875,193.839996337891,850.69873046875,39.1153106689453" />
+    <Link Source="@118" Target="@11" Category="CallStackDirectCall" Bounds="3213.65014648438,193.247116088867,313.8349609375,27.1288604736328" />
+    <Link Source="@118" Target="@27" Category="CallStackDirectCall" Bounds="3643.82055664063,193.839996337891,805.191162109375,38.5538635253906" />
+    <Link Source="@118" Target="@42" Category="CallStackDirectCall" Bounds="3634.63500976563,193.839996337891,270.416015625,45.722900390625" />
+    <Link Source="@118" Target="@81" Category="CallStackDirectCall" Bounds="3398.19014723174,193.840000610352,134.298061111411,28.1534423582803" />
+    <Link Source="@118" Target="@9" Category="CallStackDirectCall" Bounds="3536.64489145889,193.840000610352,38.0468624509926,25.0507830451705" />
+    <Link Source="@119" Target="@111" Category="CallStackDirectCall" Bounds="2771.55883789063,137.879806518555,431.04931640625,30.972900390625" />
+    <Link Source="@119" Target="@42" Category="CallStackDirectCall" Bounds="3301.82177734375,137.879806518555,641.579833984375,82.8761444091797" />
+    <Link Source="@119" Target="@81" Category="CallStackDirectCall" Bounds="3286.68579101563,137.879806518555,49.6435546875,77.0617218017578" />
+    <Link Source="@120" Target="@103" Category="CallStackDirectCall" Bounds="2634.71280289282,137.879768032837,0.660429699688393,76.9606172979219" />
+    <Link Source="@120" Target="@81" Category="CallStackDirectCall" Bounds="2684.14794921875,137.879760742188,555.02587890625,87.8902435302734" />
+    <Link Source="@122" Target="@58" Category="CallStackDirectCall" Bounds="5258.47978224225,193.84,145.175571932161,50.2905844272996" />
+    <Link Source="@122" Target="@73" Category="CallStackDirectCall" Bounds="5190.58571247058,193.84,19.4844673704438,23.1182188921174" />
+    <Link Source="@15" Target="@87" Category="CallStackDirectCall" Bounds="5490.21117763255,137.88,33.5674188006851,24.6701441671674" />
+    <Link Source="@15" Target="@94" Category="CallStackDirectCall" Bounds="5552.1932477233,137.88,25.2262654653077,30.4495587051637" />
+    <Link Source="@16" Target="@87" Category="CallStackDirectCall" Bounds="5522.29088231553,137.88,112.362011206036,28.5159537582743" />
+    <Link Source="@16" Target="@94" Category="CallStackDirectCall" Bounds="5620.15389177894,137.88,46.8150826919009,32.2720568655663" />
+    <Link Source="@20" Target="(Name=BeginDrawing @4 @28 @2)" Category="CallStackDirectCall" Bounds="1486.20559117856,69.7425142107096,1812.27421350894,46.8244857475745" />
+    <Link Source="@20" Target="(Name=Deck::setPosTopCardDeck @6 @28 OverloadingParameters=[(Type=&quot;const Vector2 &amp;&quot; Name=pos)] @2)" Category="CallStackDirectCall" Bounds="1222.9638671875,70.4033508300781,2075.51586914063,77.4021148681641" />
+    <Link Source="@20" Target="(Name=Discardediscarded_cards::Discardediscarded_cards @6 @28 @2)" Category="CallStackDirectCall" Bounds="2537.79565429688,70.6074752807617,760.68408203125,40.8299102783203" />
+    <Link Source="@20" Target="(Name=GetMouseDelta @4 @26 @2)" Category="CallStackDirectCall" Bounds="1786.35009765625,69.5539321899414,1512.12963867188,37.944694519043" />
+    <Link Source="@20" Target="(Name=InitAudioDevice @4 @28 @2)" Category="CallStackDirectCall" Bounds="3360.61987304688,69.5394592285156,1693.15551757813,40.7720565795898" />
+    <Link Source="@20" Target="(Name=InitWindow @4 @28 OverloadingParameters=[(@14 Name=width),(@14 Name=height),(@49 Name=title)] @2)" Category="CallStackDirectCall" Bounds="3360.61987304688,70.9233245849609,642.529541015625,41.0152435302734" />
+    <Link Source="@20" Target="(Name=IsMouseButtonPressed @4 @7 OverloadingParameters=[(@14 Name=button)] @2)" Category="CallStackDirectCall" Bounds="3360.61987304688,71.4610366821289,1093.25610351563,94.6313858032227" />
+    <Link Source="@20" Target="(Name=IsMouseButtonPressed @4 @7 OverloadingParameters=[(Name=button)] @2)" Category="CallStackDirectCall" Bounds="3352.61159876461,81.9197830627441,45.4586501313133,25.5857491716204" />
+    <Link Source="@20" Target="(Name=IsMouseButtonReleased @4 @7 OverloadingParameters=[(@14 Name=button)] @2)" Category="CallStackDirectCall" Bounds="3140.8325700992,75.7008562192923,157.647234588298,34.3052618596398" />
+    <Link Source="@20" Target="(Name=LoadImage @4 Type=Image @50 @2)" Category="CallStackDirectCall" Bounds="3360.61987304688,69.4910202026367,1837.37622070313,40.7774810791016" />
+    <Link Source="@20" Target="(Name=LoadMusicStream @4 Type=Music @50 @2)" Category="CallStackDirectCall" Bounds="3360.61987304688,69.6057968139648,1530.01928710938,40.7629241943359" />
+    <Link Source="@20" Target="(Name=LoadSound @4 Type=Sound @50 @2)" Category="CallStackDirectCall" Bounds="3360.61987304688,71.2018051147461,1443.75024414063,105.485618591309" />
+    <Link Source="@20" Target="(Name=LoadTexture @4 Type=Texture @50 @2)" Category="CallStackDirectCall" Bounds="3360.61987304688,70.0402374267578,1199.58911132813,42.4825744628906" />
+    <Link Source="@20" Target="(Name=MainGame::incramentCardsPlayed @6 @28 @2)" Category="CallStackDirectCall" Bounds="3360.61987304688,69.9272689819336,1330.07788085938,42.2639541625977" />
+    <Link Source="@20" Target="(Name=MainGame::setPTurn @6 @28 OverloadingParameters=[(@14 Name=player)] @2)" Category="CallStackDirectCall" Bounds="3360.61987304688,70.3359298706055,938.385009765625,42.1631393432617" />
+    <Link Source="@20" Target="(Name=Player::Player @6 @28 @2)" Category="CallStackIndirectCall" Bounds="3360.61987304688,74.3724899291992,323.1279296875,97.034294128418" Label="External Code" LabelBounds="3674.90305154065,151.445651288968,72.9866666666703,15.9599999999991" />
+    <Link Source="@20" Target="(Name=Player::get_player_winstate @6 Type=&quot;const bool&quot; @2)" Category="CallStackDirectCall" Bounds="3360.61987304688,70.59619140625,769.887939453125,41.0390625" />
+    <Link Source="@20" Target="(Name=SetTargetFPS @4 @28 OverloadingParameters=[(@14 Name=fps)] @2)" Category="CallStackDirectCall" Bounds="3360.61987304688,71.3894958496094,508.75341796875,40.1091537475586" />
+    <Link Source="@20" Target="(Name=SetWindowIcon @4 @28 OverloadingParameters=[(Type=Image Name=image)] @2)" Category="CallStackDirectCall" Bounds="3360.61987304688,70.183235168457,1050.91381835938,42.0514068603516" />
+    <Link Source="@20" Target="(Name=WindowShouldClose @4 @7 @2)" Category="CallStackDirectCall" Bounds="3360.61987304688,70.8754959106445,889.961181640625,96.5233535766602" />
+    <Link Source="@20" Target="(Name=c0::displayWhosTurnItIs @6 @28 OverloadingParameters=[@59,(Name=player_state)] @2)" Category="CallStackDirectCall" Bounds="3360.61987304688,74.3724899291992,228.600830078125,147.338935852051" />
+    <Link Source="@20" Target="(Name=c1::bringCardOneToTop @6 @28 OverloadingParameters=[(@12 Name=cardOne),(@12 Name=cardTwo),(Name=cards_visible)] @2)" Category="CallStackDirectCall" Bounds="1632.81530761719,69.4993896484375,1665.66442871094,38.1155090332031" />
+    <Link Source="@20" Target="(Name=c1::bringCardOneToTop @6 @28 OverloadingParameters=[(@12 Name=cardOne),(@12 Name=cardTwo),(Type=&quot;std::vector&lt;std::shared_ptr&lt;Card&gt;,std::allocator&lt;std::shared_ptr&lt;Card&gt;&gt;&gt; &amp;&quot; Name=cards_visible)] @2)" Category="CallStackDirectCall" Bounds="3360.6198046875,75.1754736379833,174.258777248061,34.9734089133713" />
+    <Link Source="@20" Target="(Name=c1::bringCardOneToTop @6 @28 OverloadingParameters=[(Name=cardOne),(@12 Name=cardTwo),(Name=cards_visible)] @2)" Category="CallStackDirectCall" Bounds="3360.61987304688,70.8754959106445,738.875732421875,94.7164535522461" />
+    <Link Source="@20" Target="(Name=c1::init_player_hands @6 @28 OverloadingParameters=[(Type=&quot;std::vector&lt;std::shared_ptr&lt;Card&gt;,std::allocator&lt;std::shared_ptr&lt;Card&gt;&gt;&gt; &amp;&quot; Name=cards_visible),@75,@78] @2)" Category="CallStackDirectCall" Bounds="2969.9443359375,72.4311447143555,328.535400390625,42.052116394043" />
+    <Link Source="@20" Target="(Name=c2::card_beats_card_def @6 @7 OverloadingParameters=[(@12 Name=card_one),(@12 Name=card_two)] @2)" Category="CallStackDirectCall" Bounds="3360.61987304688,70.8754959106445,595.879638671875,92.287712097168" />
+    <Link Source="@20" Target="(Name=c2::continuePlayingMusic @6 @28 OverloadingParameters=[(@10 Name=music_number),(Type=&quot;Music &amp;&quot; Name=JazzMusic),(Type=&quot;Music &amp;&quot; Name=LofiMusic),(Type=&quot;Music &amp;&quot; Name=eSwingMusic)] @2)" Category="CallStackDirectCall" Bounds="2188.62133789063,70.1079711914063,1109.8583984375,41.7292404174805" />
+    <Link Source="@20" Target="(Name=c2::pirivadnoy_checker @6 @7 OverloadingParameters=[@55,(Name=card)] @2)" Category="CallStackDirectCall" Bounds="3360.61987304688,72.3115997314453,339.955322265625,41.8651504516602" />
+    <Link Source="@20" Target="@101" Category="CallStackDirectCall" Bounds="3360.61987304688,74.3724899291992,455.568359375,124.378486633301" />
+    <Link Source="@20" Target="@104" Category="CallStackDirectCall" Bounds="2350.11083984375,70.299674987793,948.368896484375,41.5087738037109" />
+    <Link Source="@20" Target="@109" Category="CallStackDirectCall" Bounds="1909.28784179688,69.8369979858398,1389.19189453125,40.1241302490234" />
+    <Link Source="@20" Target="@11" Category="CallStackDirectCall" Bounds="3226.927734375,81.9197845458984,109.246826171875,144.66828918457" />
+    <Link Source="@20" Target="@112" Category="CallStackDirectCall" Bounds="3360.61987304688,69.3598861694336,2448.36303710938,47.3219375610352" />
+    <Link Source="@20" Target="@115" Category="CallStackDirectCall" Bounds="1336.15478515625,70.4464340209961,1962.32495117188,76.4914779663086" />
+    <Link Source="@20" Target="@118" Category="CallStackDirectCall" Bounds="3360.61987304688,74.3724899291992,199.1318359375,89.5189895629883" />
+    <Link Source="@20" Target="@119" Category="CallStackDirectCall" Bounds="3277.44428830445,81.9197830627441,34.1676297840163,24.7239735934383" />
+    <Link Source="@20" Target="@120" Category="CallStackDirectCall" Bounds="2703.93603515625,71.0441055297852,594.543701171875,40.2675018310547" />
+    <Link Source="@20" Target="@122" Category="CallStackDirectCall" Bounds="3360.61987304688,70.6251602172852,1783.76342773438,96.7616958618164" />
+    <Link Source="@20" Target="@13" Category="CallStackDirectCall" Bounds="3230.6328125,81.9197845458984,105.130615234375,247.956893920898" />
+    <Link Source="@20" Target="@15" Category="CallStackDirectCall" Bounds="3360.61987304688,69.4143371582031,2138.02270507813,40.9394836425781" />
+    <Link Source="@20" Target="@16" Category="CallStackDirectCall" Bounds="3360.61987304688,69.3891067504883,2269.15942382813,41.1118774414063" />
+    <Link Source="@20" Target="@17" Category="CallStackDirectCall" Bounds="1837.9521484375,71.8668594360352,1460.52758789063,149.404731750488" />
+    <Link Source="@20" Target="@19" Category="CallStackDirectCall" Bounds="3081.20825195313,75.4840698242188,217.271484375,251.386505126953" />
+    <Link Source="@20" Target="@27" Category="CallStackDirectCall" Bounds="3360.61987304688,70.8754959106445,1088.40063476563,160.423881530762" />
+    <Link Source="@20" Target="@30" Category="CallStackDirectCall" Bounds="2993.94091796875,75.4840698242188,304.538818359375,149.472427368164" />
+    <Link Source="@20" Target="@34" Category="CallStackDirectCall" Bounds="2099.80859375,71.8668594360352,1198.67114257813,93.1153335571289" />
+    <Link Source="@20" Target="@36" Category="CallStackDirectCall" Bounds="3360.61987304688,71.2728118896484,1281.27124023438,101.782791137695" />
+    <Link Source="@20" Target="@37" Category="CallStackDirectCall" Bounds="3287.81079101563,81.9197845458984,42.1875,82.7158508300781" />
+    <Link Source="@20" Target="@39" Category="CallStackDirectCall" Bounds="2189.37768554688,71.8668594360352,1109.10205078125,149.870567321777" />
+    <Link Source="@20" Target="@41" Category="CallStackDirectCall" Bounds="3100.65844726563,75.4840698242188,197.8212890625,144.994766235352" />
+    <Link Source="@20" Target="@43" Category="CallStackDirectCall" Bounds="2922.2421875,71.8668594360352,376.237548828125,93.0563583374023" />
+    <Link Source="@20" Target="@47" Category="CallStackDirectCall" Bounds="1714.95141601563,71.8668594360352,1583.5283203125,151.084480285645" />
+    <Link Source="@20" Target="@48" Category="CallStackDirectCall" Bounds="902.5595703125,70.9958724975586,2395.92016601563,80.4905014038086" />
+    <Link Source="@20" Target="@53" Category="CallStackDirectCall" Bounds="2008.7392578125,71.8668594360352,1289.74047851563,149.877388000488" />
+    <Link Source="@20" Target="@54" Category="CallStackDirectCall" Bounds="2611.17749023438,71.8668594360352,687.30224609375,93.4204483032227" />
+    <Link Source="@20" Target="@65" Category="CallStackDirectCall" Bounds="1053.59045410156,70.9958724975586,2244.88928222656,80.4905014038086" />
+    <Link Source="@20" Target="@66" Category="CallStackDirectCall" Bounds="2633.02709960938,75.4840698242188,665.45263671875,202.028778076172" />
+    <Link Source="@20" Target="@67" Category="CallStackDirectCall" Bounds="3331.43627929688,81.9197845458984,152.471435546875,191.893966674805" />
+    <Link Source="@20" Target="@68" Category="CallStackDirectCall" Bounds="3200.28540039063,81.9197845458984,135.47802734375,193.460494995117" />
+    <Link Source="@20" Target="@74" Category="CallStackDirectCall" Bounds="2452.349609375,71.8668594360352,846.130126953125,93.3942642211914" />
+    <Link Source="@20" Target="@77" Category="CallStackDirectCall" Bounds="3110.2392578125,75.4840698242188,188.240478515625,89.6474151611328" />
+    <Link Source="@20" Target="@8" Category="CallStackDirectCall" Bounds="3360.61987304688,69.4587783813477,1967.60717773438,41.0380554199219" />
+    <Link Source="@20" Target="@80" Category="CallStackDirectCall" Bounds="2811.8212890625,71.5029678344727,486.658447265625,40.1479110717773" />
+    <Link Source="@20" Target="@81" Category="CallStackDirectCall" Bounds="3329.94458007813,81.9197845458984,2.0966796875,133.021743774414" />
+    <Link Source="@20" Target="@9" Category="CallStackDirectCall" Bounds="3331.43627929688,81.9197845458984,128.47265625,144.752746582031" />
+    <Link Source="@20" Target="@90" Category="CallStackDirectCall" Bounds="2810.927734375,75.4840698242188,487.552001953125,183.803558349609" />
+    <Link Source="@20" Target="@91" Category="CallStackDirectCall" Bounds="1999.20251464844,69.713134765625,1299.27722167969,40.27685546875" />
+    <Link Source="@20" Target="@93" Category="CallStackDirectCall" Bounds="3360.61987304688,70.8302536010742,1585.91625976563,96.4975967407227" />
+    <Link Source="@20" Target="@95" Category="CallStackDirectCall" Bounds="3331.43627929688,81.9197845458984,80.482421875,195.138595581055" />
+    <Link Source="@20" Target="@97" Category="CallStackDirectCall" Bounds="1649.38439941406,69.6642227172852,1649.09533691406,92.8379592895508" />
+    <Link Source="@34" Target="(Name=&quot;[Inline Frame] GetTime&quot; @4 @28 @2)" Category="CallStackDirectCall" Bounds="1548.33044433594,191.680541992188,459.264404296875,87.1415100097656" />
+    <Link Source="@34" Target="@35" Category="CallStackDirectCall" Bounds="954.582336425781,193.839950561523,1063.67071533203,21.2310028076172" />
+    <Link Source="@35" Target="@40" Category="CallStackDirectCall" Bounds="915.869943868392,243.121357421875,102.998949516613,57.3022662026731" />
+    <Link Source="@37" Target="@82" Category="CallStackDirectCall" Bounds="2654.74682617188,192.200378417969,507.92822265625,136.123809814453" />
+    <Link Source="@40" Target="(Name=rlMatrixMultiply @4 Type=Matrix OverloadingParameters=[(Type=Matrix Name=left),(Type=Matrix Name=right)] @2)" Category="CallStackDirectCall" Bounds="1053.19201656145,330.759113769531,12.877959503083,53.4523096229631" />
+    <Link Source="@43" Target="@82" Category="CallStackDirectCall" Bounds="2654.74682617188,193.839904785156,191.26708984375,134.484283447266" />
+    <Link Source="@44" Target="@47" Category="CallStackDirectCall" Bounds="1714.97668457031,193.839859008789,449.172973632813,29.84130859375" />
+    <Link Source="@46" Target="@17" Category="CallStackDirectCall" Bounds="1513.55773925781,189.830078125,225.056884765625,32.7152557373047" />
+    <Link Source="@46" Target="@18" Category="CallStackDirectCall" Bounds="1513.55773925781,187.880325317383,517.2138671875,144.635116577148" />
+    <Link Source="@46" Target="@47" Category="CallStackDirectCall" Bounds="1501.19739468749,193.839897151693,94.8795797122702,24.9561524201338" />
+    <Link Source="@48" Target="(Name=Card::Card @6 @28 @2)" Category="CallStackIndirectCall" Bounds="344.243743896484,121.161346435547,495.721343994141,46.8678894042969" Label="External Code" LabelBounds="726.146193309733,107.05289876048,72.986666666664,15.9600000000064" />
+    <Link Source="@48" Target="(Name=Card::set_card_suit @6 @28 OverloadingParameters=[(@45 Name=suit)] @2)" Category="CallStackDirectCall" Bounds="620.088043046785,124.47776685665,219.877039147225,44.2365674900549" />
+    <Link Source="@48" Target="(Name=Card::set_card_suit @6 @28 OverloadingParameters=[(Name=suit)] @2)" Category="CallStackDirectCall" Bounds="252.52946472168,120.69686126709,587.435623168945,46.765007019043" />
+    <Link Source="@48" Target="(Name=Card::set_card_value @6 @28 OverloadingParameters=[(@45 Name=value)] @2)" Category="CallStackDirectCall" Bounds="487.044250488281,122.086143493652,352.920837402344,48.8765029907227" />
+    <Link Source="@48" Target="(Name=Card::set_card_value @6 @28 OverloadingParameters=[(Name=value)] @2)" Category="CallStackDirectCall" Bounds="119.48193359375,120.265518188477,720.483154296875,47.3633575439453" />
+    <Link Source="@48" Target="@47" Category="CallStackDirectCall" Bounds="894.217956542969,131.201156616211,704.760803222656,87.53466796875" />
+    <Link Source="@54" Target="@17" Category="CallStackDirectCall" Bounds="1832.38586425781,193.839874267578,680.506958007813,27.11328125" />
+    <Link Source="@54" Target="@18" Category="CallStackDirectCall" Bounds="2122.55786132813,191.708084106445,373.1923828125,141.348648071289" />
+    <Link Source="@54" Target="@25" Category="CallStackDirectCall" Bounds="1863.96386562444,190.404029546591,631.657910905507,92.9819556269087" />
+    <Link Source="@54" Target="@31" Category="CallStackIndirectCall" Bounds="2454.7490234375,193.839874267578,107.669189453125,89.0657653808594" Label="External Code" LabelBounds="2546.07685702867,263.116194135424,72.9866666666712,15.9599999999991" />
+    <Link Source="@54" Target="@47" Category="CallStackDirectCall" Bounds="1697.51391601563,193.839874267578,815.37890625,24.3691101074219" />
+    <Link Source="@54" Target="@52" Category="CallStackDirectCall" Bounds="1703.4697265625,193.839874267578,809.42333984375,83.7934265136719" />
+    <Link Source="@56" Target="@53" Category="CallStackDirectCall" Bounds="1328.537109375,187.161270141602,561.310913085938,34.3686218261719" />
+    <Link Source="@58" Target="(Name=DrawRectanglePro @4 @28 OverloadingParameters=[(Name=rec),@98,(Name=rotation),@72] @2)" Category="CallStackDirectCall" Bounds="5194.25998255065,271.338204876524,188.729878079292,31.951005091701" />
+    <Link Source="@58" Target="(Name=DrawRectanglePro @4 @28 OverloadingParameters=[@71,@98,@100,@72] @2)" Category="CallStackDirectCall" Bounds="5483.23567106941,273.036471911621,69.2771613067116,26.757428861244" />
+    <Link Source="@58" Target="@51" Category="CallStackDirectCall" Bounds="5348.97057521471,273.036471911621,91.0799440127812,123.419257041733" />
+    <Link Source="@58" Target="@99" Category="CallStackDirectCall" Bounds="5516.56591796875,262.960723876953,378.87255859375,43.0850219726563" />
+    <Link Source="@65" Target="(Name=Table::find_card_in_atk @6 @14 @2)" Category="CallStackDirectCall" Bounds="768.116821289063,131.067626953125,166.159912109375,34.9879455566406" />
+    <Link Source="@65" Target="@22" Category="CallStackDirectCall" Bounds="1028.47521972656,131.201156616211,71.797607421875,78.5441436767578" />
+    <Link Source="@66" Target="@18" Category="CallStackDirectCall" Bounds="2138.73567932455,300.497977683688,367.048731482744,40.8908357164567" />
+    <Link Source="@66" Target="@23" Category="CallStackDirectCall" Bounds="2632.07495117188,305.760070800781,167.3427734375,139.29248046875" />
+    <Link Source="@67" Target="@82" Category="CallStackDirectCall" Bounds="2678.890625,305.760192871094,770.061767578125,26.4072265625" />
+    <Link Source="@68" Target="@23" Category="CallStackDirectCall" Bounds="2881.35595703125,305.760070800781,227.787109375,137.488098144531" />
+    <Link Source="@69" Target="@17" Category="CallStackDirectCall" Bounds="878.094787597656,187.161270141602,865.690368652344,33.8657073974609" />
+    <Link Source="@69" Target="@25" Category="CallStackDirectCall" Bounds="888.107727050781,184.502227783203,861.421569824219,92.7247619628906" />
+    <Link Source="@69" Target="@47" Category="CallStackDirectCall" Bounds="878.094787597656,187.161270141602,720.867492675781,31.6367645263672" />
+    <Link Source="@69" Target="@52" Category="CallStackDirectCall" Bounds="888.107727050781,184.502227783203,694.494567871094,93.1213684082031" />
+    <Link Source="@74" Target="(Name=Player::set_hand_by_index @6 @28 OverloadingParameters=[@60,(@10 Name=index)] @2)" Category="CallStackDirectCall" Bounds="2136.25610351563,192.248275756836,203.9365234375,85.5050506591797" />
+    <Link Source="@74" Target="@11" Category="CallStackDirectCall" Bounds="2449.2041015625,193.839874267578,689.085205078125,26.7836608886719" />
+    <Link Source="@74" Target="@25" Category="CallStackDirectCall" Bounds="1863.90057241206,192.453285327535,476.411738087455,88.4855507696701" />
+    <Link Source="@74" Target="@31" Category="CallStackIndirectCall" Bounds="2364.53662109375,193.839874267578,29.335693359375,79.5047607421875" Label="External Code" LabelBounds="2387.40634178936,252.92801525919,72.9866666666712,15.9599999999991" />
+    <Link Source="@74" Target="@52" Category="CallStackDirectCall" Bounds="1724.06665943162,190.125032629923,615.774907951188,90.7172375796987" />
+    <Link Source="@76" Target="@19" Category="CallStackDirectCall" Bounds="3000.80720396832,305.760102503662,45.9297384016995,25.616274638674" />
+    <Link Source="@77" Target="(Name=DrawRectangle @4 @28 OverloadingParameters=[(@14 Name=posX),(@14 Name=posY),(@14 Name=width),(@14 Name=height),@72] @2)" Category="CallStackDirectCall" Bounds="2824.07275390625,193.839904785156,222.824462890625,121.669982910156" />
+    <Link Source="@79" Target="@41" Category="CallStackDirectCall" Bounds="3112.73095703125,190.627807617188,246.577880859375,34.6914978027344" />
+    <Link Source="@79" Target="@9" Category="CallStackDirectCall" Bounds="3446.72449884572,193.839983062744,36.3343532852482,24.9109109491898" />
+    <Link Source="@8" Target="@87" Category="CallStackDirectCall" Bounds="5406.59093959846,137.88,33.7155129946559,24.6835058343239" />
+    <Link Source="@80" Target="@79" Category="CallStackDirectCall" Bounds="2794.15234375,137.879806518555,575.310546875,27.7571716308594" />
+    <Link Source="@83" Target="@23" Category="CallStackDirectCall" Bounds="2806.2876264504,412.697811005244,26.1813949548578,28.3682961930365" />
+    <Link Source="@86" Target="(Name=&quot;std::use_facet&lt;std::codecvt&lt;char,char,_Mbstatet&gt;&gt;&quot; @6 Type=&quot;const std::codecvt&lt;char,char,_Mbstatet&gt; &amp;&quot; OverloadingParameters=[(Type=&quot;const std::locale &amp;&quot; Name=_Loc)] @2)" Category="CallStackDirectCall" Bounds="5018.49755859375,313.601867675781,271.044921875,26.6827697753906" />
+    <Link Source="@88" Target="@86" Category="CallStackDirectCall" Bounds="5361.5869140625,263.87353515625,211.224609375,34.6303100585938" />
+    <Link Source="@90" Target="(Name=DrawText @4 @28 OverloadingParameters=[(@49 Name=text),(@14 Name=posX),(@14 Name=posY),(@14 Name=fontSize),@72] @2)" Category="CallStackDirectCall" Bounds="2551.13500945997,290.456531982422,182.252089975384,45.5699675522239" />
+    <Link Source="@90" Target="@13" Category="CallStackDirectCall" Bounds="2815.65771484375,290.45654296875,344.515625,42.5282897949219" />
+    <Link Source="@90" Target="@19" Category="CallStackDirectCall" Bounds="2815.65771484375,290.45654296875,203.119140625,46.1651611328125" />
+    <Link Source="@91" Target="@103" Category="CallStackDirectCall" Bounds="1995.87683105469,137.879821777344,595.980346679688,82.8796539306641" />
+    <Link Source="@91" Target="@44" Category="CallStackDirectCall" Bounds="1999.80908528646,132.355649223967,155.170563071813,33.6185311729694" />
+    <Link Source="@92" Target="@19" Category="CallStackDirectCall" Bounds="2522.1396484375,249.79997253418,496.554931640625,89.2037811279297" />
+    <Link Source="@92" Target="@25" Category="CallStackDirectCall" Bounds="1864.0280311674,244.365009915613,510.642718344323,43.0317969934877" />
+    <Link Source="@92" Target="@76" Category="CallStackDirectCall" Bounds="2525.63818359375,249.79997253418,402.860107421875,27.2739410400391" />
+    <Link Source="@93" Target="@27" Category="CallStackDirectCall" Bounds="4599.58473199386,190.806011155979,339.665134672808,37.6672538466849" />
+    <Link Source="@93" Target="@73" Category="CallStackDirectCall" Bounds="5062.54972717245,193.84,69.2888676728035,26.7577696716553" />
+    <Link Source="@94" Target="@64" Category="CallStackDirectCall" Bounds="5361.52067322614,198.01872188016,183.085633802364,36.3086657261772" />
+    <Link Source="@94" Target="@88" Category="CallStackDirectCall" Bounds="5595.96836450308,201.220129451398,4.39920657789753,27.8039782629284" />
+    <Link Source="@95" Target="@19" Category="CallStackDirectCall" Bounds="3136.7579637996,305.760110375977,136.035871403836,29.9954994965203" />
+    <Link Source="@97" Target="(Name=Table::addCardToTableAtk @6 @28 OverloadingParameters=[@60,(@10 Name=pNum)] @2)" Category="CallStackDirectCall" Bounds="1265.15264103552,191.072254638672,306.786959449878,148.984852879125" />
+    <Link Source="@97" Target="(Name=Table::addCardToTableAtk @6 @28 OverloadingParameters=[@60,(Name=pNum)] @2)" Category="CallStackDirectCall" Bounds="761.834106445313,191.072250366211,799.232543945313,30.3386688232422" />
+    <Link Source="@97" Target="@24" Category="CallStackDirectCall" Bounds="1653.51586914063,189.298049926758,589.331298828125,31.7241973876953" />
+    <Link Source="@97" Target="@39" Category="CallStackDirectCall" Bounds="1653.51586914063,189.298049926758,416.97607421875,32.2172698974609" />
+    <Link Source="@97" Target="@53" Category="CallStackDirectCall" Bounds="1653.77778564453,187.396078433916,209.914789893415,35.438390410355" />
+    <Link Source="@99" Target="(Name=rlColor4ub @4 @28 OverloadingParameters=[(Name=x),(Name=y),(Type=&quot;unsigned char&quot; Name=z),(Name=w)] @2)" Category="CallStackDirectCall" Bounds="5980.10072244349,336.249768298746,119.273121979974,29.5154380074447" />
+    <Link Source="@99" Target="(Name=rlEnd @4 @28 @2)" Category="CallStackDirectCall" Bounds="5955.1694118741,336.249768298746,55.4686796676815,26.1608461395937" />
+    <Link Source="@99" Target="@51" Category="CallStackDirectCall" Bounds="5391.93987511942,333.739468279826,469.173450898234,73.8280482554847" />
+    <Link Source="@99" Target="@57" Category="CallStackDirectCall" Bounds="5907.42226263101,336.249768298746,16.319738926054,54.2320480461618" />
+    <Link Source="@99" Target="@85" Category="CallStackDirectCall" Bounds="5771.82141076804,336.249768298746,127.755215192368,59.0730892730289" />
+    <Link Source="@99" Target="@96" Category="CallStackDirectCall" Bounds="5662.07965881867,336.249768298746,219.283714374475,61.4956391388776" />
+    <Link Source="ExternalCodeRootNode" Target="@109" Category="CallStackIndirectCall" Bounds="1909.73929455944,23.9694121474297,368.364897903291,87.3975039063871" />
+    <Link Source="ExternalCodeRootNode" Target="@20" Category="CallStackIndirectCall" Bounds="2370.91597638863,15.5684953486846,918.577725325119,51.1414002597376" />
+    <Link Source="ExternalCodeRootNode" Target="@24" Category="CallStackIndirectCall" Bounds="2303.27905273438,25.9599990844727,41.295654296875,190.594123840332" />
+    <Link Source="ExternalCodeRootNode" Target="@39" Category="CallStackIndirectCall" Bounds="2127.36328125,25.9599990844727,179.060791015625,188.88126373291" />
+    <Link Source="ExternalCodeRootNode" Target="@53" Category="CallStackIndirectCall" Bounds="1964.36682128906,25.8685111999512,315.827270507813,191.306644439697" />
   </Links>
   <Categories>
-    <Category Id="BaseCustomContent" CanBeDataDriven="True" IsProviderRoot="False" />
     <Category Id="CallStackDirectCall" Label="Call Stack direct call" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Call Stack direct call" OutgoingActionLabel="Call Stack direct call" />
     <Category Id="CallStackEntry" Label="Call Stack Entry" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="Call Stack Entry" />
     <Category Id="CallStackIndirectCall" Label="Call Stack indirect call" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Call Stack indirect call" OutgoingActionLabel="Call Stack indirect call" />
     <Category Id="CodeSchema_CallStackUnresolvedMethod" Label="Unresolved Method" CanBeDataDriven="True" DefaultAction="Microsoft.AllOutBoundLinks" IsProviderRoot="False" NavigationActionLabel="Unresolved Method" />
     <Category Id="CodeSchema_SourceLocation" Label="Source Location" Icon="File" />
-    <Category Id="CurrentCallStackCall" Label="Current Call Stack call" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Current Call Stack call" OutgoingActionLabel="Current Call Stack call" />
-    <Category Id="CurrentCallStackEntry" Label="Current Call Stack Entry" BasedOn="BaseCustomContent" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="Current Call Stack Entry" />
     <Category Id="ExternalCallStackEntry" Label="External Call Stack Entry" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="External Call Stack Entry" />
   </Categories>
   <Properties>
     <Property Id="Bounds" DataType="System.Windows.Rect" />
     <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
     <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsExternal" Label="Is External" Description="Flag indicating whether this node is considered external" DataType="System.Boolean" />
     <Property Id="DataVirtualized" Label="Data Virtualized" Description="If true, the graph can contain nodes and links that represent data for virtualized nodes/links (i.e. not actually created in the graph)." DataType="System.Boolean" />
     <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
     <Property Id="Expression" DataType="System.String" />
+    <Property Id="GraphDirection" DataType="Microsoft.VisualStudio.Diagrams.Layout.LayoutOrientation" />
     <Property Id="GroupLabel" DataType="System.String" />
     <Property Id="Icon" Label="Icon" Description="Icon" DataType="System.String" />
     <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
@@ -537,6 +820,8 @@
     <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
     <Property Id="SourceLocation" Label="Start Line Number" DataType="Microsoft.VisualStudio.GraphModel.CodeSchema.SourceLocation" />
     <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="ToolTip" DataType="System.String" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
     <Property Id="Value" DataType="System.String" />
     <Property Id="ValueLabel" DataType="System.String" />
     <Property Id="Visibility" Label="Visibility" Description="Defines whether a node in the graph is visible or not" DataType="System.Windows.Visibility" />
@@ -550,78 +835,120 @@
     <Name Id="Type" Label="Type" ValueType="System.Object" />
   </QualifiedNames>
   <IdentifierAliases>
-    <Alias n="1" Uri="Assembly=GraphicsCW.exe" />
-    <Alias n="2" Id="Type=bool" />
-    <Alias n="3" Id="IsUnresolved=True" />
-    <Alias n="4" Id="(Name=c3::get_pirivadnoy_state @1 @2 @3)" />
-    <Alias n="5" Id="(Name=Player::isPlyrAtk @1 @2 @3)" />
-    <Alias n="6" Uri="Assembly=raylib.dll" />
-    <Alias n="7" Id="Type=&quot;const int&quot;" />
-    <Alias n="8" Id="(Name=MainGame::getPTurn @1 @7 @3)" />
-    <Alias n="9" Id="Type=&quot;const std::shared_ptr&lt;Card&gt; &amp;&quot;" />
-    <Alias n="10" Id="(Name=Deck::getLastCard @1 @9 @3)" />
-    <Alias n="11" Id="Type=int" />
-    <Alias n="12" Id="(Name=c3::getDeckSize @1 @11 @3)" />
-    <Alias n="13" Id="(Name=c3::getMusicNumber @1 @11 @3)" />
-    <Alias n="14" Id="(Name=Card::get_card_suit @1 @11 @3)" />
-    <Alias n="15" Id="(Name=Card::get_card_value @1 @11 @3)" />
-    <Alias n="16" Id="(Name=Deck::getDeckSize @1 @11 @3)" />
-    <Alias n="17" Id="(Name=main @1 @11 @3)" />
-    <Alias n="18" Id="(Name=Table::get_num_cards_in_atk_table @1 @11 @3)" />
-    <Alias n="19" Id="(Name=Table::getEntireTable @1 Type=&quot;std::array&lt;std::array&lt;std::shared_ptr&lt;Card&gt;,2&gt;,6&gt; &amp;&quot; @3)" />
-    <Alias n="20" Id="(Name=Player::get_hand_size @1 Type=&quot;unsigned __int64&quot; @3)" />
-    <Alias n="21" Id="Type=Vector2" />
-    <Alias n="22" Id="(Name=GetMousePosition @6 @21 @3)" />
-    <Alias n="23" Id="Type=void" />
-    <Alias n="24" Id="(Name=MainGame::switchPTurn @1 @23 @3)" />
-    <Alias n="25" Id="(Name=Player::~Player @1 @23 @3)" />
-    <Alias n="26" Id="(Name=EndDrawing @6 @23 @3)" />
-    <Alias n="27" Id="(Name=rlDrawRenderBatchActive @6 @23 @3)" />
-    <Alias n="28" Id="(Name=rlDrawRenderBatch @6 @23 OverloadingParameters=[(Type=&quot;rlRenderBatch *&quot; Name=batch)] @3)" />
-    <Alias n="29" Id="(Name=IsMouseButtonDown @6 @2 OverloadingParameters=[(@11 Name=button)] @3)" />
-    <Alias n="30" Id="(Name=c2::find_colliding_placement @1 Type=&quot;std::pair&lt;Vector2,int&gt;&quot; OverloadingParameters=[(@9 Name=card)] @3)" />
-    <Alias n="31" Id="(Name=Card::displayCardWithValueText @1 @23 OverloadingParameters=[(@9 Name=card)] @3)" />
-    <Alias n="32" Id="Type=&quot;const int &amp;&quot;" />
-    <Alias n="33" Id="(Name=Player::find_lowest_card @1 @11 OverloadingParameters=[(@32 Name=card_suit_value)] @3)" />
-    <Alias n="34" Id="(Name=encrypt_data @1 @11 OverloadingParameters=[(@11 Name=data)] @3)" />
-    <Alias n="35" Id="(Name=Deck::Deck @1 @23 OverloadingParameters=[(@7 Name=deckSize)] @3)" />
-    <Alias n="36" Id="OverloadingParameters=[(Type=&quot;const char *&quot; Name=fileName)]" />
-    <Alias n="37" Id="(Name=Player::from_hand_by_index @1 Type=std::shared_ptr&lt;Card&gt; OverloadingParameters=[(@7 Name=index)] @3)" />
-    <Alias n="38" Id="(Name=Table::getCardFromTableAtk @1 Type=std::shared_ptr&lt;Card&gt; OverloadingParameters=[(@7 Name=index)] @3)" />
-    <Alias n="39" Id="(Name=c1::findStartingPlayer @1 @11 OverloadingParameters=[(Type=&quot;std::array&lt;Player,2&gt;&quot; Name=players)] @3)" />
-    <Alias n="40" Id="(Type=&quot;Table &amp;&quot; Name=table)" />
-    <Alias n="41" Id="(Name=c4::find_card_to_defend @1 @11 OverloadingParameters=[@40] @3)" />
-    <Alias n="42" Id="(Type=&quot;MainGame &amp;&quot; Name=mg)" />
-    <Alias n="43" Id="(Type=std::shared_ptr&lt;Card&gt; Name=card)" />
-    <Alias n="44" Id="(Name=c2::collision_percent_finder @1 @11 OverloadingParameters=[(@11 Name=percentCertanty),@43] @3)" />
-    <Alias n="45" Id="(Name=c2::can_attacker_attack @1 @2 OverloadingParameters=[@40,@43] @3)" />
-    <Alias n="46" Id="(Name=c4::can_defend @1 Type=&quot;std::pair&lt;bool,int&gt;&quot; OverloadingParameters=[(Type=&quot;Player &amp;&quot; Name=player),(@9 Name=card_to_defend)] @3)" />
-    <Alias n="47" Id="(Name=c1::lockCardsInHand @1 @23 OverloadingParameters=[(Type=&quot;std::array&lt;Player,2&gt;&quot; Name=players),(Type=MainGame Name=mg)] @3)" />
-    <Alias n="48" Id="(Type=&quot;Deck &amp;&quot; Name=deck)" />
-    <Alias n="49" Id="(Name=c1::deck_has_enough_cards_left @1 @2 OverloadingParameters=[@48,(@7 Name=numOfCardsNeeded)] @3)" />
-    <Alias n="50" Id="(Name=c0::displayWhosTurnItIs @1 @23 OverloadingParameters=[@42,(Type=&quot;const bool &amp;&quot; Name=player_state)] @3)" />
-    <Alias n="51" Id="(Name=CheckCollisionPointRec @6 @2 OverloadingParameters=[(@21 Name=point),(Type=Rectangle Name=rec)] @3)" />
-    <Alias n="52" Id="(Name=CheckCollisionRecs @6 @2 OverloadingParameters=[(Type=Rectangle Name=rec1),(Type=Rectangle Name=rec2)] @3)" />
-    <Alias n="53" Id="(Name=c2::table_to_hand @1 @23 OverloadingParameters=[(Type=&quot;Player &amp;&quot; Name=player),@40] @3)" />
-    <Alias n="54" Id="(Name=c3::setDeckSize @1 @23 OverloadingParameters=[(Name=deckSize),(Name=currentMusicVal),(Name=pirivadnoy)] @3)" />
-    <Alias n="55" Id="Type=&quot;Texture &amp;&quot;" />
-    <Alias n="56" Id="(Name=c0::displaySpecialCards @1 @23 OverloadingParameters=[@48,(@55 Name=backOfCard),(@55 Name=blankCard)] @3)" />
-    <Alias n="57" Id="(Name=c0::cTable @1 @23 OverloadingParameters=[(Type=&quot;std::vector&lt;std::shared_ptr&lt;Card&gt;,std::allocator&lt;std::shared_ptr&lt;Card&gt;&gt;&gt;&quot; Name=cardsVisible),(@55 Name=cBack),(@55 Name=cBlank)] @3)" />
-    <Alias n="58" Id="(Type=&quot;std::array&lt;Player,2&gt; &amp;&quot; Name=players)" />
-    <Alias n="59" Id="(Name=c1::add_need_cards_to_players @1 @23 OverloadingParameters=[@58,(Type=&quot;std::vector&lt;std::shared_ptr&lt;Card&gt;,std::allocator&lt;std::shared_ptr&lt;Card&gt;&gt;&gt; &amp;&quot; Name=cards_visible),@48] @3)" />
-    <Alias n="60" Id="(Name=c3::setDeckSize @1 @23 OverloadingParameters=[(@32 Name=deckSize),(@32 Name=currentMusicVal),(Type=&quot;const bool &amp;&quot; Name=pirivadnoy)] @3)" />
-    <Alias n="61" Id="(Name=c2::check_for_winner @1 @11 OverloadingParameters=[@48,@58,@40] @3)" />
-    <Alias n="62" Id="(Name=c2::hand_to_table @1 @23 OverloadingParameters=[(Type=&quot;Player &amp;&quot; Name=player),@40,(@9 Name=card_to_play),(@32 Name=cardPile)] @3)" />
-    <Alias n="63" Id="(Name=c2::play_music @1 @23 OverloadingParameters=[(@7 Name=music_number),(Type=&quot;const Music &amp;&quot; Name=JazzMusic),(Type=&quot;const Music &amp;&quot; Name=LofiMusic),(Type=&quot;const Music &amp;&quot; Name=eSwingMusic)] @3)" />
-    <Alias n="64" Id="(Name=DrawTexture @6 @23 OverloadingParameters=[(Type=Texture Name=texture),(@11 Name=posX),(@11 Name=posY),(Type=Color Name=tint)] @3)" />
-    <Alias n="65" Id="(Name=c0::displayPlayerState @1 @23 OverloadingParameters=[(@55 Name=atkHigh),(@55 Name=atkLow),(@55 Name=defHigh),(@55 Name=defLow),(@2 Name=atkState)] @3)" />
-    <Alias n="66" Id="(Type=&quot;std::vector&lt;std::shared_ptr&lt;Card&gt;,std::allocator&lt;std::shared_ptr&lt;Card&gt;&gt;&gt; &amp;&quot; Name=cardsVisible)" />
-    <Alias n="67" Id="(Name=c4::defend @1 @23 OverloadingParameters=[@58,@40,@42,@66,@48] @3)" />
-    <Alias n="68" Id="(Name=c2::takeDefender @1 @23 OverloadingParameters=[@58,@66,@48,@40,@42] @3)" />
-    <Alias n="69" Id="(Name=c4::attack @1 @23 OverloadingParameters=[@40,@48,@42,(Type=&quot;Discardediscarded_cards &amp;&quot; Name=bPile),@66,@58] @3)" />
-    <Alias n="70" Id="(Name=c0::displayPassButtons @1 @23 OverloadingParameters=[@58,@40,@42,(@55 Name=passLow),(@55 Name=passMid),(@55 Name=passHigh),(Type=&quot;Sound &amp;&quot; Name=fxButton)] @3)" />
-    <Alias n="71" Id="(Name=c0::displayTakeButtons @1 @23 OverloadingParameters=[@48,@66,@58,@42,@40,(@55 Name=takeHigh),(@55 Name=takeMid),(@55 Name=takeLow)] @3)" />
-    <Alias n="72" Id="(Name=c0::displayEndButtons @1 @23 OverloadingParameters=[@58,@42,(@55 Name=endLow),(@55 Name=endMid),(@55 Name=endHigh),(Type=&quot;Sound &amp;&quot; Name=fxButton),(Type=&quot;Discardediscarded_cards &amp;&quot; Name=bPile),@40,@66,@48] @3)" />
+    <Alias n="2" Id="IsUnresolved=True" />
+    <Alias n="4" Uri="Assembly=raylib.dll" />
+    <Alias n="6" Uri="Assembly=GraphicsCW.exe" />
+    <Alias n="7" Id="Type=bool" />
+    <Alias n="8" Id="(Name=c3::get_pirivadnoy_state @6 @7 @2)" />
+    <Alias n="9" Id="(Name=Player::isPlyrAtk @6 @7 @2)" />
+    <Alias n="10" Id="Type=&quot;const int&quot;" />
+    <Alias n="11" Id="(Name=MainGame::getPTurn @6 @10 @2)" />
+    <Alias n="12" Id="Type=&quot;const std::shared_ptr&lt;Card&gt; &amp;&quot;" />
+    <Alias n="13" Id="(Name=Deck::getLastCard @6 @12 @2)" />
+    <Alias n="14" Id="Type=int" />
+    <Alias n="15" Id="(Name=c3::getDeckSize @6 @14 @2)" />
+    <Alias n="16" Id="(Name=c3::getMusicNumber @6 @14 @2)" />
+    <Alias n="17" Id="(Name=Card::get_card_suit @6 @14 @2)" />
+    <Alias n="18" Id="(Name=Card::get_card_value @6 @14 @2)" />
+    <Alias n="19" Id="(Name=Deck::getDeckSize @6 @14 @2)" />
+    <Alias n="20" Id="(Name=main @6 @14 @2)" />
+    <Alias n="21" Id="(Name=Table::get_num_cards_in_atk_table @6 @14 @2)" />
+    <Alias n="22" Id="(Name=Table::get_num_cards_in_defender_table @6 @14 @2)" />
+    <Alias n="23" Id="(Name=Table::getEntireTable @6 Type=&quot;std::array&lt;std::array&lt;std::shared_ptr&lt;Card&gt;,2&gt;,6&gt; &amp;&quot; @2)" />
+    <Alias n="24" Id="(Name=Player::getEntireHand @6 Type=&quot;std::vector&lt;std::shared_ptr&lt;Card&gt;,std::allocator&lt;std::shared_ptr&lt;Card&gt;&gt;&gt;&quot; @2)" />
+    <Alias n="25" Id="(Name=Player::get_hand_size @6 Type=&quot;unsigned __int64&quot; @2)" />
+    <Alias n="26" Id="Type=Vector2" />
+    <Alias n="27" Id="(Name=GetMousePosition @4 @26 @2)" />
+    <Alias n="28" Id="Type=void" />
+    <Alias n="30" Id="(Name=MainGame::switchPTurn @6 @28 @2)" />
+    <Alias n="31" Id="(Name=Player::~Player @6 @28 @2)" />
+    <Alias n="34" Id="(Name=EndDrawing @4 @28 @2)" />
+    <Alias n="35" Id="(Name=rlDrawRenderBatchActive @4 @28 @2)" />
+    <Alias n="36" Id="(Name=IsMouseButtonReleased @4 @7 OverloadingParameters=[(Name=button)] @2)" />
+    <Alias n="37" Id="(Name=c2::find_colliding_placement @6 Type=&quot;std::pair&lt;Vector2,int&gt;&quot; OverloadingParameters=[(Name=card)] @2)" />
+    <Alias n="38" Id="Type=std::shared_ptr&lt;Card&gt;" />
+    <Alias n="39" Id="(Name=Table::getCardFromTableAtk @6 @38 OverloadingParameters=[(Name=index)] @2)" />
+    <Alias n="40" Id="(Name=rlDrawRenderBatch @4 @28 OverloadingParameters=[(Type=&quot;rlRenderBatch *&quot; Name=batch)] @2)" />
+    <Alias n="41" Id="(Name=Player::setPlyrAtk @6 @28 OverloadingParameters=[(@7 Name=bol)] @2)" />
+    <Alias n="42" Id="(Name=IsMouseButtonDown @4 @7 OverloadingParameters=[(@14 Name=button)] @2)" />
+    <Alias n="43" Id="(Name=c2::find_colliding_placement @6 Type=&quot;std::pair&lt;Vector2,int&gt;&quot; OverloadingParameters=[(@12 Name=card)] @2)" />
+    <Alias n="44" Id="(Name=Card::displayCardWithValueText @6 @28 OverloadingParameters=[(@12 Name=card)] @2)" />
+    <Alias n="45" Id="Type=&quot;const int &amp;&quot;" />
+    <Alias n="46" Id="(Name=Player::find_lowest_card @6 @14 OverloadingParameters=[(@45 Name=card_suit_value)] @2)" />
+    <Alias n="47" Id="(Name=encrypt_data @6 @14 OverloadingParameters=[(@14 Name=data)] @2)" />
+    <Alias n="48" Id="(Name=Deck::Deck @6 @28 OverloadingParameters=[(@10 Name=deckSize)] @2)" />
+    <Alias n="49" Id="Type=&quot;const char *&quot;" />
+    <Alias n="50" Id="OverloadingParameters=[(@49 Name=fileName)]" />
+    <Alias n="51" Id="(Name=rlSetTexture @4 @28 OverloadingParameters=[(Type=&quot;unsigned int&quot; Name=id)] @2)" />
+    <Alias n="52" Id="(Name=Player::from_hand_by_index @6 @38 OverloadingParameters=[(@10 Name=index)] @2)" />
+    <Alias n="53" Id="(Name=Table::getCardFromTableAtk @6 @38 OverloadingParameters=[(@10 Name=index)] @2)" />
+    <Alias n="54" Id="(Name=c1::findStartingPlayer @6 @14 OverloadingParameters=[(Type=&quot;std::array&lt;Player,2&gt;&quot; Name=players)] @2)" />
+    <Alias n="55" Id="(Type=&quot;Table &amp;&quot; Name=table)" />
+    <Alias n="56" Id="(Name=c4::find_card_to_defend @6 @14 OverloadingParameters=[@55] @2)" />
+    <Alias n="57" Id="(Name=rlCheckRenderBatchLimit @4 @7 OverloadingParameters=[(@14 Name=vCount)] @2)" />
+    <Alias n="58" Id="(Name=DrawRectangleRec @4 @28 OverloadingParameters=[(Name=rec),(Name=color)] @2)" />
+    <Alias n="59" Id="(Type=&quot;MainGame &amp;&quot; Name=mg)" />
+    <Alias n="60" Id="(@38 Name=card)" />
+    <Alias n="61" Id="Type=&quot;std::basic_ostream&lt;char,std::char_traits&lt;char&gt;&gt; &amp;&quot;" />
+    <Alias n="64" Id="(Name=std::operator&lt;&lt;&lt;std::char_traits&lt;char&gt;&gt; @6 @61 OverloadingParameters=[(@61 Name=_Ostr),(@49 Name=_Val)] @2)" />
+    <Alias n="65" Id="(Name=c2::pirivadnoy_checker @6 @7 OverloadingParameters=[@55,(@12 Name=card)] @2)" />
+    <Alias n="66" Id="(Name=c2::can_attacker_attack @6 @7 OverloadingParameters=[(Name=table),@60] @2)" />
+    <Alias n="67" Id="(Name=c2::collision_percent_finder @6 @14 OverloadingParameters=[(@14 Name=percentCertanty),@60] @2)" />
+    <Alias n="68" Id="(Name=c2::can_attacker_attack @6 @7 OverloadingParameters=[@55,@60] @2)" />
+    <Alias n="69" Id="(Name=c4::can_defend @6 Type=&quot;std::pair&lt;bool,int&gt;&quot; OverloadingParameters=[(Type=&quot;Player &amp;&quot; Name=player),(@12 Name=card_to_defend)] @2)" />
+    <Alias n="70" Id="Type=Rectangle" />
+    <Alias n="71" Id="(@70 Name=rec)" />
+    <Alias n="72" Id="(Type=Color Name=color)" />
+    <Alias n="73" Id="(Name=DrawRectangleRec @4 @28 OverloadingParameters=[@71,@72] @2)" />
+    <Alias n="74" Id="(Name=c1::lockCardsInHand @6 @28 OverloadingParameters=[(Type=&quot;std::array&lt;Player,2&gt;&quot; Name=players),(Type=MainGame Name=mg)] @2)" />
+    <Alias n="75" Id="(Type=&quot;Deck &amp;&quot; Name=deck)" />
+    <Alias n="76" Id="(Name=c1::deck_has_enough_cards_left @6 @7 OverloadingParameters=[@75,(@10 Name=numOfCardsNeeded)] @2)" />
+    <Alias n="77" Id="(Name=c0::displayWhosTurnItIs @6 @28 OverloadingParameters=[@59,(Type=&quot;const bool &amp;&quot; Name=player_state)] @2)" />
+    <Alias n="78" Id="(Type=&quot;std::array&lt;Player,2&gt; &amp;&quot; Name=players)" />
+    <Alias n="79" Id="(Name=&quot;[Inline Frame] c2::switch_player_state&quot; @6 @28 OverloadingParameters=[@59,@78] @2)" />
+    <Alias n="80" Id="(Name=c2::privadi @6 @28 OverloadingParameters=[@59,@78] @2)" />
+    <Alias n="81" Id="(Name=CheckCollisionPointRec @4 @7 OverloadingParameters=[(@26 Name=point),@71] @2)" />
+    <Alias n="82" Id="(Name=CheckCollisionRecs @4 @7 OverloadingParameters=[(@70 Name=rec1),(@70 Name=rec2)] @2)" />
+    <Alias n="83" Id="(Name=c2::table_to_hand @6 @28 OverloadingParameters=[(Type=&quot;Player &amp;&quot; Name=player),@55] @2)" />
+    <Alias n="84" Id="Type=float" />
+    <Alias n="85" Id="(Name=rlTexCoord2f @4 @28 OverloadingParameters=[(@84 Name=x),(@84 Name=y)] @2)" />
+    <Alias n="86" Id="(Name=&quot;std::basic_filebuf&lt;char,std::char_traits&lt;char&gt;&gt;::open&quot; @6 Type=&quot;std::basic_filebuf&lt;char,std::char_traits&lt;char&gt;&gt; *&quot; OverloadingParameters=[(Name=_Filename),(Name=_Mode),(Name=_Prot)] @2)" />
+    <Alias n="87" Id="(Name=c3::setDeckSize @6 @28 OverloadingParameters=[(Name=deckSize),(Name=currentMusicVal),(Name=pirivadnoy)] @2)" />
+    <Alias n="88" Id="(Name=&quot;std::basic_ofstream&lt;char,std::char_traits&lt;char&gt;&gt;::basic_ofstream&lt;char,std::char_traits&lt;char&gt;&gt;&quot; @6 @28 OverloadingParameters=[(@49 Name=_Filename),(Name=_Mode),(@14 Name=_Prot)] @2)" />
+    <Alias n="89" Id="Type=&quot;Texture &amp;&quot;" />
+    <Alias n="90" Id="(Name=c0::displaySpecialCards @6 @28 OverloadingParameters=[@75,(@89 Name=backOfCard),(@89 Name=blankCard)] @2)" />
+    <Alias n="91" Id="(Name=c0::cTable @6 @28 OverloadingParameters=[(Type=&quot;std::vector&lt;std::shared_ptr&lt;Card&gt;,std::allocator&lt;std::shared_ptr&lt;Card&gt;&gt;&gt;&quot; Name=cardsVisible),(@89 Name=cBack),(@89 Name=cBlank)] @2)" />
+    <Alias n="92" Id="(Name=c1::add_need_cards_to_players @6 @28 OverloadingParameters=[@78,(Type=&quot;std::vector&lt;std::shared_ptr&lt;Card&gt;,std::allocator&lt;std::shared_ptr&lt;Card&gt;&gt;&gt; &amp;&quot; Name=cards_visible),@75] @2)" />
+    <Alias n="93" Id="(Name=c0::display_pirivadnoy_buttons @6 @28 OverloadingParameters=[(@45 Name=musical_number),(@45 Name=deck_size),(Type=&quot;bool &amp;&quot; Name=pirivadnoy)] @2)" />
+    <Alias n="94" Id="(Name=c3::setDeckSize @6 @28 OverloadingParameters=[(@45 Name=deckSize),(@45 Name=currentMusicVal),(Type=&quot;const bool &amp;&quot; Name=pirivadnoy)] @2)" />
+    <Alias n="95" Id="(Name=c2::check_for_winner @6 @14 OverloadingParameters=[@75,@78,@55] @2)" />
+    <Alias n="96" Id="(Name=rlVertex3f @4 @28 OverloadingParameters=[(@84 Name=x),(@84 Name=y),(@84 Name=z)] @2)" />
+    <Alias n="97" Id="(Name=c2::hand_to_table @6 @28 OverloadingParameters=[(Type=&quot;Player &amp;&quot; Name=player),@55,(@12 Name=card_to_play),(@45 Name=cardPile)] @2)" />
+    <Alias n="98" Id="(@26 Name=origin)" />
+    <Alias n="99" Id="(Name=DrawRectanglePro @4 @28 OverloadingParameters=[@71,@98,(Name=rotation),@72] @2)" />
+    <Alias n="100" Id="(@84 Name=rotation)" />
+    <Alias n="101" Id="(Name=c2::play_music @6 @28 OverloadingParameters=[(@10 Name=music_number),(Type=&quot;const Music &amp;&quot; Name=JazzMusic),(Type=&quot;const Music &amp;&quot; Name=LofiMusic),(Type=&quot;const Music &amp;&quot; Name=eSwingMusic)] @2)" />
+    <Alias n="102" Id="(Type=Color Name=tint)" />
+    <Alias n="103" Id="(Name=DrawTexture @4 @28 OverloadingParameters=[(Type=Texture Name=texture),(@14 Name=posX),(@14 Name=posY),@102] @2)" />
+    <Alias n="104" Id="(Name=c0::displayPlayerState @6 @28 OverloadingParameters=[(@89 Name=atkHigh),(@89 Name=atkLow),(@89 Name=defHigh),(@89 Name=defLow),(@7 Name=atkState)] @2)" />
+    <Alias n="105" Id="(Name=DrawText @4 @28 OverloadingParameters=[(Name=text),(Name=posX),(Name=posY),(Name=fontSize),@72] @2)" />
+    <Alias n="106" Id="(Type=&quot;std::vector&lt;std::shared_ptr&lt;Card&gt;,std::allocator&lt;std::shared_ptr&lt;Card&gt;&gt;&gt; &amp;&quot; Name=cardsVisible)" />
+    <Alias n="107" Id="(Name=&quot;[Inline Frame] c4::can_defend&quot; @6 @28 OverloadingParameters=[@78,@55,@59,@106,@75] @2)" />
+    <Alias n="108" Id="(Name=&quot;[Inline Frame] c4::find_card_to_defend&quot; @6 @28 OverloadingParameters=[@78,@55,@59,@106,@75] @2)" />
+    <Alias n="109" Id="(Name=c4::defend @6 @28 OverloadingParameters=[@78,@55,@59,@106,@75] @2)" />
+    <Alias n="110" Id="(Name=&quot;[Inline Frame] c2::table_to_hand&quot; @6 @28 OverloadingParameters=[@78,@106,@75,@55,@59] @2)" />
+    <Alias n="111" Id="(Name=c2::takeDefender @6 @28 OverloadingParameters=[@78,@106,@75,@55,@59] @2)" />
+    <Alias n="112" Id="(Name=c0::displayDeckSizeButtons @6 @28 OverloadingParameters=[(Type=&quot;Rectangle &amp;&quot; Name=thirty),(Type=&quot;Rectangle &amp;&quot; Name=fifty),(Type=&quot;const bool &amp;&quot; Name=thirtySelected),(@45 Name=currentMusicSize),(Type=&quot;const bool &amp;&quot; Name=pirivadnoy)] @2)" />
+    <Alias n="113" Id="(@26 Name=position)" />
+    <Alias n="114" Id="(Name=DrawTextCodepoint @4 @28 OverloadingParameters=[(Name=font),(Name=codepoint),@113,(Name=fontSize),@102] @2)" />
+    <Alias n="115" Id="(Name=c4::attack @6 @28 OverloadingParameters=[@55,@75,@59,(Type=&quot;Discardediscarded_cards &amp;&quot; Name=bPile),@106,@78] @2)" />
+    <Alias n="116" Id="(Name=DrawTexturePro @4 @28 OverloadingParameters=[(Name=texture),(@70 Name=source),(Name=dest),@98,@100,@102] @2)" />
+    <Alias n="117" Id="(Name=DrawTextEx @4 @28 OverloadingParameters=[(Type=Font Name=font),(@49 Name=text),@113,(Name=fontSize),(@84 Name=spacing),@102] @2)" />
+    <Alias n="118" Id="(Name=c0::displayPassButtons @6 @28 OverloadingParameters=[@78,@55,@59,(@89 Name=passLow),(@89 Name=passMid),(@89 Name=passHigh),(Type=&quot;Sound &amp;&quot; Name=fxButton)] @2)" />
+    <Alias n="119" Id="(Name=c0::displayTakeButtons @6 @28 OverloadingParameters=[@75,@106,@78,@59,@55,(@89 Name=takeHigh),(@89 Name=takeMid),(@89 Name=takeLow)] @2)" />
+    <Alias n="120" Id="(Name=c0::displayEndButtons @6 @28 OverloadingParameters=[@78,@59,(@89 Name=endLow),(@89 Name=endMid),(@89 Name=endHigh),(Type=&quot;Sound &amp;&quot; Name=fxButton),(Type=&quot;Discardediscarded_cards &amp;&quot; Name=bPile),@55,@106,@75] @2)" />
+    <Alias n="121" Id="Type=&quot;const Rectangle &amp;&quot;" />
+    <Alias n="122" Id="(Name=c0::displayMusicButtons @6 @28 OverloadingParameters=[(@121 Name=noMusic),(@121 Name=jazzMusic),(@121 Name=lofiMusic),(@121 Name=electroSwingMusic),(Type=&quot;const Music &amp;&quot; Name=JazzMusic),(Type=&quot;const Music &amp;&quot; Name=LofiMusic),(Type=&quot;const Music &amp;&quot; Name=eSwingMusic),(@45 Name=selection),(@45 Name=deckSize),(Type=&quot;int &amp;&quot; Name=currentMusicNum),(Type=&quot;const bool &amp;&quot; Name=pirivadnoy)] @2)" />
   </IdentifierAliases>
   <Styles>
     <Style TargetType="Link" GroupLabel="Current Call Stack Link" ValueLabel="True" Visibility="Hidden">
@@ -637,6 +964,16 @@
     <Style TargetType="Link" GroupLabel="Call Stack Direct Link" ValueLabel="True" Visibility="Hidden">
       <Condition Expression="HasCategory('CallStackDirectCall')" />
       <Setter Property="Stroke" Value="#FFB8B8B8" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Circular References" ToolTip="Node is part of a strongly coupled component" ValueLabel="Nodes">
+      <Condition Expression="IsStronglyConnected" />
+      <Setter Property="Stroke" Value="#D02030" />
+      <Setter Property="StrokeThickness" Value="2" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Circular References" ToolTip="Node is part of a strongly coupled component" ValueLabel="Links">
+      <Condition Expression="IsCircularLink" />
+      <Setter Property="Stroke" Value="#D02030" />
+      <Setter Property="StrokeThickness" Value="2" />
     </Style>
     <Style TargetType="Node" GroupLabel="Current Call Stack (no source)" ValueLabel="True">
       <Condition Expression="HasCategory('CurrentCallStackEntry') And !HasCategory('CodeSchema_SourceLocation')" />

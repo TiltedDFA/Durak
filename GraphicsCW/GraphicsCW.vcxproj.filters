@@ -109,5 +109,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
+    <None Include="..\CallStack1.dgml" />
   </ItemGroup>
 </Project>
