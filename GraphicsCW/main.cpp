@@ -22,8 +22,7 @@ int main()
 	Vector2 mP = { 0.0f,0.0f }; //This is to store the mouse position
 
 	std::array<std::pair<bool, std::string>, 4> screens;
-
-
+	
 	screens[0].first = true; screens[0].second = "Title Screen";
 
 	screens[1].first = false; screens[1].second = "Playing Screen";
@@ -343,7 +342,7 @@ int main()
 		}
 		else if (screens[0].first) { 
 		// Title Screen
-
+	
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);

@@ -183,3 +183,13 @@ Focus on these outlying points:
 -Implament a tutorial
 -Make an installer
 }
+
+24/04/22
+{
+The music should reset from each time you click the button to sweitch to new music in the settings screen
+}
+
+15/06/22
+{
+Will look to work on the issues this game faces and improve on it. Still got 3 A level exams left but will try to work on this as a past time. Current top priority would be to get the AI working.
+}

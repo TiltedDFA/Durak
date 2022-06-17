@@ -5,7 +5,7 @@ Deck::Deck()
 }
 Deck::Deck(const int deckSize) {
 
-	int startValue = 0;
+	int startValue;
 	switch (deckSize)
 	{
 	case 36:
